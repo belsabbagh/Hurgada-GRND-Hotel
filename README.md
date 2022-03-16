@@ -21,9 +21,9 @@ way.
 shared by the guests, the time taken to complete each stay, etc.
 
 ## Specifications
-1. guests self services view:
+### 1. guests self services view:
     -  In this view the guests can make the check-in and check-out by himself/herself.
-2. receptionist view:
+### 2. receptionist view:
     1. The receptionist can login using his/her username and password
     2. The receptionist can search for any item using its name and/or the room
     3. The receptionist can add/edit/delete items in the card by clicking its name/picture
@@ -33,7 +33,7 @@ shared by the guests, the time taken to complete each stay, etc.
     6. Before submitting the order, a warning has to appear to the receptionist to remind
     him/her to review the order with the guests before submitting.
 
-3) Quality control view:
+### 3. Quality control view:
     1. The quality control manager can view the comments of the guests
     2. The quality control manager can generate reports related to the ratings
         a. Aggregation by rating (how many guests gave a specific product 5 starts, 4
@@ -53,7 +53,7 @@ b. If the receptionist account is disabled then the receptionist cannot use it t
 enabled again.
 
 ## Milestones
-1. Registration:
+### 1. Registration:
     - The guests can register to this selfservices website by entering his/her data and
     upload his national ID and picture. If there are other guests (family members)
     with him/her, then the guest has to upload their National IDs and/or birth
@@ -62,12 +62,12 @@ enabled again.
     - During the registration, the guests can provide his password and to be validated
     by entering the password twice
 
-2. Login:
+### 2. Login:
     - The guest can login by providing his/her email address and the password
     - The website has to check the role of the user and directs him/her to the landing
     page according to his/her role (e.g. guests, quality, receptionist, etc.)
 
-3. Making orders
+### 3. Making orders
     - When the guests login to the website, he has the options to select
       - Day use
       - 1 to 7 nights
