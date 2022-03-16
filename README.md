@@ -74,21 +74,21 @@ enabled again.
       - Long stay (more than 7 nights)
       - Vacation (more than a month)
       - I have different plan
-    - When the guests selects any of the options (except the last option), the
-    respective rooms are shown so that he/she can add whatever he/she wants.
-    - The guests can return back to the main menu to select different rooms from
-    different categories.
-    - If the guest selects the last option so he can make different plans (e.g. first 3
-    days in a special type of room then another 3 days in another room , etc.) he/she
-    can add to the cart.
-    - The guests can view the cart and remove or change the quantity of any of the
-    rooms.
-    - After viewing the cart, the guests can continue adding rooms or go to the
-    checkout page for payment.
-    - After submitting the order, the guests can edit it within 5 minutes only.
-    - The guests can go to the comments area and rate specific rooms and/or the
-    entire stay (Rating from 1 to 5). He/She can write comments on the reservation.
-    - After submitting the comment, the guests can edit it within 5 minutes only
+      - When the guests selects any of the options (except the last option), the
+      respective rooms are shown so that he/she can add whatever he/she wants.
+      - The guests can return back to the main menu to select different rooms from
+      different categories.
+      - If the guest selects the last option so he can make different plans (e.g. first 3
+      days in a special type of room then another 3 days in another room , etc.) he/she
+      can add to the cart.
+      - The guests can view the cart and remove or change the quantity of any of the
+      rooms.
+      - After viewing the cart, the guests can continue adding rooms or go to the
+      checkout page for payment.
+      - After submitting the order, the guests can edit it within 5 minutes only.
+      - The guests can go to the comments area and rate specific rooms and/or the
+      entire stay (Rating from 1 to 5). He/She can write comments on the reservation.
+      - After submitting the comment, the guests can edit it within 5 minutes only
   
 ## General Requirements:
 1. All the actions done by any type of the users has to be logged in a logging table storing
