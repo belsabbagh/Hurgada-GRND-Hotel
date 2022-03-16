@@ -52,8 +52,8 @@ b. If the receptionist account is disabled then the receptionist cannot use it t
 - The guest can login by providing his/her email address and the password.
 - The website has to check the role of the user and directs him/her to the landing page according to his/her role (e.g. guests, quality, receptionist, etc.).
 
-### 3. Making orders ###
-- When the guests login to the website, he has the options to select
+### 3. Booking and Reservations ###
+- When the guests logs in to the website and starts booking, he has the options to select
   - Day use
   - 1 to 7 nights
   - Long stay (more than 7 nights)
