@@ -18,9 +18,9 @@ process so that they can serve more guests in less time. Quality is also a main 
 3. Quality Control: This view has to let the quality control personnel to view the comments shared by the guests, the time taken to complete each stay, etc.
 
 ## Specifications ## 
-### 1. guests self services view: ###
+### 1. guests self services view ###
 -  In this view the guests can make the check-in and check-out by himself/herself.
-### 2. receptionist view: ###
+### 2. receptionist view ###
 1. Login using his/her username and password.
 2. Search for any client using their name and/or the room.
 3. Check in and check out any clients.
@@ -29,7 +29,7 @@ process so that they can serve more guests in less time. Quality is also a main 
 6. The receptionist cannot delete/cancel an order after completing it unless the manager PIN is supplied
 7. Before submitting the order, a warning has to appear to the receptionist to remind him/her to review the order with the guests before submitting.
 
-### 3. Quality control view: ### 
+### 3. Quality control view ### 
 1. The quality control manager can view the comments of the guests.
 2. The quality control manager can generate reports related to the ratings.
     a. Aggregation by rating (how many guests gave a specific product 5 stars, 4 stars, etc.)
@@ -43,12 +43,12 @@ a. When disabling/enabling a receptionist account a comment has to be entered by
 b. If the receptionist account is disabled then the receptionist cannot use it till it is enabled again.
 
 ## Milestones ##
-### 1. Registration: ###
+### 1. Registration ###
 - The guests can register to this self-service website by entering his/her data and upload his national ID and picture. If there are other guests (family members/dependants) with him/her, then the guest has to upload their National IDs and/or birth certificates.
 - A request is sent to the Quality Control to approve/reject the request.
 - During the registration, the guests can provide his password and to be validated by entering the password twice.
 
-### 2. Login: ###
+### 2. Login ###
 - The guest can login by providing his/her email address and the password.
 - The website has to check the role of the user and directs him/her to the landing page according to his/her role (e.g. guests, quality, receptionist, etc.).
 
@@ -68,6 +68,6 @@ b. If the receptionist account is disabled then the receptionist cannot use it t
 - The guests can go to the comments area and rate specific rooms and/or the entire stay (Rating from 1 to 5). He/She can write comments on the reservation.
 - After submitting the comment, the guests can edit it within 5 minutes only
 
-## General Requirements: ##
+## General Requirements ##
 1. All the actions done by any type of the users has to be logged in a logging table storing
     - (date, owner, type of action, description, etc.).
