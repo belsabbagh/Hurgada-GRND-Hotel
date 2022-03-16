@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2022 at 08:20 PM
+-- Generation Time: Mar 16, 2022 at 09:32 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -64,6 +64,45 @@ CREATE TABLE `services` (
   `service_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `first_name` varchar(40) NOT NULL,
+  `last_name` varchar(40) NOT NULL,
+  `username` varchar(60) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `user_type` int(11) NOT NULL DEFAULT 3,
+  `client_national_id` varchar(150) DEFAULT NULL,
+  `client_pic` varchar(150) DEFAULT NULL,
+  `receptionist_enabled` tinyint(1) DEFAULT NULL,
+  `receptionist_qc_comment` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_type`
+--
+
+CREATE TABLE `user_type` (
+  `utype_id` int(11) NOT NULL,
+  `utype_title` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_type`
+--
+
+INSERT INTO `user_type` (`utype_id`, `utype_title`) VALUES
+(1, 'Quality Control Manager'),
+(2, 'Receptionist'),
+(3, 'Guest');
+
 --
 -- Indexes for dumped tables
 --
@@ -87,6 +126,18 @@ ALTER TABLE `services`
   ADD PRIMARY KEY (`service_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `user_type`
+--
+ALTER TABLE `user_type`
+  ADD PRIMARY KEY (`utype_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -107,6 +158,18 @@ ALTER TABLE `room_type`
 --
 ALTER TABLE `services`
   MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_type`
+--
+ALTER TABLE `user_type`
+  MODIFY `utype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
