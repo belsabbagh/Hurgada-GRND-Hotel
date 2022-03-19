@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2022 at 09:32 PM
+-- Generation Time: Mar 19, 2022 at 08:03 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -49,6 +49,17 @@ CREATE TABLE `room_type` (
   `room_category` varchar(100) NOT NULL,
   `room_max_cap` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `room_type`
+--
+
+INSERT INTO `room_type` (`type_id`, `room_category`, `room_max_cap`) VALUES
+(1, 'Standard Room', 4),
+(2, 'Chalet', 6),
+(3, 'Beachside Villa', 8),
+(4, 'Duplex', 5),
+(5, 'Apartment-like', 5);
 
 -- --------------------------------------------------------
 
@@ -151,7 +162,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
-  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `services`
