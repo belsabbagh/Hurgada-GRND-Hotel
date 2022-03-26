@@ -19,7 +19,7 @@ process so that they can serve more guests in less time. Quality is also a main 
 
 ## Specifications ## 
 ### 1. guests self service view ###
--  In this view the guests can make the check-in and check-out by himself/herself.
+-  In this view the guests can make the check-in and check-out by themselves.
 ### 2. receptionist view ###
 1. Login using his/her username and password.
 2. Search for any client using their name and/or the room.
