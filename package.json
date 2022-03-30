@@ -2,9 +2,9 @@
   "name": "hurgada-grnd-hotel",
   "version": "1.0.0",
   "description": "Server-side structure of the hotel management system",
-  "main": "index.js",
+  "main": "global\\js\\index.js",
   "scripts": {
-    "start": "index.js",
+    "start": "global\\js\\index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel/issues"
   },
-  "homepage": "https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel#readme"
+  "homepage": "https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
 }
