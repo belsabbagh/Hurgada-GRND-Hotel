@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\xampp\htdocs\Hurgada-GRND-Hotel\resources\css\style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Booking</title>
+</head>
+
+<body>
+    <form action="book.php" method="post">
+        <div class="checkin-checkout-dates">
+            <label for="checkin">Check in date</label>
+            <input type="date" id="checkin" name="checkin">
+
+            <label for="checkout">Check out date</label>
+            <input type="date" id="checkout" name="checkout">
+        </div>
+        <div class="num-of-occupants">
+            <label for="adults">Number of adults</label>
+            <input type="number" id="adults" name="adults">
+
+            <label for="children">Number of children</label>
+            <input type="number" id="children" name="children">
+        </div>
+        <input type="submit" id="submit" name="submit">
+    </form>
+</body>
+
+</html>
