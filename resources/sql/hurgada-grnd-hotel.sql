@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2022 at 08:27 AM
+-- Generation Time: Mar 31, 2022 at 08:04 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -38,17 +38,6 @@ CREATE TABLE `activity_log` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bed_type`
---
-
-CREATE TABLE `bed_type` (
-  `bed_type_id` int(11) NOT NULL,
-  `bed_name` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `dependants`
 --
 
@@ -68,6 +57,7 @@ CREATE TABLE `dependants` (
 --
 
 CREATE TABLE `reservations` (
+  `reservation_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `room_no` int(11) NOT NULL,
   `checkin_date` date NOT NULL,
@@ -88,9 +78,7 @@ CREATE TABLE `rooms` (
   `room_id` int(11) NOT NULL,
   `room_type_id` int(11) NOT NULL,
   `occupied` tinyint(1) NOT NULL,
-  `bed_type` int(11) NOT NULL,
-  `room_view` varchar(100) NOT NULL,
-  `room_balcony` tinyint(1) NOT NULL,
+  `room_view` int(11) NOT NULL,
   `room_patio` tinyint(1) NOT NULL,
   `room_ac` tinyint(1) NOT NULL,
   `room_bath` tinyint(1) NOT NULL,
@@ -117,25 +105,47 @@ CREATE TABLE `room_reviews` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `room_type`
+-- Table structure for table `room_types`
 --
 
-CREATE TABLE `room_type` (
+CREATE TABLE `room_types` (
   `type_id` int(11) NOT NULL,
   `room_category` varchar(100) NOT NULL,
   `room_max_cap` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `room_type`
+-- Dumping data for table `room_types`
 --
 
-INSERT INTO `room_type` (`type_id`, `room_category`, `room_max_cap`) VALUES
+INSERT INTO `room_types` (`type_id`, `room_category`, `room_max_cap`) VALUES
 (1, 'Standard Room', 4),
 (2, 'Chalet', 6),
 (3, 'Beachside Villa', 8),
 (4, 'Duplex', 5),
 (5, 'Apartment-like', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_views`
+--
+
+CREATE TABLE `room_views` (
+  `room_view_id` int(11) NOT NULL,
+  `room_view_title` varchar(40) NOT NULL,
+  `room_view_description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `room_views`
+--
+
+INSERT INTO `room_views` (`room_view_id`, `room_view_title`, `room_view_description`) VALUES
+(1, 'Sea View', 'A room that overlooks the sea'),
+(2, 'Mountain View', 'A room by the mountain side'),
+(3, 'Garden View', 'A room overlooking the vast gardens in the center of the hotel'),
+(4, 'Pool View', 'A room just next to the pool');
 
 -- --------------------------------------------------------
 
@@ -215,12 +225,6 @@ ALTER TABLE `activity_log`
   ADD KEY `owner` (`owner`);
 
 --
--- Indexes for table `bed_type`
---
-ALTER TABLE `bed_type`
-  ADD PRIMARY KEY (`bed_type_id`);
-
---
 -- Indexes for table `dependants`
 --
 ALTER TABLE `dependants`
@@ -231,8 +235,7 @@ ALTER TABLE `dependants`
 -- Indexes for table `reservations`
 --
 ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`client_id`,`room_no`),
-  ADD KEY `room_no` (`room_no`);
+  ADD PRIMARY KEY (`reservation_id`);
 
 --
 -- Indexes for table `rooms`
@@ -240,7 +243,7 @@ ALTER TABLE `reservations`
 ALTER TABLE `rooms`
   ADD PRIMARY KEY (`room_id`),
   ADD KEY `room_type_id` (`room_type_id`),
-  ADD KEY `bed_type` (`bed_type`);
+  ADD KEY `room_view` (`room_view`);
 
 --
 -- Indexes for table `room_reviews`
@@ -250,10 +253,16 @@ ALTER TABLE `room_reviews`
   ADD KEY `room_id` (`room_id`);
 
 --
--- Indexes for table `room_type`
+-- Indexes for table `room_types`
 --
-ALTER TABLE `room_type`
+ALTER TABLE `room_types`
   ADD PRIMARY KEY (`type_id`);
+
+--
+-- Indexes for table `room_views`
+--
+ALTER TABLE `room_views`
+  ADD PRIMARY KEY (`room_view_id`);
 
 --
 -- Indexes for table `services`
@@ -287,16 +296,16 @@ ALTER TABLE `user_type`
 --
 
 --
--- AUTO_INCREMENT for table `bed_type`
---
-ALTER TABLE `bed_type`
-  MODIFY `bed_type_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `dependants`
 --
 ALTER TABLE `dependants`
   MODIFY `dependant_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -305,10 +314,16 @@ ALTER TABLE `rooms`
   MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `room_type`
+-- AUTO_INCREMENT for table `room_types`
 --
-ALTER TABLE `room_type`
+ALTER TABLE `room_types`
   MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `room_views`
+--
+ALTER TABLE `room_views`
+  MODIFY `room_view_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -345,18 +360,11 @@ ALTER TABLE `dependants`
   ADD CONSTRAINT `dependants_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `users` (`user_id`);
 
 --
--- Constraints for table `reservations`
---
-ALTER TABLE `reservations`
-  ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`room_no`) REFERENCES `rooms` (`room_id`);
-
---
 -- Constraints for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `room_type` (`type_id`),
-  ADD CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`bed_type`) REFERENCES `bed_type` (`bed_type_id`);
+  ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`type_id`),
+  ADD CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`room_view`) REFERENCES `room_views` (`room_view_id`);
 
 --
 -- Constraints for table `room_reviews`

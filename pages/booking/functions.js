@@ -29,3 +29,11 @@ function change_max_beds() {
         }
     });
 }
+
+function set_date_constraints() {
+    let today = new Date();
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    console.log(date);
+    document.getElementById('checkin').min = date;
+    document.getElementById('checkout').min = date;
+}
