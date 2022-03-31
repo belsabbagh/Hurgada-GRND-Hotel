@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 10:56 AM
+-- Generation Time: Mar 31, 2022 at 08:27 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -38,11 +38,23 @@ CREATE TABLE `activity_log` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bed_type`
+--
+
+CREATE TABLE `bed_type` (
+  `bed_type_id` int(11) NOT NULL,
+  `bed_name` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `dependants`
 --
 
 CREATE TABLE `dependants` (
   `dependant_id` int(11) NOT NULL,
+  `dependent_name` varchar(40) NOT NULL,
   `relationship` varchar(50) NOT NULL,
   `identification` varchar(150) NOT NULL,
   `child` tinyint(1) NOT NULL,
@@ -58,11 +70,12 @@ CREATE TABLE `dependants` (
 CREATE TABLE `reservations` (
   `client_id` int(11) NOT NULL,
   `room_no` int(11) NOT NULL,
-  `checkin` date NOT NULL,
-  `checkout` date NOT NULL,
+  `checkin_date` date NOT NULL,
+  `checkout_date` date NOT NULL,
   `extra_beds` int(11) DEFAULT NULL,
   `numberof_adults` int(11) NOT NULL,
-  `numberof_children` int(11) NOT NULL
+  `numberof_children` int(11) NOT NULL,
+  `is_checked_in` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -93,6 +106,7 @@ CREATE TABLE `rooms` (
 CREATE TABLE `room_reviews` (
   `client_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
+  `overall-rating` decimal(10,0) NOT NULL,
   `view_rating` decimal(10,0) NOT NULL,
   `comfort_rating` decimal(10,0) NOT NULL,
   `facilities_rating` decimal(10,0) NOT NULL,
@@ -197,7 +211,14 @@ INSERT INTO `user_type` (`utype_id`, `utype_title`) VALUES
 -- Indexes for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  ADD PRIMARY KEY (`timestamp`);
+  ADD PRIMARY KEY (`timestamp`),
+  ADD KEY `owner` (`owner`);
+
+--
+-- Indexes for table `bed_type`
+--
+ALTER TABLE `bed_type`
+  ADD PRIMARY KEY (`bed_type_id`);
 
 --
 -- Indexes for table `dependants`
@@ -210,7 +231,7 @@ ALTER TABLE `dependants`
 -- Indexes for table `reservations`
 --
 ALTER TABLE `reservations`
-  ADD KEY `client_id` (`client_id`),
+  ADD PRIMARY KEY (`client_id`,`room_no`),
   ADD KEY `room_no` (`room_no`);
 
 --
@@ -218,7 +239,8 @@ ALTER TABLE `reservations`
 --
 ALTER TABLE `rooms`
   ADD PRIMARY KEY (`room_id`),
-  ADD KEY `room_type_id` (`room_type_id`);
+  ADD KEY `room_type_id` (`room_type_id`),
+  ADD KEY `bed_type` (`bed_type`);
 
 --
 -- Indexes for table `room_reviews`
@@ -265,6 +287,12 @@ ALTER TABLE `user_type`
 --
 
 --
+-- AUTO_INCREMENT for table `bed_type`
+--
+ALTER TABLE `bed_type`
+  MODIFY `bed_type_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `dependants`
 --
 ALTER TABLE `dependants`
@@ -305,6 +333,12 @@ ALTER TABLE `user_type`
 --
 
 --
+-- Constraints for table `activity_log`
+--
+ALTER TABLE `activity_log`
+  ADD CONSTRAINT `activity_log_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `users` (`user_id`);
+
+--
 -- Constraints for table `dependants`
 --
 ALTER TABLE `dependants`
@@ -321,7 +355,8 @@ ALTER TABLE `reservations`
 -- Constraints for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `room_type` (`type_id`);
+  ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `room_type` (`type_id`),
+  ADD CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`bed_type`) REFERENCES `bed_type` (`bed_type_id`);
 
 --
 -- Constraints for table `room_reviews`

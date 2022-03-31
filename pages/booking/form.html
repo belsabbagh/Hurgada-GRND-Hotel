@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="C:\xampp\htdocs\Hurgada-GRND-Hotel\resources\css\style.css">
     <link rel="stylesheet" href="style.css">
-
+    <script src="functions.js"></script>
     <title>Booking</title>
 </head>
 
@@ -26,6 +26,54 @@
 
             <label for="children">Number of children</label>
             <input type="number" id="children" name="children">
+        </div>
+        <div class="options">
+            <div class="room_type">
+                <input type="radio" name="room_type" id="room_type_standard_room" checked="true" value="1" onchange="change_max_beds()">
+                <label for="room_type_standard_room">Standard Room</label>
+                <input type="radio" name="room_type" id="room_type_chalet" value="2" onchange="change_max_beds()">
+                <label for="room_type_chalet">Chalet</label>
+                <input type="radio" name="room_type" id="room_type_beachside_villa" value="3" onchange="change_max_beds()">
+                <label for="room_type_beachside_villa">Beachside Villa</label>
+                <input type="radio" name="room_type" id="room_type_duplex" value="4" onchange="change_max_beds()">
+                <label for="room_type_duplex">Duplex</label>
+                <input type="radio" name="room_type" id="room_type_apartment" value="5" onchange="change_max_beds()">
+                <label for="room_type_apartment">Apartment-like</label>
+            </div>
+            <div class="view">
+                <input type="radio" name="room_view" id="room_view_sea" value="Sea view">
+                <label for="room_view_sea">Sea view</label>
+                <input type="radio" name="room_view" id="room_view_mountains" value="Mountain view">
+                <label for="room_view_mountains">Mountain view</label>
+                <input type="radio" name="room_view" id="room_view_garden" value="Garden view">
+                <label for="room_view_garden">Garden view</label>
+                <input type="radio" name="room_view" id="room_view_pool" value="Pool view">
+                <label for="room_view_pool">Pool view</label>
+            </div>
+            <!--
+                <div class="beds">
+                <input type="radio" name="bed_type" id="bed_type_standard_single">
+                <label for="bed_type_standard_single">Standard Single Bed</label>
+                <input type="radio" name="bed_type" id="bed_type_standard_double">
+                <label for="bed_type_standard_double">Standard Double Bed</label>
+                <input type="radio" name="bed_type" id="bed_type_king">
+                <label for="room_view_mbed_type_kingountains">King Size Bed</label>
+                <input type="radio" name="bed_type" id="bed_type_queen">
+                <label for="bed_type_queen">Queen Size Bed</label>
+            </div>
+        -->
+            <div class="outdoors">
+                <input type="radio" name="outdoors" id="outdoors_balcony">
+                <label for="outdoors_balcony">Balcony</label>
+                <input type="radio" name="outdoors" id="outdoors_patio">
+                <label for="outdoors_patio">Patio</label>
+            </div>
+            <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="1" max="4">
+            <label for="room_beds_number">Number of beds</label>
+            <input type="checkbox" name="ac" id="ac">
+            <label for="ac">Air Conditioned</label>
+            <input type="checkbox" name="bath" id="bath">
+            <label for="bath">Bath</label>
         </div>
         <input type="submit" id="submit" name="submit">
     </form>
