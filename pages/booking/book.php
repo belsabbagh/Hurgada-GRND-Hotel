@@ -25,7 +25,7 @@ $bath = $_POST['bath'];
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "lab06";
+$dbname = "hurgada-grnd-hotel";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 //Search for a room with these specs
@@ -40,5 +40,16 @@ AND room_id NOT IN(select room_no from reservations where '$checkin_date' > chec
 AND '$checkout_date' < checkiout_date)`;
 
 $result_rooms = $conn->query($get_rooms) or die("Query failed");
-if(mysqli_num_rows($result_rooms) <= 0) die("Nothing was found");
-$rooms = mysqli_fetch_assoc($result_rooms);
+if(mysqli_num_rows($result_rooms) <= 0) { die("Nothing was found"); header("Location: form.html"); }
+$room = mysqli_fetch_assoc($result_rooms);
+
+if(!isset($room)) { die("Room not found"); }
+
+$r_id = $room['room_id'];
+
+$book_query = `insert into reservations
+(client_id, room_no, checkin_date, checkout_date, numberof_adults, numberof_children)
+values('{$_SESSION['uid']}','$r_id', '$checkin_date', '$checkout_date', '$nAdults', '$nChildren')`;
+$conn->query($book_query) or die("Query failed");
+
+$conn->close();
