@@ -29,15 +29,18 @@ $dbname = "hurgada-grnd-hotel";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 //Search for a room with these specs
-$get_rooms = `select * from rooms 
-where room_type_id = '$room_type' 
-AND room_view = '$room_view' 
-AND room_patio = '$patio'
-AND room_beds_number = '$nBeds'
-AND room_ac = '$ac'
-AND room_bath = '$bath'
-AND room_id NOT IN(select room_no from reservations where '$checkin_date' > checkin_date
-AND '$checkout_date' < checkiout_date)`;
+$get_rooms = "SELECT * from rooms
+LEFT JOIN reservations
+ON reservations.room_no = rooms.room_id
+AND '$checkin_date' < reservations.checkin_date
+AND '$checkout_date' > reservations.checkout_date
+where rooms.room_type_id = $room_type
+AND rooms.room_view = $room_view 
+AND rooms.room_patio = $patio 
+AND rooms.room_beds_number = $nBeds 
+AND rooms.room_ac = $ac
+AND rooms.room_bath = $bath
+AND rooms.occupied = 0;";
 
 $result_rooms = $conn->query($get_rooms) or die("Query failed");
 if(mysqli_num_rows($result_rooms) <= 0) { die("Nothing was found"); header("Location: form.html"); }
@@ -47,9 +50,9 @@ if(!isset($room)) { die("Room not found"); }
 
 $r_id = $room['room_id'];
 
-$book_query = `insert into reservations
-(client_id, room_no, checkin_date, checkout_date, numberof_adults, numberof_children)
-values('{$_SESSION['uid']}','$r_id', '$checkin_date', '$checkout_date', '$nAdults', '$nChildren')`;
+$book_query = "insert into reservations 
+(client_id, room_no, checkin_date, checkout_date, numberof_adults, numberof_children) 
+values({$_SESSION['uid']}, $r_id, '$checkin_date', '$checkout_date', $nAdults, $nChildren)";
 $conn->query($book_query) or die("Query failed");
 
 $conn->close();
