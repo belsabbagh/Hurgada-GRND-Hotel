@@ -1,5 +1,14 @@
 <?php
 
+function db_connect()
+{
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "hurgada-grnd-hotel";
+    return new mysqli($servername, $username, $password, $dbname);
+}
+
 function load_room_types()
 {
     $servername = "localhost";
