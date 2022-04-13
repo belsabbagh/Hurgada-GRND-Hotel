@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context.">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/js/db-connection.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/js/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book-client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_client.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form-client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/css/style.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="booking" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="275kLsHaTuztHQgkvCQyCFYFp8M" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="16.14.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="16.11.26" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global" />
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global\php" />
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel" />
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global\js" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="" />
+      <created>1648617282218</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648617282218</updated>
+      <workItem from="1648617286665" duration="9921000" />
+      <workItem from="1649377740515" duration="781000" />
+      <workItem from="1649401474133" duration="2493000" />
+      <workItem from="1649439200150" duration="249000" />
+      <workItem from="1649588758137" duration="3409000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initialized node.js package">
+      <created>1648617723407</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648617723407</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updated node.js package and Added mysql dependency">
+      <created>1648618356006</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648618356006</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added scripts to connect to database and start server using Node.js">
+      <created>1648621251066</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1648621251067</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Created a Node.js web server&#10;This server loads a basic index.html file by default.">
+      <created>1648704950039</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1648704950039</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="booking" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initialized node.js package" />
+    <MESSAGE value="Updated node.js package and Added mysql dependency" />
+    <MESSAGE value="Added scripts to connect to database and start server using Node.js" />
+    <MESSAGE value="Created a Node.js web server&#10;This server loads a basic index.html file by default." />
+    <MESSAGE value="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context." />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+</project>
