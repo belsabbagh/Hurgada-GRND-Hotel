@@ -11,7 +11,11 @@ function db_connect()
 
 function activity_log($action, $description, $transaction)
 {
+    $conn = db_connect();
+    $sql = "INSERT into activity_log(owner, actiontype, description, transaction) values(/*TODO user id*/,'$action', '$description', $transaction)";
 
+    $conn->query($sql) or die("Query Failed");
+    $conn->close();
 }
 
 function load_room_types()

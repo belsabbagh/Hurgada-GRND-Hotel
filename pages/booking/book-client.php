@@ -56,5 +56,5 @@ values(
        0);";
 
 $conn->query($book_query) or die("Query failed");
-
 $conn->close();
+activity_log("Room Reservation", "Client {} reserved room number {$room['room_id']} from $checkin_date to $checkout_date for $nAdults adults and $nChildren children.", 0/*TODO come up with price*/);

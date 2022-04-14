@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/book-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book-client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/form-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form-client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/form_client.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_client.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="booking" />
+        <entry key="$PROJECT_DIR$" value="activity-log-functions" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -85,6 +83,7 @@
       <workItem from="1649401474133" duration="2493000" />
       <workItem from="1649439200150" duration="249000" />
       <workItem from="1649588758137" duration="8435000" />
+      <workItem from="1649921316436" duration="322000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
