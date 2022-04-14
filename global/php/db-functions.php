@@ -6,13 +6,29 @@
  * @author  @Belal-Elsabbagh
  * @return  mysqli  Connection object to the database
  */
-function db_connect()
+function db_connect(): mysqli
 {
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "hurgada-grnd-hotel";
     return new mysqli($servername, $username, $password, $dbname);
+}
+
+/**
+ * Connects to hotel database, runs the given query, and returns the result
+ *
+ * @param   string $sql The sql query to run
+ * @return  mysqli_result
+ * @author  @Belal-Elsabbagh
+ *
+ */
+function run_query(string $sql): mysqli_result
+{
+    $conn = db_connect();
+    $result = $conn->query($sql) or die($conn->error);
+    $conn->close();
+    return $result;
 }
 
 /**
@@ -25,14 +41,12 @@ function db_connect()
  * @param   float|null  $transaction    Amount of money transferred.
  * @return  void
  */
-function activity_log(string $action, string $description,?float $transaction)
+function activity_log(string $action, string $description, ?float $transaction)
 {
-    $conn = db_connect();
     $sql = "INSERT into activity_log
     (owner, actiontype, description, transaction) 
     values(/*TODO user id*/,'string$action', 'stringstring$description', $transaction)";
-    $conn->query($sql) or die("Query Failed");
-    $conn->close();
+    run_query($sql);
 }
 
  /**
@@ -44,12 +58,10 @@ function activity_log(string $action, string $description,?float $transaction)
  */
 function load_room_types()
 {
-    $conn = db_connect();
     $sql = "select * from room_types";
-    $result = $conn->query($sql);
+    $result = run_query($sql);
     while ($row = mysqli_fetch_assoc($result))
         echo "<input type='radio' name='room_type' id='{$row['room_category']}' value='{$row['type_id']}' onchange='change_max_beds()'><label for='{$row['room_category']}'>{$row['room_category']}</label>\n";
-    $conn->close();
 }
 
 /**
@@ -61,10 +73,8 @@ function load_room_types()
  */
 function load_room_views()
 {
-    $conn = db_connect();
     $sql = "select * from room_views";
-    $result = $conn->query($sql);
+    $result = run_query($sql);
     while ($row = mysqli_fetch_assoc($result))
         echo "<input type='radio' name='room_view' id='{$row['room_view_title']}' value='{$row['room_view_id']}'><label for='{$row['room_view_title']}'>{$row['room_view_title']}</label>\n";
-    $conn->close();
 }
