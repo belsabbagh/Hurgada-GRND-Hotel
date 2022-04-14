@@ -19,35 +19,27 @@ function db_connect()
  * Logs action in activity Log
  * 
  * @author  @Belal-Elsabbagh
- * @param   $action         .The action that the user made.
- * @param   $description    .The description of the action.
- * @param   $transaction    .Amount of money transferred.
+ * 
+ * @param   string      $action         The action that the user made.
+ * @param   string      $description    The description of the action.
+ * @param   float|null  $transaction    Amount of money transferred.
  * @return  void
  */
-function activity_log($action, $description,?float $transaction)
+function activity_log(string $action, string $description,?float $transaction)
 {
     $conn = db_connect();
     $sql = "INSERT into activity_log
     (owner, actiontype, description, transaction) 
-    values(/*TODO user id*/,'$action', '$description', $transaction)";
+    values(/*TODO user id*/,'string$action', 'stringstring$description', $transaction)";
     $conn->query($sql) or die("Query Failed");
     $conn->close();
 }
-
-/**
- * Logs action in activity Log
- * 
- * @author  @Belal-Elsabbagh
- * @param   $action         .The action that the user made.
- * @param   $description    .The description of the action.
- * @param   $transaction    .Amount of money transferred.
- * @return  void
- */
 
  /**
  * Loads the room types from database and echoes them in html
  * 
  * @author  @Belal-Elsabbagh
+ * 
  * @return  void
  */
 function load_room_types()
@@ -64,6 +56,7 @@ function load_room_types()
  * Loads the room views from database and echoes them in html
  * 
  * @author  @Belal-Elsabbagh
+ * 
  * @return  void
  */
 function load_room_views()
