@@ -9,6 +9,11 @@ function db_connect()
     return new mysqli($servername, $username, $password, $dbname);
 }
 
+function activity_log($action, $description, $transaction)
+{
+
+}
+
 function load_room_types()
 {
     $servername = "localhost";

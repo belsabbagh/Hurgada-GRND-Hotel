@@ -27,28 +27,32 @@ $conn = db_connect();
 
 // Search for a room with these specs
 $get_rooms = "SELECT * FROM rooms
+JOIN reservations r on rooms.room_id = r.room_no
 where rooms.room_type_id = $room_type
 AND rooms.room_view = $room_view 
 AND rooms.room_patio = $patio
-AND rooms.room_beds_number = $nBeds;";
+AND rooms.room_beds_number = $nBeds
+AND (NOT(r.checkin_date <= '$checkin_date' AND r.checkout_date >= '$checkout_date')
+OR(r.checkin_date >= '$checkout_date' AND r.checkout_date <= '$checkin_date'));";
 
 // Check if a room with these options exist
 $result_rooms = $conn->query($get_rooms) or die("Query failed");
 if (mysqli_num_rows($result_rooms) <= 0) die("No room matches these options");
+$room = mysqli_fetch_assoc($result_rooms);
 
 $book_query = "insert into reservations 
 values(
        NULL, 
        1/*TODO Insert client id*/, 
-       NULL, 
+       {$room['room_id']}, 
        '$checkin_date', 
        '$checkout_date', 
-       {$nAdults}, 
-       {$nChildren}, 
-       {$nBeds}, 
-       {$room_type}, 
-       {$room_view}, 
-       {$patio}, 
+       $nAdults, 
+       $nChildren, 
+       $nBeds, 
+       $room_type, 
+       $room_view, 
+       $patio, 
        0);";
 
 $conn->query($book_query) or die("Query failed");

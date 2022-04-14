@@ -36,9 +36,9 @@
                 <?php load_room_views(); ?>
             </div>
         <div class="outdoors">
-            <input type="radio" name="outdoors" id="outdoors_balcony" value="false">
+            <input id="outdoors_balcony" name="outdoors" type="radio" value="0">
             <label for="outdoors_balcony">Balcony</label>
-            <input type="radio" name="outdoors" id="outdoors_patio" value="true">
+            <input id="outdoors_patio" name="outdoors" type="radio" value="'1">
             <label for="outdoors_patio">Patio</label>
         </div>
         <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="1" max="4">

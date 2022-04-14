@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/js/db-connection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/js/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book-client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_client.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form-client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/book-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book-client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form-client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form_client.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_client.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +58,11 @@
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.26" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="showLigatures" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -86,7 +84,7 @@
       <workItem from="1649377740515" duration="781000" />
       <workItem from="1649401474133" duration="2493000" />
       <workItem from="1649439200150" duration="249000" />
-      <workItem from="1649588758137" duration="3409000" />
+      <workItem from="1649588758137" duration="8435000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -116,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648704950039</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context.">
+      <created>1649592493772</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649592493772</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
