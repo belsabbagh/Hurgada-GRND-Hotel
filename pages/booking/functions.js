@@ -1,3 +1,9 @@
+/**
+ * Changes the maximum number of beds allowed according to the room type
+ * 
+ * @author  @Belal-Elsabbagh
+ * @returns void
+ */
 function change_max_beds() {
     const radioButtons = document.getElementsByName('room_type');
     radioButtons.forEach(element => {
@@ -30,6 +36,12 @@ function change_max_beds() {
     });
 }
 
+/**
+ * Sets allowed date ranges for checkin and checkout 
+ * 
+ * @author @Belal-Elsabbagh
+ * @returns void
+ */
 function set_date_constraints() {
     let today = new Date();
     let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();

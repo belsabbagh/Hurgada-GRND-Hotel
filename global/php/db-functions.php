@@ -4,6 +4,7 @@
  * Creates connection to database
  * 
  * @author  @Belal-Elsabbagh
+ * 
  * @return  mysqli  Connection object to the database
  */
 function db_connect(): mysqli
@@ -16,12 +17,13 @@ function db_connect(): mysqli
 }
 
 /**
- * Connects to hotel database, runs the given query, and returns the result
+ * Creates connection to hotel database to run the given query and return the result
  *
- * @param   string $sql The sql query to run
- * @return  mysqli_result
+ * @param   string          $sql    The sql query to run
+ * @var     mysqli          $conn   The connection to the database
+ * @var     mysqli_result   $result The result of the query
+ * @return  mysqli_result   The result of the query
  * @author  @Belal-Elsabbagh
- *
  */
 function run_query(string $sql): mysqli_result
 {
@@ -39,6 +41,7 @@ function run_query(string $sql): mysqli_result
  * @param   string      $action         The action that the user made.
  * @param   string      $description    The description of the action.
  * @param   float|null  $transaction    Amount of money transferred.
+ * @var     string      $sql            Query statement
  * @return  void
  */
 function activity_log(string $action, string $description, ?float $transaction)
@@ -50,10 +53,11 @@ function activity_log(string $action, string $description, ?float $transaction)
 }
 
  /**
- * Loads the room types from database and echoes them in html
+ * Loads the room types from database and echoes them as radio buttons in html
  * 
  * @author  @Belal-Elsabbagh
- * 
+ *
+ * @var     string  $sql    Query statement
  * @return  void
  */
 function load_room_types()
@@ -65,10 +69,11 @@ function load_room_types()
 }
 
 /**
- * Loads the room views from database and echoes them in html
+ * Loads the room views from database and echoes them as radio buttons in html
  * 
  * @author  @Belal-Elsabbagh
- * 
+ *
+ * @var     string  $sql    Query statement
  * @return  void
  */
 function load_room_views()

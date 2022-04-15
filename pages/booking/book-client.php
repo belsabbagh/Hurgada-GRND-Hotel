@@ -4,14 +4,14 @@
  * Runs booking from form-client.php
  *
  * @author @Belal-Elsabbagh
- * 
- * @return void
+ *
+ * @var     string  $get_rooms
+ * @var     string  $book_query
+ * @return  void
  */
 function book()
 {
-    if ($_SERVER['REQUEST_METHOD'] != 'POST') die("Form was not submitted correctly");
-
-    // Gather data from POST
+// Gather data from POST
     $checkin_date = $_POST['checkin'];
     $checkout_date = $_POST['checkout'];
     $nAdults = $_POST['adults'];
@@ -53,10 +53,11 @@ function book()
         $room_type, 
         $room_view, 
         $patio, 
-       0);";
+        0);";
 
     run_query($book_query);
     activity_log("Room Reservation", "Client {} reserved room number {$room['room_id']} from $checkin_date to $checkout_date for $nAdults adults and $nChildren children.", 0/*TODO come up with price*/);
 }
 
+if ($_SERVER['REQUEST_METHOD'] != 'POST') die("Form was not submitted correctly");
 book();
