@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin." />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Implemented activity logging and added example use in book-client.php">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/book-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form_client.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login-register/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login-register/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sql/hurgada-grnd-hotel.sql" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sql/hurgada-grnd-hotel.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +89,7 @@
       <workItem from="1649921316436" duration="1582000" />
       <workItem from="1649956711542" duration="1417000" />
       <workItem from="1650217694318" duration="1396000" />
-      <workItem from="1650220431203" duration="15300000" />
+      <workItem from="1650220431203" duration="14496000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -122,14 +133,7 @@
       <option name="project" value="LOCAL" />
       <updated>1649923429475</updated>
     </task>
-    <task id="LOCAL-00007" summary="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin.">
-      <created>1650301328188</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1650301328188</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,8 +169,7 @@
     <MESSAGE value="Created a Node.js web server&#10;This server loads a basic index.html file by default." />
     <MESSAGE value="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context." />
     <MESSAGE value="Implemented activity logging and added example use in book-client.php" />
-    <MESSAGE value="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented activity logging and added example use in book-client.php" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
