@@ -16,46 +16,54 @@ function db_connect(): mysqli
 }
 
 /**
- * Connects to hotel database, runs the given query, and returns the result
+ * Connects database, runs the given query, and returns the result
  *
- * @param   string $sql The sql query to run
- * @return  mysqli_result
+ * @param string $sql The sql query to run
+ *
+ * @return  mysqli_result   The result of the query
+ *
+ * @var     mysqli_result $result The result of the query
+ *
+ * @var     mysqli $conn The connection object to database
  * @author  @Belal-Elsabbagh
- *
  */
 function run_query(string $sql): mysqli_result
 {
     $conn = db_connect();
-    $result = $conn->query($sql) or die($conn->error);
+    $result = $conn->query($sql) or die("\nFAIL\n" . $conn->error);
     $conn->close();
     return $result;
 }
 
 /**
  * Logs action in activity Log
- * 
- * @author  @Belal-Elsabbagh
- * 
- * @param   string      $action         The action that the user made.
- * @param   string      $description    The description of the action.
- * @param   float|null  $transaction    Amount of money transferred.
+ *
+ * @param string $action The action that the user made.
+ * @param string $description The description of the action.
+ * @param float|null $transaction Amount of money transferred.
  * @return  void
+ * @var     string $sql
+ * @author  @Belal-Elsabbagh
+ *
  */
 function activity_log(string $action, string $description, ?float $transaction)
 {
     $sql = "INSERT into activity_log
     (owner, actiontype, description, transaction) 
-    values(/*TODO user id*/,'string$action', 'stringstring$description', $transaction)";
+    values({$_SESSION['active_id']},'string$action', 'stringstring$description', $transaction)";
     run_query($sql);
 }
 
  /**
- * Loads the room types from database and echoes them in html
- * 
- * @author  @Belal-Elsabbagh
- * 
- * @return  void
- */
+  * Loads the room types from database and echoes them in html
+  *
+  * @author  @Belal-Elsabbagh
+  *
+  * @var     string $sql The query to get room types
+  * @var     mysqli_result $result The room types
+  * @var     string[] $row Each room type
+  * @return  void
+  */
 function load_room_types()
 {
     $sql = "select * from room_types";
@@ -66,9 +74,12 @@ function load_room_types()
 
 /**
  * Loads the room views from database and echoes them in html
- * 
+ *
  * @author  @Belal-Elsabbagh
- * 
+ *
+ * @var     string $sql The query to get room views
+ * @var     mysqli_result $result The room views
+ * @var     string[] $row Each room view
  * @return  void
  */
 function load_room_views()

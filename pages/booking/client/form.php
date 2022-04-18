@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../global/css/style.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="functions.js"></script>
-    <?php include "../../global/php/db-functions.php"; ?>
+    <link rel="stylesheet" href="../../../global/css/style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../functions.js"></script>
+    <?php include "../../../global/php/db-functions.php"; ?>
     <title>Booking</title>
 </head>
 
 <body>
-<form action="book-client.php" method="post">
+<form action="book.php" method="post">
     <div class="checkin-checkout-dates">
         <label for="checkin">Check in date</label>
         <input type="date" id="checkin" name="checkin" onchange="set_date_constraints()">
@@ -38,7 +38,7 @@
         <div class="outdoors">
             <input id="outdoors_balcony" name="outdoors" type="radio" value="0">
             <label for="outdoors_balcony">Balcony</label>
-            <input id="outdoors_patio" name="outdoors" type="radio" value="'1">
+            <input id="outdoors_patio" name="outdoors" type="radio" value="1">
             <label for="outdoors_patio">Patio</label>
         </div>
         <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="1" max="4">
