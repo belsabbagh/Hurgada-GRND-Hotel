@@ -1,0 +1,41 @@
+/* Fonts */
+@font-face {
+    font-family: "Title";
+    src: url(../Fonts/PlayfairDisplayi.ttf);
+}
+@font-face {
+    font-family: "parg";
+    src: url(../Fonts/PlayfairDisplay.ttf);
+}
+@font-face {
+    font-family: "special";
+    src: url(../Fonts/Updock-Regular.ttf);
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:border-box;
+    box-sizing: border-box;
+}
+body{
+    background: var(--yellow2-color);
+}
+.container{
+    width: 600px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1{
+    font-family: "title";
+}
+h3{
+    font-family: "parg";
+    font-weight: 50px;
+}
+p{
+    font-family: "parg";
+    font-weight: 30px;
+}

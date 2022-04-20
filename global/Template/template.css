@@ -23,15 +23,15 @@
 /* Fonts */
 @font-face {
     font-family: "Title";
-    src: url(Fonts/PlayfairDisplayi.ttf);
+    src: url(../Fonts/PlayfairDisplayi.ttf);
 }
 @font-face {
     font-family: "parg";
-    src: url(Fonts/PlayfairDisplay.ttf);
+    src: url(../Fonts/PlayfairDisplay.ttf);
 }
 @font-face {
     font-family: "special";
-    src: url(Fonts/Updock-Regular.ttf);
+    src: url(../Fonts/Updock-Regular.ttf);
 }
 
 
