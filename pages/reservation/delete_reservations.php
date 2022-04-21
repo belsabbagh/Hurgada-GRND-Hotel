@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head><title> delete reservations </title>
     <?php include "../../global/php/db-functions.php"; ?>
 </head>

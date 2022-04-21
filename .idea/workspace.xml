@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin.">
-      <change beforePath="$PROJECT_DIR$/.idea/Hurgada-GRND-Hotel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hurgada-GRND-Hotel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added template to booking form.&#10;&#10;- Added button to clear booking filters&#10;- Styled booking filters.&#10;- Set correct data types for booking.&#10;- Added a function to check room availability.&#10;- Refactored styles and fonts.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Fonts/PlayfairDisplay.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Fonts/PlayfairDisplay.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Fonts/PlayfairDisplayi.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Fonts/PlayfairDisplayi.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Fonts/Saber.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Fonts/Saber.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Fonts/Updock-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Fonts/Updock-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Template/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/Template/template.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Template/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/global/Template/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Template/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/Template/template.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/client/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/client/form.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/client/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reservation/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/connection.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/reservation/delete_reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/delete_reservations.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reservation/deletet_reservations.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reservation/my reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/my_reservations.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650301328188</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added template to booking form.&#10;&#10;- Added button to clear booking filters&#10;- Styled booking filters.&#10;- Set correct data types for booking.&#10;- Added a function to check room availability.&#10;- Refactored styles and fonts.">
+      <created>1650567081016</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650567081016</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +197,8 @@
     <MESSAGE value="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context." />
     <MESSAGE value="Implemented activity logging and added example use in book-client.php" />
     <MESSAGE value="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin." />
+    <MESSAGE value="Added template to booking form.&#10;&#10;- Added button to clear booking filters&#10;- Styled booking filters.&#10;- Set correct data types for booking.&#10;- Added a function to check room availability.&#10;- Refactored styles and fonts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added template to booking form.&#10;&#10;- Added button to clear booking filters&#10;- Styled booking filters.&#10;- Set correct data types for booking.&#10;- Added a function to check room availability.&#10;- Refactored styles and fonts." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
