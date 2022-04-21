@@ -8,18 +8,30 @@
     <link rel="stylesheet" href="../../../global/css/style.css">
     <link rel="stylesheet" href="../style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
-
         function change_max_beds() {
             const radioButtons = document.getElementsByName('room_type');
-            let maximum = get_max($("input[type='radio'][name='room_type']:checked").val());
-            document.getElementById('room_beds_number').max = maximum;
+            document.getElementById('room_beds_number').max = get_max($("input[type='radio'][name='room_type']:checked").val());
             if (document.getElementById('room_beds_number').max < document.getElementById('room_beds_number').value) {
                 document.getElementById('room_beds_number').value = document.getElementById('room_beds_number').max;
             }
         }
-
     </script>
-    <script src="../functions.js"></script>
+    <script src="../functions.js">
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+        let yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("checkin").setAttribute("min", today);
+        document.getElementById("checkout").setAttribute("min", today);
+    </script>
     <?php include "../../../global/php/db-functions.php"; ?>
     <title>Booking</title>
     <!--=============== BOXICONS ===============-->

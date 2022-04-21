@@ -111,3 +111,17 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
     if ($result && $result->num_rows == 0) return true;
     return false;
 }
+
+/**
+ * Checks the constraints on reservation dates
+ *
+ * @param DateTime $start Start of date range
+ * @param DateTime $end End of date range
+ * @return bool             Returns true if date is not feasible, false if date works.
+ * @author @Belal-Elsabbagh
+ */
+function bad_date(DateTime $start, DateTime $end): bool
+{
+    $today = new DateTime();
+    return $start > $end || $start < $today || $end < $today;
+}

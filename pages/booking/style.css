@@ -3,25 +3,8 @@ div.feat {
     font-family: "parg", serif;
 }
 
-.submit {
+.submit, button {
     cursor: pointer;
-    width: 80px;
-    justify-content: center;
-    color: var(--yellow0-color);
-    background: var(--brown4--color);
-    font-size: 20px;
-    user-select: none;
-    padding: 10px;
-    margin: 10px;
-    width: 150px;
-    transition: 0.05s;
-    border-radius: 50px;
-    backdrop-filter: blur(2px);
-}
-
-button {
-    cursor: pointer;
-    width: 80px;
     justify-content: center;
     color: var(--yellow0-color);
     background: var(--brown4--color);

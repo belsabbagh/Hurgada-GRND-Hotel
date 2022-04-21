@@ -22,8 +22,7 @@ else
 <p>
 <table>
     <tr>
-        <th
-        <h1> reserverations </h1></th>
+        <th><h1> reservations </h1></th>
         <th> reservation id</th>
         <th> Room number</th>
         <th> checked in</th>
