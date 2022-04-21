@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin." />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin.">
+      <change beforePath="$PROJECT_DIR$/.idea/Hurgada-GRND-Hotel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hurgada-GRND-Hotel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/Fonts/PlayfairDisplay.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Fonts/PlayfairDisplay.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/Fonts/PlayfairDisplayi.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Fonts/PlayfairDisplayi.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/Fonts/Saber.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Fonts/Saber.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/Fonts/Updock-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Fonts/Updock-Regular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/Template/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/Template/template.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/Template/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/global/Template/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/Template/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/Template/template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/client/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/client/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/connection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation/delete_reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/delete_reservations.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation/deletet_reservations.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation/my reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/my_reservations.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +39,9 @@
         <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -38,6 +63,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="275kLsHaTuztHQgkvCQyCFYFp8M" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -47,6 +75,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -55,12 +84,22 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\resources" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\booking\client" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global\php" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global\js" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="template.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hurgada-GRND-Hotel/global/Template/template.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.template.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
