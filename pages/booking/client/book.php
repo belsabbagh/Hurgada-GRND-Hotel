@@ -32,7 +32,7 @@ function book(): void
     $price = get_room_price((float)$room['room_base_price'], $reservation_request);
     add_reservation($_SESSION['active_id'], $room['room_id'], $reservation_request, $price);
 
-    activity_log("Room Reservation", "Client {$_SESSION['active_id']} reserved room number {$room['room_id']} from {$checkin_date->format('Y-m-d')} to {$checkout_date->format('Y-m-d')} for $nAdults adults and $nChildren children.", $price);
+    activity_log("Room Reservation", "Client {$_SESSION['active_id']} reserved room number {$room['room_id']} from {$reservation_request->getStart()->format('Y-m-d')} to {$reservation_request->getEnd()->format('Y-m-d')} for {$reservation_request->getNAdults()} adults and {$reservation_request->getNChildren()} children.", $price);
 }
 
 ?>
