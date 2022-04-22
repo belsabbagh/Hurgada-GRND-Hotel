@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2022 at 09:23 PM
+-- Generation Time: Apr 23, 2022 at 01:07 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -52,13 +52,14 @@ VALUES ('2022-04-14 07:25:30', 1, 'Login', 'Logged in', NULL);
 
 CREATE TABLE `dependants`
 (
-    `dependant_id`   int(11)     NOT NULL,
-    `dependent_name` varchar(40) NOT NULL,
-  `relationship` varchar(50) NOT NULL,
-  `identification` varchar(150) NOT NULL,
-  `child` tinyint(1) NOT NULL,
-  `parent_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    `dependant_id`   int(11)      NOT NULL,
+    `dependent_name` varchar(40)  NOT NULL,
+    `relationship`   varchar(50)  NOT NULL,
+    `identification` varchar(150) NOT NULL,
+    `child`          tinyint(1)   NOT NULL,
+    `parent_id`      int(11)      NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -68,19 +69,27 @@ CREATE TABLE `dependants`
 
 CREATE TABLE `reservations`
 (
-    `reservation_id`    int(11)    NOT NULL,
-    `client_id`         int(11)    NOT NULL,
-    `room_no`           int(11)             DEFAULT NULL,
-    `checkin_date`      date       NOT NULL,
-    `checkout_date`     date       NOT NULL,
-    `numberof_adults`   int(11)    NOT NULL,
-    `numberof_children` int(11)    NOT NULL,
-    `numberof_beds`     int(11)    NOT NULL,
-    `room_type_id`      int(11)    NOT NULL,
-    `room_view_id`      int(11)    NOT NULL,
-    `patio`             tinyint(1) NOT NULL,
-    `is_checked_in`     tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    `reservation_id`    int(11)        NOT NULL,
+    `client_id`         int(11)        NOT NULL,
+    `room_no`           int(11)                 DEFAULT NULL,
+    `start_date`        date           NOT NULL,
+    `end_date`          date           NOT NULL,
+    `numberof_adults`   int(11)        NOT NULL,
+    `numberof_children` int(11)        NOT NULL,
+    `price`             decimal(10, 0) NOT NULL,
+    `is_checked_in`     tinyint(1)     NOT NULL DEFAULT 0
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+--
+-- Dumping data for table `reservations`
+--
+
+INSERT INTO `reservations` (`reservation_id`, `client_id`, `room_no`, `start_date`, `end_date`, `numberof_adults`,
+                            `numberof_children`, `price`, `is_checked_in`)
+VALUES (14, 1, 1, '2022-05-03', '2022-05-06', 3, 0, '1000', 0),
+       (15, 1, 1, '2022-06-02', '2022-06-09', 3, 0, '1000', 0),
+       (16, 1, 1, '2022-07-27', '2022-07-28', 3, 0, '1000', 0);
 
 -- --------------------------------------------------------
 
@@ -116,15 +125,16 @@ VALUES (1, 2, 0, 1, 1, 3, 0);
 
 CREATE TABLE `room_reviews`
 (
-    `client_id`         int(11)       NOT NULL,
-    `room_id`           int(11)       NOT NULL,
-  `overall-rating` decimal(10,0) NOT NULL,
-  `view_rating` decimal(10,0) NOT NULL,
-  `comfort_rating` decimal(10,0) NOT NULL,
-  `facilities_rating` decimal(10,0) NOT NULL,
-  `room_service_rating` decimal(10,0) NOT NULL,
-  `comments` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    `client_id`           int(11)        NOT NULL,
+    `room_id`             int(11)        NOT NULL,
+    `overall-rating`      decimal(10, 0) NOT NULL,
+    `view_rating`         decimal(10, 0) NOT NULL,
+    `comfort_rating`      decimal(10, 0) NOT NULL,
+    `facilities_rating`   decimal(10, 0) NOT NULL,
+    `room_service_rating` decimal(10, 0) NOT NULL,
+    `comments`            text           NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -192,11 +202,12 @@ CREATE TABLE `services` (
 --
 
 CREATE TABLE `service_reviews` (
-  `client_id` int(11) NOT NULL,
-  `service_id` int(11) NOT NULL,
-  `overall_rating` decimal(10,0) NOT NULL,
-  `comments` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                                   `client_id`      int(11)       NOT NULL,
+                                   `service_id`     int(11)       NOT NULL,
+                                   `overall_rating` decimal(10,0) NOT NULL,
+                                   `comments`       text          NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -204,17 +215,18 @@ CREATE TABLE `service_reviews` (
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-                         `user_id`                 int(11)      NOT NULL,
-                         `email`                   varchar(60)  NOT NULL,
-                         `first_name`              varchar(40)  NOT NULL,
-                         `last_name`               varchar(40)  NOT NULL,
-                         `password`                varchar(60)  NOT NULL,
-                         `national_id`             varchar(150) NOT NULL,
-                         `user_pic`                varchar(150) NOT NULL,
-                         `user_type`               int(11)      NOT NULL DEFAULT 3,
-                         `receptionist_enabled`    tinyint(1)            DEFAULT NULL,
-                         `receptionist_qc_comment` text                  DEFAULT NULL
+CREATE TABLE `users`
+(
+    `user_id`                 int(11)      NOT NULL,
+    `email`                   varchar(60)  NOT NULL,
+    `first_name`              varchar(40)  NOT NULL,
+    `last_name`               varchar(40)  NOT NULL,
+    `password`                varchar(60)  NOT NULL,
+    `national_id`             varchar(150) NOT NULL,
+    `user_pic`                varchar(150) NOT NULL,
+    `user_type`               int(11)      NOT NULL DEFAULT 3,
+    `receptionist_enabled`    tinyint(1)            DEFAULT NULL,
+    `receptionist_qc_comment` text                  DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -236,7 +248,8 @@ CREATE TABLE `user_type`
 (
     `utype_id`    int(11)     NOT NULL,
     `utype_title` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 --
 -- Dumping data for table `user_type`
@@ -255,8 +268,8 @@ INSERT INTO `user_type` (`utype_id`, `utype_title`) VALUES
 -- Indexes for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  ADD PRIMARY KEY (`timestamp`),
-  ADD KEY `owner` (`owner`);
+    ADD PRIMARY KEY (`timestamp`),
+    ADD KEY `owner` (`owner`);
 
 --
 -- Indexes for table `dependants`
@@ -284,8 +297,8 @@ ALTER TABLE `rooms`
 -- Indexes for table `room_reviews`
 --
 ALTER TABLE `room_reviews`
-  ADD KEY `client_id` (`client_id`),
-  ADD KEY `room_id` (`room_id`);
+    ADD KEY `client_id` (`client_id`),
+    ADD KEY `room_id` (`room_id`);
 
 --
 -- Indexes for table `room_types`
@@ -324,7 +337,7 @@ ALTER TABLE `users`
 -- Indexes for table `user_type`
 --
 ALTER TABLE `user_type`
-  ADD PRIMARY KEY (`utype_id`);
+    ADD PRIMARY KEY (`utype_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -341,7 +354,7 @@ ALTER TABLE `dependants`
 --
 ALTER TABLE `reservations`
     MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 13;
+    AUTO_INCREMENT = 17;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -361,7 +374,8 @@ ALTER TABLE `room_types`
 -- AUTO_INCREMENT for table `room_views`
 --
 ALTER TABLE `room_views`
-  MODIFY `room_view_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+    MODIFY `room_view_id` int(11) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 5;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -417,8 +431,8 @@ ALTER TABLE `rooms`
 -- Constraints for table `room_reviews`
 --
 ALTER TABLE `room_reviews`
-  ADD CONSTRAINT `room_reviews_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `room_reviews_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`);
+    ADD CONSTRAINT `room_reviews_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
+    ADD CONSTRAINT `room_reviews_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`);
 
 --
 -- Constraints for table `service_reviews`
