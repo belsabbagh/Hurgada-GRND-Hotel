@@ -21,21 +21,16 @@ include_once "../../../global/php/db-functions.php";
 function book(): void
 {
 // Gather data from POST and parse into correct data type
-    $checkin_date = new DateTime($_POST['checkin']);
-    $checkout_date = new DateTime($_POST['checkout']);
-    $nAdults = intval($_POST['adults']);
-    $nChildren = intval($_POST['children']);
-    $room_type = intval($_POST['room_type']);
-    $room_view = intval($_POST['room_view']);
-    $patio = intval($_POST['outdoors']);
+    $reservation_request = new Reservation(new DateTime($_POST['checkin']), new DateTime($_POST['checkout']), intval($_POST['adults']), intval($_POST['children']));
+    $options = new RoomOptions(intval($_POST['room_type']), intval($_POST['room_view']), intval($_POST['outdoors']));
     $nBeds = intval($_POST['room_beds_number']);
 
 // Check Constraints
-    if (bad_date($checkin_date, $checkout_date)) die("Invalid dates");
+    if ($reservation_request->bad_date()) die("Invalid dates");
 
-    $room = get_available_rooms($checkin_date, $checkout_date, $nBeds, $room_type, $room_view, $patio);
-    $price = get_room_price((float)$room['room_base_price'], $checkin_date, $checkout_date);
-    add_reservation($_SESSION['active_id'], $room['room_id'], $checkin_date, $checkout_date, $nAdults, $nChildren, $price);
+    $room = get_available_rooms($reservation_request, $nBeds, $options);
+    $price = get_room_price((float)$room['room_base_price'], $reservation_request);
+    add_reservation($_SESSION['active_id'], $room['room_id'], $reservation_request, $price);
 
     activity_log("Room Reservation", "Client {$_SESSION['active_id']} reserved room number {$room['room_id']} from {$checkin_date->format('Y-m-d')} to {$checkout_date->format('Y-m-d')} for $nAdults adults and $nChildren children.", $price);
 }
