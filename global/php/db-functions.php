@@ -77,9 +77,9 @@ function load_room_types(): void
  *
  * @author  @Belal-Elsabbagh
  *
- * @var     string $sql The query to get room views
+ * @var     string        $sql    The query to get room views
  * @var     mysqli_result $result The room views
- * @var     string[] $row Each room view
+ * @var     string[]      $row    Each room view
  * @return  void
  */
 function load_room_views(): void
@@ -91,14 +91,32 @@ function load_room_views(): void
 }
 
 /**
- * Checks availability of room within a certain time period
- *
- * @param int $room_id The room to be booked
- * @param DateTime $start_date The start date of the booking
- * @param DateTime $end_date The end date of the booking
- * @return bool Returns true if room is available, false if room is unavailable
+ * Gets the difference between two dates in days
  *
  * @author @Belal-Elsabbagh
+ *
+ * @param DateTime $to_date   The ending date
+ *
+ * @param DateTime $from_date The starting date
+ *
+ * @return  int  The difference in days
+ */
+function get_numberof_days_between_dates(DateTime $from_date, DateTime $to_date): int
+{
+    return (int)round((strtotime($to_date->format('Y-m-d')) - strtotime($from_date->format('Y-m-d'))) / (60 * 60 * 24));
+}
+
+/**
+ * Checks availability of room within a certain time period
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @param DateTime $start_date The start date of the booking
+ * @param DateTime $end_date   The end date of the booking
+ * @param int      $room_id    The room to be booked
+ *
+ * @return bool Returns true if room is available, false if room is unavailable
+ *
  */
 function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date): bool
 {
@@ -115,13 +133,85 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
 /**
  * Checks the constraints on reservation dates
  *
- * @param DateTime $start Start of date range
- * @param DateTime $end End of date range
- * @return bool             Returns true if date is not feasible, false if date works.
  * @author @Belal-Elsabbagh
+ *
+ * @param DateTime $end   End of date range
+ * @param DateTime $start Start of date range
+ *
+ * @return bool             Returns true if date is not feasible, false if date works.
  */
 function bad_date(DateTime $start, DateTime $end): bool
 {
     $today = new DateTime();
     return $start > $end || $start < $today || $end < $today;
+}
+
+/**
+ * Gets available rooms for reservation according to given options
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @param DateTime $start     The start date of reservation
+ * @param DateTime $end       The end date of reservation
+ * @param int      $nBeds     Number of beds in the room (single, double, triple)
+ * @param int|null $room_type The room type requested by user
+ * @param int|null $room_view The room view requested by user
+ * @param int|null $patio     The outdoor setting requested by user
+ *
+ * @return array   An array with the data of the room
+ */
+function get_available_rooms(DateTime $start, DateTime $end, int $nBeds, ?int $room_type, ?int $room_view, ?int $patio): array
+{
+    $date_format = "Y-m-d";
+    $start_date_str = $start->format($date_format);
+    $end_date_str = $end->format($date_format);
+
+    $get_rooms = "SELECT room_id FROM rooms 
+        where room_id NOT IN 
+        (
+            SELECT room_no FROM reservations 
+            WHERE (start_date BETWEEN '$start_date_str' AND '$end_date_str') 
+            OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
+            OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str')
+        )
+        AND room_beds_number = $nBeds
+        AND room_type_id = $room_type 
+        AND room_view = $room_view
+        AND room_patio = $patio;";
+
+// Check if a room with these options exist
+    $result_rooms = run_query($get_rooms);
+    if ($result_rooms->num_rows == 0) die("No room matches these options");
+    return $result_rooms->fetch_assoc();
+}
+
+/**
+ * Adds reservation for a room
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @param int      $client_id The client who wants to reserve the room
+ * @param int      $room_no   The room number to be reserved
+ * @param DateTime $start     The start date of reservation
+ * @param DateTime $end       The end date of reservation
+ * @param int      $nAdults   Number of adults included
+ * @param int      $nChildren Number of children included
+ * @param float    $price     The price of the room
+ *
+ * @return void
+ */
+function add_reservation(int $client_id, int $room_no, DateTime $start, DateTime $end, int $nAdults, int $nChildren, float $price): void
+{
+    $date_format = "Y-m-d";
+    $start_date_str = $start->format($date_format);
+    $end_date_str = $end->format($date_format);
+
+    $book_query = "INSERT into reservations
+    values(NULL, $client_id, $room_no, '$start_date_str', '$end_date_str', $nAdults, $nChildren, $price, 0);";
+    run_query($book_query);
+}
+
+function get_room_price(float $base_price, DateTime $start, DateTime $end): float
+{
+    return $base_price * get_numberof_days_between_dates($start, $end);
 }
