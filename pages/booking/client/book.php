@@ -22,7 +22,13 @@ function book(): void
 {
 // Gather data from POST and parse into correct data type
     $reservation_request = new Reservation(new DateTime($_POST['checkin']), new DateTime($_POST['checkout']), intval($_POST['adults']), intval($_POST['children']));
-    $options = new RoomOptions(intval($_POST['room_type']), intval($_POST['room_view']), intval($_POST['outdoors']));
+
+    $options = new RoomOptions
+    (
+        array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
+        array_key_exists('room_view', $_POST) ? intval($_POST['room_view']) : 'room_view',
+        array_key_exists('outdoors', $_POST) ? intval($_POST['outdoors']) : 'room_patio'
+    );
     $nBeds = intval($_POST['room_beds_number']);
 
 // Check Constraints
@@ -31,7 +37,6 @@ function book(): void
     $room = get_available_rooms($reservation_request, $nBeds, $options);
     $price = get_room_price((float)$room['room_base_price'], $reservation_request);
     add_reservation($_SESSION['active_id'], $room['room_id'], $reservation_request, $price);
-
     activity_log("Room Reservation", "Client {$_SESSION['active_id']} reserved room number {$room['room_id']} from {$reservation_request->getStart()->format('Y-m-d')} to {$reservation_request->getEnd()->format('Y-m-d')} for {$reservation_request->getNAdults()} adults and {$reservation_request->getNChildren()} children.", $price);
 }
 

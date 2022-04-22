@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script.">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed Activity Log message in book">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/RoomOptions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/RoomOptions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/client/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/book.php" afterDir="false" />
     </list>
@@ -179,7 +180,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650664033450</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details.">
+      <created>1650665776922</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650665776922</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fixed Activity Log message in book">
+      <created>1650665867569</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650665867569</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +235,9 @@
     <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Removed form.html." />
     <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Added code for setting date constraints for inputs in js.&#10;- Removed form.html.&#10;- Fixed README.md.&#10;- Formatted form file." />
     <MESSAGE value="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script." />
+    <MESSAGE value="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details." />
+    <MESSAGE value="Fixed Activity Log message in book" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Activity Log message in book" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -1,6 +1,6 @@
 <?php
 include_once "RoomOptions.php";
-
+include_once "Reservation.php";
 /**
  * Creates connection to database
  * 
@@ -51,7 +51,7 @@ function activity_log(string $action, string $description, ?float $transaction):
 {
     $sql = "INSERT into activity_log
     (owner, actiontype, description, transaction) 
-    values({$_SESSION['active_id']},'string$action', 'stringstring$description', $transaction)";
+    values({$_SESSION['active_id']},'$action', '$description', $transaction)";
     run_query($sql);
 }
 
