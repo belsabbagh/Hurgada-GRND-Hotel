@@ -1,5 +1,5 @@
-<html> 
-<head> <title> edit reservations </title>
+<html lang="en">
+<head><title> edit reservations </title>
 <?php include 'connection.php'?>  </head>
 
 <body> 

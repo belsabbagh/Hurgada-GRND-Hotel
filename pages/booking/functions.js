@@ -29,6 +29,40 @@ function change_max_beds() {
         }
     });
 }
+/**
+ *
+ * @param {string} name
+ */
+function clear(name) {
+    let radios = document.getElementsByName(name);
+    radios.forEach(element => {
+        element.checked = 0;
+    })
+}
+
+function clear_filters() {
+    clear("room_type");
+    clear("room_view");
+    clear("outdoors");
+}
+
+function get_max(elementID) {
+    switch (elementID) {
+        case 'room_type_standard_room':
+            return 4;
+        case 'room_type_chalet':
+            return 6;
+        case 'room_type_beachside_villa':
+            return 8;
+        case 'room_type_duplex':
+            return 5;
+        case 'room_type_apartment':
+            return 5;
+
+        default:
+            return 4;
+    }
+}
 
 function set_date_constraints() {
     let today = new Date();

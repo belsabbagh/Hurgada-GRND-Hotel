@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2022 at 08:04 PM
+-- Generation Time: Apr 23, 2022 at 01:07 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -27,13 +27,22 @@ SET time_zone = "+00:00";
 -- Table structure for table `activity_log`
 --
 
-CREATE TABLE `activity_log` (
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `owner` int(11) NOT NULL,
-  `actiontype` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `transaction` decimal(10,0) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `activity_log`
+(
+    `timestamp`   timestamp    NOT NULL DEFAULT current_timestamp(),
+    `owner`       int(11)      NOT NULL,
+    `actiontype`  varchar(100) NOT NULL,
+    `description` text         NOT NULL,
+    `transaction` decimal(10, 0)        DEFAULT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+--
+-- Dumping data for table `activity_log`
+--
+
+INSERT INTO `activity_log` (`timestamp`, `owner`, `actiontype`, `description`, `transaction`)
+VALUES ('2022-04-14 07:25:30', 1, 'Login', 'Logged in', NULL);
 
 -- --------------------------------------------------------
 
@@ -41,14 +50,16 @@ CREATE TABLE `activity_log` (
 -- Table structure for table `dependants`
 --
 
-CREATE TABLE `dependants` (
-  `dependant_id` int(11) NOT NULL,
-  `dependent_name` varchar(40) NOT NULL,
-  `relationship` varchar(50) NOT NULL,
-  `identification` varchar(150) NOT NULL,
-  `child` tinyint(1) NOT NULL,
-  `parent_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `dependants`
+(
+    `dependant_id`   int(11)      NOT NULL,
+    `dependent_name` varchar(40)  NOT NULL,
+    `relationship`   varchar(50)  NOT NULL,
+    `identification` varchar(150) NOT NULL,
+    `child`          tinyint(1)   NOT NULL,
+    `parent_id`      int(11)      NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -56,17 +67,29 @@ CREATE TABLE `dependants` (
 -- Table structure for table `reservations`
 --
 
-CREATE TABLE `reservations` (
-  `reservation_id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
-  `room_no` int(11) NOT NULL,
-  `checkin_date` date NOT NULL,
-  `checkout_date` date NOT NULL,
-  `extra_beds` int(11) DEFAULT NULL,
-  `numberof_adults` int(11) NOT NULL,
-  `numberof_children` int(11) NOT NULL,
-  `is_checked_in` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `reservations`
+(
+    `reservation_id`    int(11)        NOT NULL,
+    `client_id`         int(11)        NOT NULL,
+    `room_no`           int(11)                 DEFAULT NULL,
+    `start_date`        date           NOT NULL,
+    `end_date`          date           NOT NULL,
+    `numberof_adults`   int(11)        NOT NULL,
+    `numberof_children` int(11)        NOT NULL,
+    `price`             decimal(10, 0) NOT NULL,
+    `is_checked_in`     tinyint(1)     NOT NULL DEFAULT 0
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+--
+-- Dumping data for table `reservations`
+--
+
+INSERT INTO `reservations` (`reservation_id`, `client_id`, `room_no`, `start_date`, `end_date`, `numberof_adults`,
+                            `numberof_children`, `price`, `is_checked_in`)
+VALUES (14, 1, 1, '2022-05-03', '2022-05-06', 3, 0, '1000', 0),
+       (15, 1, 1, '2022-06-02', '2022-06-09', 3, 0, '1000', 0),
+       (16, 1, 1, '2022-07-27', '2022-07-28', 3, 0, '1000', 0);
 
 -- --------------------------------------------------------
 
@@ -74,16 +97,25 @@ CREATE TABLE `reservations` (
 -- Table structure for table `rooms`
 --
 
-CREATE TABLE `rooms` (
-  `room_id` int(11) NOT NULL,
-  `room_type_id` int(11) NOT NULL,
-  `occupied` tinyint(1) NOT NULL,
-  `room_view` int(11) NOT NULL,
-  `room_patio` tinyint(1) NOT NULL,
-  `room_ac` tinyint(1) NOT NULL,
-  `room_bath` tinyint(1) NOT NULL,
-  `room_beds_number` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `rooms`
+(
+    `room_id`          int(11)    NOT NULL,
+    `room_type_id`     int(11)    NOT NULL,
+    `occupied`         tinyint(1) NOT NULL,
+    `room_view`        int(11)    NOT NULL,
+    `room_patio`       tinyint(1) NOT NULL,
+    `room_beds_number` int(11)    NOT NULL DEFAULT 1,
+    `room_base_price`  int(11)    NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`room_id`, `room_type_id`, `occupied`, `room_view`, `room_patio`, `room_beds_number`,
+                     `room_base_price`)
+VALUES (1, 2, 0, 1, 1, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -91,16 +123,18 @@ CREATE TABLE `rooms` (
 -- Table structure for table `room_reviews`
 --
 
-CREATE TABLE `room_reviews` (
-  `client_id` int(11) NOT NULL,
-  `room_id` int(11) NOT NULL,
-  `overall-rating` decimal(10,0) NOT NULL,
-  `view_rating` decimal(10,0) NOT NULL,
-  `comfort_rating` decimal(10,0) NOT NULL,
-  `facilities_rating` decimal(10,0) NOT NULL,
-  `room_service_rating` decimal(10,0) NOT NULL,
-  `comments` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `room_reviews`
+(
+    `client_id`           int(11)        NOT NULL,
+    `room_id`             int(11)        NOT NULL,
+    `overall-rating`      decimal(10, 0) NOT NULL,
+    `view_rating`         decimal(10, 0) NOT NULL,
+    `comfort_rating`      decimal(10, 0) NOT NULL,
+    `facilities_rating`   decimal(10, 0) NOT NULL,
+    `room_service_rating` decimal(10, 0) NOT NULL,
+    `comments`            text           NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -168,11 +202,12 @@ CREATE TABLE `services` (
 --
 
 CREATE TABLE `service_reviews` (
-  `client_id` int(11) NOT NULL,
-  `service_id` int(11) NOT NULL,
-  `overall_rating` decimal(10,0) NOT NULL,
-  `comments` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                                   `client_id`      int(11)       NOT NULL,
+                                   `service_id`     int(11)       NOT NULL,
+                                   `overall_rating` decimal(10,0) NOT NULL,
+                                   `comments`       text          NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -180,18 +215,28 @@ CREATE TABLE `service_reviews` (
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `first_name` varchar(40) NOT NULL,
-  `last_name` varchar(40) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `national_id` varchar(150) NOT NULL,
-  `user_pic` varchar(150) NOT NULL,
-  `user_type` int(11) NOT NULL DEFAULT 3,
-  `receptionist_enabled` tinyint(1) DEFAULT NULL,
-  `receptionist_qc_comment` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `users`
+(
+    `user_id`                 int(11)      NOT NULL,
+    `email`                   varchar(60)  NOT NULL,
+    `first_name`              varchar(40)  NOT NULL,
+    `last_name`               varchar(40)  NOT NULL,
+    `password`                varchar(60)  NOT NULL,
+    `national_id`             varchar(150) NOT NULL,
+    `user_pic`                varchar(150) NOT NULL,
+    `user_type`               int(11)      NOT NULL DEFAULT 3,
+    `receptionist_enabled`    tinyint(1)            DEFAULT NULL,
+    `receptionist_qc_comment` text                  DEFAULT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `email`, `first_name`, `last_name`, `password`, `national_id`, `user_pic`, `user_type`,
+                     `receptionist_enabled`, `receptionist_qc_comment`)
+VALUES (1, 'belal@gmail.com', 'Belal', 'Elsabbagh', '123', '', '', 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -199,10 +244,12 @@ CREATE TABLE `users` (
 -- Table structure for table `user_type`
 --
 
-CREATE TABLE `user_type` (
-  `utype_id` int(11) NOT NULL,
-  `utype_title` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `user_type`
+(
+    `utype_id`    int(11)     NOT NULL,
+    `utype_title` varchar(40) NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 --
 -- Dumping data for table `user_type`
@@ -221,36 +268,37 @@ INSERT INTO `user_type` (`utype_id`, `utype_title`) VALUES
 -- Indexes for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  ADD PRIMARY KEY (`timestamp`),
-  ADD KEY `owner` (`owner`);
+    ADD PRIMARY KEY (`timestamp`),
+    ADD KEY `owner` (`owner`);
 
 --
 -- Indexes for table `dependants`
 --
 ALTER TABLE `dependants`
-  ADD PRIMARY KEY (`dependant_id`),
-  ADD KEY `parent_id` (`parent_id`);
+    ADD PRIMARY KEY (`dependant_id`),
+    ADD KEY `parent_id` (`parent_id`);
 
 --
 -- Indexes for table `reservations`
 --
 ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`reservation_id`);
+    ADD PRIMARY KEY (`reservation_id`),
+    ADD KEY `client_id` (`client_id`, `room_no`);
 
 --
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`room_id`),
-  ADD KEY `room_type_id` (`room_type_id`),
-  ADD KEY `room_view` (`room_view`);
+    ADD PRIMARY KEY (`room_id`),
+    ADD KEY `room_type_id` (`room_type_id`),
+    ADD KEY `room_view` (`room_view`);
 
 --
 -- Indexes for table `room_reviews`
 --
 ALTER TABLE `room_reviews`
-  ADD KEY `client_id` (`client_id`),
-  ADD KEY `room_id` (`room_id`);
+    ADD KEY `client_id` (`client_id`),
+    ADD KEY `room_id` (`room_id`);
 
 --
 -- Indexes for table `room_types`
@@ -289,7 +337,7 @@ ALTER TABLE `users`
 -- Indexes for table `user_type`
 --
 ALTER TABLE `user_type`
-  ADD PRIMARY KEY (`utype_id`);
+    ADD PRIMARY KEY (`utype_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -299,49 +347,55 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `dependants`
 --
 ALTER TABLE `dependants`
-  MODIFY `dependant_id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `dependant_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 17;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 2;
 
 --
 -- AUTO_INCREMENT for table `room_types`
 --
 ALTER TABLE `room_types`
-  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+    MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 6;
 
 --
 -- AUTO_INCREMENT for table `room_views`
 --
 ALTER TABLE `room_views`
-  MODIFY `room_view_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+    MODIFY `room_view_id` int(11) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 5;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 2;
 
 --
 -- AUTO_INCREMENT for table `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `utype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `utype_id` int(11) NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT = 4;
 
 --
 -- Constraints for dumped tables
@@ -351,27 +405,34 @@ ALTER TABLE `user_type`
 -- Constraints for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  ADD CONSTRAINT `activity_log_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `users` (`user_id`);
+    ADD CONSTRAINT `activity_log_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `dependants`
 --
 ALTER TABLE `dependants`
-  ADD CONSTRAINT `dependants_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `users` (`user_id`);
+    ADD CONSTRAINT `dependants_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `reservations`
+--
+ALTER TABLE `reservations`
+    ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
+    ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`room_no`) REFERENCES `rooms` (`room_id`);
 
 --
 -- Constraints for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`type_id`),
-  ADD CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`room_view`) REFERENCES `room_views` (`room_view_id`);
+    ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`type_id`),
+    ADD CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`room_view`) REFERENCES `room_views` (`room_view_id`);
 
 --
 -- Constraints for table `room_reviews`
 --
 ALTER TABLE `room_reviews`
-  ADD CONSTRAINT `room_reviews_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `room_reviews_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`);
+    ADD CONSTRAINT `room_reviews_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
+    ADD CONSTRAINT `room_reviews_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`);
 
 --
 -- Constraints for table `service_reviews`

@@ -8,7 +8,7 @@ Hurghada GRND Hotel is one of the biggest Hotels in Hurghada. It has been operat
 Hurghada since 1910. At this time, the guests were few and can be served while enjoying their
 stay in the Hotel. Now, the number of guests has increased and the types of the guests have
 become different. For example, now some guests are staying in the Hotel and others ask for
-only day use. The Hotel needs to make a website to automate the work. The web site has to
+only day use. The Hotel needs to make a website to automate the work. The website has to
 facilitate the workflow for both the employees and the guests. The target is to let the guests
 have a better guest experience and make it easy for the guests to check in and ask for different
 services. On the other hand, the employees have to make fewer steps to complete the check-in
@@ -22,7 +22,7 @@ process so that they can serve more guests in less time. Quality is also a main 
 
 ## Specifications ##
 
-### 1. guests self service view ###
+### 1. guests self-service view ###
 
 - In this view the guests can make the check-in and check-out by themselves.
 
@@ -56,29 +56,34 @@ b. If the receptionist account is disabled then the receptionist cannot use it t
 
 - The guests can register to this self-service website by entering his/her data and upload his national ID and picture. If there are other guests (family members/dependants) with him/her, then the guest has to upload their National IDs and/or birth certificates.
 - A request is sent to the Quality Control to approve/reject the request.
-- During the registration, the guest can provide their password and it has to be validated by entering the password twice.
+- During the registration, the guest can provide their password, and it has to be validated by entering the password
+  twice.
 
 ### 2. Login ###
 
-- The guest can login by providing his/her email address and the password.
-- The website has to check the role of the user and directs him/her to the landing page according to his/her role (e.g. guests, quality, receptionist, etc.).
+- The guest can log in by providing his/her email address and the password.
+- The website has to check the role of the user and directs him/her to the landing page according to his/her role (e.g.
+  guests, quality, receptionist, etc.).
 
 ### 3. Booking and Reservations ###
 
-- When the guests logs in to the website and starts booking, he has the options to select
-  - Regular stay
-  - Family vacation
-  - Honeymoon
-  - BnB
-  - All inclusive
-  - I have a different plan
-- When the guests selects any of the options (except the different plan), the respective rooms are shown so that he/she can add whatever he/she wants.
-- The guests can return back to the main menu to select different rooms from different categories.
-- If the guest wants to make different plans (e.g. first 3 days in a special type of room then another 3 days in another room , etc.) they will be redirected to contact the receptionist directly.
+- When the guest logs in to the website and starts booking, he has the options to select
+    - Regular stay
+    - Family vacation
+    - Honeymoon
+    - BnB
+    - All inclusive
+    - I have a different plan
+- When the guest selects any of the options (except the different plan), the respective rooms are shown so that he/she
+  can add whatever he/she wants.
+- The guest can return to the main menu to select different rooms from different categories.
+- If the guest wants to make different plans (e.g. first 3 days in a special type of room then another 3 days in another
+  room , etc.) they will be redirected to contact the receptionist directly.
 - The guests can view the reservation and edit its details.
 - After viewing the reservation, the guests can continue editing the reservation or go to the checkout page for payment.
 - After submitting the order, the guests can edit it within 5 minutes only.
-- The guests can go to the comments area and rate specific rooms and/or the entire stay (Rating from 1 to 5). They can write comments on the reservation.
+- The guests can go to the comments area and rate specific rooms and/or the entire stay (Rating from 1 to 5). They can
+  write comments on the reservation.
 - After submitting the comment, the guests can edit it within 5 minutes only.
 
 ## General Requirements ##

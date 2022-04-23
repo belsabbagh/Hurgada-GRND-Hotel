@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Implemented activity logging and added example use in book-client.php">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed RoomOptions.php">
+      <change afterPath="$PROJECT_DIR$/pages/booking/form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/booking/form_loader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/booking/receptionist/form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/ReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/ReservationRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/book-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book-client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/client/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/client/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +29,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/master" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -38,39 +48,58 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/global/php/RoomOptions.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/global/php/db-functions.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pages/booking/book.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pages/booking/client/form.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="275kLsHaTuztHQgkvCQyCFYFp8M" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mariadb" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="16.14.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="16.11.26" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/Hurgada-GRND-Hotel/pages/booking",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\booking" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\booking" />
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\resources" />
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\booking\client" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global\php" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\global\js" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="template.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hurgada-GRND-Hotel/global/Template/template.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.template.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -87,6 +116,9 @@
       <workItem from="1649588758137" duration="8435000" />
       <workItem from="1649921316436" duration="1582000" />
       <workItem from="1649956711542" duration="1417000" />
+      <workItem from="1650217694318" duration="1396000" />
+      <workItem from="1650220431203" duration="15300000" />
+      <workItem from="1650673113236" duration="9087000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -130,7 +162,105 @@
       <option name="project" value="LOCAL" />
       <updated>1649923429475</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin.">
+      <created>1650301328188</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650301328188</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added template to booking form.&#10;&#10;- Added button to clear booking filters&#10;- Styled booking filters.&#10;- Set correct data types for booking.&#10;- Added a function to check room availability.&#10;- Refactored styles and fonts.">
+      <created>1650567081016</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650567081016</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added date constraints checking in db-functions.php&#10;- Added code for setting date constraints for inputs in js.&#10;- Removed form.html.">
+      <created>1650569726327</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650569726327</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added date constraints checking in db-functions.php&#10;&#10;- Added code for setting date constraints for inputs in js.&#10;- Removed form.html.&#10;- Fixed README.md.&#10;- Formatted form file.">
+      <created>1650572686498</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1650572686498</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script.">
+      <created>1650664033450</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650664033450</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details.">
+      <created>1650665776922</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650665776922</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fixed Activity Log message in book">
+      <created>1650665867569</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650665867569</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed undefined array keys">
+      <created>1650668441580</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1650668441580</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updated SQL">
+      <created>1650668929350</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1650668929350</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Updated booking PHPDoc&#10;&#10;Formatted file">
+      <created>1650674045636</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1650674045637</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Refactored Template Folder&#10;&#10;Added correct template.js paths">
+      <created>1650699825030</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1650699825030</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php">
+      <created>1650699981671</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1650699981671</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Refactored reservation request related db-functions to their own class.">
+      <created>1650713766237</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1650713766237</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fixed RoomOptions.php">
+      <created>1650714038736</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1650714038736</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,8 +296,26 @@
     <MESSAGE value="Created a Node.js web server&#10;This server loads a basic index.html file by default." />
     <MESSAGE value="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context." />
     <MESSAGE value="Implemented activity logging and added example use in book-client.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented activity logging and added example use in book-client.php" />
+    <MESSAGE value="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin." />
+    <MESSAGE value="Added template to booking form.&#10;&#10;- Added button to clear booking filters&#10;- Styled booking filters.&#10;- Set correct data types for booking.&#10;- Added a function to check room availability.&#10;- Refactored styles and fonts." />
+    <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Removed form.html." />
+    <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Added code for setting date constraints for inputs in js.&#10;- Removed form.html.&#10;- Fixed README.md.&#10;- Formatted form file." />
+    <MESSAGE value="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script." />
+    <MESSAGE value="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details." />
+    <MESSAGE value="Fixed Activity Log message in book" />
+    <MESSAGE value="Fixed undefined array keys" />
+    <MESSAGE value="Updated SQL" />
+    <MESSAGE value="Updated booking PHPDoc&#10;&#10;Formatted file" />
+    <MESSAGE value="Refactored Template Folder&#10;&#10;Added correct template.js paths" />
+    <MESSAGE value="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php" />
+    <MESSAGE value="Refactored reservation request related db-functions to their own class." />
+    <MESSAGE value="Fixed RoomOptions.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed RoomOptions.php" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
