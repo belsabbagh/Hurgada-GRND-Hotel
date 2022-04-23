@@ -2,14 +2,19 @@
 
 class RoomOptions
 {
+    /**
+     * @param int|string $type
+     * @param int|string $view
+     * @param int|string $patio
+     */
     public function __construct(int|string $type = 'room_type_id', int|string $view = 'room_view', int|string $patio = 'room_patio')
     {
-        $room_type = $type;
-        $room_view = $view;
-        $room_patio = $patio;
+        $this->room_type = $type;
+        $this->room_view = $view;
+        $this->room_patio = $patio;
     }
 
-    private int|string $room_type = 'room_type_id', $room_view = 'room_view', $room_patio = 'room_patio';
+    private int|string $room_type, $room_view, $room_patio;
 
     /**
      * @return int|string

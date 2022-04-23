@@ -11,6 +11,7 @@ class ReservationRequest
      * @param DateTime    $end
      * @param int         $nAdults
      * @param int         $nChildren
+     * @param int         $nBeds
      * @param RoomOptions $room_options
      */
     public function __construct(DateTime $start, DateTime $end, int $nAdults, int $nChildren, int $nBeds, RoomOptions $room_options)
@@ -128,7 +129,7 @@ class ReservationRequest
         $end_date_str = $this->end->format($date_format);
 
         $book_query = "INSERT into reservations
-        values(NULL, $client_id, $room_no, '$start_date_str', '$end_date_str', {$this->nAdults}, {$this->nChildren}, $price, 0);";
+        values(NULL, $client_id, $room_no, '$start_date_str', '$end_date_str', $this->nAdults, $this->nChildren, $price, 0);";
         run_query($book_query);
     }
 
