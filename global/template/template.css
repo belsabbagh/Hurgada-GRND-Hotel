@@ -20,18 +20,18 @@
 /* ________________________________________________________________________________________________ */
 
 
-/* Fonts */
+/* fonts */
 @font-face {
     font-family: "Title";
-    src: url(../../resources/Fonts/PlayfairDisplayi.ttf);
+    src: url(../../resources/fonts/PlayfairDisplayi.ttf);
 }
 @font-face {
     font-family: "parg";
-    src: url(../../resources/Fonts/PlayfairDisplay.ttf);
+    src: url(../../resources/fonts/PlayfairDisplay.ttf);
 }
 @font-face {
     font-family: "special";
-    src: url(../../resources/Fonts/Updock-Regular.ttf);
+    src: url(../../resources/fonts/Updock-Regular.ttf);
 }
 
 /* ________________________________________________________________________________________________ */
