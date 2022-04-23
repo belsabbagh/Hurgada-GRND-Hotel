@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Refactored Template Folder&#10;&#10;Added correct template.js paths">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Template/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/normalize.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Template/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Template/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/Template/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/Reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/client/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/book.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/client/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/form.php" afterDir="false" />
     </list>
@@ -105,7 +103,7 @@
       <workItem from="1649956711542" duration="1417000" />
       <workItem from="1650217694318" duration="1396000" />
       <workItem from="1650220431203" duration="15300000" />
-      <workItem from="1650673113236" duration="2414000" />
+      <workItem from="1650673113236" duration="5368000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -219,7 +217,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650674045637</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Refactored Template Folder&#10;&#10;Added correct template.js paths">
+      <created>1650699825030</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1650699825030</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php">
+      <created>1650699981671</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1650699981671</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +278,8 @@
     <MESSAGE value="Updated SQL" />
     <MESSAGE value="Updated booking PHPDoc&#10;&#10;Formatted file" />
     <MESSAGE value="Refactored Template Folder&#10;&#10;Added correct template.js paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Template Folder&#10;&#10;Added correct template.js paths" />
+    <MESSAGE value="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

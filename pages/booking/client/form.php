@@ -56,7 +56,7 @@
                 <li><a href="Profile"><em class='bx bxs-user'></em> Profile</a></li>
                 <li><a href="MyReservations"><em class='bx bxs-bed'></em> My Reservations</a></li>
                 <li><a href="RateUs"><em class='bx bxs-star'></em> Rate us</a></li>
-                <li><a href="ContacUs"><em class='bx bxl-gmail'></em> Contact us</a></li>
+                <li><a href="ContactUs"><em class='bx bxl-gmail'></em> Contact us</a></li>
             </ul>
         </div>
     </div>

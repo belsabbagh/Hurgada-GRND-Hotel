@@ -1,6 +1,6 @@
 <?php
 include_once "RoomOptions.php";
-include_once "Reservation.php";
+include_once "ReservationRequest.php";
 /**
  * Creates connection to database
  * 
@@ -115,69 +115,3 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
     return false;
 }
 
-/**
- * Gets available rooms for reservation according to given options
- *
- * @author @Belal-Elsabbagh
- *
- * @param Reservation $reservation
- * @param int         $nBeds   Number of beds in the room (single, double, triple)
- * @param RoomOptions $options An object containing all room options
- *
- * @return array   An array with the data of the room
- */
-function get_available_rooms(Reservation $reservation, int $nBeds, RoomOptions $options): array
-{
-    $date_format = "Y-m-d";
-    $start_date_str = $reservation->getStart()->format($date_format);
-    $end_date_str = $reservation->getEnd()->format($date_format);
-
-    $get_rooms = "SELECT room_id FROM rooms 
-        where room_id NOT IN 
-        (
-            SELECT room_no FROM reservations 
-            WHERE (start_date BETWEEN '$start_date_str' AND '$end_date_str') 
-            OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
-            OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str')
-        )
-        AND room_beds_number = $nBeds
-        AND room_type_id = {$options->getRoomType()} 
-        AND room_view = {$options->getRoomView()}
-        AND room_patio = {$options->getRoomPatio()};";
-
-// Check if a room with these options exist
-    $result_rooms = run_query($get_rooms);
-    if ($result_rooms->num_rows == 0) die("No room matches these options");
-    return $result_rooms->fetch_assoc();
-}
-
-/**
- * Adds reservation for a room
- *
- * @author @Belal-Elsabbagh
- *
- * @param int      $client_id The client who wants to reserve the room
- * @param int      $room_no   The room number to be reserved
- * @param DateTime $start     The start date of reservation
- * @param DateTime $end       The end date of reservation
- * @param int      $nAdults   Number of adults included
- * @param int      $nChildren Number of children included
- * @param float    $price     The price of the room
- *
- * @return void
- */
-function add_reservation(int $client_id, int $room_no, Reservation $reservation, float $price): void
-{
-    $date_format = "Y-m-d";
-    $start_date_str = $reservation->getStart()->format($date_format);
-    $end_date_str = $reservation->getEnd()->format($date_format);
-
-    $book_query = "INSERT into reservations
-    values(NULL, $client_id, $room_no, '$start_date_str', '$end_date_str', {$reservation->getNAdults()}, {$reservation->getNChildren()}, $price, 0);";
-    run_query($book_query);
-}
-
-function get_room_price(float $base_price, Reservation $reservation): float
-{
-    return $base_price * $reservation->get_numberof_days_between_dates();
-}
