@@ -8,21 +8,22 @@ include_once "../../../global/php/db-functions.php";
  *
  * @throws Exception
  *
- * @var     DateTime $checkin_date  start date of reservation
- * @var     DateTime $checkout_date end date of reservation
- * @var     int      $nAdults       number of adults in reservation
- * @var     int      $nChildren     number of children in reservation
- * @var     int      $room_type     requested room type
- * @var     int      $room_view     requested room view
- * @var     int      $patio         balcony (0) or patio (1)
- * @var     int      $nBeds         number of beds needed
+ * @var     Reservation $reservation_request Requested reservation parameters
+ * @var     RoomOptions $options             Requested room options
+ * @var     int         $nBeds               number of beds needed
+ * @var     float       $price               Calculated price of room
  * @return  void
  */
 function book(): void
 {
 // Gather data from POST and parse into correct data type
-    $reservation_request = new Reservation(new DateTime($_POST['checkin']), new DateTime($_POST['checkout']), intval($_POST['adults']), intval($_POST['children']));
-
+    $reservation_request = new Reservation
+    (
+        new DateTime($_POST['checkin']),
+        new DateTime($_POST['checkout']),
+        intval($_POST['adults']),
+        intval($_POST['children'])
+    );
     $options = new RoomOptions
     (
         array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
@@ -35,9 +36,11 @@ function book(): void
     if ($reservation_request->bad_date()) die("Invalid dates");
 
     $room = get_available_rooms($reservation_request, $nBeds, $options);
-    $price = get_room_price((float)$room['room_base_price'], $reservation_request);
+    $price = get_room_price(floatval($room['room_base_price']), $reservation_request);
     add_reservation($_SESSION['active_id'], $room['room_id'], $reservation_request, $price);
+
     activity_log("Room Reservation", "Client {$_SESSION['active_id']} reserved room number {$room['room_id']} from {$reservation_request->getStart()->format('Y-m-d')} to {$reservation_request->getEnd()->format('Y-m-d')} for {$reservation_request->getNAdults()} adults and {$reservation_request->getNChildren()} children.", $price);
+    /*TODO Redirect to account page*/
 }
 
 ?>
