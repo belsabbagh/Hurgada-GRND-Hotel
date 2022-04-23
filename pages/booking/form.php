@@ -5,23 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../global/css/style.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../global/css/style.css">
+    <link rel="stylesheet" href="style.css">
 
     <?php
-    include "../../../global/php/db-functions.php";
-    include "../form_loader.php";
+    include "../../global/php/db-functions.php";
+    include "form_loader.php";
     ?>
 
     <title>Booking</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
-    <script src="../../../global/template/template.js"></script>
+    <script src="../../global/template/template.js"></script>
     <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="../../../global/template/normalize.css"/>
+    <link rel="stylesheet" href="../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="../../../global/template/template.css"/>
+    <link rel="stylesheet" href="../../global/template/template.css"/>
 </head>
 
 <body>
@@ -71,7 +71,8 @@
 <div class="features">
     <div class="container">
         <div class="feat">
-            <form action="../book.php" method="post">
+            <form action="book.php" method="post">
+                <?php if (active_user_isEmployee()) load_email(); ?>
                 <div class="dates">
                     <label for="checkin">Check in date</label>
                     <input type="date" id="checkin" name="checkin">

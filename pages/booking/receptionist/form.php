@@ -72,6 +72,10 @@
     <div class="container">
         <div class="feat">
             <form action="../book.php" method="post">
+                <div class="email">
+                    <label for="email">Client E-mail</label>
+                    <input type="text" id="email" name="email">
+                </div>
                 <div class="dates">
                     <label for="checkin">Check in date</label>
                     <input type="date" id="checkin" name="checkin">

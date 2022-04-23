@@ -16,6 +16,7 @@ include_once "../../../global/php/db-functions.php";
  */
 function book(): void
 {
+    $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : $_SESSION['active_id'];
 // Gather data from POST and parse into correct data type
     $reservation_request = new ReservationRequest
     (
@@ -39,16 +40,16 @@ function book(): void
         die("Invalid Dates");
     }
 
-    $room = $reservation_request->get_available_rooms();
+    $room = $reservation_request->get_available_room();
     if ($room == null)
     {
         header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/client/form.php");
         die("No room was found matching these options");
     }
     $price = $reservation_request->calculate_reservation_price(floatval($room['room_base_price']));
-    $reservation_request->add_reservation($_SESSION['active_id'], $room['room_id'], $price);
+    $reservation_request->add_reservation($client_id, $room['room_id'], $price);
 
-    activity_log("Room ReservationRequest", "Client {$_SESSION['active_id']} reserved room number {$room['room_id']} from {$reservation_request->getStart()->format('Y-m-d')} to {$reservation_request->getEnd()->format('Y-m-d')} for {$reservation_request->getNAdults()} adults and {$reservation_request->getNChildren()} children.", $price);
+    activity_log("Room ReservationRequest", "Client $client_id reserved room number {$room['room_id']} from {$reservation_request->getStart()->format('Y-m-d')} to {$reservation_request->getEnd()->format('Y-m-d')} for {$reservation_request->getNAdults()} adults and {$reservation_request->getNChildren()} children.", $price);
     /*TODO Redirect to account page*/
 }
 
@@ -61,17 +62,17 @@ function book(): void
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../global/css/style.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../global/css/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Booking</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
-    <script src="../../../global/template/template.js"></script>
+    <script src="../../global/template/template.js"></script>
     <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="../../../global/template/normalize.css"/>
+    <link rel="stylesheet" href="../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="../../../global/template/template.css"/>
+    <link rel="stylesheet" href="../../global/template/template.css"/>
 </head>
 
 <body>

@@ -29,7 +29,10 @@ function change_max_beds() {
         }
     });
 }
-
+/**
+ *
+ * @param {string} name
+ */
 function clear(name) {
     let radios = document.getElementsByName(name);
     radios.forEach(element => {

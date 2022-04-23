@@ -140,7 +140,7 @@ class ReservationRequest
      *
      * @return array|null   An array with the data of the room OR null if nothing was found
      */
-    function get_available_rooms(): ?array
+    function get_available_room(): ?array
     {
         $date_format = "Y-m-d";
         $start_date_str = $this->start->format($date_format);

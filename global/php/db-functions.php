@@ -3,7 +3,7 @@ include_once "RoomOptions.php";
 include_once "ReservationRequest.php";
 /**
  * Creates connection to database
- * 
+ *
  * @author  @Belal-Elsabbagh
  * @return  mysqli  Connection object to the database
  */
@@ -13,20 +13,22 @@ function db_connect(): mysqli
     $username = "root";
     $password = "";
     $dbname = "hurgada-grnd-hotel";
+
     return new mysqli($servername, $username, $password, $dbname);
 }
 
 /**
  * Connects database, runs the given query, and returns the result
  *
- * @param string $sql The sql query to run
+ * @author  @Belal-Elsabbagh
  *
- * @return  bool|mysqli_result   The result of the query
+ * @param string               $sql    The sql query to run
  *
+ * @var     mysqli             $conn   The connection object to database
  * @var     mysqli_result|bool $result The result of the query
  *
- * @var     mysqli $conn The connection object to database
- * @author  @Belal-Elsabbagh
+ * @return  mysqli_result|bool The result of the query
+ *
  */
 function run_query(string $sql): bool|mysqli_result
 {
@@ -39,13 +41,14 @@ function run_query(string $sql): bool|mysqli_result
 /**
  * Logs action in activity Log
  *
- * @param string $action The action that the user made.
- * @param string $description The description of the action.
- * @param float|null $transaction Amount of money transferred.
- * @return  void
- * @var     string $sql
  * @author  @Belal-Elsabbagh
  *
+ * @param string     $description The description of the action.
+ * @param float|null $transaction Amount of money transferred.
+ * @param string     $action      The action that the user made.
+ *
+ * @var     string   $sql
+ * @return  void
  */
 function activity_log(string $action, string $description, ?float $transaction): void
 {
@@ -53,42 +56,6 @@ function activity_log(string $action, string $description, ?float $transaction):
     (owner, actiontype, description, transaction) 
     values({$_SESSION['active_id']},'$action', '$description', $transaction)";
     run_query($sql);
-}
-
- /**
-  * Loads the room types from database and echoes them in html
-  *
-  * @author  @Belal-Elsabbagh
-  *
-  * @var     string $sql The query to get room types
-  * @var     mysqli_result $result The room types
-  * @var     string[] $row Each room type
-  * @return  void
-  */
-function load_room_types(): void
-{
-    $sql = "select * from room_types";
-    $result = run_query($sql);
-    while ($row = mysqli_fetch_assoc($result))
-        echo "<input class='options' type='radio' name='room_type' id='{$row['room_category']}' value='{$row['type_id']}' onchange='change_max_beds()'><label for='{$row['room_category']}'>{$row['room_category']}</label>\n";
-}
-
-/**
- * Loads the room views from database and echoes them in html
- *
- * @author  @Belal-Elsabbagh
- *
- * @var     string        $sql    The query to get room views
- * @var     mysqli_result $result The room views
- * @var     string[]      $row    Each room view
- * @return  void
- */
-function load_room_views(): void
-{
-    $sql = "select * from room_views";
-    $result = run_query($sql);
-    while ($row = mysqli_fetch_assoc($result))
-        echo "<input class='options' type='radio' name='room_view' id='{$row['room_view_title']}' value='{$row['room_view_id']}'><label for='{$row['room_view_title']}'>{$row['room_view_title']}</label>\n";
 }
 
 /**
@@ -115,3 +82,35 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
     return false;
 }
 
+/**
+ * Gets the current user's type
+ *
+ * @author @Belal-Elsabbagh
+ * @return bool True if the user is an employee, False if the user is a client
+ */
+function active_user_isEmployee(): bool
+{
+    $sql = "SELECT user_type FROM users WHERE user_id = {$_SESSION['active_id']}";
+    $result = run_query($sql);
+    $user = $result->fetch_assoc();
+    if ($user['user_type'] > 1) return true;
+    return false;
+}
+
+/**
+ * Takes an email and gets its user id
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @param $email
+ *
+ * @return int|null returns user id or null if not found
+ */
+function get_user_id_from_email($email): ?int
+{
+    $sql = "SELECT user_id FROM users WHERE email = $email";
+    $result = run_query($sql);
+    if ($result && $result->num_rows == 0) return null;
+    $user = $result->fetch_assoc();
+    return $user['user_id'];
+}
