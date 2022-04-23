@@ -37,11 +37,11 @@
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
-    <script src="template.js"></script>
+    <script src="../../../global/template/template.js"></script>
     <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="../../../global/Template/normalize.css"/>
+    <link rel="stylesheet" href="../../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="../../../global/Template/template.css"/>
+    <link rel="stylesheet" href="../../../global/template/template.css"/>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
     <div class="container">
         <div class="links">
                 <span id="icon" class="icon" onclick="showbar()">
-                    <i class='bx bx-menu-alt-left'></i>
+                    <em class='bx bx-menu-alt-left'></em>
                 </span>
             <div class="items" id="items">
                     <span class="container">
@@ -73,14 +73,14 @@
                     </span>
             </div>
             <span id='icon2' class="icon2" onclick="hidebar()">
-                    <i class='bx bx-x'></i>
+                    <em class='bx bx-x'></em>
                 </span>
-            <i class='book' id="book">Book now</i>
+            <em class='book' id="book">Book now</em>
             <ul id="bar">
-                <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
-                <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
-                <li><a href="RateUs"><i class='bx bxs-star'></i> Rate us</a></li>
-                <li><a href="ContacUs"><i class='bx bxl-gmail'></i> Contact us</a></li>
+                <li><a href="Profile"><em class='bx bxs-user'></em> Profile</a></li>
+                <li><a href="MyReservations"><em class='bx bxs-bed'></em> My Reservations</a></li>
+                <li><a href="RateUs"><em class='bx bxs-star'></em> Rate us</a></li>
+                <li><a href="ContacUs"><em class='bx bxl-gmail'></em> Contact us</a></li>
             </ul>
         </div>
     </div>

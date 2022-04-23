@@ -33,7 +33,11 @@ function book(): void
     $nBeds = intval($_POST['room_beds_number']);
 
 // Check Constraints
-    if ($reservation_request->bad_date()) die("Invalid dates");
+    if ($reservation_request->bad_date())
+    {
+        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/client/form.php");
+        die("Invalid Dates");
+    }
 
     $room = get_available_rooms($reservation_request, $nBeds, $options);
     $price = get_room_price(floatval($room['room_base_price']), $reservation_request);
@@ -58,11 +62,11 @@ function book(): void
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
-    <script src="template.js"></script>
+    <script src="../../../global/template/template.js"></script>
     <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="../../../global/Template/normalize.css"/>
+    <link rel="stylesheet" href="../../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="../../../global/Template/template.css"/>
+    <link rel="stylesheet" href="../../../global/template/template.css"/>
 </head>
 
 <body>
