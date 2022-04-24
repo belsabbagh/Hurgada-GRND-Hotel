@@ -32,10 +32,12 @@ function load_room_views(): void
     $sql = "select * from room_views";
     $result = run_query($sql);
     while ($row = mysqli_fetch_assoc($result))
-        echo "<input class='options' type='radio' name='room_view' id='{$row['room_view_title']}' value='{$row['room_view_id']}'><label for='{$row['room_view_title']}'>{$row['room_view_title']}</label>\n";
+        echo "<input class='options' type='radio' name='room_view' id='{$row['room_view_title']}' value='{$row['room_view_id']}' required/><label for='{$row['room_view_title']}'>{$row['room_view_title']}</label>\n";
 }
 
 /**
+ * Returns an email input
+ *
  * @author @Belal-Elsabbagh
  * @return void
  */

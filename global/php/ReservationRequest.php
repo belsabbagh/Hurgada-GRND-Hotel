@@ -90,9 +90,9 @@ class ReservationRequest
     /**
      * Gets the difference between two dates in days
      *
-     * @author @Belal-Elsabbagh
-     *
+     * @author     @Belal-Elsabbagh
      * @return  int  The difference in days
+     * @deprecated Using a function in DateTime now
      */
     public function get_numberof_days_between_dates(): int
     {
@@ -108,7 +108,8 @@ class ReservationRequest
      */
     function calculate_reservation_price(float $base_price): float
     {
-        return $base_price * $this->get_numberof_days_between_dates();
+        $interval = $this->start->diff($this->end);
+        return $base_price * ($interval->d + 1);
     }
 
     /**
@@ -134,11 +135,11 @@ class ReservationRequest
     }
 
     /**
-     * Gets available rooms for reservation according to given options
+     * Gets an available room number and price for reservation according to given options
      *
      * @author @Belal-Elsabbagh
      *
-     * @return array|null   An array with the data of the room OR null if nothing was found
+     * @return array|null   An array with the room number and price of the room OR null if nothing was found
      */
     function get_available_room(): ?array
     {
@@ -146,7 +147,7 @@ class ReservationRequest
         $start_date_str = $this->start->format($date_format);
         $end_date_str = $this->end->format($date_format);
 
-        $get_rooms = "SELECT room_id FROM rooms 
+        $get_rooms = "SELECT room_id, room_base_price FROM rooms 
         where room_id NOT IN 
         (
             SELECT room_no FROM reservations 
@@ -163,5 +164,26 @@ class ReservationRequest
         $result_rooms = run_query($get_rooms);
         if ($result_rooms->num_rows == 0) return null;
         return $result_rooms->fetch_assoc();
+    }
+
+    /**
+     * Logs request in activity log.
+     *
+     * @author @Belal-Elsabbagh
+     *
+     * @param int   $c_id
+     * @param float $price
+     * @param int   $r_id
+     *
+     * @return void
+     */
+    function log(int $c_id, int $r_id, float $price): void
+    {
+        $action = "Room Reservation Request";
+        $action_description = "Client $c_id 
+        reserved room number $r_id 
+        from {$this->start->format('Y-m-d')} to {$this->end->format('Y-m-d')} 
+        for $this->nAdults adults and $this->nChildren children.";
+        activity_log($action, $action_description, $price);
     }
 }

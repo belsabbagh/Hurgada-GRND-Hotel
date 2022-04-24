@@ -1,5 +1,5 @@
 <?php
-include_once "../../../global/php/db-functions.php";
+include_once "../../global/php/db-functions.php";
 
 /**
  * Runs booking from form.php
@@ -24,7 +24,7 @@ function book(): void
         new DateTime($_POST['checkout']),
         intval($_POST['adults']),
         intval($_POST['children']),
-        intval($_POST['room_beds_number']),
+        array_key_exists('room_beds_number', $_POST) ? intval($_POST['room_beds_number']) : 'room_beds_number',
         new RoomOptions
         (
             array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
@@ -36,20 +36,19 @@ function book(): void
 // Check Constraints
     if ($reservation_request->bad_date())
     {
-        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/client/form.php");
+        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php");
         die("Invalid Dates");
     }
 
     $room = $reservation_request->get_available_room();
     if ($room == null)
     {
-        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/client/form.php");
+        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php");
         die("No room was found matching these options");
     }
     $price = $reservation_request->calculate_reservation_price(floatval($room['room_base_price']));
     $reservation_request->add_reservation($client_id, $room['room_id'], $price);
-
-    activity_log("Room ReservationRequest", "Client $client_id reserved room number {$room['room_id']} from {$reservation_request->getStart()->format('Y-m-d')} to {$reservation_request->getEnd()->format('Y-m-d')} for {$reservation_request->getNAdults()} adults and {$reservation_request->getNChildren()} children.", $price);
+    $reservation_request->log($client_id, $room['room_id'], $price);
     /*TODO Redirect to account page*/
 }
 

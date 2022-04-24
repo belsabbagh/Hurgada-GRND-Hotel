@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed RoomOptions.php">
-      <change afterPath="$PROJECT_DIR$/pages/booking/form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/booking/form_loader.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/booking/receptionist/form.php" afterDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added Receptionist Booking&#10;&#10;- Moved booking logic to root of booking.&#10;- Added reservation form for receptionist.&#10;- Added unified reservation form that loads according to user type&#10;- Changed booking logic to be more general for client and receptionist.&#10;- Updated PHPDocs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/ReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/ReservationRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/client/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/client/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_loader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/receptionist/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/receptionist/form.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +115,7 @@
       <workItem from="1649956711542" duration="1417000" />
       <workItem from="1650217694318" duration="1396000" />
       <workItem from="1650220431203" duration="15300000" />
-      <workItem from="1650673113236" duration="9087000" />
+      <workItem from="1650673113236" duration="14656000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -260,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650714038736</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added Receptionist Booking&#10;&#10;- Moved booking logic to root of booking.&#10;- Added reservation form for receptionist.&#10;- Added unified reservation form that loads according to user type&#10;- Changed booking logic to be more general for client and receptionist.&#10;- Updated PHPDocs">
+      <created>1650721133036</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1650721133036</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +314,8 @@
     <MESSAGE value="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php" />
     <MESSAGE value="Refactored reservation request related db-functions to their own class." />
     <MESSAGE value="Fixed RoomOptions.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed RoomOptions.php" />
+    <MESSAGE value="Added Receptionist Booking&#10;&#10;- Moved booking logic to root of booking.&#10;- Added reservation form for receptionist.&#10;- Added unified reservation form that loads according to user type&#10;- Changed booking logic to be more general for client and receptionist.&#10;- Updated PHPDocs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Receptionist Booking&#10;&#10;- Moved booking logic to root of booking.&#10;- Added reservation form for receptionist.&#10;- Added unified reservation form that loads according to user type&#10;- Changed booking logic to be more general for client and receptionist.&#10;- Updated PHPDocs" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -50,11 +50,11 @@ function run_query(string $sql): bool|mysqli_result
  * @var     string   $sql
  * @return  void
  */
-function activity_log(string $action, string $description, ?float $transaction): void
+function activity_log(string $action, string $description, ?float $transaction = null): void
 {
-    $sql = "INSERT into activity_log
+    $sql = "INSERT INTO activity_log
     (owner, actiontype, description, transaction) 
-    values({$_SESSION['active_id']},'$action', '$description', $transaction)";
+    VALUES({$_SESSION['active_id']}, '$action', '$description', $transaction)";
     run_query($sql);
 }
 
@@ -108,7 +108,7 @@ function active_user_isEmployee(): bool
  */
 function get_user_id_from_email($email): ?int
 {
-    $sql = "SELECT user_id FROM users WHERE email = $email";
+    $sql = "SELECT user_id FROM users WHERE email = '$email'";
     $result = run_query($sql);
     if ($result && $result->num_rows == 0) return null;
     $user = $result->fetch_assoc();

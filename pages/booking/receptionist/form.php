@@ -74,19 +74,19 @@
             <form action="../book.php" method="post">
                 <div class="email">
                     <label for="email">Client E-mail</label>
-                    <input type="text" id="email" name="email">
+                    <input type="text" id="email" name="email" required/>
                 </div>
                 <div class="dates">
                     <label for="checkin">Check in date</label>
-                    <input type="date" id="checkin" name="checkin">
+                    <input type="date" id="checkin" name="checkin" required/>
                     <label for="checkout">Check out date</label>
-                    <input type="date" id="checkout" name="checkout">
+                    <input type="date" id="checkout" name="checkout" required/>
                 </div>
                 <div class="num-of-occupants">
                     <label for="adults">Number of adults</label>
-                    <input type="number" id="adults" name="adults" min="1" max="4">
+                    <input type="number" id="adults" name="adults" min="1" max="4" value="1" required/>
                     <label for="children">Number of children</label>
-                    <input type="number" id="children" name="children" min="0" max="8">
+                    <input type="number" id="children" name="children" min="0" max="8" value="0" required/>
                 </div>
                 <div class="options">
                     <div class="room_type">
