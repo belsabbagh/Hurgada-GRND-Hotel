@@ -8,10 +8,8 @@
     <link rel="stylesheet" href="../../global/css/style.css">
     <link rel="stylesheet" href="style.css">
 
-    <?php
-    include "../../global/php/db-functions.php";
-    include "form_loader.php";
-    ?>
+    <?php include "../../global/php/db-functions.php";
+    include "form_loader.php"; ?>
 
     <title>Booking</title>
     <!--=============== BOXICONS ===============-->
@@ -57,10 +55,14 @@
                 </span>
             <em class='book' id="book">Book now</em>
             <ul id="bar">
-                <li><a href="Profile"><em class='bx bxs-user'></em> Profile</a></li>
-                <li><a href="MyReservations"><em class='bx bxs-bed'></em> My Reservations</a></li>
-                <li><a href="RateUs"><em class='bx bxs-star'></em> Rate us</a></li>
-                <li><a href="ContactUs"><em class='bx bxl-gmail'></em> Contact us</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><i class='bx bxs-user'></i> Profile</a>
+                </li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><i class='bx bxs-bed'></i> My
+                        Reservations</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><i class='bx bxs-star'></i> Rate us</a>
+                </li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><i class='bx bxl-gmail'></i> Contact
+                        us</a></li>
             </ul>
         </div>
     </div>
@@ -97,10 +99,6 @@
                         <label for="outdoors_balcony">Balcony</label>
                         <input class="options" id="outdoors_patio" name="outdoors" type="radio" value="1">
                         <label for="outdoors_patio">Patio</label>
-                    </div>
-                    <div class="beds">
-                        <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="1" max="4">
-                        <label for="room_beds_number">Number of beds</label>
                     </div>
                 </div>
                 <input type="submit" class="submit" id="submit" name="submit">

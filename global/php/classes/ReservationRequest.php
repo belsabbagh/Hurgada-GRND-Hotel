@@ -1,9 +1,8 @@
 <?php
-
 class ReservationRequest
 {
     private DateTime $start, $end;
-    private int $nAdults, $nChildren, $nBeds;
+    private int $nAdults, $nChildren;
     private RoomOptions $room_options;
 
     /**
@@ -11,25 +10,15 @@ class ReservationRequest
      * @param DateTime    $end
      * @param int         $nAdults
      * @param int         $nChildren
-     * @param int         $nBeds
      * @param RoomOptions $room_options
      */
-    public function __construct(DateTime $start, DateTime $end, int $nAdults, int $nChildren, int $nBeds, RoomOptions $room_options)
+    public function __construct(DateTime $start, DateTime $end, int $nAdults, int $nChildren, RoomOptions $room_options)
     {
         $this->start = $start;
         $this->end = $end;
         $this->nAdults = $nAdults;
         $this->nChildren = $nChildren;
-        $this->nBeds = $nBeds;
         $this->room_options = $room_options;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNBeds(): int
-    {
-        return $this->nBeds;
     }
 
     /**
@@ -155,14 +144,13 @@ class ReservationRequest
             OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str')
         )
-        AND room_beds_number = $this->nBeds
         AND room_type_id = {$this->room_options->getRoomType()} 
         AND room_view = {$this->room_options->getRoomView()}
-        AND room_patio = {$this->room_options->getRoomPatio()};";
+        AND room_patio = {$this->room_options->getRoomPatio()};
+        AND occupied = 0;";
 
 // Check if a room with these options exist
         $result_rooms = run_query($get_rooms);
-        if ($result_rooms->num_rows == 0) return null;
         return $result_rooms->fetch_assoc();
     }
 

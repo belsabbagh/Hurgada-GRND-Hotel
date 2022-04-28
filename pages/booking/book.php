@@ -1,5 +1,6 @@
 <?php
 include_once "../../global/php/db-functions.php";
+const FORM_URL = "Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
 
 /**
  * Runs booking from form.php
@@ -20,11 +21,8 @@ function book(): void
 // Gather data from POST and parse into correct data type
     $reservation_request = new ReservationRequest
     (
-        new DateTime($_POST['checkin']),
-        new DateTime($_POST['checkout']),
-        intval($_POST['adults']),
-        intval($_POST['children']),
-        array_key_exists('room_beds_number', $_POST) ? intval($_POST['room_beds_number']) : 'room_beds_number',
+        new DateTime($_POST['checkin']), new DateTime($_POST['checkout']),
+        intval($_POST['adults']), intval($_POST['children']),
         new RoomOptions
         (
             array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
@@ -33,20 +31,23 @@ function book(): void
         )
     );
 
-// Check Constraints
     if ($reservation_request->bad_date())
     {
-        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php");
+        header(FORM_URL);
         die("Invalid Dates");
     }
-
     $room = $reservation_request->get_available_room();
-    if ($room == null)
+    if (!$room)
     {
-        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php");
+        header(FORM_URL);
         die("No room was found matching these options");
     }
-    $price = $reservation_request->calculate_reservation_price(floatval($room['room_base_price']));
+    if (room_overflow($room['room_id'], $reservation_request))
+    {
+        header(FORM_URL);
+        die("Too many people in one room");
+    }
+    $price = $reservation_request->calculate_reservation_price($room['room_base_price']);
     $reservation_request->add_reservation($client_id, $room['room_id'], $price);
     $reservation_request->log($client_id, $room['room_id'], $price);
     /*TODO Redirect to account page*/
@@ -80,7 +81,7 @@ function book(): void
     <div class="container">
         <div class="links">
                 <span id="icon" class="icon" onclick="showbar()">
-                    <i class='bx bx-menu-alt-left'></i>
+                    <em class='bx bx-menu-alt-left'></em>
                 </span>
             <div class="items" id="items">
                     <span class="container">
@@ -103,14 +104,21 @@ function book(): void
                     </span>
             </div>
             <span id='icon2' class="icon2" onclick="hidebar()">
-                    <i class='bx bx-x'></i>
+                    <em class='bx bx-x'></em>
                 </span>
-            <i class='book' id="book">Book now</i>
+            <em class='book' id="book">Book now</em>
             <ul id="bar">
-                <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
-                <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
-                <li><a href="RateUs"><i class='bx bxs-star'></i> Rate us</a></li>
-                <li><a href="ContactUs"><i class='bx bxl-gmail'></i> Contact us</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><em class='bx bxs-user'></em>
+                        Profile</a>
+                </li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><em class='bx bxs-bed'></em> My
+                        Reservations</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><em class='bx bxs-star'></em> Rate
+                        us</a>
+                </li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><em class='bx bxl-gmail'></em>
+                        Contact
+                        us</a></li>
             </ul>
         </div>
     </div>

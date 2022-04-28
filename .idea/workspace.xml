@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added Receptionist Booking&#10;&#10;- Moved booking logic to root of booking.&#10;- Added reservation form for receptionist.&#10;- Added unified reservation form that loads according to user type&#10;- Changed booking logic to be more general for client and receptionist.&#10;- Updated PHPDocs">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added required tags to booking form.&#10;&#10;- Fixed calculating price by using DateInterval.&#10;- Updated PHPDoc">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/php/ReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/ReservationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/ReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/classes/ReservationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/RoomOptions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/classes/RoomOptions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/template/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/normalize.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/template/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/template/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/client/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/client/form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/form_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_loader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/receptionist/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/receptionist/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sql/hurgada-grnd-hotel.sql" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sql/hurgada-grnd-hotel.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +55,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/global/php/RoomOptions.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/global/php/classes/RoomOptions.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/global/php/db-functions.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pages/booking/book.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pages/booking/client/form.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -56,7 +65,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="275kLsHaTuztHQgkvCQyCFYFp8M" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -64,15 +73,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/Hurgada-GRND-Hotel/pages/booking",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/Hurgada-GRND-Hotel/pages/booking&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="true" />
   </component>
@@ -115,7 +125,8 @@
       <workItem from="1649956711542" duration="1417000" />
       <workItem from="1650217694318" duration="1396000" />
       <workItem from="1650220431203" duration="15300000" />
-      <workItem from="1650673113236" duration="14656000" />
+      <workItem from="1650673113236" duration="21302000" />
+      <workItem from="1650913323823" duration="5679000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -264,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650721133036</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added required tags to booking form.&#10;&#10;- Fixed calculating price by using DateInterval.&#10;- Updated PHPDoc">
+      <created>1650799433816</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1650799433816</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +333,8 @@
     <MESSAGE value="Refactored reservation request related db-functions to their own class." />
     <MESSAGE value="Fixed RoomOptions.php" />
     <MESSAGE value="Added Receptionist Booking&#10;&#10;- Moved booking logic to root of booking.&#10;- Added reservation form for receptionist.&#10;- Added unified reservation form that loads according to user type&#10;- Changed booking logic to be more general for client and receptionist.&#10;- Updated PHPDocs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Receptionist Booking&#10;&#10;- Moved booking logic to root of booking.&#10;- Added reservation form for receptionist.&#10;- Added unified reservation form that loads according to user type&#10;- Changed booking logic to be more general for client and receptionist.&#10;- Updated PHPDocs" />
+    <MESSAGE value="Added required tags to booking form.&#10;&#10;- Fixed calculating price by using DateInterval.&#10;- Updated PHPDoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added required tags to booking form.&#10;&#10;- Fixed calculating price by using DateInterval.&#10;- Updated PHPDoc" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
