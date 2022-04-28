@@ -146,7 +146,7 @@ class ReservationRequest
         )
         AND room_type_id = {$this->room_options->getRoomType()} 
         AND room_view = {$this->room_options->getRoomView()}
-        AND room_patio = {$this->room_options->getRoomPatio()};
+        AND room_patio = {$this->room_options->getRoomPatio()}
         AND occupied = 0;";
 
 // Check if a room with these options exist

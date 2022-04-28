@@ -1,6 +1,6 @@
 <?php
 include_once "../../global/php/db-functions.php";
-const FORM_URL = "Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
+const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/receptionist/form.php";
 
 /**
  * Runs booking from form.php
@@ -33,20 +33,18 @@ function book(): void
 
     if ($reservation_request->bad_date())
     {
-        header(FORM_URL);
-        die("Invalid Dates");
+        header("Location: " . FORM_URL . "?err=Invalid+Date");
     }
     $room = $reservation_request->get_available_room();
     if (!$room)
     {
-        header(FORM_URL);
-        die("No room was found matching these options");
+        header("Location: " . FORM_URL . "?err=No+room+was+found+matching+these+options");
     }
     if (room_overflow($room['room_id'], $reservation_request))
     {
-        header(FORM_URL);
-        die("Too many people in one room");
+        header("Location: " . FORM_URL . "?err=Too+many+people+in+one+room");
     }
+
     $price = $reservation_request->calculate_reservation_price($room['room_base_price']);
     $reservation_request->add_reservation($client_id, $room['room_id'], $price);
     $reservation_request->log($client_id, $room['room_id'], $price);

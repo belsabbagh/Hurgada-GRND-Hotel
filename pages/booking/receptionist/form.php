@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="../../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
     <link rel="stylesheet" href="../../../global/template/template.css"/>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.has("err")) alert(params.get('err'));
+    </script>
 </head>
 
 <body>
