@@ -26,7 +26,7 @@ function scrollFunction() {
     document.getElementById("bgr").style.backgroundPosition='left';
     document.getElementById("bgr").style.height="90px";
     document.getElementById("bgr").style.top="200px";
-    document.getElementById("bgr").style.backgroundImage="url('./img/hotel1.jpg')";
+    document.getElementById("bgr").style.backgroundImage="url('../../resources/img/home page/hotel1.jpg')";
     document.getElementById("maintext").style.display="none";
     document.getElementById('items').style.visibility='visible';
     document.getElementById('items').style.opacity='1';
@@ -38,7 +38,7 @@ function scrollFunction() {
     document.getElementById("bgr").style.width='100%';
     document.getElementById("bgr").style.height="100vh";
     document.getElementById("bgr").style.top="0px";
-    document.getElementById("bgr").style.backgroundImage="linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.15)) ,url('./img/hotel1.jpg')";
+    document.getElementById("bgr").style.backgroundImage="linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.15)) ,url('../../resources/img/home page/hotel1.jpg')";
     document.getElementById("maintext").style.display="block";
     document.getElementById('items').style.visibility='hidden';
     document.getElementById('items').style.opacity='0';

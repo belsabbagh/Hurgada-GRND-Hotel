@@ -91,7 +91,7 @@ body{
     
 }
 .background{
-    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.15)) , url('./img/hotel1.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.15)) , url('../../resources/img/home page/hotel1.jpg');
     background-size: cover;
     padding: 20px;
     height: 100vh;
@@ -255,7 +255,7 @@ body{
 
 /* body  */
 .sidepic{
-    background-image: url('./img/beach.jpg');
+    background-image: url('../../resources/img/home page/beach.jpg');
     background-size: cover;
     padding: 20px;
     height: 150px;
@@ -500,6 +500,25 @@ body{
     top: 300px;
     left: 800px;
 }
+.map{
+    position: relative;
+    top: 200px;
+    margin-bottom: 400px;
+    height: 800px;
+}
+.maptxt{
+    position: absolute;
+    font-size: 100px;
+    color:var(--brown1-color);
+    font-family: "Parg";
+    user-select: none;
+    left: 100px;
+}
+.maps{
+    position: absolute;
+    top: 300px;
+    left: 260px;
+}
 .features{
     padding-top: 60px;
     padding-bottom: 60px;
@@ -517,11 +536,17 @@ body{
 .features .feat h3{
     font-weight: 800;
     margin: 30px 0;
+    font-size: 100px;
+    font-family: "Main";
+    color: #014b56;
+    margin-bottom: 100px;
+    user-select: none;
 }
 .features .feat p{
     line-height: 1.8;
     color: #777;
     font-size: 17px;
+    user-select: none;
 }
 
 
@@ -535,6 +560,7 @@ body{
     padding: 30px 10px;
     text-align: center;
     font-size: 18px;
+    user-select: none;
 }
 .footer span{
     font-weight: bold;
