@@ -131,6 +131,7 @@ function book(): void
                 try
                 {
                     book();
+                    echo "Booking successful.";
                 } catch (Exception $e)
                 {
                     echo "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
