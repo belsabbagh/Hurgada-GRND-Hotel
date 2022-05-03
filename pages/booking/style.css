@@ -26,6 +26,10 @@ div.email {
     background: var(--yellow0-color);
 }
 
+h4 {
+    margin-top: 0;
+}
+
 div.dates {
     margin: 10px;
     padding: 10px;

@@ -1,56 +1,53 @@
 <?php
 include_once "../../global/php/db-functions.php";
-const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/receptionist/form.php";
+const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
 
 /**
  * Runs booking from form.php
  *
  * @author  @Belal-Elsabbagh
  *
- * @throws Exception
+ * @throws Exception Emits Exception in case of an error.
  *
- * @var     ReservationRequest $reservation_request Requested reservation parameters
- * @var     RoomOptions        $options             Requested room options
- * @var     int                $nBeds               number of beds needed
- * @var     float              $price               Calculated price of room
  * @return  void
  */
 function book(): void
 {
+    if (!isset($_POST['submit'])) throw new Exception("Form was not submitted correctly");
     $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : $_SESSION['active_id'];
-// Gather data from POST and parse into correct data type
-    $reservation_request = new ReservationRequest
-    (
-        new DateTime($_POST['checkin']), new DateTime($_POST['checkout']),
-        intval($_POST['adults']), intval($_POST['children']),
-        new RoomOptions
-        (
+
+    // Gather data from POST and parse into correct data type
+    try
+    {
+        $start_date = new DateTime($_POST['checkin']);
+        $end_date = new DateTime($_POST['checkout']);
+    } catch (Exception $e)
+    {
+        throw new Exception("Failed to process dates", 0, $e);
+    }
+
+    $reservation_request = new ReservationRequest(
+        $start_date,
+        $end_date,
+        intval($_POST['adults']),
+        intval($_POST['children']),
+        new RoomOptions(
             array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
             array_key_exists('room_view', $_POST) ? intval($_POST['room_view']) : 'room_view',
             array_key_exists('outdoors', $_POST) ? intval($_POST['outdoors']) : 'room_patio'
         )
     );
 
-    if ($reservation_request->bad_date())
-    {
-        header("Location: " . FORM_URL . "?err=Invalid+Date");
-    }
+    if ($reservation_request->bad_date()) throw new Exception("Invalid Date.");
+
     $room = $reservation_request->get_available_room();
-    if (!$room)
-    {
-        header("Location: " . FORM_URL . "?err=No+room+was+found+matching+these+options");
-    }
-    if (room_overflow($room['room_id'], $reservation_request))
-    {
-        header("Location: " . FORM_URL . "?err=Too+many+people+in+one+room");
-    }
+    if (!$room) throw new Exception("No Room matches these options.");
+    if (room_overflow($room['room_id'], $reservation_request)) throw new Exception("Too many people in one room.");
 
     $price = $reservation_request->calculate_reservation_price($room['room_base_price']);
     $reservation_request->add_reservation($client_id, $room['room_id'], $price);
     $reservation_request->log($client_id, $room['room_id'], $price);
-    /*TODO Redirect to account page*/
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -128,13 +125,16 @@ function book(): void
     <div class="container">
         <div class="feat">
             <p><?php
-                if (!isset($_POST['submit'])) die("Form was not submitted correctly");
                 try
                 {
                     book();
                 } catch (Exception $e)
                 {
-                    echo $e->getMessage();
+                    echo "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
+
+                } finally
+                {
+                    echo "<a href='" . FORM_URL . "'>Go back to form</a>";
                 }
                 ?></p>
         </div>
