@@ -8,13 +8,15 @@ const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
  * @author  @Belal-Elsabbagh
  *
  * @throws Exception Emits Exception in case of an error.
+ * @var int|null $client_id The client's id in the database.
  *
  * @return  void
  */
 function book(): void
 {
-    if (!isset($_POST['submit'])) throw new Exception("Form was not submitted correctly");
-    $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : $_SESSION['active_id'];
+    if (!isset($_POST['submit'])) throw new Exception("Form was not submitted correctly", 1);
+    $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : ($_SESSION['active_id'] ?? null);
+    if (is_null($client_id)) throw new Exception("No valid login or client.", 2);
 
     // Gather data from POST and parse into correct data type
     try
@@ -23,7 +25,7 @@ function book(): void
         $end_date = new DateTime($_POST['checkout']);
     } catch (Exception $e)
     {
-        throw new Exception("Failed to process dates", 0, $e);
+        throw new Exception("Failed to process dates", 3, $e);
     }
 
     $reservation_request = new ReservationRequest(
@@ -38,16 +40,17 @@ function book(): void
         )
     );
 
-    if ($reservation_request->bad_date()) throw new Exception("Invalid Date.");
+    if ($reservation_request->bad_date()) throw new Exception("Invalid Date Chosen.", 4);
 
     $room = $reservation_request->get_available_room();
     if (!$room) throw new Exception("No Room matches these options.");
-    if (room_overflow($room['room_id'], $reservation_request)) throw new Exception("Too many people in one room.");
+    if (room_overflow($room['room_id'], $reservation_request)) throw new Exception("Too many people in one room.", 5);
 
     $price = $reservation_request->calculate_reservation_price($room['room_base_price']);
     $reservation_request->add_reservation($client_id, $room['room_id'], $price);
     $reservation_request->log($client_id, $room['room_id'], $price);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -131,6 +134,7 @@ function book(): void
                 } catch (Exception $e)
                 {
                     echo "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
+                    if ($e->getCode() == 2) echo "<a href='" . FORM_URL . "'>Log in</a>";
 
                 } finally
                 {
