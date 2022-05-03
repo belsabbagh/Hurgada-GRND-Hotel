@@ -4,8 +4,8 @@ A website project for a hotel management system.
 
 ## Overview ##
 
-Hurghada GRND Hotel is one of the biggest Hotels in Hurghada. It has been operating in
-Hurghada since 1910. At this time, the guests were few and can be served while enjoying their
+Hurgada GRND Hotel is one of the biggest Hotels in Hurgada. It has been operating in
+Hurgada since 1910. At this time, the guests were few and can be served while enjoying their
 stay in the Hotel. Now, the number of guests has increased and the types of the guests have
 become different. For example, now some guests are staying in the Hotel and others ask for
 only day use. The Hotel needs to make a website to automate the work. The website has to

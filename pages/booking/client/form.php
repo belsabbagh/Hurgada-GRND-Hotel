@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="../../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
     <link rel="stylesheet" href="../../../global/template/template.css"/>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.has("err")) alert(params.get('err'));
+    </script>
 </head>
 
 <body>
@@ -57,10 +61,17 @@
                 </span>
             <em class='book' id="book">Book now</em>
             <ul id="bar">
-                <li><a href="Profile"><em class='bx bxs-user'></em> Profile</a></li>
-                <li><a href="MyReservations"><em class='bx bxs-bed'></em> My Reservations</a></li>
-                <li><a href="RateUs"><em class='bx bxs-star'></em> Rate us</a></li>
-                <li><a href="ContactUs"><em class='bx bxl-gmail'></em> Contact us</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><em class='bx bxs-user'></em>
+                        Profile</a>
+                </li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><em class='bx bxs-bed'></em> My
+                        Reservations</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><em class='bx bxs-star'></em> Rate
+                        us</a>
+                </li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><em class='bx bxl-gmail'></em>
+                        Contact
+                        us</a></li>
             </ul>
         </div>
     </div>
@@ -86,20 +97,19 @@
                 </div>
                 <div class="options">
                     <div class="room_type">
+                        <h4 class="prompt" style="margin-top: 0;">Choose a room type</h4>
                         <?php load_room_types(); ?>
                     </div>
                     <div class="view">
+                        <h4 class="prompt" style="margin-top: 0;">Choose a view from the room</h4>
                         <?php load_room_views(); ?>
                     </div>
                     <div class="outdoors">
+                        <h4 class="prompt" style="margin-top: 0;">Choose an outdoors setting</h4>
                         <input class="options" id="outdoors_balcony" name="outdoors" type="radio" value="0">
                         <label for="outdoors_balcony">Balcony</label>
                         <input class="options" id="outdoors_patio" name="outdoors" type="radio" value="1">
                         <label for="outdoors_patio">Patio</label>
-                    </div>
-                    <div class="beds">
-                        <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="1" max="4">
-                        <label for="room_beds_number">Number of beds</label>
                     </div>
                 </div>
                 <input type="submit" class="submit" id="submit" name="submit">

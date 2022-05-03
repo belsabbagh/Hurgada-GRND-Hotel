@@ -1,6 +1,6 @@
 <?php
-include_once "RoomOptions.php";
-include_once "ReservationRequest.php";
+include_once "classes/RoomOptions.php";
+include_once "classes/ReservationRequest.php";
 /**
  * Creates connection to database
  *
@@ -30,12 +30,26 @@ function db_connect(): mysqli
  * @return  mysqli_result|bool The result of the query
  *
  */
-function run_query(string $sql): bool|mysqli_result
+function run_query(string $sql): mysqli_result|bool
 {
     $conn = db_connect();
-    $result = $conn->query($sql) or die("\nFAIL\n" . $conn->error);
+    $result = $conn->query($sql) or die("\nRUNTIME ERROR\n" . $conn->error);
     $conn->close();
     return $result;
+}
+
+/**
+ * Checks if mysqli_result is empty by checking if its null and the number of rows it returned is zero.
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @param mysqli_result|null $result
+ *
+ * @return bool
+ */
+function empty_mysqli_result(?mysqli_result $result): bool
+{
+    return $result && $result->num_rows == 0;
 }
 
 /**
@@ -50,11 +64,11 @@ function run_query(string $sql): bool|mysqli_result
  * @var     string   $sql
  * @return  void
  */
-function activity_log(string $action, string $description, ?float $transaction): void
+function activity_log(string $action, string $description, ?float $transaction = null): void
 {
-    $sql = "INSERT into activity_log
+    $sql = "INSERT INTO activity_log
     (owner, actiontype, description, transaction) 
-    values({$_SESSION['active_id']},'$action', '$description', $transaction)";
+    VALUES({$_SESSION['active_id']}, '$action', '$description', $transaction)";
     run_query($sql);
 }
 
@@ -86,6 +100,7 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
  * Gets the current user's type
  *
  * @author @Belal-Elsabbagh
+ *
  * @return bool True if the user is an employee, False if the user is a client
  */
 function active_user_isEmployee(): bool
@@ -102,15 +117,46 @@ function active_user_isEmployee(): bool
  *
  * @author @Belal-Elsabbagh
  *
- * @param $email
+ * @param             $email
  *
+ * @var string        $sql  The Query String
+ * @var mysqli_result $result
+ * @var array         $user The user's data
  * @return int|null returns user id or null if not found
  */
 function get_user_id_from_email($email): ?int
 {
-    $sql = "SELECT user_id FROM users WHERE email = $email";
+    $sql = "SELECT user_id FROM users WHERE email = '$email'";
     $result = run_query($sql);
-    if ($result && $result->num_rows == 0) return null;
+    if (empty_mysqli_result($result)) return null;
     $user = $result->fetch_assoc();
     return $user['user_id'];
+}
+
+/**
+ * Gets the maximum number of occupants for a room
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @param int $room_id The room number
+ *
+ * @return int|null The room's maximum capacity
+ */
+function get_room_max_occupants_by_room_id(int $room_id): ?int
+{
+    $sql = "SELECT room_max_cap FROM room_types, rooms
+            WHERE rooms.room_type_id = room_types.type_id 
+            AND rooms.room_id = $room_id;";
+    $result = run_query($sql);
+    if (empty_mysqli_result($result)) return null;
+    $room = $result->fetch_assoc();
+    return $room['room_max_cap'];
+}
+
+function room_overflow(int $room_id, ReservationRequest $reservation_request): bool
+{
+    $room_max_cap = get_room_max_occupants_by_room_id($room_id);
+    $numberof_occupants = $reservation_request->getNAdults() + round($reservation_request->getNChildren() / 2);
+    if ($numberof_occupants > $room_max_cap) return true;
+    return false;
 }

@@ -36,6 +36,8 @@ function load_room_views(): void
 }
 
 /**
+ * Returns an email input
+ *
  * @author @Belal-Elsabbagh
  * @return void
  */
@@ -43,7 +45,7 @@ function load_email(): void
 {
     $email_form = '<div class="email">
                     <label for="email">Client E-mail</label>
-                    <input type="text" id="email" name="email">
+                    <input type="text" id="email" name="email" required/>
                    </div>';
     echo $email_form;
 }

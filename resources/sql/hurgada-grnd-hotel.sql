@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2022 at 01:07 AM
+-- Generation Time: Apr 25, 2022 at 09:38 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -87,9 +87,8 @@ CREATE TABLE `reservations`
 
 INSERT INTO `reservations` (`reservation_id`, `client_id`, `room_no`, `start_date`, `end_date`, `numberof_adults`,
                             `numberof_children`, `price`, `is_checked_in`)
-VALUES (14, 1, 1, '2022-05-03', '2022-05-06', 3, 0, '1000', 0),
-       (15, 1, 1, '2022-06-02', '2022-06-09', 3, 0, '1000', 0),
-       (16, 1, 1, '2022-07-27', '2022-07-28', 3, 0, '1000', 0);
+VALUES (21, 1, 1, '2022-05-04', '2022-05-05', 3, 0, '640', 0),
+       (22, 1, 1, '2022-06-30', '2022-08-03', 2, 0, '3200', 0);
 
 -- --------------------------------------------------------
 
@@ -99,13 +98,12 @@ VALUES (14, 1, 1, '2022-05-03', '2022-05-06', 3, 0, '1000', 0),
 
 CREATE TABLE `rooms`
 (
-    `room_id`          int(11)    NOT NULL,
-    `room_type_id`     int(11)    NOT NULL,
-    `occupied`         tinyint(1) NOT NULL,
-    `room_view`        int(11)    NOT NULL,
-    `room_patio`       tinyint(1) NOT NULL,
-    `room_beds_number` int(11)    NOT NULL DEFAULT 1,
-    `room_base_price`  int(11)    NOT NULL
+    `room_id`         int(11)    NOT NULL,
+    `room_type_id`    int(11)    NOT NULL,
+    `occupied`        tinyint(1) NOT NULL,
+    `room_view`       int(11)    NOT NULL,
+    `room_patio`      tinyint(1) NOT NULL,
+    `room_base_price` int(11)    NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -113,9 +111,8 @@ CREATE TABLE `rooms`
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`room_id`, `room_type_id`, `occupied`, `room_view`, `room_patio`, `room_beds_number`,
-                     `room_base_price`)
-VALUES (1, 2, 0, 1, 1, 3, 0);
+INSERT INTO `rooms` (`room_id`, `room_type_id`, `occupied`, `room_view`, `room_patio`, `room_base_price`)
+VALUES (1, 2, 0, 1, 1, 640);
 
 -- --------------------------------------------------------
 
@@ -142,21 +139,23 @@ CREATE TABLE `room_reviews`
 -- Table structure for table `room_types`
 --
 
-CREATE TABLE `room_types` (
-  `type_id` int(11) NOT NULL,
-  `room_category` varchar(100) NOT NULL,
-  `room_max_cap` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `room_types`
+(
+    `type_id`       int(11)      NOT NULL,
+    `room_category` varchar(100) NOT NULL,
+    `room_max_cap`  int(11)      NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 --
 -- Dumping data for table `room_types`
 --
 
-INSERT INTO `room_types` (`type_id`, `room_category`, `room_max_cap`) VALUES
-(1, 'Standard Room', 4),
-(2, 'Chalet', 6),
-(3, 'Beachside Villa', 8),
-(4, 'Duplex', 5),
+INSERT INTO `room_types` (`type_id`, `room_category`, `room_max_cap`)
+VALUES (1, 'Standard Room', 4),
+       (2, 'Chalet', 6),
+       (3, 'Beachside Villa', 8),
+       (4, 'Duplex', 5),
 (5, 'Apartment-like', 5);
 
 -- --------------------------------------------------------
@@ -187,13 +186,15 @@ INSERT INTO `room_views` (`room_view_id`, `room_view_title`, `room_view_descript
 -- Table structure for table `services`
 --
 
-CREATE TABLE `services` (
-  `service_id` int(11) NOT NULL,
-  `service_name` varchar(100) NOT NULL,
-  `service_add_price` tinyint(1) NOT NULL DEFAULT 0,
-  `service_price` float DEFAULT NULL,
-  `service_description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `services`
+(
+    `service_id`          int(11)      NOT NULL,
+    `service_name`        varchar(100) NOT NULL,
+    `service_add_price`   tinyint(1)   NOT NULL DEFAULT 0,
+    `service_price`       float                 DEFAULT NULL,
+    `service_description` text                  DEFAULT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -201,11 +202,12 @@ CREATE TABLE `services` (
 -- Table structure for table `service_reviews`
 --
 
-CREATE TABLE `service_reviews` (
-                                   `client_id`      int(11)       NOT NULL,
-                                   `service_id`     int(11)       NOT NULL,
-                                   `overall_rating` decimal(10,0) NOT NULL,
-                                   `comments`       text          NOT NULL
+CREATE TABLE `service_reviews`
+(
+    `client_id`      int(11)        NOT NULL,
+    `service_id`     int(11)        NOT NULL,
+    `overall_rating` decimal(10, 0) NOT NULL,
+    `comments`       text           NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -255,10 +257,10 @@ CREATE TABLE `user_type`
 -- Dumping data for table `user_type`
 --
 
-INSERT INTO `user_type` (`utype_id`, `utype_title`) VALUES
-(1, 'Quality Control Manager'),
-(2, 'Receptionist'),
-(3, 'Guest');
+INSERT INTO `user_type` (`utype_id`, `utype_title`)
+VALUES (1, 'Quality Control Manager'),
+       (2, 'Receptionist'),
+       (3, 'Guest');
 
 --
 -- Indexes for dumped tables
@@ -304,34 +306,34 @@ ALTER TABLE `room_reviews`
 -- Indexes for table `room_types`
 --
 ALTER TABLE `room_types`
-  ADD PRIMARY KEY (`type_id`);
+    ADD PRIMARY KEY (`type_id`);
 
 --
 -- Indexes for table `room_views`
 --
 ALTER TABLE `room_views`
-  ADD PRIMARY KEY (`room_view_id`);
+    ADD PRIMARY KEY (`room_view_id`);
 
 --
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
-  ADD PRIMARY KEY (`service_id`);
+    ADD PRIMARY KEY (`service_id`);
 
 --
 -- Indexes for table `service_reviews`
 --
 ALTER TABLE `service_reviews`
-  ADD KEY `client_id` (`client_id`),
-  ADD KEY `service_id` (`service_id`);
+    ADD KEY `client_id` (`client_id`),
+    ADD KEY `service_id` (`service_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `user_type` (`user_type`);
+    ADD PRIMARY KEY (`user_id`),
+    ADD UNIQUE KEY `email` (`email`),
+    ADD KEY `user_type` (`user_type`);
 
 --
 -- Indexes for table `user_type`
@@ -354,7 +356,7 @@ ALTER TABLE `dependants`
 --
 ALTER TABLE `reservations`
     MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 17;
+    AUTO_INCREMENT = 23;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -438,8 +440,8 @@ ALTER TABLE `room_reviews`
 -- Constraints for table `service_reviews`
 --
 ALTER TABLE `service_reviews`
-  ADD CONSTRAINT `service_reviews_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `service_reviews_ibfk_2` FOREIGN KEY (`service_id`) REFERENCES `services` (`service_id`);
+    ADD CONSTRAINT `service_reviews_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
+    ADD CONSTRAINT `service_reviews_ibfk_2` FOREIGN KEY (`service_id`) REFERENCES `services` (`service_id`);
 
 --
 -- Constraints for table `users`

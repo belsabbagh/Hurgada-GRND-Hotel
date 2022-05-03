@@ -1,56 +1,54 @@
 <?php
-include_once "../../../global/php/db-functions.php";
+include_once "../../global/php/db-functions.php";
+const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
 
 /**
  * Runs booking from form.php
  *
  * @author  @Belal-Elsabbagh
  *
- * @throws Exception
+ * @throws Exception Emits Exception in case of an error.
+ * @var int|null $client_id The client's id in the database.
  *
- * @var     ReservationRequest $reservation_request Requested reservation parameters
- * @var     RoomOptions        $options             Requested room options
- * @var     int                $nBeds               number of beds needed
- * @var     float              $price               Calculated price of room
  * @return  void
  */
 function book(): void
 {
-    $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : $_SESSION['active_id'];
-// Gather data from POST and parse into correct data type
-    $reservation_request = new ReservationRequest
-    (
-        new DateTime($_POST['checkin']),
-        new DateTime($_POST['checkout']),
+    if (!isset($_POST['submit'])) throw new Exception("Form was not submitted correctly", 1);
+    $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : ($_SESSION['active_id'] ?? null);
+    if (is_null($client_id)) throw new Exception("No valid login or client.", 2);
+
+    // Gather data from POST and parse into correct data type
+    try
+    {
+        $start_date = new DateTime($_POST['checkin']);
+        $end_date = new DateTime($_POST['checkout']);
+    } catch (Exception $e)
+    {
+        throw new Exception("Failed to process dates", 3, $e);
+    }
+
+    $reservation_request = new ReservationRequest(
+        $start_date,
+        $end_date,
         intval($_POST['adults']),
         intval($_POST['children']),
-        intval($_POST['room_beds_number']),
-        new RoomOptions
-        (
+        new RoomOptions(
             array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
             array_key_exists('room_view', $_POST) ? intval($_POST['room_view']) : 'room_view',
             array_key_exists('outdoors', $_POST) ? intval($_POST['outdoors']) : 'room_patio'
         )
     );
 
-// Check Constraints
-    if ($reservation_request->bad_date())
-    {
-        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/client/form.php");
-        die("Invalid Dates");
-    }
+    if ($reservation_request->bad_date()) throw new Exception("Invalid Date Chosen.", 4);
 
     $room = $reservation_request->get_available_room();
-    if ($room == null)
-    {
-        header("Location: http://localhost/Hurgada-GRND-Hotel/pages/booking/client/form.php");
-        die("No room was found matching these options");
-    }
-    $price = $reservation_request->calculate_reservation_price(floatval($room['room_base_price']));
-    $reservation_request->add_reservation($client_id, $room['room_id'], $price);
+    if (!$room) throw new Exception("No Room matches these options.");
+    if (room_overflow($room['room_id'], $reservation_request)) throw new Exception("Too many people in one room.", 5);
 
-    activity_log("Room ReservationRequest", "Client $client_id reserved room number {$room['room_id']} from {$reservation_request->getStart()->format('Y-m-d')} to {$reservation_request->getEnd()->format('Y-m-d')} for {$reservation_request->getNAdults()} adults and {$reservation_request->getNChildren()} children.", $price);
-    /*TODO Redirect to account page*/
+    $price = $reservation_request->calculate_reservation_price($room['room_base_price']);
+    $reservation_request->add_reservation($client_id, $room['room_id'], $price);
+    $reservation_request->log($client_id, $room['room_id'], $price);
 }
 
 ?>
@@ -81,7 +79,7 @@ function book(): void
     <div class="container">
         <div class="links">
                 <span id="icon" class="icon" onclick="showbar()">
-                    <i class='bx bx-menu-alt-left'></i>
+                    <em class='bx bx-menu-alt-left'></em>
                 </span>
             <div class="items" id="items">
                     <span class="container">
@@ -104,14 +102,21 @@ function book(): void
                     </span>
             </div>
             <span id='icon2' class="icon2" onclick="hidebar()">
-                    <i class='bx bx-x'></i>
+                    <em class='bx bx-x'></em>
                 </span>
-            <i class='book' id="book">Book now</i>
+            <em class='book' id="book">Book now</em>
             <ul id="bar">
-                <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
-                <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
-                <li><a href="RateUs"><i class='bx bxs-star'></i> Rate us</a></li>
-                <li><a href="ContactUs"><i class='bx bxl-gmail'></i> Contact us</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><em class='bx bxs-user'></em>
+                        Profile</a>
+                </li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><em class='bx bxs-bed'></em> My
+                        Reservations</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><em class='bx bxs-star'></em> Rate
+                        us</a>
+                </li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><em class='bx bxl-gmail'></em>
+                        Contact
+                        us</a></li>
             </ul>
         </div>
     </div>
@@ -123,13 +128,18 @@ function book(): void
     <div class="container">
         <div class="feat">
             <p><?php
-                if (!isset($_POST['submit'])) die("Form was not submitted correctly");
                 try
                 {
                     book();
+                    echo "Booking successful.";
                 } catch (Exception $e)
                 {
-                    echo $e->getMessage();
+                    echo "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
+                    if ($e->getCode() == 2) echo "<a href='" . FORM_URL . "'>Log in</a>";
+
+                } finally
+                {
+                    echo "<a href='" . FORM_URL . "'>Go back to form</a>";
                 }
                 ?></p>
         </div>
