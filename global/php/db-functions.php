@@ -105,10 +105,7 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
  */
 function active_user_isEmployee(): bool
 {
-    $sql = "SELECT user_type FROM users WHERE user_id = {$_SESSION['active_id']}";
-    $result = run_query($sql);
-    $user = $result->fetch_assoc();
-    if ($user['user_type'] > 1) return true;
+    if ($_SESSION['active_user_type'] > 1) return true;
     return false;
 }
 
