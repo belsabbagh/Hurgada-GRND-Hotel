@@ -160,3 +160,9 @@ function room_overflow(int $room_id, ReservationRequest $reservation_request): b
     if ($numberof_occupants > $room_max_cap) return true;
     return false;
 }
+
+function get_receptionists(): mysqli_result|bool
+{
+    $sql = "SELECT user_id, email, first_name, last_name, national_id_photo, user_pic, receptionist_enabled, receptionist_qc_comment FROM users WHERE user_type = 2";
+    return run_query($sql);
+}

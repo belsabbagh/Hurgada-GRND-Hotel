@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added check for valid login in booking.">
-      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="test-login" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,7 +65,7 @@
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
     "com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected": "true",
-    "last_opened_file_path": "C:/xampp/htdocs/Hurgada-GRND-Hotel/pages/booking",
+    "last_opened_file_path": "C:/xampp/htdocs/Hurgada-GRND-Hotel/pages/receptionists",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "editor.preferences.gutterIcons",
     "vue.rearranger.settings.migration": "true"
@@ -73,6 +76,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\receptionists" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\booking" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
