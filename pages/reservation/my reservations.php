@@ -4,7 +4,6 @@
 <link href="../../global/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="./reservation_css.css" />
    <script src="../../global/Template/template.js"></script>
-    <link href="style.css" rel="stylesheet">
     <script src="functions.js"></script>
     
     
@@ -20,12 +19,7 @@ $connect = new mysqli($server, $username,$password,$dbname ); ?>
 
 
 
-<script>
 
-/*function myFunction() {
-  alert("I am an alert box!");
-}*/
-</script>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,16 +88,17 @@ $connect = new mysqli($server, $username,$password,$dbname ); ?>
 
     
  <div class="features">
-        <div class="container">
+    <div class="container">
+      <div class="feat">
         <table> <tr>
 
     <th> reservation id </th> 
     <th> Room number </th> 
     <th> checked in </th> 
     <th> checked out </th>
-    <th> numberof_adults </th> 
-    <th> numberof_children </th> 
-    <th> extra_bed </th> 
+    <th> numberof adults </th> 
+    <th> numberof children </th> 
+    <th> extra bed </th> 
     <th> edit </th> 
     <th> delete </th> 
     <th > check in/out </th> 
@@ -153,8 +148,8 @@ echo "<td><a href='check_out.php?id=$reservation_id' class ='temp'> check out </
    
         </div>
     </div>
+</div>
     
-
     <!-- End Of Body -->
 
 

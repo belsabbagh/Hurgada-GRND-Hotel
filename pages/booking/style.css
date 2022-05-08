@@ -1,0 +1,79 @@
+div.feat {
+    width: 185%;
+    font-family: "parg", serif;
+}
+
+.submit, button {
+    cursor: pointer;
+    justify-content: center;
+    color: var(--yellow0-color);
+    background: var(--brown4--color);
+    font-size: 20px;
+    user-select: none;
+    padding: 10px;
+    margin: 10px;
+    width: 150px;
+    transition: 0.05s;
+    border-radius: 50px;
+    backdrop-filter: blur(2px);
+}
+
+div.email {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 25px;
+    background: var(--yellow0-color);
+}
+
+h4 {
+    margin-top: 0;
+}
+
+div.dates {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 25px;
+    background: var(--yellow0-color);
+}
+
+div.num-of-occupants {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 25px;
+    background: var(--yellow0-color);
+}
+
+div.room_type {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 20px;
+    background: var(--yellow0-color);
+}
+
+div.view {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 20px;
+    background: var(--yellow0-color);
+}
+
+div.outdoors {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 20px;
+    background: var(--yellow0-color);
+}
+
+div.beds {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 25px;
+    background: var(--yellow0-color);
+}
