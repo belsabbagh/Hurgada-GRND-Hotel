@@ -19,7 +19,7 @@ function db_connect(): mysqli
  * Connects to hotel database, runs the given query, and returns the result
  *
  * @param   string $sql The sql query to run
- * @return  mysqli_result
+ * @return  mysqli_result|bool
  * @author  @Belal-Elsabbagh
  *
  */
@@ -78,3 +78,73 @@ function load_room_views()
     while ($row = mysqli_fetch_assoc($result))
         echo "<input type='radio' name='room_view' id='{$row['room_view_title']}' value='{$row['room_view_id']}'><label for='{$row['room_view_title']}'>{$row['room_view_title']}</label>\n";
 }
+
+/**
+ * Checks availability of room within a certain time period
+ * 
+ * @param int $room_id          The room to be booked
+ * @param DateTime $start_date  The start date of the booking
+ * @param DateTime $end_date    The end date of the booking
+ * @return bool Returns true if room is available, false if room is unavailable
+ *
+ * @author @Belal-Elsabbagh
+ */
+function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date): bool
+{
+    $sql = "SELECT room_no FROM reservations
+            WHERE (( start_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}') 
+            OR (end_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}') 
+            OR (start_date >= '{$start_date->format('Y-m-d')}' AND end_date <= '{$end_date->format('Y-m-d')}'))
+            AND room_no = $room_id";
+    $result = run_query($sql);
+    if($result && $result->num_rows == 0) return true;
+    return false;
+}
+// pop msgs functions
+
+//warning
+function warningmsg ($msg ,$header,$link){
+
+    echo"
+
+    <div class='center' id = 'center'>
+        <div class='content'>
+        <div class='header'>
+        <h2>$header</h2>
+     </div>
+        <p> $msg </p>
+        <div class='line'></div>
+        <form action= '' method = 'post'>
+        <a href= '$link'  class = 'close-btn'> ok </a>
+
+      
+  </form>
+ </div>
+</div>
+    ";
+}
+
+
+//confirm
+function confirmmsg ($msg ,$header){
+
+    echo"
+
+    <div class='center' id = 'center'>
+        <div class='content'>
+        <div class='header'>
+        <h2>$header</h2>
+     </div>
+        <p> $msg </p>
+        <div class='line'></div>
+        <form action= '' method = 'post'>
+
+        <input type ='submit'  class = 'close-btn' name= 'no_btn' value = 'no'> 
+        <input type ='submit'   class = 'confirm-btn' name= 'yes_btn' value = 'yes'>
+  </form>
+ </div>
+</div>
+    ";
+}
+?>
+
