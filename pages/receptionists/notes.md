@@ -5,4 +5,5 @@
     - Edit and delete receptionist.
     - Activate and deactivate receptionist.
     - Leave comment on receptionist.
+    - Promote to Quality control
 3. Deactivated receptionists appear with different table row color.

@@ -12,7 +12,14 @@
 function load_room_types(): void
 {
     $sql = "select * from room_types";
-    $result = run_query($sql);
+    try
+    {
+        $result = run_query($sql);
+    } catch (Exception $e)
+    {
+        echo $e->getMessage();
+        return;
+    }
     while ($row = mysqli_fetch_assoc($result))
         echo "<input class='options' type='radio' name='room_type' id='{$row['room_category']}' value='{$row['type_id']}' onchange='change_max_beds()'><label for='{$row['room_category']}'>{$row['room_category']}</label>\n";
 }
@@ -30,7 +37,14 @@ function load_room_types(): void
 function load_room_views(): void
 {
     $sql = "select * from room_views";
-    $result = run_query($sql);
+    try
+    {
+        $result = run_query($sql);
+    } catch (Exception $e)
+    {
+        echo $e->getMessage();
+        return;
+    }
     while ($row = mysqli_fetch_assoc($result))
         echo "<input class='options' type='radio' name='room_view' id='{$row['room_view_title']}' value='{$row['room_view_id']}'><label for='{$row['room_view_title']}'>{$row['room_view_title']}</label>\n";
 }
@@ -45,7 +59,7 @@ function load_email(): void
 {
     $email_form = '<div class="email">
                     <label for="email">Client E-mail</label>
-                    <input type="text" id="email" name="email" required/>
+                    <input type="email" id="email" name="email" required/>
                    </div>';
     echo $email_form;
 }

@@ -1,6 +1,8 @@
 <?php
 include_once "classes/RoomOptions.php";
 include_once "classes/ReservationRequest.php";
+
+const repository_pages_url = "http://localhost/Hurgada-GRND-Hotel/pages/";
 /**
  * Creates connection to database
  *
@@ -14,7 +16,8 @@ function db_connect(): mysqli
     $password = "";
     $dbname = "hurgada-grnd-hotel";
 
-    return new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname) or throw new mysqli_sql_exception($conn->connect_error, $conn->connect_errno);
+    return $conn;
 }
 
 /**
@@ -22,18 +25,27 @@ function db_connect(): mysqli
  *
  * @author  @Belal-Elsabbagh
  *
+ * @throws mysqli_sql_exception Emits exception if failed to connect or the query wasn't run successfully.
+ *
  * @param string               $sql    The sql query to run
  *
- * @var     mysqli             $conn   The connection object to database
  * @var     mysqli_result|bool $result The result of the query
  *
- * @return  mysqli_result|bool The result of the query
+ * @var     mysqli             $conn   The connection object to database
+ * @return  mysqli_result The result of the query
  *
  */
-function run_query(string $sql): mysqli_result|bool
+function run_query(string $sql): mysqli_result
 {
-    $conn = db_connect();
-    $result = $conn->query($sql) or die("\nRUNTIME ERROR\n" . $conn->error);
+    try
+    {
+        $conn = db_connect();
+    } catch (mysqli_sql_exception $e)
+    {
+        throw new mysqli_sql_exception($e);
+    }
+    $result = $conn->query($sql);
+    if ($result === false) throw new mysqli_sql_exception("Failed to run query.\n$conn->error", $conn->errno);
     $conn->close();
     return $result;
 }
@@ -69,7 +81,13 @@ function activity_log(string $action, string $description, ?float $transaction =
     $sql = "INSERT INTO activity_log
     (owner, actiontype, description, transaction) 
     VALUES({$_SESSION['active_id']}, '$action', '$description', $transaction)";
-    run_query($sql);
+    try
+    {
+        run_query($sql);
+    } catch (Exception $e)
+    {
+        echo $e->getMessage();
+    }
 }
 
 /**
@@ -91,8 +109,15 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
             OR (end_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}') 
             OR (start_date >= '{$start_date->format('Y-m-d')}' AND end_date <= '{$end_date->format('Y-m-d')}'))
             AND room_no = $room_id";
-    $result = run_query($sql);
-    if ($result && $result->num_rows == 0) return true;
+    try
+    {
+        $result = run_query($sql);
+    } catch (Exception $e)
+    {
+        echo $e->getMessage();
+        return false;
+    }
+    if ($result->num_rows == 0) return true;
     return false;
 }
 
@@ -106,7 +131,14 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
 function active_user_isEmployee(): bool
 {
     $sql = "SELECT user_type FROM users WHERE user_id = {$_SESSION['active_id']}";
-    $result = run_query($sql);
+    try
+    {
+        $result = run_query($sql);
+    } catch (Exception $e)
+    {
+        echo $e->getMessage();
+        return false;
+    }
     $user = $result->fetch_assoc();
     if ($user['user_type'] > 1) return true;
     return false;
@@ -127,7 +159,14 @@ function active_user_isEmployee(): bool
 function get_user_id_from_email($email): ?int
 {
     $sql = "SELECT user_id FROM users WHERE email = '$email'";
-    $result = run_query($sql);
+    try
+    {
+        $result = run_query($sql);
+    } catch (Exception $e)
+    {
+        echo $e->getMessage();
+        return null;
+    }
     if (empty_mysqli_result($result)) return null;
     $user = $result->fetch_assoc();
     return $user['user_id'];
@@ -147,12 +186,27 @@ function get_room_max_occupants_by_room_id(int $room_id): ?int
     $sql = "SELECT room_max_cap FROM room_types, rooms
             WHERE rooms.room_type_id = room_types.type_id 
             AND rooms.room_id = $room_id;";
-    $result = run_query($sql);
+    try
+    {
+        $result = run_query($sql);
+    } catch (Exception $e)
+    {
+        echo $e->getMessage();
+        return null;
+    }
     if (empty_mysqli_result($result)) return null;
     $room = $result->fetch_assoc();
     return $room['room_max_cap'];
 }
 
+/**
+ * Checks if the requested reservation exceeds maximum room capacity
+ *
+ * @param int                $room_id             The room number to be checked
+ * @param ReservationRequest $reservation_request The given reservation request to check
+ *
+ * @return bool True if the requested reservation exceeds maximum room capacity. False otherwise
+ */
 function room_overflow(int $room_id, ReservationRequest $reservation_request): bool
 {
     $room_max_cap = get_room_max_occupants_by_room_id($room_id);
@@ -161,8 +215,86 @@ function room_overflow(int $room_id, ReservationRequest $reservation_request): b
     return false;
 }
 
-function get_receptionists(): mysqli_result|bool
+/**
+ * Gets all the receptionists in the database
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @throws Exception If the function was not able to get the receptionists
+ * @return mysqli_result
+ */
+function get_receptionists(): mysqli_result
 {
     $sql = "SELECT user_id, email, first_name, last_name, national_id_photo, user_pic, receptionist_enabled, receptionist_qc_comment FROM users WHERE user_type = 2";
-    return run_query($sql);
+    try
+    {
+        $result = run_query($sql);
+    } catch (Exception $e)
+    {
+        throw new LogicException("Unable to get receptionists", 333, $e);
+    }
+    return $result;
+}
+
+/**
+ * Gets user from database by their id
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @param int $id The user id.
+ *
+ * @return array|null Returns an associative array of the found user. Returns null otherwise.
+ */
+function get_user_by_id(int $id): ?array
+{
+    try
+    {
+        $result = run_query("SELECT * FROM users WHERE user_id = $id;");
+    } catch (Exception)
+    {
+        return null;
+    }
+    if (empty_mysqli_result($result)) return null;
+    return $result->fetch_assoc();
+}
+
+/**
+ * Constructs header bars respective to the active user type.
+ *
+ * @author @Belal-Elsabbagh
+ * @return string The html structure of the items.
+ */
+function load_header_bar(): string
+{
+    /**
+     * Generates header bar item with a specific title and link.
+     *
+     * @param string $title The title of the item.
+     * @param string $link  The link that the item takes the user to.
+     *
+     * @return string The html content of the item.
+     */
+    $generate_item = function (string $title, string $link): string
+    {
+        return "<span class='container'><a class='header-link' href='$link'>$title</a></span>";
+    };
+    $home = $generate_item("Home", repository_pages_url . "home");
+    $profile = $generate_item("Profile", repository_pages_url . "profile");
+    $reservations = $generate_item("Reservations", repository_pages_url . "reservations");
+    $my_reservations = $generate_item("My Reservations", repository_pages_url . "reservations");
+    $rooms = $generate_item("Rooms", repository_pages_url . "rooms");
+    $ratings = $generate_item("Ratings", repository_pages_url . "ratings");
+
+    return match ($_SESSION['active_user_type'])
+    {
+        3 => $home . $profile . $my_reservations . '<span class="container"><a class="header-link" href="">About</a></span>',
+        2 => $home . $profile . $reservations . $rooms,
+        1 => $home . $profile . $reservations . $rooms . $ratings,
+        default => $home . '
+    <span class="container"><a class="header-link" href="">Rooms</a></span>
+    <span class="container"><a class="header-link" href="">Dining</a></span>
+    <span class="container"><a class="header-link" href="">Experience</a></span>
+    <span class="container"><a class="header-link" href="">Location</a></span>
+    <span class="container"><a class="header-link" href="">About</a></span>',
+    };
 }

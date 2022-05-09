@@ -120,7 +120,13 @@ class ReservationRequest
 
         $book_query = "INSERT into reservations
         values(NULL, $client_id, $room_no, '$start_date_str', '$end_date_str', $this->nAdults, $this->nChildren, $price, 0);";
-        run_query($book_query);
+        try
+        {
+            run_query($book_query);
+        } catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
     }
 
     /**
@@ -150,7 +156,14 @@ class ReservationRequest
         AND occupied = 0;";
 
 // Check if a room with these options exist
-        $result_rooms = run_query($get_rooms);
+        try
+        {
+            $result_rooms = run_query($get_rooms);
+        } catch (Exception $e)
+        {
+            echo $e->getMessage();
+            return null;
+        }
         return $result_rooms->fetch_assoc();
     }
 

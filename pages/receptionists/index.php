@@ -7,10 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../global/css/style.css">
     <link rel="stylesheet" href="style.css">
-
-    <?php include "../../global/php/db-functions.php";
-    include "form_loader.php"; ?>
-
     <title>Booking</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -76,41 +72,20 @@
 <!-- Body -->
 <div class="features">
     <div class="container">
-        <div class="feat">
-            <form action="book.php" method="post">
-                <?php if (active_user_isEmployee()) load_email(); ?>
-                <div class="dates">
-                    <label for="checkin">Check in date</label>
-                    <input type="date" id="checkin" name="checkin" required/>
-                    <label for="checkout">Check out date</label>
-                    <input type="date" id="checkout" name="checkout" required/>
-                </div>
-                <div class="num-of-occupants">
-                    <label for="adults">Number of adults</label>
-                    <input type="number" id="adults" name="adults" min="1" max="4" value="1" required/>
-                    <label for="children">Number of children</label>
-                    <input type="number" id="children" name="children" min="0" max="8" value="0" required/>
-                </div>
-                <div class="options">
-                    <div class="room_type">
-                        <h4 class="prompt" style="margin-top: 0;">Choose a room type</h4>
-                        <?php load_room_types(); ?>
-                    </div>
-                    <div class="view">
-                        <h4 class="prompt" style="margin-top: 0;">Choose a view from the room</h4>
-                        <?php load_room_views(); ?>
-                    </div>
-                    <div class="outdoors">
-                        <h4 class="prompt" style="margin-top: 0;">Choose an outdoors setting</h4>
-                        <input class="options" id="outdoors_balcony" name="outdoors" type="radio" value="0">
-                        <label for="outdoors_balcony">Balcony</label>
-                        <input class="options" id="outdoors_patio" name="outdoors" type="radio" value="1">
-                        <label for="outdoors_patio">Patio</label>
-                    </div>
-                </div>
-                <input type="submit" class="submit" id="submit" name="submit">
-            </form>
-            <button id="clear_filters" onclick="clear_filters()">Clear all options</button>
+        <div class="feat" style="margin: auto;">
+            <?php
+            include_once "view_loader.php";
+            try
+            {
+                $data = get_receptionists();
+            } catch (Exception $e)
+            {
+                echo "<p>" . $e->getMessage() . "</p>";
+                return;
+            }
+            echo construct_receptionists_table($data);
+            ?>
+            <a class="view-button" href="http://localhost/Hurgada-GRND-Hotel/pages/receptionists/view-receptionist.php"><span>Add Receptionist</span></a>
         </div>
     </div>
 </div>

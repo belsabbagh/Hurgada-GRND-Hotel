@@ -61,14 +61,14 @@
                 </span>
             <em class='book' id="book">Book now</em>
             <ul id="bar">
-                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><i class='bx bxs-user'></i> Profile</a>
-                </li>
-                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><i class='bx bxs-bed'></i> My
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><em class='bx bxs-user'></em>
+                        Profile</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><em class='bx bxs-bed'></em> My
                         Reservations</a></li>
-                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><i class='bx bxs-star'></i> Rate us</a>
-                </li>
-                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><i class='bx bxl-gmail'></i> Contact
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><em class='bx bxs-star'></em> Rate
                         us</a></li>
+                <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><em class='bx bxl-gmail'></em>
+                        Contact us</a></li>
             </ul>
         </div>
     </div>

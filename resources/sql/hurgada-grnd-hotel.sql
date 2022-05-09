@@ -277,7 +277,7 @@ ALTER TABLE `activity_log`
 -- Indexes for table `dependants`
 --
 ALTER TABLE `dependants`
-    ADD PRIMARY KEY (`dependant_id`),
+    ADD PRIMARY KEY (dependent_id),
     ADD KEY `parent_id` (`parent_id`);
 
 --
@@ -349,7 +349,7 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `dependants`
 --
 ALTER TABLE `dependants`
-    MODIFY `dependant_id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY dependent_id int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reservations`

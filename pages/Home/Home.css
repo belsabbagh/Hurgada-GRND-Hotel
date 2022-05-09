@@ -88,7 +88,7 @@ body{
     z-index: 1;
     position: fixed;
     width:100%
-    
+
 }
 .background{
     background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.15)) , url('../../resources/img/home page/hotel1.jpg');
@@ -360,10 +360,11 @@ body{
     padding: 5px;
     user-select: none;
 }
-.rooms .slides .content img{
-    width:60%
+.rooms .slides .content img {
+    width: 60%
 }
-.rooms .slides .content h3{
+
+.rooms .slides .content h3 {
     position: relative;
     left: 480px;
     top: -200px;
@@ -373,53 +374,64 @@ body{
     color: #362915;
     user-select: none;
 }
-.rooms .slider input{
-     display: none;
- }
-.rooms .dots{
+
+.rooms .slider input {
+    display: none;
+}
+
+.rooms .dots {
     display: flex;
     justify-content: center;
     margin: 5px;
     user-select: none;
 }
- .rooms .dots label{
-     height: 20px;
-     width: 20px;
-     border-radius: 50%;
-     cursor: pointer;
-     transition: all 0.15 ease;
-     margin: 5px;
-     background: #d3c4b457;
-     user-select: none;
- }
-#img1:checked ~ .slides .inner{
+
+.rooms .dots label {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.15 ease;
+    margin: 5px;
+    background: #d3c4b457;
+    user-select: none;
+}
+
+#img1:checked ~ .slides .inner {
     margin-left: 0;
 }
-#img2:checked ~ .slides .inner{
+
+#img2:checked ~ .slides .inner {
     margin-left: -100%;
 }
-#img3:checked ~ .slides .inner{
+
+#img3:checked ~ .slides .inner {
     margin-left: -200%;
 }
-#img4:checked ~ .slides .inner{
+
+#img4:checked ~ .slides .inner {
     margin-left: -300%;
 }
+
 #img1:checked ~ .dots label:nth-of-type(1),
 #img2:checked ~ .dots label:nth-of-type(2),
 #img3:checked ~ .dots label:nth-of-type(3),
-#img4:checked ~ .dots label:nth-of-type(4){
+#img4:checked ~ .dots label:nth-of-type(4) {
     background: var(--brown2-color);
     user-select: none;
 }
-.Dinning{
+
+.Dinning {
     position: relative;
     margin-top: 100px;
     height: 400px;
 }
-.Dinning .container{
+
+.Dinning .container {
     position: relative;
 }
-.Dinning .container .txt{
+
+.Dinning .container .txt {
     position: absolute;
     user-select: none;
     left: 700px;
@@ -575,40 +587,45 @@ body{
 ::-webkit-scrollbar {
     width: 5px;
     z-index: 1;
-  }
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     background: var(--yellow0-color);
     display: none;
-  }
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background: var(--grey-color);
     border-radius: 50px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar-thumb:hover {
     background: var(--blue4-color);
-  }
+}
 
 
-  /* ________________________________________________________________________________________________ */
+/* ________________________________________________________________________________________________ */
 
 
-  /* Animations */
-  .reveal{
+/* Animations */
+.reveal {
     transform: translateY(150px);
     opacity: 0;
     transition: 2s all ease;
-  }
-  .reveal.active{
+}
+
+.reveal.active {
     transform: translateY(0);
     opacity: 1;
-  }
+}
 
-  .show{
+.show {
     transform: translateY(150px);
     opacity: 0;
     transition: 1.5s all ease;
-  }
-  .show.active{
+}
+
+.show.active {
     transform: translateY(0);
     opacity: 1;
-  }
+}
