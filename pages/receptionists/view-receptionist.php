@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../global/css/style.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../global/css/style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Booking</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
-    <script src="../../global/template/template.js"></script>
+    <script src="../../../global/template/template.js"></script>
     <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="../../global/template/normalize.css"/>
+    <link rel="stylesheet" href="../../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="../../global/template/template.css"/>
+    <link rel="stylesheet" href="../../../global/template/template.css"/>
     <script>
         const params = new URLSearchParams(window.location.search);
         if (params.has("err")) alert(params.get('err'));
@@ -73,7 +73,13 @@
 <div class="features">
     <div class="container">
         <div class="feat">
+            <form>
+                
+            </form>
             <p><?php
+                include_once "../view_loader.php";
+                if(array_key_exists('id', $_GET)) echo construct_receptionist_view(get_receptionist_by_id($_GET["id"]));
+                else echo construct_new_receptionist_form();
 
                 ?></p>
         </div>
