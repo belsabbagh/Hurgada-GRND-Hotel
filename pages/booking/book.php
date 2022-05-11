@@ -1,4 +1,7 @@
 <?php
+
+use Couchbase\BadInputException;
+
 include_once "../../global/php/db-functions.php";
 const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
 
@@ -14,7 +17,7 @@ const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
  */
 function book(): void
 {
-    if (!isset($_POST['submit'])) throw new Exception("Form was not submitted correctly", 1);
+    if (!isset($_POST['submit'])) throw new BadInputException("Form was not submitted correctly", 1);
     $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : ($_SESSION['active_id'] ?? null);
     if (is_null($client_id)) throw new Exception("No valid login or client.", 2);
 
@@ -25,7 +28,7 @@ function book(): void
         $end_date = new DateTime($_POST['checkout']);
     } catch (Exception $e)
     {
-        throw new Exception("Failed to process dates", 3, $e);
+        throw new BadInputException("Failed to process dates", 3, $e);
     }
 
     $reservation_request = new ReservationRequest(
@@ -40,14 +43,19 @@ function book(): void
         )
     );
 
-    if ($reservation_request->bad_date()) throw new Exception("Invalid Date Chosen.", 4);
+    if ($reservation_request->bad_date()) throw new LogicException("Invalid Date Chosen.", 4);
 
     $room = $reservation_request->get_available_room();
-    if (!$room) throw new Exception("No Room matches these options.");
-    if (room_overflow($room['room_id'], $reservation_request)) throw new Exception("Too many people in one room.", 5);
-
+    if (!$room) throw new LogicException("No Room matches these options.");
+    if (room_overflow($room['room_id'], $reservation_request)) throw new LogicException("Too many people in one room.", 5);
     $price = $reservation_request->calculate_reservation_price($room['room_base_price']);
-    $reservation_request->add_reservation($client_id, $room['room_id'], $price);
+    try
+    {
+        $reservation_request->add_reservation($client_id, $room['room_id'], $price);
+    } catch (Exception $e)
+    {
+        throw new RuntimeException("Failed to create reservation.", 666, $e);
+    }
     $reservation_request->log($client_id, $room['room_id'], $price);
 }
 

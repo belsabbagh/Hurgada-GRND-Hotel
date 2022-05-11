@@ -106,9 +106,12 @@ class ReservationRequest
      *
      * @author @Belal-Elsabbagh
      *
-     * @param int   $client_id The client who wants to reserve the room
+     * @throws Exception Emits exception in case of error
+     *
      * @param int   $room_no   The room number to be reserved
      * @param float $price     The price of the room
+     *
+     * @param int   $client_id The client who wants to reserve the room
      *
      * @return void
      */
@@ -125,7 +128,7 @@ class ReservationRequest
             run_query($book_query);
         } catch (Exception $e)
         {
-            echo $e->getMessage();
+            throw new Exception('Failed to create reservation', $e->getCode(), $e);
         }
     }
 

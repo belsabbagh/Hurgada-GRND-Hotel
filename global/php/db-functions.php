@@ -2,11 +2,14 @@
 include_once "classes/RoomOptions.php";
 include_once "classes/ReservationRequest.php";
 
-const repository_pages_url = "http://localhost/Hurgada-GRND-Hotel/pages/";
+const REPOSITORY_PAGES_URL = "http://localhost/Hurgada-GRND-Hotel/pages/";
+
 /**
  * Creates connection to database
  *
  * @author  @Belal-Elsabbagh
+ *
+ * @throws RuntimeException Emits exception in case of connection error.
  * @return  mysqli  Connection object to the database
  */
 function db_connect(): mysqli
@@ -16,7 +19,11 @@ function db_connect(): mysqli
     $password = "";
     $dbname = "hurgada-grnd-hotel";
 
-    $conn = new mysqli($servername, $username, $password, $dbname) or throw new mysqli_sql_exception($conn->connect_error, $conn->connect_errno);
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_errno)
+    {
+        throw new RuntimeException('mysqli connection error: ' . $conn->connect_error, $conn->connect_errno);
+    }
     return $conn;
 }
 
@@ -25,24 +32,21 @@ function db_connect(): mysqli
  *
  * @author  @Belal-Elsabbagh
  *
- * @throws mysqli_sql_exception Emits exception if failed to connect or the query wasn't run successfully.
+ * @throws RuntimeException Thrown if connection was unsuccessful.
+ * @throws mysqli_sql_exception Thrown if the query wasn't run successfully.
  *
- * @param string               $sql    The sql query to run
+ * @param string $sql The sql query to run
  *
- * @var     mysqli_result|bool $result The result of the query
- *
- * @var     mysqli             $conn   The connection object to database
- * @return  mysqli_result The result of the query
- *
+ * @return mysqli_result|bool The result of the query
  */
-function run_query(string $sql): mysqli_result
+function run_query(string $sql): mysqli_result|bool
 {
     try
     {
         $conn = db_connect();
-    } catch (mysqli_sql_exception $e)
+    } catch (RuntimeException $e)
     {
-        throw new mysqli_sql_exception($e);
+        throw new RuntimeException($e);
     }
     $result = $conn->query($sql);
     if ($result === false) throw new mysqli_sql_exception("Failed to run query.\n$conn->error", $conn->errno);
@@ -104,10 +108,13 @@ function activity_log(string $action, string $description, ?float $transaction =
  */
 function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date): bool
 {
+    $date_format = "Y-m-d";
+    $start_date_str = $start_date->format($date_format);
+    $end_date_str = $end_date->format($date_format);
     $sql = "SELECT room_no FROM reservations
-            WHERE ((start_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}') 
-            OR (end_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}') 
-            OR (start_date >= '{$start_date->format('Y-m-d')}' AND end_date <= '{$end_date->format('Y-m-d')}'))
+            WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str') 
+            OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
+            OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str'))
             AND room_no = $room_id";
     try
     {
@@ -262,6 +269,7 @@ function get_user_by_id(int $id): ?array
  * Constructs header bars respective to the active user type.
  *
  * @author @Belal-Elsabbagh
+ * @var Closure $generate_item A function that creates an item in the header bar.
  * @return string The html structure of the items.
  */
 function load_header_bar(): string
@@ -278,12 +286,12 @@ function load_header_bar(): string
     {
         return "<span class='container'><a class='header-link' href='$link'>$title</a></span>";
     };
-    $home = $generate_item("Home", repository_pages_url . "home");
-    $profile = $generate_item("Profile", repository_pages_url . "profile");
-    $reservations = $generate_item("Reservations", repository_pages_url . "reservations");
-    $my_reservations = $generate_item("My Reservations", repository_pages_url . "reservations");
-    $rooms = $generate_item("Rooms", repository_pages_url . "rooms");
-    $ratings = $generate_item("Ratings", repository_pages_url . "ratings");
+    $home = $generate_item("Home", REPOSITORY_PAGES_URL . "home");
+    $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile");
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations");
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations");
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
+    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
 
     return match ($_SESSION['active_user_type'])
     {
@@ -291,10 +299,10 @@ function load_header_bar(): string
         2 => $home . $profile . $reservations . $rooms,
         1 => $home . $profile . $reservations . $rooms . $ratings,
         default => $home . '
-    <span class="container"><a class="header-link" href="">Rooms</a></span>
-    <span class="container"><a class="header-link" href="">Dining</a></span>
-    <span class="container"><a class="header-link" href="">Experience</a></span>
-    <span class="container"><a class="header-link" href="">Location</a></span>
-    <span class="container"><a class="header-link" href="">About</a></span>',
+        <span class="container"><a class="header-link" href="">Rooms</a></span>
+        <span class="container"><a class="header-link" href="">Dining</a></span>
+        <span class="container"><a class="header-link" href="">Experience</a></span>
+        <span class="container"><a class="header-link" href="">Location</a></span>
+        <span class="container"><a class="header-link" href="">About</a></span>'
     };
 }

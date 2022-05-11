@@ -391,7 +391,7 @@ body{
     width: 20px;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.15 ease;
+    transition: all 0.15s ease;
     margin: 5px;
     background: #d3c4b457;
     user-select: none;

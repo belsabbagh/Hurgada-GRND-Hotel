@@ -75,17 +75,21 @@
         <div class="feat" style="margin: auto;">
             <?php
             include_once "view_loader.php";
+            if (array_key_exists('id', $_GET))
+            {
+                echo construct_receptionist_view(get_user_by_id($_GET["id"]), array_key_exists('editable', $_GET));
+                return;
+            }
             try
             {
                 $data = get_receptionists();
+                echo construct_receptionists_table($data);
+                echo "<a class='view-button' href='http://localhost/Hurgada-GRND-Hotel/pages/receptionists/new-receptionist.php'>Add New Receptionist</a>";
             } catch (Exception $e)
             {
                 echo "<p>" . $e->getMessage() . "</p>";
-                return;
             }
-            echo construct_receptionists_table($data);
             ?>
-            <a class="view-button" href="http://localhost/Hurgada-GRND-Hotel/pages/receptionists/view-receptionist.php"><span>Add Receptionist</span></a>
         </div>
     </div>
 </div>
