@@ -3,27 +3,6 @@ const pfp_directory_path = "../../resources/img/user_pics/";
 const id_pic_directory_path = "../../resources/img/id_pics/";
 include_once "../../global/php/db-functions.php";
 include_once 'view_loader.php';
-/**
- * Takes a submitted picture, renames it to the user's email, and moves it to the given directory to be stored.
- *
- * @author @Belal-Elsabbagh
- *
- * @param array  $pic           The submitted picture
- * @param string $new_filename  The desired file name.
- * @param string $directory     The folder where the file will go
- *
- * @var string   $pic_extension The picture's extension.
- * @var string   $pic_filename  The full new image file name.
- * @return string The full new image file name.
- */
-function insert_pic_into_directory(array $pic, string $new_filename, string $directory): string
-{
-    $pic_info = pathinfo($pic['name']);
-    $pic_extension = $pic_info['extension'];
-    $pic_filename = $new_filename . '.' . $pic_extension;
-    move_uploaded_file($pic['tmp_name'], $directory . $pic_filename);
-    return $pic_filename;
-}
 
 /**
  * @author @Belal-Elsabbagh
@@ -59,5 +38,5 @@ try
     $result = '<p>' . $e->getMessage() . '</p>';
 } finally
 {
-    echo construct_template($result);
+    echo construct_template("Add Receptionist", $result);
 }

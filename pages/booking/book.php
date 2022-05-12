@@ -1,7 +1,7 @@
 <?php
 include_once "../../global/php/db-functions.php";
 const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
-
+const LOGIN_ERRNO = 313;
 /**
  * Runs booking from form.php
  *
@@ -16,7 +16,7 @@ function book(): void
 {
     if (!isset($_POST['submit'])) throw new RuntimeException("Form was not submitted correctly", 1);
     $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : ($_SESSION['active_id'] ?? null);
-    if (is_null($client_id)) throw new Exception("No valid login or client.", 2);
+    if (is_null($client_id)) throw new Exception("No valid login or client.", LOGIN_ERRNO);
 
     // Gather data from POST and parse into correct data type
     try
@@ -63,10 +63,10 @@ try
 } catch (Exception $e)
 {
     $content = "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
-    if ($e->getCode() == 2) $content .= "<a href='" . FORM_URL . "'>Log in</a>";
+    if ($e->getCode() == LOGIN_ERRNO) $content .= "<a href='" . FORM_URL . "'>Log in</a>";
 
 } finally
 {
     $content .= "<a href='" . FORM_URL . "'>Go back to form</a>";
 }
-echo construct_template($content);
+echo construct_template("Edit receptionist", $content);

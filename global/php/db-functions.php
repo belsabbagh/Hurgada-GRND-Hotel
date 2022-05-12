@@ -308,15 +308,38 @@ function load_header_bar(): string
 }
 
 /**
+ * Takes a submitted picture, renames it to the user's email, and moves it to the given directory to be stored.
+ *
+ * @author @Belal-Elsabbagh
+ *
+ * @param array  $picture_file  The submitted picture
+ * @param string $new_filename  The desired file name.
+ * @param string $directory     The folder where the file will go
+ *
+ * @var string   $pic_extension The picture's extension.
+ * @var string   $pic_filename  The full new image file name.
+ * @return string The full new image file name.
+ */
+function insert_pic_into_directory(array $picture_file, string $new_filename, string $directory): string
+{
+    $pic_info = pathinfo($picture_file['name']);
+    $pic_extension = $pic_info['extension'];
+    $pic_filename = $new_filename . '.' . $pic_extension;
+    move_uploaded_file($picture_file['tmp_name'], $directory . $pic_filename);
+    return $pic_filename;
+}
+
+/**
  * Constructs the page template with the custom html content given to it.
  *
  * @author @Belal-Elsabbagh
  *
+ * @param string $page_title   The page title
  * @param string $html_content The html data to be presented within the template
  *
  * @return string The complete html page.
  */
-function construct_template(string $html_content): string
+function construct_template(string $page_title, string $html_content): string
 {
     return "<!DOCTYPE html>
 <html lang='en'>
@@ -327,7 +350,7 @@ function construct_template(string $html_content): string
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' href='../../global/css/style.css'>
     <link rel='stylesheet' href='style.css'>
-    <title>Booking</title>
+    <title>$page_title</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
@@ -413,4 +436,15 @@ function construct_template(string $html_content): string
 </body>
 
 </html>";
+}
+
+/**
+ * @param string $str1 The first string
+ * @param string $str2 The second string
+ *
+ * @return bool True if the strings are equal. False otherwise
+ */
+function equal_strings(string $str1, string $str2): bool
+{
+    return strcmp($str1, $str2) == 0;
 }

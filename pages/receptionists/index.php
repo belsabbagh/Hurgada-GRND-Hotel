@@ -5,7 +5,7 @@ include_once "../../global/php/db-functions.php";
 if (array_key_exists('id', $_GET))
 {
     $content = construct_receptionist_view(get_user_by_id($_GET["id"]), array_key_exists('editable', $_GET));
-    echo construct_template($content);
+    echo construct_template("View Receptionist", $content);
     return;
 }
 try
@@ -16,3 +16,4 @@ try
 {
     $content = "<p>" . $e->getMessage() . "</p>";
 }
+echo construct_template("All Receptionists", $content);

@@ -49,12 +49,13 @@ function construct_receptionist_table_row(array $receptionist): string
  */
 function construct_receptionist_view(array $receptionist, bool $editable = false): string
 {
-    $disabled = $editable ? 'disabled' : "";
+    $disabled = $editable ? '' : "disabled";
     $id_pic = id_pics_dir_path . $receptionist['national_id_photo'];
     $pfp = pfp_dir_path . $receptionist['user_pic'];
     $directory_url = directory_url;
-    $save = $editable ? "<a class='view-button' href='$directory_url/edit-receptionist.php'>Save</a>" : "";
+    $save = $editable ? "<button type='submit' value='submit' name='submit' id='submit'>Save</button>" : "";
     $delete_OR_edit = $editable ? "<a class='view-button' href='$directory_url/delete-receptionist.php'>Delete</a>" : "<a class='view-button' href='$directory_url/index.php?id={$receptionist['user_id']}&editable'>Edit</a>";
+    $checked = ($receptionist['receptionist_enabled'] == 1) ? "checked" : "";
     $pics = $editable ? "
         <div>
             <label for='user_pic'>Select profile picture:</label>
@@ -97,11 +98,11 @@ function construct_receptionist_view(array $receptionist, bool $editable = false
         </select>
         </div>
         <div>
-            <label for='enabled'>Enabled:</label>
-            <input type='checkbox' name='enabled' id='enabled' $disabled/>
+            <label for='receptionist_enabled'>Enabled:</label>
+            <input type='checkbox' name='receptionist_enabled' id='receptionist_enabled' value='1' $checked $disabled/>
             <br>
-            <label for='qc_comment'>Quality Control Comment:</label><br>
-            <textarea name='qc_comment' id='qc_comment' rows='6' cols='30' placeholder='Enter comment' style='resize: none;' readonly/>{$receptionist['receptionist_qc_comment']}</textarea>
+            <label for='receptionist_qc_comment'>Quality Control Comment:</label><br>
+            <textarea name='receptionist_qc_comment' id='receptionist_qc_comment' rows='6' cols='30' placeholder='Enter comment' style='resize: none;' readonly/>{$receptionist['receptionist_qc_comment']}</textarea>
         </div>
         $save
     </form>
