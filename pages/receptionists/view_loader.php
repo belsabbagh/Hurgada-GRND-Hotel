@@ -58,12 +58,12 @@ function construct_receptionist_view(array $receptionist, bool $editable = false
     $pics = $editable ? "
         <div>
             <label for='user_pic'>Select profile picture:</label>
-            <input type='file' name='user_pic' accept='image/png, image/gif, image/jpeg' />
+            <input type='file' name='user_pic' id='user_pic' accept='image/png, image/gif, image/jpeg' />
         </div>
 
         <div>
             <label for='national_id_photo'>Upload photo of national ID:</label>
-            <input type='file' name='national_id_photo' accept='image/png, image/gif, image/jpeg' />
+            <input type='file' name='national_id_photo' id='national_id_photo' accept='image/png, image/gif, image/jpeg' />
         </div>"
         :
         "<div>
@@ -106,7 +106,6 @@ function construct_receptionist_view(array $receptionist, bool $editable = false
         $save
     </form>
     $delete_OR_edit";
-    define("READONLY_INSTANCES", substr_count($html, 'readonly'));
     if ($editable) return str_replace('readonly', "", $html);
     return $html;
 }

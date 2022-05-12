@@ -22,14 +22,6 @@ class ReservationRequest
     }
 
     /**
-     * @return RoomOptions
-     */
-    public function getRoomOptions(): RoomOptions
-    {
-        return $this->room_options;
-    }
-
-    /**
      * @return int
      */
     public function getNAdults(): int
@@ -47,22 +39,6 @@ class ReservationRequest
 
 
     /**
-     * @return DateTime
-     */
-    public function getStart(): DateTime
-    {
-        return $this->start;
-    }
-
-    /**
-     * @return DateTime
-     */
-    public function getEnd(): DateTime
-    {
-        return $this->end;
-    }
-
-    /**
      * Checks the constraints on reservation dates
      *
      * @author @Belal-Elsabbagh
@@ -75,18 +51,6 @@ class ReservationRequest
         return $this->start > $this->end || $this->start < $today || $this->end < $today;
     }
 
-
-    /**
-     * Gets the difference between two dates in days
-     *
-     * @author     @Belal-Elsabbagh
-     * @return  int  The difference in days
-     * @deprecated Using a function in DateTime now
-     */
-    public function get_numberof_days_between_dates(): int
-    {
-        return (int)round((strtotime($this->start->format('Y-m-d')) - strtotime($this->end->format('Y-m-d'))) / (60 * 60 * 24));
-    }
 
     /**
      * Calculates reservation price
