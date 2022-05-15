@@ -22,14 +22,6 @@ class ReservationRequest
     }
 
     /**
-     * @return RoomOptions
-     */
-    public function getRoomOptions(): RoomOptions
-    {
-        return $this->room_options;
-    }
-
-    /**
      * @return int
      */
     public function getNAdults(): int
@@ -47,22 +39,6 @@ class ReservationRequest
 
 
     /**
-     * @return DateTime
-     */
-    public function getStart(): DateTime
-    {
-        return $this->start;
-    }
-
-    /**
-     * @return DateTime
-     */
-    public function getEnd(): DateTime
-    {
-        return $this->end;
-    }
-
-    /**
      * Checks the constraints on reservation dates
      *
      * @author @Belal-Elsabbagh
@@ -75,18 +51,6 @@ class ReservationRequest
         return $this->start > $this->end || $this->start < $today || $this->end < $today;
     }
 
-
-    /**
-     * Gets the difference between two dates in days
-     *
-     * @author     @Belal-Elsabbagh
-     * @return  int  The difference in days
-     * @deprecated Using a function in DateTime now
-     */
-    public function get_numberof_days_between_dates(): int
-    {
-        return (int)round((strtotime($this->start->format('Y-m-d')) - strtotime($this->end->format('Y-m-d'))) / (60 * 60 * 24));
-    }
 
     /**
      * Calculates reservation price
@@ -106,9 +70,12 @@ class ReservationRequest
      *
      * @author @Belal-Elsabbagh
      *
-     * @param int   $client_id The client who wants to reserve the room
+     * @throws Exception Emits exception in case of error
+     *
      * @param int   $room_no   The room number to be reserved
      * @param float $price     The price of the room
+     *
+     * @param int   $client_id The client who wants to reserve the room
      *
      * @return void
      */
@@ -120,7 +87,13 @@ class ReservationRequest
 
         $book_query = "INSERT into reservations
         values(NULL, $client_id, $room_no, '$start_date_str', '$end_date_str', $this->nAdults, $this->nChildren, $price, 0);";
-        run_query($book_query);
+        try
+        {
+            run_query($book_query);
+        } catch (Exception $e)
+        {
+            throw new Exception('Failed to create reservation', $e->getCode(), $e);
+        }
     }
 
     /**
@@ -150,7 +123,14 @@ class ReservationRequest
         AND occupied = 0;";
 
 // Check if a room with these options exist
-        $result_rooms = run_query($get_rooms);
+        try
+        {
+            $result_rooms = run_query($get_rooms);
+        } catch (Exception $e)
+        {
+            echo $e->getMessage();
+            return null;
+        }
         return $result_rooms->fetch_assoc();
     }
 
