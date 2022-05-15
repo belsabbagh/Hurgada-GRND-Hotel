@@ -160,3 +160,12 @@ function room_overflow(int $room_id, ReservationRequest $reservation_request): b
     if ($numberof_occupants > $room_max_cap) return true;
     return false;
 }
+/**
+ * Checks if post contains data.
+ * @author @Belal-Elsabbagh
+ * @return bool True if post contains data, false otherwise.
+ */
+function post_data_exists(): bool
+{
+    return ($_SERVER['REQUEST_METHOD'] == 'POST');
+}
