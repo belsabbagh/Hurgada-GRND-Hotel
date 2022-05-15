@@ -104,7 +104,7 @@
     <div class="features">
         <div class="container">
             <div class="feat">
-                <form action="SignUp.php" style="text-align:center;"> <!--to center the form
+                <form action="SignUp.php" method="post" enctype='multipart/form-data' style="text-align:center;"> <!--to center the form
                         "border:1px solid #ccc" for border -->
                             <div class="container">
                               <h1>Sign Up</h1>
@@ -127,12 +127,12 @@
                                 <label for='last_name'>Last Name:</label>
                                 <input type='text' name='last_name' required/>
                             </div>
-                                                
+
                               <label for="email"><b>Email</b></label>
                               <input type="email" class="form-control" placeholder="enter your Email" name="email" required>
                           
-                              <label for="psw"><b>Password</b></label>
-                              <input type="password" placeholder="enter your Password" name="psw" required>
+                              <label for="password"><b>Password</b></label>
+                              <input type="password" placeholder="enter your Password" name="password" required>
                           
                               <label for="psw-repeat"><b>Repeat Password</b></label>
                               <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
@@ -145,7 +145,7 @@
                           
                               <div class="clearfix">
                                 <button type="button" class="cancelbtn">Cancel</button>
-                                <button type="submit" class="signupbtn">Sign Up</button>
+                                <button type="submit" class="signupbtn" formmethod="post">Sign Up</button>
                               </div>
                             </div>
                           </form>
