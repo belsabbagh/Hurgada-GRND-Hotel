@@ -25,11 +25,11 @@ function construct_edit_query_from_POST(): string
  */
 function edit_receptionist(): void
 {
-    if (!($_SERVER['REQUEST_METHOD'] == 'POST'))
+    if (!post_data_exists())
         throw new RuntimeException("Form was not submitted correctly", 1);
 
-    if (fileUploaded('user_pic')) insert_pic_into_directory($_FILES['user_pic'], $_POST['email'], pfp_directory_path);
-    if (fileUploaded('national_id_photo')) insert_pic_into_directory($_FILES['national_id_photo'], $_POST['email'], id_pic_directory_path);
+    if (fileUploaded('user_pic')) insert_pic_into_directory($_FILES['user_pic'], $_POST['email'], PFP_DIRECTORY_PATH);
+    if (fileUploaded('national_id_photo')) insert_pic_into_directory($_FILES['national_id_photo'], $_POST['email'], ID_PIC_DIRECTORY_PATH);
 
     try
     {

@@ -1,8 +1,8 @@
 <?php
 include_once "classes/RoomOptions.php";
 include_once "classes/ReservationRequest.php";
-const pfp_directory_path = "../../resources/img/user_pics/";
-const id_pic_directory_path = "../../resources/img/id_pics/";
+const PFP_DIRECTORY_PATH = "../../resources/img/user_pics/";
+const ID_PIC_DIRECTORY_PATH = "../../resources/img/id_pics/";
 const REPOSITORY_PAGES_URL = "http://localhost/Hurgada-GRND-Hotel/pages/";
 
 /**
@@ -440,6 +440,10 @@ function construct_template(string $page_title, string $html_content): string
 }
 
 /**
+ * Checks if two strings are identical.
+ *
+ * @author @Belal-Elsabbagh
+ *
  * @param string $str1 The first string
  * @param string $str2 The second string
  *

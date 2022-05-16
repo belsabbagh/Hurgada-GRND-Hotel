@@ -9,11 +9,11 @@ include_once 'view_loader.php';
  */
 function add_new_receptionist(): void
 {
-    if (!($_SERVER['REQUEST_METHOD'] == 'POST')) throw new ErrorException("Form was not submitted correctly", 1);
+    if (!post_data_exists()) throw new ErrorException("Form was not submitted correctly", 1);
     $enabled = array_key_exists('enabled', $_POST) ? 1 : 0;
 
-    $pfp_file_name = insert_pic_into_directory($_FILES['user_pic'], $_POST['email'], pfp_directory_path);
-    $idp_file_name = insert_pic_into_directory($_FILES['national_id_photo'], $_POST['email'], id_pic_directory_path);
+    $pfp_file_name = insert_pic_into_directory($_FILES['user_pic'], $_POST['email'], PFP_DIRECTORY_PATH);
+    $idp_file_name = insert_pic_into_directory($_FILES['national_id_photo'], $_POST['email'], ID_PIC_DIRECTORY_PATH);
 
     $sql = "INSERT INTO users (email, first_name, last_name, password, national_id_photo, user_pic, user_type, receptionist_enabled, receptionist_qc_comment) 
             VALUES ('{$_POST['email']}', '{$_POST['first_name']}', '{$_POST['last_name']}', '{$_POST['password']}', '$idp_file_name', '$pfp_file_name', 2, $enabled, '{$_POST['qc_comment']}')";

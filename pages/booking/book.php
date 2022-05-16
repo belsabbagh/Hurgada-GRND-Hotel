@@ -14,7 +14,7 @@ const LOGIN_ERRNO = 313;
  */
 function book(): void
 {
-    if (!isset($_POST['submit'])) throw new RuntimeException("Form was not submitted correctly", 1);
+    if (!post_data_exists()) throw new RuntimeException("Form was not submitted correctly", 1);
     $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : ($_SESSION['active_id'] ?? null);
     if (is_null($client_id)) throw new Exception("No valid login or client.", LOGIN_ERRNO);
 
