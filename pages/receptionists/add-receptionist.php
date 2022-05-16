@@ -1,6 +1,4 @@
 <?php
-const pfp_directory_path = "../../resources/img/user_pics/";
-const id_pic_directory_path = "../../resources/img/id_pics/";
 include_once "../../global/php/db-functions.php";
 include_once 'view_loader.php';
 

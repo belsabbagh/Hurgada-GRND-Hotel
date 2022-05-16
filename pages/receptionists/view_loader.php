@@ -49,13 +49,22 @@ function construct_receptionist_table_row(array $receptionist): string
  */
 function construct_receptionist_view(array $receptionist, bool $editable = false): string
 {
+    $readonly = $editable ? '' : "readonly";
     $disabled = $editable ? '' : "disabled";
-    $id_pic = id_pics_dir_path . $receptionist['national_id_photo'];
-    $pfp = pfp_dir_path . $receptionist['user_pic'];
-    $directory_url = directory_url;
+
+    $id_pic_src = id_pics_dir_path . $receptionist['national_id_photo'];
+    $pfp_src = pfp_dir_path . $receptionist['user_pic'];
+
     $save = $editable ? "<button type='submit' value='submit' name='submit' id='submit'>Save</button>" : "";
-    $delete_OR_edit = $editable ? "<a class='view-button' href='$directory_url/delete-receptionist.php'>Delete</a>" : "<a class='view-button' href='$directory_url/index.php?id={$receptionist['user_id']}&editable'>Edit</a>";
+
+    $delete_page_url = directory_url . "'/delete-receptionist.php?id={$receptionist['user_id']}'";
+    $editing_form_url = directory_url . "/index.php?id={$receptionist['user_id']}&editable";
+    $delete_OR_edit = $editable ?
+        "<a class='view-button' href='$delete_page_url'>Delete</a>"
+        : "<a class='view-button' href='$editing_form_url'>Edit</a>";
+
     $checked = ($receptionist['receptionist_enabled'] == 1) ? "checked" : "";
+
     $pics = $editable ? "
         <div>
             <label for='user_pic'>Select profile picture:</label>
@@ -69,26 +78,26 @@ function construct_receptionist_view(array $receptionist, bool $editable = false
         :
         "<div>
             Personal Photo
-            <img src='$pfp' alt='profile picture' width='256px'>
+            <img src='$pfp_src' alt='profile picture' width='256px'>
         </div>
 
         <div>
             National ID
-            <img src='$id_pic' alt='national id' width='256px'>
+            <img src='$id_pic_src' alt='national id' width='256px'>
         </div>";
 
-    $html = "<form action='edit-receptionist.php' method='post' id='receptionist_form' enctype='multipart/form-data'>
-        <input type='hidden' name='user_id' value='{$receptionist['user_id']}' readonly/>
+    return "<form action='edit-receptionist.php' method='post' id='receptionist_form' enctype='multipart/form-data'>
+        <input type='hidden' name='user_id' value='{$receptionist['user_id']}' $readonly/>
         $pics
         <div>
             <label for='first_name'>First Name:</label>
-            <input type='text' name='first_name' value='{$receptionist['first_name']}' readonly/>
+            <input type='text' name='first_name' value='{$receptionist['first_name']}' $readonly/>
             <label for='last_name'>Last Name:</label>
-            <input type='text' name='last_name' value='{$receptionist['last_name']}' readonly/>
+            <input type='text' name='last_name' value='{$receptionist['last_name']}' $readonly/>
         </div>
         <div>
             <label for='email'>Email:</label>
-            <input type='email' name='email' value='{$receptionist['email']}' readonly/>
+            <input type='email' name='email' value='{$receptionist['email']}' $readonly/>
         </div>
         <div>
         <label for='user_type' >Employee Role:</label>
@@ -102,13 +111,11 @@ function construct_receptionist_view(array $receptionist, bool $editable = false
             <input type='checkbox' name='receptionist_enabled' id='receptionist_enabled' value='1' $checked $disabled/>
             <br>
             <label for='receptionist_qc_comment'>Quality Control Comment:</label><br>
-            <textarea name='receptionist_qc_comment' id='receptionist_qc_comment' rows='6' cols='30' placeholder='Enter comment' style='resize: none;' readonly/>{$receptionist['receptionist_qc_comment']}</textarea>
+            <textarea name='receptionist_qc_comment' id='receptionist_qc_comment' rows='6' cols='30' placeholder='Enter comment' style='resize: none;' $readonly/>{$receptionist['receptionist_qc_comment']}</textarea>
         </div>
         $save
     </form>
     $delete_OR_edit";
-    if ($editable) return str_replace('readonly', "", $html);
-    return $html;
 }
 
 function construct_new_receptionist_form(): string

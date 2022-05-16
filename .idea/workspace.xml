@@ -4,16 +4,13 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Removed some redundant html templates.&#10;&#10;- Removed redundant specific booking pages for client and employee separately.">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php.">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/add-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/add-receptionist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/delete-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/delete-receptionist.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/receptionists/edit-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/edit-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/view_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/view_loader.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +130,10 @@
       <workItem from="1650913323823" duration="23509000" />
       <workItem from="1651595420836" duration="3689000" />
       <workItem from="1652028143882" duration="2731000" />
-      <workItem from="1652116681788" duration="44915000" />
+      <workItem from="1652116681788" duration="54066000" />
+      <workItem from="1652520220504" duration="1699000" />
+      <workItem from="1652642689182" duration="1677000" />
+      <workItem from="1652644433450" duration="4199000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -359,7 +359,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652371903312</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php.">
+      <created>1652379178799</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1652379178799</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php.">
+      <created>1652520422465</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1652520422465</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +403,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin." />
     <MESSAGE value="Added template to booking form.&#10;&#10;- Added button to clear booking filters&#10;- Styled booking filters.&#10;- Set correct data types for booking.&#10;- Added a function to check room availability.&#10;- Refactored styles and fonts." />
     <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Removed form.html." />
     <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Added code for setting date constraints for inputs in js.&#10;- Removed form.html.&#10;- Fixed README.md.&#10;- Formatted form file." />
@@ -414,7 +427,8 @@
     <MESSAGE value="Adding new receptionists now works.&#10;&#10;- Removed view-receptionist.php.&#10;- All receptionist viewing and editing is now handled in index.php.&#10;- &#10;- Fixed Exception Handling in booking." />
     <MESSAGE value="Removed some redundant html templates.&#10;&#10;- Replaced by a php function that returns the full html page with given content in it." />
     <MESSAGE value="Removed some redundant html templates.&#10;&#10;- Removed redundant specific booking pages for client and employee separately." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed some redundant html templates.&#10;&#10;- Removed redundant specific booking pages for client and employee separately." />
+    <MESSAGE value="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php." />
+    <option name="LAST_COMMIT_MESSAGE" value="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
