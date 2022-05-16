@@ -449,3 +449,25 @@ function equal_strings(string $str1, string $str2): bool
 {
     return strcmp($str1, $str2) == 0;
 }
+
+/**
+ * Checks if post contains data.
+ *
+ * @author @Belal-Elsabbagh
+ * @return bool True if post contains data, false otherwise.
+ */
+function post_data_exists(): bool
+{
+    return ($_SERVER['REQUEST_METHOD'] == 'POST');
+}
+
+/**
+ * Checks if file was uploaded.
+ *
+ * @author @Belal-Elsabbagh
+ * @return bool True if file uploaded, false otherwise.
+ */
+function fileUploaded(string $file_post_name): bool
+{
+    return (file_exists($_FILES[$file_post_name]['tmp_name']) && is_uploaded_file($_FILES[$file_post_name]['tmp_name']));
+}

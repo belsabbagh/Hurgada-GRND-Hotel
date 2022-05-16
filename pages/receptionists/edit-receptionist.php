@@ -20,16 +20,6 @@ function construct_edit_query_from_POST(): string
     return "UPDATE users SET $new_values WHERE user_id = {$_POST['user_id']}";
 }
 
-function fileUploaded(string $file_post_name): bool
-{
-    return (file_exists($_FILES[$file_post_name]['tmp_name']) && is_uploaded_file($_FILES[$file_post_name]['tmp_name']));
-}
-
-function replace_photo(string $file_post_name, string $new_filename): void
-{
-    insert_pic_into_directory($_FILES[$file_post_name], $new_filename, pfp_directory_path);
-}
-
 /**
  * @throws Exception Emits Exception if error occurs.
  */
@@ -38,8 +28,8 @@ function edit_receptionist(): void
     if (!($_SERVER['REQUEST_METHOD'] == 'POST'))
         throw new RuntimeException("Form was not submitted correctly", 1);
 
-    if (fileUploaded('user_pic')) replace_photo('user_pic', $_POST['email']);
-    if (fileUploaded('national_id_photo')) replace_photo('national_id_photo', $_POST['email']);
+    if (fileUploaded('user_pic')) insert_pic_into_directory($_FILES['user_pic'], $_POST['email'], pfp_directory_path);
+    if (fileUploaded('national_id_photo')) insert_pic_into_directory($_FILES['national_id_photo'], $_POST['email'], id_pic_directory_path);
 
     try
     {
