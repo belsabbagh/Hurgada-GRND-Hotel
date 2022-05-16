@@ -452,6 +452,7 @@ function equal_strings(string $str1, string $str2): bool
 
 /**
  * Checks if post contains data.
+ *
  * @author @Belal-Elsabbagh
  * @return bool True if post contains data, false otherwise.
  */
@@ -459,8 +460,10 @@ function post_data_exists(): bool
 {
     return ($_SERVER['REQUEST_METHOD'] == 'POST');
 }
+
 /**
  * Checks if file was uploaded.
+ *
  * @author @Belal-Elsabbagh
  * @return bool True if file uploaded, false otherwise.
  */
