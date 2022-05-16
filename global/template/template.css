@@ -77,14 +77,14 @@
 
 /* Navigation Bar */
 .header .links .icon{
-    cursor:pointer;
+    cursor: pointer;
     width: 30px;
     justify-content: center;
     color: var(--brown1-color);
-    position:fixed;
+    position: fixed;
     user-select: none;
     font-size: 60px;
-    left: 55.5px;
+    left: 56px;
 }
 .header .links .icon:hover{
     color: var(--brown2-color);
@@ -94,7 +94,6 @@
     font-size: 59px;
     top: 23px;
     left: 56px;
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     color: var(--brown1-color);
@@ -138,7 +137,6 @@
 /* Book now */
 .book{
     cursor:pointer;
-    width: 80px;
     display: flex;
     flex-wrap: wrap;
     right: 50px;
@@ -194,7 +192,6 @@
 .features{
     padding-top: 60px;
     padding-bottom: 60px;
-    background-color: var(--BabyPink-color);
 }
 .features .container{
     display: grid;

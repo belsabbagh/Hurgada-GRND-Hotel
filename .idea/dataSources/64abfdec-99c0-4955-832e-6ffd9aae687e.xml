@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="hurgada-grnd-hotel@localhost">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.38">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.39">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -1257,7 +1257,7 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="354" parent="336" name="dependant_id">
+    <column id="354" parent="336" name="dependent_id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1298,12 +1298,12 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <Type>btree</Type>
     </index>
     <key id="362" parent="336" name="PRIMARY">
-      <ColNames>dependant_id</ColNames>
+      <ColNames>dependent_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
     <column id="363" parent="337" name="reservation_id">
-      <AutoIncrement>23</AutoIncrement>
+      <AutoIncrement>29</AutoIncrement>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1606,7 +1606,7 @@ room_no</ColNames>
       <Primary>1</Primary>
     </key>
     <column id="424" parent="345" name="user_id">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>4</AutoIncrement>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1631,7 +1631,7 @@ room_no</ColNames>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="429" parent="345" name="national_id">
+    <column id="429" parent="345" name="national_id_photo">
       <DataType>varchar(150)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
@@ -1665,18 +1665,27 @@ room_no</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="436" parent="345" name="user_type">
+    <index id="436" parent="345" name="national_id">
+      <ColNames>national_id_photo</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="437" parent="345" name="user_type">
       <ColNames>user_type</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="437" parent="345" name="PRIMARY">
+    <key id="438" parent="345" name="PRIMARY">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="438" parent="345" name="email">
+    <key id="439" parent="345" name="email">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>email</UnderlyingIndexName>
+    </key>
+    <key id="440" parent="345" name="national_id">
+      <ColNames>national_id_photo</ColNames>
+      <UnderlyingIndexName>national_id</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
