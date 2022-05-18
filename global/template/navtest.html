@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--=============== BOXICONS ===============-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../global/css/bootstrap-5.0.2-dist/css/bootstrap.css">
+    <script src="../../global/css/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+    <script src="../../global/js/font-awesome.js"></script>
+    <link rel="stylesheet" href="./template.js" />
+
+    <script>
+        function showbar() {
+            document.getElementById('bar').style.display = 'inline-block';
+            document.getElementById('icon').style.display = 'none';
+            document.getElementById('icon2').style.display = 'inline-block';
+        }
+
+        function hidebar() {
+            document.getElementById('icon2').style.display = 'none';
+            document.getElementById('icon').style.display = 'inline-block';
+            document.getElementById('bar').style.display = 'none';
+        }
+
+        document.addEventListener('mouseup', function(e) {
+            let container = document.getElementById('bar');
+            if (!container.contains(e.target)) {
+                document.getElementById('bar').style.display = 'none';
+                document.getElementById('icon2').style.display = 'none';
+                document.getElementById('icon').style.display = 'inline-block';
+            }
+        });
+
+        function reveal() {
+            let reveals = document.querySelectorAll(".reveal");
+            for (const element of reveals) {
+                let windowHeight = window.innerHeight;
+                let elementTop = element.getBoundingClientRect().top;
+                let elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add("active");
+                } else {
+                    element.classList.remove("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+    </script>
+    <title>Document</title>
+    <style>
+        /* Variables */
+        
+         :root {
+            --blue0-color: #152636;
+            --blue1-color: #014b56;
+            --blue2-color: #057785;
+            --blue3-color: #57b8bc;
+            --blue4-color: #b4d2d3;
+            --grey-color: #8b929a;
+            --brown0-color: #7b5c52;
+            --brown1-color: #8a7469;
+            --brown2-color: #d6b09b;
+            --brown3-color: #f6d8cb;
+            --brown4--color: rgba(99, 88, 75, 0.283);
+            --yellow0-color: #fdf7e4;
+            --yellow1-color: rgb(255, 255, 235);
+            --yellow2-color: linear-gradient( 90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
+        }
+        /* ________________________________________________________________________________________________ */
+        /* fonts */
+        
+        @font-face {
+            font-family: "Title";
+            src: url(../../resources/fonts/PlayfairDisplayi.ttf);
+        }
+        
+        @font-face {
+            font-family: "parg";
+            src: url(../../resources/fonts/PlayfairDisplay.ttf);
+        }
+        
+        @font-face {
+            font-family: "special";
+            src: url(../../resources/fonts/Updock-Regular.ttf);
+        }
+        /* ________________________________________________________________________________________________ */
+        /* To Fit All Screen Size */
+        
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        
+        @media(min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+        
+        @media(min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+        /* ________________________________________________________________________________________________ */
+        /* Header */
+        /* Navigation Bar */
+        
+        .header .links .icon {
+            cursor: pointer;
+            width: 30px;
+            justify-content: center;
+            color: var(--brown1-color);
+            user-select: none;
+            font-size: 60px;
+        }
+        
+        .header .links .icon:hover {
+            color: var(--brown2-color);
+        }
+        
+        .header .links .icon2 {
+            cursor: pointer;
+            font-size: 59px;
+            flex-wrap: wrap;
+            justify-content: center;
+            color: var(--brown1-color);
+            user-select: none;
+            transition: 0.3s;
+            display: none;
+        }
+        
+        .header .links .icon2:hover {
+            color: var(--brown2-color);
+        }
+        
+        .header .links ul {
+            cursor: pointer;
+            list-style: none;
+            margin-top: 50px;
+            padding: 0;
+            min-width: 200px;
+            display: none;
+            z-index: 1;
+            user-select: none;
+        }
+        
+        .header .links ul li a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--brown1-color);
+            transition: 0.3s;
+            border-radius: 100px;
+            background: var(--yellow2-color);
+            backdrop-filter: blur(10px);
+            margin-top: 5px;
+        }
+        
+        .header .links ul li a:hover {
+            padding-left: 25px;
+            color: var(--yellow0-color);
+            background: var(--brown4--color);
+        }
+        /* Book now */
+        
+        .book {
+            cursor: pointer;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            color: var(--yellow0-color);
+            background: var(--brown4--color);
+            font-size: 20px;
+            user-select: none;
+            padding: 10px;
+            width: 150px;
+            transition: 0.05s;
+            border-radius: 50px;
+            backdrop-filter: blur(2px);
+        }
+        
+        .book:hover {
+            border: 1px solid #7b5c52;
+            border-bottom: 3px solid #7b5c52;
+        }
+        /* Items */
+        
+        .items {
+            margin-top: 15px;
+            color: var(--brown2-color);
+            font-size: 20px;
+            user-select: none;
+            border-bottom: 2px solid #7b5c52;
+        }
+        
+        .nav-link-container {
+            display: inline;
+            float: left;
+            padding: 1px;
+            justify-content: center;
+            margin-right: 20px;
+            border-radius: 50px;
+            background: transparent;
+            backdrop-filter: blur(2px);
+            transition: 0.05s all ease;
+        }
+        
+        .nav-link-container:hover {
+            color: var(--yellow0-color);
+            background: var(--brown4--color);
+        }
+        
+        .nav-link-container {
+            display: block;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+        
+        .nlink {
+            color: var(--brown2-color);
+        }
+        
+        .bar>ul {
+            list-style-type: none;
+        }
+        
+        .bar>a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body onload="hidebar()">
+    <nav class="navbar" id="header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand" onclick="showbar()"><em class='bx bx-menu-alt-left'></em></span>
+            </div>
+            <ul class="nav items" id="items">
+                <li class="nav-item"><span class="nav navbar-nav nav-link-container"><a class="nav-link nlink" href="#">Home</a></span></li>
+                <li class="nav-item"><span class="nav navbar-nav nav-link-container"><a class="nav-link nlink" href="#">Rooms</a></span></li>
+                <li class="nav-item"><span class="nav navbar-nav nav-link-container"><a class="nav-link nlink" href="#">Dining</a></span></li>
+                <li class="nav-item"><span class="nav navbar-nav nav-link-container"><a class="nav-link nlink" href="#">Experience</a></span></li>
+                <li class="nav-item"><span class="nav navbar-nav nav-link-container"><a class="nav-link nlink" href="#">Location</a></span></li>
+                <li class="nav-item"><span class="nav navbar-nav nav-link-container"><a class="nav-link nlink" href="#">About</a></span></li>
+            </ul>
+            <span id='icon2' class="icon2" onclick="hidebar()">
+                    <em class='bx bx-x'></em>
+                </span>
+            <span class='nav navbar-nav navbar-right nav-link-container book text-center' id="book"><a class="nav-link nlink" href="#">Book now</a></span>
+
+        </div>
+    </nav>
+</body>
+
+</html>

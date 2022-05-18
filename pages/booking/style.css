@@ -62,3 +62,7 @@ div.beds {
     border-radius: 25px;
     background: var(--yellow0-color);
 }
+
+.option {
+    padding-right: 40px;
+}

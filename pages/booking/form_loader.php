@@ -21,7 +21,7 @@ function load_room_types(): string
     }
     $html = "";
     while ($row = mysqli_fetch_assoc($result))
-        $html .= "<input class='options' type='radio' name='room_type' id='{$row['room_category']}' value='{$row['type_id']}' onchange='change_max_beds()'><label for='{$row['room_category']}'>{$row['room_category']}</label>\n";
+        $html .= "<input class='' type='radio' name='room_type' id='{$row['room_category']}' value='{$row['type_id']}' onchange='change_max_beds()'><label for='{$row['room_category']}'>{$row['room_category']}</label>\n";
     return $html;
 }
 
@@ -60,8 +60,8 @@ function load_room_views(): string
 function load_email(): string
 {
     return '<div class="email">
-                    <label for="email">Client E-mail</label>
-                    <input type="email" id="email" name="email" required/>
+                    <label for="email">Client E-mail: </label>
+                    <input class="form-inline" type="email" id="email" name="email" required/>
                    </div>';
 }
 
@@ -79,13 +79,15 @@ function construct_new_booking_form(bool $isEmployee): string
     $email = $isEmployee ? load_email() : "";
     $room_types = load_room_types();
     $room_views = load_room_views();
+    $date_format = "Y-m-d";
+    $today = new DateTime(); $today_str = $today->format($date_format);
     return "<form action='book.php' method='post'>
                 $email
                 <div class='dates'>
                     <label for='checkin'>Check in date</label>
-                    <input type='date' id='checkin' name='checkin' required/>
+                    <input type='date' id='checkin' name='checkin' min='$today_str' required/>
                     <label for='checkout'>Check out date</label>
-                    <input type='date' id='checkout' name='checkout' required/>
+                    <input type='date' id='checkout' name='checkout' min='$today_str' required/>
                 </div>
                 <div class='num-of-occupants'>
                     <label for='adults'>Number of adults</label>

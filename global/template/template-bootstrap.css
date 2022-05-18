@@ -68,90 +68,36 @@
 
 /* Header */
 
-.header {
-    padding: 20px;
-    height: 100px;
-    transition: 2s;
-    z-index: 1;
-    position: fixed;
-    width: 100%;
-}
-
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header .links {
-    position: relative;
-}
-
 
 /* Navigation Bar */
 
-.header .links .icon {
+.icon {
     cursor: pointer;
+    margin-top: 15px;
     width: 30px;
     justify-content: center;
     color: var(--brown1-color);
-    position: fixed;
     user-select: none;
     font-size: 60px;
-    left: 56px;
 }
 
-.header .links .icon:hover {
+.icon:hover {
     color: var(--brown2-color);
 }
 
-.header .links .icon2 {
+.icon2 {
     cursor: pointer;
     font-size: 59px;
-    top: 23px;
-    left: 56px;
     flex-wrap: wrap;
     justify-content: center;
     color: var(--brown1-color);
-    position: fixed;
     user-select: none;
     transition: 0.3s;
     display: none;
 }
 
-.header .links .icon2:hover {
+.icon2:hover {
     color: var(--brown2-color);
-}
-
-.header .links ul {
-    cursor: pointer;
-    list-style: none;
-    margin-top: 50px;
-    padding: 0;
-    position: fixed;
-    left: 50px;
-    min-width: 200px;
-    display: none;
-    z-index: 1;
-    user-select: none;
-}
-
-.header .links ul li a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
-    color: var(--brown1-color);
-    transition: 0.3s;
-    border-radius: 100px;
-    background: var(--yellow2-color);
-    backdrop-filter: blur(10px);
-    margin-top: 5px;
-}
-
-.header .links ul li a:hover {
-    padding-left: 25px;
-    color: var(--yellow0-color);
-    background: var(--brown4--color);
 }
 
 
@@ -160,12 +106,11 @@
 .book {
     cursor: pointer;
     display: flex;
+    margin-top: 15px;
     flex-wrap: wrap;
-    right: 50px;
     justify-content: center;
     color: var(--yellow0-color);
     background: var(--brown4--color);
-    position: fixed;
     font-size: 20px;
     user-select: none;
     padding: 10px;
@@ -184,74 +129,66 @@
 /* Items */
 
 .items {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
+    margin-top: 15px;
     color: var(--brown2-color);
-    position: fixed;
     font-size: 20px;
     user-select: none;
-    left: 150px;
     border-bottom: 2px solid #7b5c52;
 }
 
-.items .container {
-    padding: 10px;
+.nav-link-container {
+    display: inline;
+    float: left;
+    padding: 1px;
     justify-content: center;
     margin-right: 20px;
-    width: 100px;
     border-radius: 50px;
-    background: var(--yellow2-color);
+    background: transparent;
     backdrop-filter: blur(2px);
     transition: 0.05s all ease;
 }
 
-.items .container:hover {
+.nav-link-container:hover {
     color: var(--yellow0-color);
     background: var(--brown4--color);
 }
 
+.nav-link-container {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+.nlink {
+    color: var(--brown2-color);
+}
+
+.bar>ul {
+    list-style-type: none;
+}
+
+.bar>a {
+    text-decoration: none;
+}
+
 
 /* ________________________________________________________________________________________________ */
 
 
-/* body  */
+/* body */
 
-.features {
-    padding-top: 60px;
-    padding-bottom: 60px;
+.root {
+    min-height: 363px;
 }
 
-.features .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-}
-
-.features .feat {
-    padding: 20px;
+.feature {
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
-}
-
-
-/* ________________________________________________________________________________________________ */
-
-
-/* Footer */
-
-.footer {
-    background-color: var(--blue0-color);
-    color: white;
-    padding: 30px 10px;
-    text-align: center;
-    font-size: 18px;
-}
-
-.footer span {
-    font-weight: bold;
-    color: bisque;
+    margin-inline: inherit;
+    width: 70%;
 }
 
 
@@ -265,17 +202,17 @@
     z-index: 3;
 }
 
-::-webkit-scrollbar-track {
+ ::-webkit-scrollbar-track {
     background: var(--yellow0-color);
     display: none;
 }
 
-::-webkit-scrollbar-thumb {
+ ::-webkit-scrollbar-thumb {
     background: var(--grey-color);
     border-radius: 50px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+ ::-webkit-scrollbar-thumb:hover {
     background: var(--blue4-color);
 }
 

@@ -1,7 +1,3 @@
-<?php
-include_once "../../global/php/db-functions.php";
-include_once "form_loader.php";
-?>
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -15,10 +11,10 @@ include_once "form_loader.php";
     <link rel='stylesheet' href='../../global/css/bootstrap-5.0.2-dist/css/bootstrap.css'>
     <script src='../../global/css/bootstrap-5.0.2-dist/js/bootstrap.js'></script>
     <script src='../../global/js/font-awesome.js'></script>
+    <!-- Render All Elements Normally -->
     <link rel='stylesheet' href='../css/style.css' />
-    <link rel='stylesheet' href='style.css' />
     <!-- Main template CSS File -->
-    <link rel='stylesheet' href='../../global/template/template-bootstrap.css' />
+    <link rel='stylesheet' href='./template-bootstrap.css' />
     <!-- Main JS File -->
     <script src='../../global/template/template.js'></script>
 </head>
@@ -30,16 +26,14 @@ include_once "form_loader.php";
             <div class='navbar-header' onclick='showbar()'>
                 <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
             </div>
-            <div class='row'>
-                <ul class='nav items' id='items'>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Home</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Rooms</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Dining</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Experience</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Location</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>About</a></span></li>
-                </ul>
-            </div>
+            <ul class='nav items' id='items'>
+                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Home</a></span></li>
+                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Rooms</a></span></li>
+                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Dining</a></span></li>
+                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Experience</a></span></li>
+                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Location</a></span></li>
+                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>About</a></span></li>
+            </ul>
             <div>
                 <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
             </div>
@@ -51,9 +45,9 @@ include_once "form_loader.php";
     <!-- Body -->
 
 
-    <div class='container root'>
+    <div class='container-fluid root'>
         <div class='feature'>
-            <?php echo construct_new_booking_form(true);?>
+
         </div>
     </div>
     <!-- End Of Body -->
