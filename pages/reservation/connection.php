@@ -9,3 +9,4 @@ $connect = new mysqli($server, $username,$password,$dbname );
 //$client_ID='$_SESSION['active_id']';
 
 
+?>

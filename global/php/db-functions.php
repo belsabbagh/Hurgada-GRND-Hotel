@@ -1,4 +1,9 @@
 <?php
+include_once "classes/RoomOptions.php";
+include_once "classes/ReservationRequest.php";
+const PFP_DIRECTORY_PATH = "../../resources/img/user_pics/";
+const ID_PIC_DIRECTORY_PATH = "../../resources/img/id_pics/";
+const REPOSITORY_PAGES_URL = "http://localhost/Hurgada-GRND-Hotel/pages/";
 
 /**
  * Creates connection to database
@@ -108,8 +113,8 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
     $start_date_str = $start_date->format($date_format);
     $end_date_str = $end_date->format($date_format);
     $sql = "SELECT room_no FROM reservations
-            WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str')
-            OR (end_date BETWEEN '$start_date_str' AND '$end_date_str')
+            WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str') 
+            OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str'))
             AND room_no = $room_id";
     try
@@ -187,7 +192,7 @@ function get_user_id_from_email($email): ?int
 function get_room_max_occupants_by_room_id(int $room_id): ?int
 {
     $sql = "SELECT room_max_cap FROM room_types, rooms
-            WHERE rooms.room_type_id = room_types.type_id
+            WHERE rooms.room_type_id = room_types.type_id 
             AND rooms.room_id = $room_id;";
     try
     {
@@ -223,12 +228,15 @@ function room_overflow(int $room_id, ReservationRequest $reservation_request): b
  *
  * @author @Belal-Elsabbagh
  *
- * @throws Exception If the function was not able to get the receptionists
+ * @param string     $column
+ * @param string|int $key
+ *
  * @return mysqli_result
  */
-function get_receptionists(): mysqli_result
+function get_receptionists(string $column = "1", string|int $key ="1"): mysqli_result
 {
-    $sql = "SELECT user_id, email, first_name, last_name, national_id_photo, user_pic, receptionist_enabled, receptionist_qc_comment FROM users WHERE user_type = 2";
+    $key = (is_int($key)) ? $key : "'$key'";
+    $sql = "SELECT user_id, email, first_name, last_name, national_id_photo, user_pic, receptionist_enabled, receptionist_qc_comment FROM users WHERE user_type = 2 AND $column = $key";
     try
     {
         $result = run_query($sql);
@@ -337,104 +345,102 @@ function insert_pic_into_directory(array $picture_file, string $new_filename, st
  */
 function construct_template(string $page_title, string $html_content): string
 {
-    return "<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link rel='stylesheet' href='../../global/css/style.css'>
-    <link rel='stylesheet' href='style.css'>
-    <title>$page_title</title>
-    <!--=============== BOXICONS ===============-->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Main JS File -->
-    <script src='../../global/template/template.js'></script>
-    <!-- Render All Elements Normally -->
-    <link rel='stylesheet' href='../../global/template/normalize.css'/>
-    <!-- Main Template CSS File -->
-    <link rel='stylesheet' href='../../global/template/template.css'/>
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        if (params.has('err')) alert(params.get('err'));
-    </script>
-</head>
-
-<body>
-<!-- Header -->
-<div class='header' id='header'>
-    <div class='container'>
-        <div class='links'>
-                <span id='icon' class='icon' onclick='showbar()'>
-                    <em class='bx bx-menu-alt-left'></em>
-                </span>
-            <div class='items' id='items'>
-                    <span class='container'>
-                        <span>Home</span>
-                    </span>
-                <span class='container'>
-                        <span>Rooms</span>
-                    </span>
-                <span class='container'>
-                        <span>Dining</span>
-                    </span>
-                <span class='container'>
-                        <span>Experience</span>
-                    </span>
-                <span class='container'>
-                        <span>Location</span>
-                    </span>
-                <span class='container'>
-                        <span>About</span>
-                    </span>
+    return /** @lang HTML */ <<<EOF
+<!DOCTYPE html>
+    <html lang='en'>
+    
+    <head>
+        <meta charset='UTF-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>$page_title</title>
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link rel='stylesheet' href='../../global/css/bootstrap-5.0.2-dist/css/bootstrap.css'>
+        <script src='../../global/css/bootstrap-5.0.2-dist/js/bootstrap.js'></script>
+        <script src='../../global/js/font-awesome.js'></script>
+        <!-- Render All Elements Normally -->
+        <link rel='stylesheet' href='../../global/css/style.css' />
+        <link rel='stylesheet' href='style.css' />
+        <!-- Main template CSS File -->
+        <link rel='stylesheet' href='../../global/template-bootstrap.css' />
+        <!-- Main JS File -->
+        <script src='../../global/template/template.js'></script>
+    </head>
+    
+    <body class='d-flex flex-column min-vh-100'>
+        <!-- Header -->
+        <nav class='navbar' id='header'>
+            <div class='container-fluid'>
+                <div class='navbar-header' onclick='showbar()'>
+                    <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
+                </div>
+                <div class='row'>
+                    <ul class='nav items' id='items'>
+                        <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Home</a></span></li>
+                        <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Rooms</a></span></li>
+                        <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Dining</a></span></li>
+                        <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Experience</a></span></li>
+                        <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Location</a></span></li>
+                        <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>About</a></span></li>
+                    </ul>
+                </div>
+                <div>
+                    <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
+                </div>
+                <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a class='nav-link nlink' href='#'>Book now</a></span>
             </div>
-            <span id='icon2' class='icon2' onclick='hidebar()'>
-                    <em class='bx bx-x'></em>
-                </span>
-            <em class='book' id='book'>Book now</em>
-            <ul id='bar'>
-                <li><a href='http://localhost/Hurgada-GRND-Hotel/pages/profile'><em class='bx bxs-user'></em>Profile</a>
-                </li>
-                <li><a href='http://localhost/Hurgada-GRND-Hotel/pages/reservation'><em class='bx bxs-bed'></em> My
-                        Reservations</a></li>
-                <li><a href='http://localhost/Hurgada-GRND-Hotel/pages/rate-us'><em class='bx bxs-star'></em> Rate
-                        us</a></li>
-                <li><a href='http://localhost/Hurgada-GRND-Hotel/pages/contact-us'><em class='bx bxl-gmail'></em>Contact
-                        us</a></li>
-            </ul>
+        </nav>
+        <!-- End Of Header -->
+    
+        <!-- Body -->
+    
+    
+        <div class='container root'>
+            <div class='feature'>
+                $html_content
+            </div>
         </div>
-    </div>
-</div>
-<!-- End Of Header -->
-
-<!-- Body -->
-<div class='features'>
-    <div class='container'>
-        <div class='feat' style='margin: auto;'>
-            $html_content
-        </div>
-    </div>
-</div>
-<!-- End Of Body -->
-
-
-<!-- Footer -->
-<div class='footer'>
-    &copy; 2022
-    <span>MIU</span>
-    All Rights Reserved
-</div>
-<!-- End Of Footer -->
-
-<!-- Scroll Bar -->
-<span class='c-scroller_thumb'></span>
-</body>
-
-</html>";
+        <!-- End Of Body -->
+    
+    
+        <!-- Footer -->
+        <footer class='text-center text-white' class='mt-auto' style='background-color: var(--blue0-color);'>
+            <!-- Grid container -->
+            <div class='container p-4 pb-0'>
+                <!-- Section: Social media -->
+                <section class='mb-4'>
+                    <!-- Github -->
+                    <a class='btn btn-outline-light btn-floating m-1' href='https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel' role='button'>
+                        <img src='../../resources/img/icons/GitHub-Mark-Light-64px.png' width='32' alt='Our GitHub'> GitHub Repository
+                    </a>
+                </section>
+                <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+    
+            <!-- Copyright -->
+            <div class='text-center p-3' style='background-color: var(--blue0-color);'>
+                &copy; 2022
+                <span>MIU</span> All Rights Reserved
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- End Of Footer -->
+    
+        <!-- Scroll Bar -->
+        <span class='c-scroller_thumb'></span>
+    </body>
+    
+    </html>
+EOF;
 }
 
 /**
+ * Checks if two strings are identical.
+ *
+ * @author @Belal-Elsabbagh
+ *
  * @param string $str1 The first string
  * @param string $str2 The second string
  *
@@ -467,27 +473,14 @@ function fileUploaded(string $file_post_name): bool
     return (file_exists($_FILES[$file_post_name]['tmp_name']) && is_uploaded_file($_FILES[$file_post_name]['tmp_name']));
 }
 
-/**
- * Checks availability of room within a certain time period
- *
- * @param int $room_id          The room to be booked
- * @param DateTime $start_date  The start date of the booking
- * @param DateTime $end_date    The end date of the booking
- * @return bool Returns true if room is available, false if room is unavailable
- *
- * @author @Belal-Elsabbagh
- */
-function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date): bool
+function user_email_exists(string $email): bool
 {
-    $sql = "SELECT room_no FROM reservations
-            WHERE (( start_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}')
-            OR (end_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}')
-            OR (start_date >= '{$start_date->format('Y-m-d')}' AND end_date <= '{$end_date->format('Y-m-d')}'))
-            AND room_no = $room_id";
-    $result = run_query($sql);
-    if($result && $result->num_rows == 0) return true;
+    $sql = /** @lang MariaDB */
+        "SELECT email FROM users WHERE email = '$email'";
+    if (!empty_mysqli_result(run_query($sql))) return true;
     return false;
 }
+
 // pop msgs functions
 
 //warning
@@ -505,7 +498,7 @@ function warningmsg ($msg ,$header,$link){
         <form action= '' method = 'post'>
         <a href= '$link'  class = 'close-btn'> ok </a>
 
-
+      
   </form>
  </div>
 </div>
@@ -527,12 +520,33 @@ function confirmmsg ($msg ,$header){
         <div class='line'></div>
         <form action= '' method = 'post'>
 
-        <input type ='submit'  class = 'close-btn' name= 'no_btn' value = 'no'>
+        <input type ='submit'  class = 'close-btn' name= 'no_btn' value = 'no'> 
         <input type ='submit'   class = 'confirm-btn' name= 'yes_btn' value = 'yes'>
   </form>
  </div>
 </div>
     ";
 }
-?>
 
+//confirm using link 
+function confirmmsg2 ($msg ,$header,$link_no, $link_yes){
+
+    echo"
+
+    <div class='center' id = 'center'>
+        <div class='content'>
+        <div class='header'>
+        <h2>$header</h2>
+     </div>
+        <p> $msg </p>
+        <div class='line'></div>
+        <form action= '' method = 'post'>
+        <a href= '$link_yes'  class = 'confirm-btn'> yes </a>
+        <a href= '$link_no'  class = 'close-btn'> no </a>
+
+      
+  </form>
+ </div>
+</div>
+    ";
+}

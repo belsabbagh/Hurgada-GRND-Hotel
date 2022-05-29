@@ -32,7 +32,7 @@
         }
 
         .submit_rating {
-            padding-top: 5%;
+            padding-top: 10%;
             margin-bottom: 45%;
             margin-right: 50%;
             margin-left: 30%;
