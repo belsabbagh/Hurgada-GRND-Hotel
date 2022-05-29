@@ -4,6 +4,7 @@
 }
 
 table {
+    background-color: var(--yellow2-color);
     border: 2px solid var(--brown0-color);
     border-collapse: collapse;
     width: auto;

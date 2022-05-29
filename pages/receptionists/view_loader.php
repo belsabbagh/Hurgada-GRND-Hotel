@@ -1,8 +1,9 @@
 <?php
 include_once "../../global/php/db-functions.php";
-const directory_url = "http://localhost/Hurgada-GRND-Hotel/pages/receptionists";
-const id_pics_dir_path = "http://localhost/Hurgada-GRND-Hotel/resources/img/id_pics/";
-const pfp_dir_path = "http://localhost/Hurgada-GRND-Hotel/resources/img/user_pics/";
+const DIRECTORY_PATH = "../../pages/receptionists";
+const ID_PICS_DIR_PATH = "../../resources/img/id_pics/";
+const PFP_DIR_PATH = "../../resources/img/user_pics/";
+
 /**
  * @author @Belal-Elsabbagh
  *
@@ -27,16 +28,18 @@ function construct_receptionists_table(mysqli_result $receptionists_data): strin
  */
 function construct_receptionist_table_row(array $receptionist): string
 {
-    $directory_url = directory_url;
-    $color = "";
+    $directory_url = DIRECTORY_PATH;
+    $color = "style='background-color: var(--brown3-color);'";
     if ($receptionist["receptionist_enabled"] == 0) $color = "style='background-color: rgb(139, 146, 154);'";
-    return "<tr $color>
+    return /** @lang HTML */ <<<EOF
+<tr $color>
                 <td>{$receptionist['user_id']}</td>
                 <td>{$receptionist['first_name']}</td>
                 <td>{$receptionist['last_name']}</td>
                 <td>{$receptionist['email']}</td>
                 <td><a class='view-button' href='$directory_url/index.php?id={$receptionist["user_id"]}'><span class='td-link'>View</span></a></td>
-            </tr>";
+            </tr>
+EOF;
 }
 
 /**
@@ -52,13 +55,13 @@ function construct_receptionist_view(array $receptionist, bool $editable = false
     $readonly = $editable ? '' : "readonly";
     $disabled = $editable ? '' : "disabled";
 
-    $id_pic_src = id_pics_dir_path . $receptionist['national_id_photo'];
-    $pfp_src = pfp_dir_path . $receptionist['user_pic'];
+    $id_pic_src = ID_PICS_DIR_PATH . $receptionist['national_id_photo'];
+    $pfp_src = PFP_DIR_PATH . $receptionist['user_pic'];
 
     $save = $editable ? "<button type='submit' value='submit' name='submit' id='submit'>Save</button>" : "";
 
-    $delete_page_url = directory_url . "'/delete-receptionist.php?id={$receptionist['user_id']}'";
-    $editing_form_url = directory_url . "/index.php?id={$receptionist['user_id']}&editable";
+    $delete_page_url = DIRECTORY_PATH . "'/delete-receptionist.php?id={$receptionist['user_id']}'";
+    $editing_form_url = DIRECTORY_PATH . "/index.php?id={$receptionist['user_id']}&editable";
     $delete_OR_edit = $editable ?
         "<a class='view-button' href='$delete_page_url'>Delete</a>"
         : "<a class='view-button' href='$editing_form_url'>Edit</a>";
@@ -139,7 +142,7 @@ function construct_new_receptionist_form(): string
         </div>
         <div>
             <label for='email'>Email:</label>
-            <input type='email' name='email' required/>
+            <input type='email' name='email' id='email' required/>
             <label for='password'>Password:</label>
             <input type='password' name='password' required/>
         </div>
@@ -153,3 +156,4 @@ function construct_new_receptionist_form(): string
         <button type='submit' value='submit'>Add</button>
     </form>";
 }
+
