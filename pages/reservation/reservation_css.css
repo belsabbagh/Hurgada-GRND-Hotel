@@ -18,14 +18,59 @@
 
 
 /* ________________________________________________________________________________________________ */
-
-/*hyper links*/
-
-.feat{
+.feat {
 
     min-height: 600px;
     width: 700px;
 }
+.container2{
+    margin-bottom: 45%;
+    margin-right: 5%;
+    margin-left: 30%;
+    
+
+   }
+ 
+
+
+.titles{
+
+    text-align: center;
+    padding-bottom: 10%;
+}
+
+#warning {
+    color: red;
+    font-size: small;
+}
+/* buttons*/
+.submit{
+
+    
+    color:#7b5c52;
+    background-color : #e9c9b8;
+    font-size:110%;
+    display: block;
+    transition: 0.5s;
+    border-radius: 3px;
+    text-align: center;
+    border:none ;
+
+}
+.slidecontainer{
+   
+    width: 100%;
+    padding-left: 50%;
+}
+#comment{
+    width: 50%;
+    height: 10%;
+    float: right;
+
+}
+
+
+/*hyper links*/
 .temp {
     text-decoration: none;
     color:#7b5c52;
@@ -49,7 +94,7 @@
     text-align: center;
  
 }
- a:hover{
+ a:hover, .submit:hover{
 
     color:#ffffff;;
     background-color : #057785;
@@ -132,6 +177,7 @@ body{
     margin-top: 5px;
     margin-left: auto;
     margin-right: auto;
+    font-size: larger;
 }
 h1{
     font-family: "title";
@@ -328,6 +374,7 @@ p{
     padding: 30px 10px;
     text-align: center;
     font-size: 18px;
+    
 }
 .footer span{
     font-weight: bold;

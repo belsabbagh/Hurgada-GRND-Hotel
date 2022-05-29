@@ -1,26 +1,27 @@
 <html>
-<head> 
-  
-<link href="../../global/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="./reservation_css.css" />
-   <script src="../../global/Template/template.js"></script>
+
+<head>
+
+    <link href="../../global/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./reservation_css.css" />
+    <script src="../../global/Template/template.js"></script>
     <script src="functions.js"></script>
-    
-    
-<title> my reservations</title> 
-
-<?php $server= "localhost";
-$username = "root";
-$password = "";
-$dbname= "hurgada-grnd-hotel";
-
-$connect = new mysqli($server, $username,$password,$dbname ); ?>
 
 
+    <title> my reservations</title>
+
+    <?php $server = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "hurgada-grnd-hotel";
+
+    $connect = new mysqli($server, $username, $password, $dbname); ?>
 
 
 
-<meta charset="UTF-8">
+
+
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HURGHADA-GRND-HOTEL</title>
@@ -35,8 +36,8 @@ $connect = new mysqli($server, $username,$password,$dbname ); ?>
 
 
 
- <!-- Header -->
- <div class="header" id="header">
+    <!-- Header -->
+    <div class="header" id="header">
         <div class="container">
             <div class="links">
                 <span id="icon" class="icon" onclick="showbar()">
@@ -77,85 +78,87 @@ $connect = new mysqli($server, $username,$password,$dbname ); ?>
     </div>
     <!-- End Of Header -->
 
-   
+
 </head>
 
 <body>
 
 
 
- <!-- Body -->
-
-    
- <div class="features">
-    <div class="container">
-      <div class="feat">
-        <table> <tr>
-
-    <th> reservation id </th> 
-    <th> Room number </th> 
-    <th> checked in </th> 
-    <th> checked out </th>
-    <th> numberof adults </th> 
-    <th> numberof children </th> 
-    <th> extra bed </th> 
-    <th> edit </th> 
-    <th> delete </th> 
-    <th > check in/out </th> 
-
-   </tr>
-
-   <?php
-
-// get the id of the user
-//$client_ID='$_SESSION['active_id']';
-$client_ID='1';
-$sql = " SELECT * from reservations where client_id= '$client_ID' ";
-$result = $connect->query($sql);
-
-if ($result->num_rows == 0) 
-echo "<p class ='paragraph' > no reservations</p>";
-else {
-//echo $result->num_rows;
-;
-//for($i=0; $i<$result->num_rows; $i++)
-while($row = mysqli_fetch_assoc($result)){
-
-  echo "<tr><td>".$row["reservation_id"]."</td><td>".$row["room_no"]."</td><td> ".$row["start_date"]."</td> 
-  <td>".$row["end_date"]."</td>
-  <td>".$row["numberof_adults"]."</td>
-  <td>".$row["numberof_children"]."</td>
-  <td>".$row["extra_bed"]."</td>
-  ";
- $reservation_id =$row['reservation_id'];
-  
-  echo "<td><a href ='edit_reservation.php?id=$reservation_id' class= 'temp2'> edit </a> </td>";
-  echo "<td><a href  ='delete_reservations.php?id=$reservation_id' class= 'temp2'> delete </a> </td>";
-
-$is_checked_in = $row['is_checked_in'];
-if($is_checked_in==0) 
-echo "<td><a href='check_in.php?id=$reservation_id' class ='temp'> check in </a> </td></tr>";
-
-else 
-echo "<td><a href='check_out.php?id=$reservation_id' class ='temp'> check out </a> </td></tr>";
-}
-
-}
-?>
-   </table>
+    <!-- Body -->
 
 
-   
+    <div class="features">
+        <div class="container">
+            <div class="feat">
+                
+                    <table>
+                        <tr>
+
+                            <th> reservation id </th>
+                            <th> Room number </th>
+                            <th> checked in </th>
+                            <th> checked out </th>
+                            <th> numberof adults </th>
+                            <th> numberof children </th>
+                            <th> extra bed </th>
+                            <th> edit </th>
+                            <th> delete </th>
+                            <th> check in/out </th>
+
+                        </tr>
+
+                        <?php
+
+                        // get the id of the user
+                        //$client_ID='$_SESSION['active_id']';
+                        $client_ID = '1';
+                        $sql = " SELECT * from reservations where client_id= '$client_ID' ";
+                        $result = $connect->query($sql);
+
+                        if ($result->num_rows == 0)
+                            echo "<p class ='paragraph' > no reservations</p>";
+                        else {
+                                //echo $result->num_rows;
+                            ;
+                            //for($i=0; $i<$result->num_rows; $i++)
+                            while ($row = mysqli_fetch_assoc($result)) {
+
+                                echo "<tr><td>" . $row["reservation_id"] . "</td><td>" . $row["room_no"] . "</td><td> " . $row["start_date"] . "</td> 
+                            <td>" . $row["end_date"] . "</td>
+                            <td>" . $row["numberof_adults"] . "</td>
+                            <td>" . $row["numberof_children"] . "</td>
+                             <td>" . $row["extra_bed"] . "</td>
+                            ";
+                                $reservation_id = $row['reservation_id'];
+
+                                echo "<td><a href ='edit_reservation.php?id=$reservation_id' class= 'temp2'> edit </a> </td>";
+                                echo "<td><a href  ='delete_reservations.php?id=$reservation_id' class= 'temp2'> delete </a> </td>";
+
+                                $is_checked_in = $row['is_checked_in'];
+                                if ($is_checked_in == 0)
+                                    echo "<td><a href='check_in.php?id=$reservation_id' class ='temp'> check in </a> </td></tr>";
+
+                                else
+                                    echo "<td><a href='check_out.php?id=$reservation_id' class ='temp'> check out </a> </td></tr>";
+                            }
+                        }
+                        ?>
+                    </table>
+
+
+
+                </div>
+            </div>
         </div>
-    </div>
-</div>
     
+
     <!-- End Of Body -->
 
 
 
- <!-- Footer -->
- <div class="footer">
+    <!-- Footer -->
+    <div class="footer">
         &copy; 2022
         <span>MIU</span>
         All Rights Reserved
@@ -163,4 +166,5 @@ echo "<td><a href='check_out.php?id=$reservation_id' class ='temp'> check out </
     <!-- End Of Footer -->
 
 </body>
+
 </html>

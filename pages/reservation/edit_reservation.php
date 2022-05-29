@@ -2,14 +2,54 @@
 
 <head>
   <link href="../../global/css/style.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="./reservation_css.css" />
   <script src="functions.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title> edit reservations </title>
-  <?php
+  
+  <style>
+    .shadow {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      height: 550px;
+      padding-top: 15%;
+      border-radius: 30px;
+      width: 120%;
+      color: #7b5c52;
 
-  include "../../global/php/db-functions.php";
+    }
 
-  ?>
+    .container2 {
+      margin-bottom: 45%;
+      margin-right: 5%;
+      margin-left: 30%;
+
+
+    }
+
+    input {
+      float: right;
+      padding-left: 50%;
+      text-align: center;
+
+
+    }
+
+    #submit {
+      padding-left: 25%;
+      padding-right: 25%;
+
+    }
+
+    .row {
+
+
+      padding-top: 80px;
+      padding-right: 50%;
+      font-size: larger;
+      margin-right: 70%;
+    }
+  </style>
 
 
   <link href="../../global/css/style.css" rel="stylesheet">
@@ -18,12 +58,39 @@
   <link href="style.css" rel="stylesheet">
   <script src="functions.js"></script>
 
-  <?php $server = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "hurgada-grnd-hotel";
 
-  $connect = new mysqli($server, $username, $password, $dbname); ?>
+  <script>
+    error_msg1 = " invalid, check out date can not bebefore the check in date"
+    error_msg2 = " room is not available"
+    msg = "valid"
+
+    function checkdate() {
+
+      jQuery.ajax({
+
+
+        url: "ajax_editreservation.php",
+        data: 'checkout=' + $("#checkout").val() + "&" + 'checkin=' + $("#checkin").val(),
+        type: "POST",
+
+        success: function(data) {
+          let result = data;
+          if (result == 1) $("#warning").html(error_msg1);
+
+          if (result == 2) $("#warning").html(error_msg2);
+
+          if (result == 3) $("#warning2").html(msg);
+
+
+        }
+
+      });
+
+
+    }
+  </script>
+
+  
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,129 +149,73 @@
   </div>
   <!-- End Of Header -->
 
-  
+
 </head>
 
 <body>
 
-  <?php
 
-  if (isset($_GET['id']))
-    $reservation_id = $_GET['id'];
-  else echo "error";
-  //$client_ID='$_SESSION['active_id']';
-  $client_ID = '1';
-
-
-
-
-  $server = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "hurgada-grnd-hotel";
-
-  $connect = new mysqli($server, $username, $password, $dbname);
-
-
-  $roomsql_1 = "SELECT room_no FROM reservations WHERE reservation_id= $reservation_id ";
-  $result = run_query($roomsql_1);
-  $temp = $result->fetch_assoc();
-  $room_id = $temp['room_no'];
-
-
-  $roomsql_2 = "SELECT room_type_id FROM rooms WHERE room_id=$room_id";
-  $result = run_query($roomsql_2);
-  $temp = $result->fetch_assoc();
-  $room_type_id = $temp['room_type_id'];
-
-  //echo "$room_type_id";
-  $roomsql_3 = " SELECT room_max_cap From room_types WHERE type_id =$room_type_id";
-  $result = run_query($roomsql_3);
-  $temp = $result->fetch_assoc();
-  $room_max_cap = $temp['room_max_cap'];
-
-  $room_max_cap = 6;
-  $max_children = $room_max_cap * 2;
-  ?>
 
   <!-- Body -->
   <div class="features">
-    <div class="container">
-      <div class="feat">
+    <div class="container2">
+      <div class="row col-md-12">
+        <div class="shadow col-md-6 mt-5 " onmouseover="checkdate()">
 
-        <form action="" method="post">
 
-          <div class="dates">
-            <label for="checkin">Check in date</label>
-            <input type="date" id="checkin" name="checkin" required />
-            <label for="checkout">Check out date</label>
-            <input type="date" id="checkout" name="checkout" required />
-          </div>
+          <h2 class="titles"> Edit your reservation </h2>
+          <form action="testing.php" method="post">
 
-          <div class="num-of-occupants">
-            <label for="adults">Number of adults</label>
-            <input type="number" id="adults" name="adults" min="1" max="4" value="1" required />
-            <label for="children">Number of children</label>
-            <input type="number" id="children" name="children" min="0" max="8" value="0" required />
-          </div>
-         <div>
-          <label for="room_beds_number">extra bed</label> 
-          <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="0" max="1">
-         
-          </div>
-          <input type="submit" class="submit" id="submit" name="submit">
-          
-        </form>
+            <div class="dates form-group">
+              <label for="checkin">Check in date</label>
+              <input type="date" id="checkin" name="checkin" required />
+            </div>
+            <div class="dates form-group">
+              <label for="checkout">Check out date</label>
+              <input type="date" id="checkout" name="checkout" required />
+              <P id="warning"> </p>
+              <P id="warning2" style=" color: red; font-size: small;"> </p>
+            </div>
+
+            <div class="num-of-occupants form-group">
+              <label for="adults">Number of adults</label>
+              <input type="number" id="adults" name="adults" min="1" max="4" value="1" required />
+            </div>
+            <div class="num-of-occupants form-group">
+              <label for="children">Number of children</label>
+              <input type="number" id="children" name="children" min="0" max="8" value="0" required />
+            </div>
+            <div class="num-of-occupants form-group">
+              <label for="room_beds_number">extra bed</label>
+              <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="0" max="1">
+            </div>
+
+            <input type="submit" class="submit" id="submit" name="submit">
+
+          </form>
+
+        </div>
+
       </div>
     </div>
   </div>
 
 
-
-
   <!-- End Of Body -->
 
-  <?php
-  if ($_SERVER['REQUEST_METHOD'] != 'POST') die("Form was not submitted correctly");
-
-  // Gather data from POST
-  if (isset($_POST['submit'])) {
-    $checkin_date  = new DateTime($_POST['checkin']);
-    $checkout_date = new DateTime($_POST['checkout']);
-    $nAdults = $_POST['adults'];
-    $nChildren = $_POST['children'];
-    $extra_bed = $_POST['room_beds_number'];
-
-    // Check Constraints
-    //{
-    // - the date is valid   
-    if ($checkin_date > $checkout_date) die("Invalid date");
-    // - check if room is available
-    $check = room_isAvailable($room_id, $checkin_date, $checkout_date);
-    if ($check == false) die("room is not available on the inserted date");
-    //}
-
-    $submit_sql = "UPDATE reservations SET 
-start_date = '{$checkin_date->format('Y-m-d')}',
-end_date = '{$checkout_date->format('Y-m-d')}',
-numberof_adults= $nAdults,
-numberof_children= $nChildren,
-extra_bed= $extra_bed
-where reservation_id = $reservation_id";
-
-    $result = $connect->query($submit_sql) or die("changes were not made, try again");
-  }
-  ?>
-
- 
-
-</body>
- <!-- Footer -->
- <div class="footer">
+  <!-- Footer -->
+  <div class="footer">
     &copy; 2022
     <span>MIU</span>
     All Rights Reserved
   </div>
   <!-- End Of Footer -->
+
+
+
+
+
+</body>
+
 
 </html>
