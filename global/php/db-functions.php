@@ -1,9 +1,4 @@
 <?php
-include_once "classes/RoomOptions.php";
-include_once "classes/ReservationRequest.php";
-const pfp_directory_path = "../../resources/img/user_pics/";
-const id_pic_directory_path = "../../resources/img/id_pics/";
-const REPOSITORY_PAGES_URL = "http://localhost/Hurgada-GRND-Hotel/pages/";
 
 /**
  * Creates connection to database
@@ -113,8 +108,8 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
     $start_date_str = $start_date->format($date_format);
     $end_date_str = $end_date->format($date_format);
     $sql = "SELECT room_no FROM reservations
-            WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str') 
-            OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
+            WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str')
+            OR (end_date BETWEEN '$start_date_str' AND '$end_date_str')
             OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str'))
             AND room_no = $room_id";
     try
@@ -192,7 +187,7 @@ function get_user_id_from_email($email): ?int
 function get_room_max_occupants_by_room_id(int $room_id): ?int
 {
     $sql = "SELECT room_max_cap FROM room_types, rooms
-            WHERE rooms.room_type_id = room_types.type_id 
+            WHERE rooms.room_type_id = room_types.type_id
             AND rooms.room_id = $room_id;";
     try
     {
@@ -471,3 +466,73 @@ function fileUploaded(string $file_post_name): bool
 {
     return (file_exists($_FILES[$file_post_name]['tmp_name']) && is_uploaded_file($_FILES[$file_post_name]['tmp_name']));
 }
+
+/**
+ * Checks availability of room within a certain time period
+ *
+ * @param int $room_id          The room to be booked
+ * @param DateTime $start_date  The start date of the booking
+ * @param DateTime $end_date    The end date of the booking
+ * @return bool Returns true if room is available, false if room is unavailable
+ *
+ * @author @Belal-Elsabbagh
+ */
+function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date): bool
+{
+    $sql = "SELECT room_no FROM reservations
+            WHERE (( start_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}')
+            OR (end_date BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}')
+            OR (start_date >= '{$start_date->format('Y-m-d')}' AND end_date <= '{$end_date->format('Y-m-d')}'))
+            AND room_no = $room_id";
+    $result = run_query($sql);
+    if($result && $result->num_rows == 0) return true;
+    return false;
+}
+// pop msgs functions
+
+//warning
+function warningmsg ($msg ,$header,$link){
+
+    echo"
+
+    <div class='center' id = 'center'>
+        <div class='content'>
+        <div class='header'>
+        <h2>$header</h2>
+     </div>
+        <p> $msg </p>
+        <div class='line'></div>
+        <form action= '' method = 'post'>
+        <a href= '$link'  class = 'close-btn'> ok </a>
+
+
+  </form>
+ </div>
+</div>
+    ";
+}
+
+
+//confirm
+function confirmmsg ($msg ,$header){
+
+    echo"
+
+    <div class='center' id = 'center'>
+        <div class='content'>
+        <div class='header'>
+        <h2>$header</h2>
+     </div>
+        <p> $msg </p>
+        <div class='line'></div>
+        <form action= '' method = 'post'>
+
+        <input type ='submit'  class = 'close-btn' name= 'no_btn' value = 'no'>
+        <input type ='submit'   class = 'confirm-btn' name= 'yes_btn' value = 'yes'>
+  </form>
+ </div>
+</div>
+    ";
+}
+?>
+
