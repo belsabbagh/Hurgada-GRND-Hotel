@@ -228,7 +228,9 @@ function room_overflow(int $room_id, ReservationRequest $reservation_request): b
  *
  * @author @Belal-Elsabbagh
  *
- * @throws Exception If the function was not able to get the receptionists
+ * @param string     $column
+ * @param string|int $key
+ *
  * @return mysqli_result
  */
 function get_receptionists(string $column = "1", string|int $key ="1"): mysqli_result
@@ -343,7 +345,8 @@ function insert_pic_into_directory(array $picture_file, string $new_filename, st
  */
 function construct_template(string $page_title, string $html_content): string
 {
-    return "<!DOCTYPE html>
+    return /** @lang HTML */ <<<EOF
+<!DOCTYPE html>
     <html lang='en'>
     
     <head>
@@ -429,7 +432,8 @@ function construct_template(string $page_title, string $html_content): string
         <span class='c-scroller_thumb'></span>
     </body>
     
-    </html>";
+    </html>
+EOF;
 }
 
 /**
@@ -467,4 +471,12 @@ function post_data_exists(): bool
 function fileUploaded(string $file_post_name): bool
 {
     return (file_exists($_FILES[$file_post_name]['tmp_name']) && is_uploaded_file($_FILES[$file_post_name]['tmp_name']));
+}
+
+function user_email_exists(string $email): bool
+{
+    $sql = /** @lang MariaDB */
+        "SELECT email FROM users WHERE email = '$email'";
+    if (!empty_mysqli_result(run_query($sql))) return true;
+    return false;
 }

@@ -73,7 +73,7 @@ include_once "form_loader.php";
     <link rel='stylesheet' href='../../global/css/bootstrap-5.0.2-dist/css/bootstrap.css'>
     <script src='../../global/css/bootstrap-5.0.2-dist/js/bootstrap.js'></script>
     <script src='../../global/js/font-awesome.js'></script>
-    <link rel='stylesheet' href='../css/style.css' />
+    <link rel='stylesheet' href='../../global/css/style.css'/>
     <link rel='stylesheet' href='style.css' />
     <!-- Main template CSS File -->
     <link rel='stylesheet' href='../../global/template/template-bootstrap.css' />
@@ -132,7 +132,7 @@ include_once "form_loader.php";
 
 
     <!-- Footer -->
-    <footer class='text-center text-white' class='mt-auto' style='background-color: var(--blue0-color);'>
+    <footer class='text-center text-white mt-auto' style='background-color: var(--blue0-color);'>
         <!-- Grid container -->
         <div class='container p-4 pb-0'>
             <!-- Section: Social media -->

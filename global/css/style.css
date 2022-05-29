@@ -1,3 +1,20 @@
+:root {
+    --blue0-color: #152636;
+    --blue1-color: #014b56;
+    --blue2-color: #057785;
+    --blue3-color: #57b8bc;
+    --blue4-color: #b4d2d3;
+    --grey-color: #8b929a;
+    --brown0-color: #7b5c52;
+    --brown1-color: #8a7469;
+    --brown2-color: #d6b09b;
+    --brown3-color: #f6d8cb;
+    --brown4--color: rgba(99, 88, 75, 0.283);
+    --yellow0-color: #fdf7e4;
+    --yellow1-color: rgb(255, 255, 235);
+    --yellow2-color: linear-gradient( 90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
+}
+
 /* fonts */
 
 @font-face {

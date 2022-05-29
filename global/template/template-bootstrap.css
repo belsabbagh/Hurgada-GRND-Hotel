@@ -1,26 +1,3 @@
-/* Variables */
-
-:root {
-    --blue0-color: #152636;
-    --blue1-color: #014b56;
-    --blue2-color: #057785;
-    --blue3-color: #57b8bc;
-    --blue4-color: #b4d2d3;
-    --grey-color: #8b929a;
-    --brown0-color: #7b5c52;
-    --brown1-color: #8a7469;
-    --brown2-color: #d6b09b;
-    --brown3-color: #f6d8cb;
-    --brown4--color: rgba(99, 88, 75, 0.283);
-    --yellow0-color: #fdf7e4;
-    --yellow1-color: rgb(255, 255, 235);
-    --yellow2-color: linear-gradient( 90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
-}
-
-
-/* ________________________________________________________________________________________________ */
-
-
 /* fonts */
 
 @font-face {
@@ -178,7 +155,174 @@
 
 
 /* body */
+.side-pic {
+    background-image: url('../../resources/img/home page/beach.jpg');
+    background-size: cover;
+    padding: 20px;
+    height: 150px;
+    position: relative;
+    transition: 2s;
+    top: 0;
+    left: 650px;
+    width: 40%;
+    user-select: none;
+}
+.quote1{
+    position: absolute;
+    font-size: 30px;
+    right: 440px;
+    top: 200px;
+    color: #057785;
+    user-select: none;
+}
 
+.quote2 {
+    font-family: "Special2", serif;
+    position: absolute;
+    font-size: 20px;
+    right: 80px;
+    top: 220px;
+    font-weight: 10;
+    color: #b4d2d3;
+    user-select: none;
+    text-align: center;
+}
+
+.quote3{
+    position: absolute;
+    font-size: 30px;
+    left: 80px;
+    top: 400px;
+    color:#8b929a;
+    user-select: none;
+}
+
+.quote4 {
+    font-family: "Special2", serif;
+    position: absolute;
+    font-size: 20px;
+    left: 100px;
+    top: 420px;
+    font-weight: 10;
+    color: #014b56;
+    user-select: none;
+    text-align: center;
+}
+
+.rooms {
+    margin-top: 100px;
+    user-select: none;
+}
+
+.rooms .txt {
+    width: 40%;
+    position: relative;
+    font-size: 200px;
+    left: 20px;
+    color: #8b929a77;
+    font-family: "Parg", serif;
+    user-select: none;
+}
+
+.rooms .slider {
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: none;
+}
+.rooms .slider .slides{
+    background-color: #7b5c521c;
+    padding: 30px;
+    height: 400px;
+    transition: all 0.15s ease;
+    user-select: none;
+    border-radius: 5%;
+}
+.rooms .slider .overflow{
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+}
+.rooms .slider .inner{
+    transition: margin-left 800ms cubic-bezier(0.77, 0, 0.175, 1);
+    width: 400%;
+    height: 340px;
+    user-select: none;
+}
+.rooms .slider .slide{
+    width: 25%;
+    float: left;
+    display: block;
+    height: 100%;
+    user-select: none;
+}
+.rooms .slides .content{
+    padding: 5px;
+    user-select: none;
+}
+.rooms .slides .content img {
+    width: 60%
+}
+
+.rooms .slides .content h3 {
+    position: relative;
+    left: 480px;
+    top: -200px;
+    font-family: "parg", serif;
+    font-size: 10px;
+    text-align: left;
+    color: #362915;
+    user-select: none;
+}
+
+.rooms .slider input {
+    display: none;
+}
+
+.rooms .dots {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    user-select: none;
+}
+
+.rooms .dots label {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin: 5px;
+    background: #d3c4b457;
+    user-select: none;
+}
+
+#img1:checked ~ .slides .inner {
+    margin-left: 0;
+}
+
+#img2:checked ~ .slides .inner {
+    margin-left: -100%;
+}
+
+#img3:checked ~ .slides .inner {
+    margin-left: -200%;
+}
+
+#img4:checked ~ .slides .inner {
+    margin-left: -300%;
+}
+
+#img1:checked ~ .dots label:nth-of-type(1),
+#img2:checked ~ .dots label:nth-of-type(2),
+#img3:checked ~ .dots label:nth-of-type(3),
+#img4:checked ~ .dots label:nth-of-type(4) {
+    background: var(--brown2-color);
+    user-select: none;
+}
 .root {
     min-height: 363px;
 }
@@ -187,8 +331,6 @@
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: center;
-    margin-inline: inherit;
-    width: 70%;
 }
 
 

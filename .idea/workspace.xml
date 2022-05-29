@@ -4,23 +4,27 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="React structured">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Hurgada-GRND-Hotel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hurgada-GRND-Hotel.iml" afterDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fitted contact us in template">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/template/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/template/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/template/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/template/template-bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template-bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/template/template-bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template-bootstrap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/form_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_loader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/receptionist-details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/validate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/receptionists/view_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/view_loader.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +58,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-        <entry key="$PROJECT_DIR$" value="CRUD-receptionists" />
+        <entry key="$PROJECT_DIR$" value="react" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,8 +97,13 @@
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.gutterIcons",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
   }
 }]]></component>
   <component name="ReaderModeSettings">
@@ -121,6 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.template.html" />
         <item itemvalue="JavaScript Debug.template.html" />
         <item itemvalue="JavaScript Debug.template.html" />
       </list>
@@ -153,6 +162,8 @@
       <workItem from="1652644433450" duration="6659000" />
       <workItem from="1652860436044" duration="778000" />
       <workItem from="1652861640879" duration="5270000" />
+      <workItem from="1653468544576" duration="1705000" />
+      <workItem from="1653760683502" duration="7193000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>

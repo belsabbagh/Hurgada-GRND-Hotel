@@ -29,15 +29,17 @@ function construct_receptionists_table(mysqli_result $receptionists_data): strin
 function construct_receptionist_table_row(array $receptionist): string
 {
     $directory_url = DIRECTORY_PATH;
-    $color = "";
+    $color = "style='background-color: var(--brown3-color);'";
     if ($receptionist["receptionist_enabled"] == 0) $color = "style='background-color: rgb(139, 146, 154);'";
-    return "<tr $color>
+    return /** @lang HTML */ <<<EOF
+<tr $color>
                 <td>{$receptionist['user_id']}</td>
                 <td>{$receptionist['first_name']}</td>
                 <td>{$receptionist['last_name']}</td>
                 <td>{$receptionist['email']}</td>
                 <td><a class='view-button' href='$directory_url/index.php?id={$receptionist["user_id"]}'><span class='td-link'>View</span></a></td>
-            </tr>";
+            </tr>
+EOF;
 }
 
 /**
@@ -140,7 +142,7 @@ function construct_new_receptionist_form(): string
         </div>
         <div>
             <label for='email'>Email:</label>
-            <input type='email' name='email' required/>
+            <input type='email' name='email' id='email' required/>
             <label for='password'>Password:</label>
             <input type='password' name='password' required/>
         </div>
