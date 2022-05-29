@@ -163,6 +163,7 @@ body{
     background: var(--yellow2-color);
     backdrop-filter: blur(10px);
     margin-top: 5px;
+    font-size: medium;
 }
 .header .links ul li a:hover{
     padding-left: 25px;
@@ -443,6 +444,7 @@ body{
     position: absolute;
     width: 20%;
     border-radius: 10%;
+    user-select: none;
 }
 .Dinning .container .eat1{
     left: 400px;
@@ -461,6 +463,7 @@ body{
     background: linear-gradient(rgba(195, 211, 231, 0.237),rgba(119, 230, 206, 0.21)) ;
     padding-bottom: 100px;
     border-radius: 50%;
+    user-select: none;
 }
 .Exp .container .txt{
     user-select: none;
@@ -487,6 +490,7 @@ body{
     position: absolute;
     width: 20%;
     border-radius: 10%;
+    user-select: none;
 }
 .Exp .container .exp1{
     top: -100px;
@@ -547,6 +551,11 @@ body{
     color: #777;
     font-size: 17px;
     user-select: none;
+}
+.header{
+    font-weight: 100 !important;
+    text-transform: capitalize;
+    font-size: 55px;
 }
 
 
