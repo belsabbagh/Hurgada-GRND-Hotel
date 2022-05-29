@@ -164,7 +164,7 @@
 
 
           <h2 class="titles"> Edit your reservation </h2>
-          <form action="testing.php" method="post">
+          <form action="edit_backend" method="post">
 
             <div class="dates form-group">
               <label for="checkin">Check in date</label>

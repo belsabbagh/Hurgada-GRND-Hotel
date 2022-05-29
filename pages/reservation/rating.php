@@ -218,9 +218,9 @@
                             $room_id = $temp['room_no'];
 
                             $submit_sql = "INSERT INTO  room_reviews 
-(client_id, room_no, overall_rating, view_rating, comfort_rating, facilities_rating, room_service_rating, comments, reservation_id)
-VALUES ('$client_ID', '$room_id' , '$overall_rating' ,'$view_rating', '$comfort_rating' , '$facilities_rating'
-, '$room_service_rating', '$comments', '$reservation_id')";
+                            (client_id, room_no, overall_rating, view_rating, comfort_rating, facilities_rating, room_service_rating, comments, reservation_id)
+                            VALUES ('$client_ID', '$room_id' , '$overall_rating' ,'$view_rating', '$comfort_rating' , '$facilities_rating'
+                            , '$room_service_rating', '$comments', '$reservation_id')";
                             run_query($submit_sql) or die(" error");
 
                             header("Location:http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");

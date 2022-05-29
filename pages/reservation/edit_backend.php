@@ -10,7 +10,7 @@
 
 
 
-
+  //connection
   $server = "localhost";
   $username = "root";
   $password = "";
@@ -32,13 +32,13 @@
   $temp = $result->fetch_assoc();
   $room_type_id = $temp['room_type_id'];
 
-  //echo "$room_type_id";
+  
   $roomsql_3 = " SELECT room_max_cap From room_types WHERE type_id =$room_type_id";
   $result = run_query($roomsql_3);
   $temp = $result->fetch_assoc();
   $room_max_cap = $temp['room_max_cap'];
 
-  $room_max_cap = 6;
+  
   $max_children = $room_max_cap * 2;
   if ($_SERVER['REQUEST_METHOD'] != 'POST');
 
