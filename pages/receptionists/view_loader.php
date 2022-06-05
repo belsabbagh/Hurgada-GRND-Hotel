@@ -100,7 +100,8 @@ function construct_receptionist_view(array $receptionist, bool $editable = false
         </div>
         <div>
             <label for='email'>Email:</label>
-            <input type='email' name='email' value='{$receptionist['email']}' $readonly/>
+            <p id='status_msg'></p>
+            <input type='email' name='email' onkeyup='email_isDuplicate_msg(this.value, `status_msg`)' value='{$receptionist['email']}' $readonly/>
         </div>
         <div>
         <label for='user_type' >Employee Role:</label>

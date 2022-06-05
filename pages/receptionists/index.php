@@ -1,7 +1,7 @@
 <?php
 include_once "../../global/php/db-functions.php";
 include_once "view_loader.php";
-redirect_to_login();
+//redirect_to_login();
 ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -22,6 +22,7 @@ redirect_to_login();
     <link rel='stylesheet' href='../../global/template/template-bootstrap.css'/>
     <!-- Main JS File -->
     <script src='../../global/template/template.js'></script>
+    <script src="../../global/js/ajax_functions.js"></script>
     <script src="../../global/js/jquery-3.6.0.min.js">
         function search() {
             $.ajax({
