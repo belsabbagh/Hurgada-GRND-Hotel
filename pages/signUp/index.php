@@ -36,8 +36,8 @@
            <script src=
        "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                integrity=
-       "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-               crossorigin="anonymous">
+                   "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                   crossorigin="anonymous">
            </script>
 
     <!-- Main JS File -->
@@ -46,67 +46,42 @@
     <!-- Render All Elements Normally -->
     <link rel="stylesheet" href="../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="../../global/template/template.css"/>
+    <link rel="stylesheet" href="../../global/template/template-bootstrap.css"/>
     <link rel="stylesheet" href="../../global/css/style.css">
-    
+
 </head>
 
 <body>
-    <!-- Header -->
-    <div class="header" id="header">
-        <div class="container">
-            <div class="links">
-                <span id="icon" class="icon" onclick="showbar()">
-                    <i class='bx bx-menu-alt-left'></i>
-                </span>
-                <div class="items" id="items">
-                    <span class="container">
-                        <span>Home</span>
-                    </span>
-                    <span class="container">
-                        <span>Rooms</span>
-                    </span>
-                    <span class="container">
-                        <span>Dining</span>
-                    </span>
-                    <span class="container">
-                        <span>Experience</span>
-                    </span>
-                    <span class="container">
-                        <span>Location</span>
-                    </span>
-                    <span class="container">
-                        <span>About</span>
-                    </span>
-                </div>
-                <span id='icon2' class="icon2" onclick="hidebar()">
-                    <i class='bx bx-x'></i>
-                </span>
-                <i class='book' id="book">Book now</i>
-                <ul id="bar">
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><i class='bx bxs-user'></i> Profile</a>
-                    </li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><i class='bx bxs-bed'></i> My
-                        Reservations</a></li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><i class='bx bxs-star'></i> Rate us</a>
-                    </li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><i class='bx bxl-gmail'></i>
-                        Contact us</a></li>
-                </ul>
-            </div>
+<!-- Header -->
+<nav class='navbar' id='header'>
+    <div class='container-fluid'>
+        <div class='navbar-header' onclick='showbar()'>
+            <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
         </div>
+        <div class='row'>
+            <ul class='nav items' id='items'>
+                <?php include_once "../../global/php/db-functions.php";
+                echo load_header_bar(); ?>
+            </ul>
+        </div>
+        <div class="">
+            <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
+        </div>
+        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a
+                    class='nav-link nlink' href='#'>Book now</a></span>
     </div>
-    <!-- End Of Header -->
+</nav>
+<!-- End Of Header -->
 
-    <!-- Body -->
+<!-- Body -->
 
-    
-    <div class="features">
-        <div class="container">
-            <div class="feat">
-                <form action="SignUp.php" method="post" enctype='multipart/form-data' style="text-align:center;"> <!--to center the form
+
+<div class="features">
+    <div class="container">
+        <div class="feat">
+            <form action="SignUp.php" method="post" enctype='multipart/form-data' style="text-align:center;"> <!--to center the form
                         "border:1px solid #ccc" for border -->
-                            <div class="container">
+                <div class="container">
                               <h1>Sign Up</h1>
                               <p>Please fill in this form to create an account in our hotel's system.</p>
                               <hr>

@@ -37,7 +37,7 @@ $content = "successful.";
 try
 {
     signUp();
-    header("Location: localhost/Hurgada-GRND-Hotel/pages/home/index.html");
+    header("Location: localhost/Hurgada-GRND-Hotel/pages/home/index.php");
 } catch (Exception $e)
 {
     $content = $e->getMessage();

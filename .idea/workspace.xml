@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Email check now works asynchronously">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/js/ajax_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/js/ajax_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/view_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/view_loader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/signUp/SignUp.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/SignUp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/signUp/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +156,9 @@
       <workItem from="1654153215692" duration="2661000" />
       <workItem from="1654190698346" duration="2631000" />
       <workItem from="1654371252254" duration="2023000" />
-      <workItem from="1654403058360" duration="5322000" />
+      <workItem from="1654403058360" duration="7621000" />
+      <workItem from="1654425380554" duration="83000" />
+      <workItem from="1654432654438" duration="2277000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -414,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654404257670</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Email check now works asynchronously">
+      <created>1654411385249</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1654411385249</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
