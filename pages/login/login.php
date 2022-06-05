@@ -22,11 +22,11 @@ function log_in(): void
         $_SESSION['active_email'] = $user_data['email'];
         $_SESSION['active_user_id'] = $user_data['user_id'];
         $_SESSION['active_user_type'] = $user_data['user_type'];
-        header("Location: http://localhost/hurgada-grnd-hotel/pages/Home/index.html");
+        header("Location: http://localhost/hurgada-grnd-hotel/pages/Home/index.php");
         return;
     } catch (Exception $e) {
         echo $e->getMessage();
-        //header("Location: index.html");
+        //header("Location: index.php");
     }
 }
 

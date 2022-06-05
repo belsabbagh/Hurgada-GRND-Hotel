@@ -46,13 +46,7 @@ include_once "view_loader.php";
         </div>
         <div class='row'>
             <ul class='nav items' id='items'>
-                <?php
-                try
-                {
-                    echo load_header_bar();
-                } catch (Exception $e)
-                {
-                } ?>
+                <?php echo load_header_bar(); ?>
             </ul>
         </div>
         <div class="">
