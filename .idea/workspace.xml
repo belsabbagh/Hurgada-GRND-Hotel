@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added function to check for duplicate email">
-      <change afterPath="$PROJECT_DIR$/global/js/ajax_functions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/global/js/ajax_php/email_is_duplicate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/receptionists/email_is_duplicate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/add-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/add-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/edit-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/edit-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/validate.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/validate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/view_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/view_loader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/register/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/js/ajax_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/js/ajax_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/js/ajax_php/email_is_duplicate.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/js/ajax_php/email_is_duplicate.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +41,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="react" />
+        <entry key="$PROJECT_DIR$" value="CRUD-receptionists" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -163,6 +152,7 @@
       <workItem from="1654153215692" duration="2661000" />
       <workItem from="1654190698346" duration="2631000" />
       <workItem from="1654371252254" duration="2023000" />
+      <workItem from="1654403058360" duration="1045000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -409,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652674438427</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Added function to check for duplicate email">
+      <created>1654403360717</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1654403360717</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

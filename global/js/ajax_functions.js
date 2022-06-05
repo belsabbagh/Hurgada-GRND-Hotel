@@ -13,7 +13,7 @@ function email_isDuplicate(email, err_msg_id) {
         return;
     }
     $.ajax({
-        url: 'email_is_duplicate.php',
+        url: 'http://localhost/hurgada-grnd-hotel/global/js/ajax_php/email_is_duplicate.php',
         data: "key=" + key,
         type: "POST",
         success: function (result) {
