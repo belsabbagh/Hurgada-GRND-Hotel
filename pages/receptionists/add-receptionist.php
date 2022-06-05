@@ -11,6 +11,7 @@ function add_new_receptionist(): void
 {
     if (!post_data_exists()) throw new ErrorException("Form was not submitted correctly", 1);
     $enabled = array_key_exists('enabled', $_POST) ? 1 : 0;
+    if (user_email_exists($_POST['email'])) throw new LogicException("Email Already Exists");
 
     $pfp_file_name = insert_pic_into_directory($_FILES['user_pic'], $_POST['email'], PFP_DIRECTORY_PATH);
     $idp_file_name = insert_pic_into_directory($_FILES['national_id_photo'], $_POST['email'], ID_PIC_DIRECTORY_PATH);
@@ -31,6 +32,7 @@ $result = "Operation successful";
 try
 {
     add_new_receptionist();
+    header("Location: index.php");
 } catch (Exception $e)
 {
     $result = '<p>' . $e->getMessage() . '</p>';

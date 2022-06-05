@@ -8,13 +8,49 @@
     <title>HURGADA-GRND-HOTEL</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Main JS File -->
-    <script src="template.js"></script>
     <!-- Render All Elements Normally -->
     <link rel="stylesheet" href="./normalize.css" />
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/style.css" />
     <!-- Main template CSS File -->
     <link rel="stylesheet" href="./template.css" />
+    <!-- Main JS File -->
+    <script>
+        function showbar() {
+            document.getElementById('bar').style.display = 'inline-block';
+            document.getElementById('icon').style.display = 'none';
+            document.getElementById('icon2').style.display = 'inline-block';
+        }
+
+        function hidebar() {
+            document.getElementById('icon2').style.display = 'none';
+            document.getElementById('icon').style.display = 'inline-block';
+            document.getElementById('bar').style.display = 'none';
+        }
+
+        function reveal() {
+            let reveals = document.querySelectorAll(".reveal");
+            for (const element of reveals) {
+                let windowHeight = window.innerHeight;
+                let elementTop = element.getBoundingClientRect().top;
+                let elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add("active");
+                } else {
+                    element.classList.remove("active");
+                }
+            }
+        }
+
+        document.addEventListener('mouseup', function(e) {
+            let container = document.getElementById('bar');
+            if (!container.contains(e.target)) {
+                document.getElementById('bar').style.display = 'none';
+                document.getElementById('icon2').style.display = 'none';
+                document.getElementById('icon').style.display = 'inline-block';
+            }
+        });
+        window.addEventListener("scroll", reveal);
+    </script>
 </head>
 
 <body>
@@ -23,7 +59,7 @@
         <div class="container">
             <div class="links">
                 <span id="icon" class="icon" onclick="showbar()">
-                    <i class='bx bx-menu-alt-left'></i>
+                    <em class='bx bx-menu-alt-left'></em>
                 </span>
                 <div class="items" id="items">
                     <span class="container">
@@ -46,18 +82,14 @@
                     </span>
                 </div>
                 <span id='icon2' class="icon2" onclick="hidebar()">
-                    <i class='bx bx-x'></i>
+                    <em class='bx bx-x'></em>
                 </span>
-                <i class='book' id="book">Book now</i>
+                <em class='book' id="book">Book now</em>
                 <ul id="bar">
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><i class='bx bxs-user'></i> Profile</a>
-                    </li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><i class='bx bxs-bed'></i> My
-                        Reservations</a></li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><i class='bx bxs-star'></i> Rate us</a>
-                    </li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><i class='bx bxl-gmail'></i>
-                        Contact us</a></li>
+                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><em class='bx bxs-user'></em> Profile</a></li>
+                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><em class='bx bxs-bed'></em> My Reservations</a></li>
+                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><em class='bx bxs-star'></em> Rate us</a></li>
+                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><em class='bx bxl-gmail'></em>Contact us</a></li>
                 </ul>
             </div>
         </div>
@@ -66,7 +98,7 @@
 
     <!-- Body -->
 
-    
+
     <div class="features">
         <div class="container">
             <div class="feat">
@@ -90,8 +122,7 @@
     <!-- Footer -->
     <div class="footer">
         &copy; 2022
-        <span>MIU</span>
-        All Rights Reserved
+        <span>MIU</span> All Rights Reserved
     </div>
     <!-- End Of Footer -->
 

@@ -10,15 +10,6 @@ function hidebar() {
     document.getElementById('bar').style.display = 'none';
 }
 
-document.addEventListener('mouseup', function (e) {
-    let container = document.getElementById('bar');
-    if (!container.contains(e.target)) {
-        document.getElementById('bar').style.display = 'none';
-        document.getElementById('icon2').style.display = 'none';
-        document.getElementById('icon').style.display = 'inline-block';
-    }
-});
-
 function reveal() {
     let reveals = document.querySelectorAll(".reveal");
     for (const element of reveals) {
@@ -32,4 +23,13 @@ function reveal() {
         }
     }
 }
+
+document.addEventListener('mouseup', function(e) {
+    let container = document.getElementById('bar');
+    if (!container.contains(e.target)) {
+        document.getElementById('bar').style.display = 'none';
+        document.getElementById('icon2').style.display = 'none';
+        document.getElementById('icon').style.display = 'inline-block';
+    }
+});
 window.addEventListener("scroll", reveal);

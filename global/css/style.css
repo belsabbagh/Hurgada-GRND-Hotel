@@ -1,35 +1,41 @@
+:root {
+    --blue0-color: #152636;
+    --blue1-color: #014b56;
+    --blue2-color: #057785;
+    --blue3-color: #57b8bc;
+    --blue4-color: #b4d2d3;
+    --grey-color: #8b929a;
+    --brown0-color: #7b5c52;
+    --brown1-color: #8a7469;
+    --brown2-color: #d6b09b;
+    --brown3-color: #f6d8cb;
+    --brown4--color: rgba(99, 88, 75, 0.283);
+    --yellow0-color: #fdf7e4;
+    --yellow1-color: rgb(255, 255, 235);
+    --yellow2-color: linear-gradient( 90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
+}
+
 /* fonts */
+
 @font-face {
     font-family: "Title";
     src: url(../../resources/fonts/PlayfairDisplayi.ttf);
 }
+
 @font-face {
     font-family: "parg";
     src: url(../../resources/fonts/PlayfairDisplay.ttf);
 }
+
 @font-face {
     font-family: "special";
     src: url(../../resources/fonts/Updock-Regular.ttf);
 }
 
-
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing:border-box;
-    box-sizing: border-box;
-}
-body{
+body {
     background: var(--yellow2-color);
 }
-.container{
-    width: 600px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    text-decoration: none;
-}
+
 h1 {
     font-family: "title", serif;
 }
@@ -44,7 +50,8 @@ p {
     font-size: 30px;
 }
 
-.submit, button {
+.submit,
+button {
     cursor: pointer;
     justify-content: center;
     color: var(--yellow0-color);
@@ -57,9 +64,4 @@ p {
     transition: 0.05s;
     border-radius: 50px;
     backdrop-filter: blur(2px);
-}
-
-.header-link {
-    text-decoration: none;
-    color: var(--brown2-color);
 }

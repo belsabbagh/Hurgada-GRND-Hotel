@@ -29,7 +29,7 @@ function construct_receptionists_table(mysqli_result $receptionists_data): strin
 function construct_receptionist_table_row(array $receptionist): string
 {
     $directory_url = DIRECTORY_PATH;
-    $color = "style='background-color: var(--brown3-color);'";
+    $color = "";
     if ($receptionist["receptionist_enabled"] == 0) $color = "style='background-color: rgb(139, 146, 154);'";
     return /** @lang HTML */ <<<EOF
 <tr $color>
@@ -100,7 +100,8 @@ function construct_receptionist_view(array $receptionist, bool $editable = false
         </div>
         <div>
             <label for='email'>Email:</label>
-            <input type='email' name='email' value='{$receptionist['email']}' $readonly/>
+            <p id='status_msg'></p>
+            <input type='email' name='email' onkeyup='email_isDuplicate_msg(this.value, `status_msg`)' value='{$receptionist['email']}' $readonly/>
         </div>
         <div>
         <label for='user_type' >Employee Role:</label>

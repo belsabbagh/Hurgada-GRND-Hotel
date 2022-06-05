@@ -18,31 +18,7 @@
     <!-- Main JS File -->
     <script src='../../global/template/template.js'></script>
     <script src="../../global/js/ajax_functions.js"></script>
-    <script src="../../global/js/jquery-3.6.0.min.js">
-        function validate_email() {
-            const err_msg_1 = "Email already exists";
-            const key = $("#email").val();
-            let statBar = $("#status_msg");
-
-            if (key === '') {
-                statBar.html('');
-                return;
-            }
-            jQuery.ajax({
-                url: 'validate.php',
-                data: "key=" + key,
-                type: "POST",
-                success: function (data) {
-                    if (data === 1) {
-                        statBar.html(err_msg_1);
-                        return;
-                    }
-                    if (data === 0)
-                        statBar.html("All is good");
-                }
-            });
-        }
-    </script>
+    <script src="../../global/js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class='d-flex flex-column min-vh-100'>
@@ -103,7 +79,7 @@
             <div>
                 <label for='email'>Email:</label>
                 <p id="status_msg"></p>
-                <input type='email' class='form-control' name='email' id='email' onkeyup="email_isDuplicate(this.value, 'status_msg')" required/>
+                <input type='email' class='form-control' name='email' id='email' onkeyup="email_isDuplicate_msg(this.value, 'status_msg')" required/>
                 <label for='password'>Password:</label>
                 <input type='password' class='form-control' name='password' id="password" required/>
             </div>

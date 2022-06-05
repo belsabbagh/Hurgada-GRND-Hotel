@@ -4,13 +4,12 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php.">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" afterDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Email check now works asynchronously">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/delete-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/delete-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/edit-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/edit-receptionist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/js/ajax_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/js/ajax_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/view_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/view_loader.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/master" />
+  </component>
   <component name="Git.Rebase.Settings">
     <option name="NEW_BASE" value="origin/master" />
   </component>
@@ -40,7 +42,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="CRUD-receptionists" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,11 +77,17 @@
   &quot;keyToString&quot;: {
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/Hurgada-GRND-Hotel/pages/receptionists&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/hurgada-grnd-hotel/pages/receptionists&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
+    ]
   }
 }</component>
   <component name="ReaderModeSettings">
@@ -87,15 +95,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\pages\receptionists" />
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\resources\img\icons" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\receptionists" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\booking" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\global\js\ajax_php" />
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\global\js" />
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\global\j" />
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\global\css" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\resources\img\user_pics" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\resources\img\id_pics" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\receptionists" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\receptionists\view" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\booking" />
     </key>
   </component>
   <component name="RunManager">
@@ -104,6 +114,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.template.html" />
         <item itemvalue="JavaScript Debug.template.html" />
         <item itemvalue="JavaScript Debug.template.html" />
       </list>
@@ -133,7 +144,16 @@
       <workItem from="1652116681788" duration="54066000" />
       <workItem from="1652520220504" duration="1699000" />
       <workItem from="1652642689182" duration="1677000" />
-      <workItem from="1652644433450" duration="4199000" />
+      <workItem from="1652644433450" duration="6659000" />
+      <workItem from="1652860436044" duration="778000" />
+      <workItem from="1652861640879" duration="5270000" />
+      <workItem from="1653468544576" duration="1705000" />
+      <workItem from="1653760683502" duration="13972000" />
+      <workItem from="1654068222135" duration="3397000" />
+      <workItem from="1654153215692" duration="2661000" />
+      <workItem from="1654190698346" duration="2631000" />
+      <workItem from="1654371252254" duration="2023000" />
+      <workItem from="1654403058360" duration="5322000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -373,7 +393,28 @@
       <option name="project" value="LOCAL" />
       <updated>1652520422465</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Changes">
+      <created>1652674438427</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1652674438427</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Added function to check for duplicate email">
+      <created>1654403360717</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1654403360717</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Email check now works better">
+      <created>1654404257670</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1654404257670</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,28 +426,29 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="booking" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
+              <option name="BEK_SORT_TYPE" value="1" />
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="CRUD-receptionists" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added template to booking form.&#10;&#10;- Added button to clear booking filters&#10;- Styled booking filters.&#10;- Set correct data types for booking.&#10;- Added a function to check room availability.&#10;- Refactored styles and fonts." />
-    <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Removed form.html." />
-    <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Added code for setting date constraints for inputs in js.&#10;- Removed form.html.&#10;- Fixed README.md.&#10;- Formatted form file." />
-    <MESSAGE value="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script." />
     <MESSAGE value="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details." />
     <MESSAGE value="Fixed Activity Log message in book" />
     <MESSAGE value="Fixed undefined array keys" />
@@ -428,7 +470,11 @@
     <MESSAGE value="Removed some redundant html templates.&#10;&#10;- Replaced by a php function that returns the full html page with given content in it." />
     <MESSAGE value="Removed some redundant html templates.&#10;&#10;- Removed redundant specific booking pages for client and employee separately." />
     <MESSAGE value="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php." />
-    <option name="LAST_COMMIT_MESSAGE" value="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php." />
+    <MESSAGE value="Changes" />
+    <MESSAGE value="Added function to check for duplicate email" />
+    <MESSAGE value="Email check now works better" />
+    <MESSAGE value="Email check now works asynchronously" />
+    <option name="LAST_COMMIT_MESSAGE" value="Email check now works asynchronously" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
