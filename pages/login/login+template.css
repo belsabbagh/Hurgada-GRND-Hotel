@@ -1,0 +1,464 @@
+/* Variables */
+
+:root {
+    --blue0-color: #152636;
+    --blue1-color: #014b56;
+    --blue2-color: #057785;
+    --blue3-color: #57b8bc;
+    --blue4-color: #b4d2d3;
+    --grey-color: #8b929a;
+    --brown0-color: #7b5c52;
+    --brown1-color: #8a7469;
+    --brown2-color: #d6b09b;
+    --brown3-color: #f6d8cb;
+    --brown4--color: rgba(99, 88, 75, 0.283);
+    --yellow0-color: #fdf7e4;
+    --yellow1-color: rgb(255, 255, 235);
+    --yellow2-color: linear-gradient(90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
+}
+
+
+/* ________________________________________________________________________________________________ */
+
+
+/* Fonts */
+
+@font-face {
+    font-family: "Title";
+    src: url(../../resources/Fonts/PlayfairDisplayi.ttf);
+}
+
+@font-face {
+    font-family: "parg";
+    src: url(../../resources/Fonts/PlayfairDisplay.ttf);
+}
+
+@font-face {
+    font-family: "special";
+    src: url(../../resources/Fonts/Updock-Regular.ttf);
+}
+
+
+/* ________________________________________________________________________________________________ */
+
+
+/* Globals */
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--yellow2-color);
+}
+
+.container {
+    width: 600px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-family: "title";
+}
+
+h3 {
+    font-family: "parg";
+    font-weight: 50px;
+}
+
+p {
+    font-family: "parg";
+    font-weight: 30px;
+}
+
+
+/* ________________________________________________________________________________________________ */
+
+
+/* To Fit All Screen Size */
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+
+/* ________________________________________________________________________________________________ */
+
+
+/* Header */
+
+.header {
+    padding: 20px;
+    height: 100px;
+    transition: 2s;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .links {
+    position: relative;
+}
+
+
+/* Navigation Bar */
+
+.header .links .icon {
+    cursor: pointer;
+    width: 30px;
+    justify-content: center;
+    color: var(--brown1-color);
+    position: fixed;
+    user-select: none;
+    font-size: 60px;
+    left: 55.5px;
+}
+
+.header .links .icon:hover {
+    color: var(--brown2-color);
+}
+
+.header .links .icon2 {
+    cursor: pointer;
+    font-size: 59px;
+    top: 23px;
+    left: 56px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--brown1-color);
+    position: fixed;
+    user-select: none;
+    transition: 0.3s;
+    display: none;
+}
+
+.header .links .icon2:hover {
+    color: var(--brown2-color);
+}
+
+.header .links ul {
+    cursor: pointer;
+    list-style: none;
+    margin-top: 50px;
+    padding: 0;
+    position: fixed;
+    left: 50px;
+    min-width: 200px;
+    display: none;
+    z-index: 1;
+    user-select: none;
+}
+
+.header .links ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: var(--brown1-color);
+    transition: 0.3s;
+    border-radius: 100px;
+    background: var(--yellow2-color);
+    backdrop-filter: blur(10px);
+    margin-top: 5px;
+}
+
+.header .links ul li a:hover {
+    padding-left: 25px;
+    color: var(--yellow0-color);
+    background: var(--brown4--color);
+}
+
+
+/* Book now */
+
+.book {
+    cursor: pointer;
+    width: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    right: 50px;
+    justify-content: center;
+    color: var(--yellow0-color);
+    background: var(--brown4--color);
+    position: fixed;
+    font-size: 20px;
+    user-select: none;
+    padding: 10px;
+    width: 150px;
+    transition: 0.05s;
+    border-radius: 50px;
+    backdrop-filter: blur(2px);
+}
+
+.book:hover {
+    border: 1px solid #7b5c52;
+    border-bottom: 3px solid #7b5c52;
+}
+
+
+/* Items */
+
+.items {
+    cursor: pointer;
+    display: flex;
+    color: var(--brown2-color);
+    position: fixed;
+    font-size: 20px;
+    user-select: none;
+    left: 150px;
+    border-bottom: 2px solid #7b5c52;
+}
+
+.items .container {
+    padding: 10px;
+    justify-content: center;
+    margin-right: 20px;
+    width: 100px;
+    border-radius: 50px;
+    background: var(--yellow2-color);
+    backdrop-filter: blur(2px);
+    transition: 0.05s all ease;
+}
+
+.items .container:hover {
+    color: var(--yellow0-color);
+    background: var(--brown4--color);
+}
+
+
+/* ________________________________________________________________________________________________ */
+
+
+/* body  */
+
+.features {
+    top: 0;
+    padding-top: 150px;
+    padding-bottom: 60px;
+}
+
+.features .container {
+    position: relative;
+    max-width: 300px;
+    max-height: fit-content;
+    padding: 25px 30px;
+    border-radius: 5px;
+    height: 100%;
+    justify-content: center;
+    background: rgba(246, 246, 248, 0.296);
+}
+
+.features .container .content {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container .title {
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    text-align: center;
+    margin: -15px;
+}
+
+.video {
+    position: fixed;
+    max-height: 400px !important;
+    min-width: 100%;
+}
+
+.input-icons i {
+    position: absolute;
+    padding: auto;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.icon {
+    padding: 14px;
+    color: #ccc;
+    min-width: 50px;
+    text-align: left;
+    opacity: 1;
+}
+
+
+/*.container .title ::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: color(#57b8bc);
+} */
+
+.container .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0 12px 0;
+    text-align: left;
+}
+
+.user-details .input-box {
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+.user-details .input-box .input {
+    position: relative;
+    width: 100px;
+}
+
+
+/* .user-details .input-box .input-icons .data {
+    margin-right: 10px;
+} */
+
+.user-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.user-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 40px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+    border-color: #45a7aa;
+}
+
+.content .button {
+    justify-content: center;
+    text-align: center;
+    height: 45px;
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content .button input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #259faf;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    background: #b4d2d3;
+}
+
+
+/* .line{
+    border: var(--blue0-color);
+    display: block;
+} */
+
+
+/* ________________________________________________________________________________________________ */
+
+
+/* Footer */
+
+.footer {
+    background-color: var(--blue0-color);
+    color: white;
+    padding: 30px 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.footer span {
+    font-weight: bold;
+    color: bisque;
+}
+
+
+/* ________________________________________________________________________________________________ */
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 5px;
+    z-index: 3;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--yellow0-color);
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--grey-color);
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--blue4-color);
+}
+
+
+/* ________________________________________________________________________________________________ */
+
+
+/* Animations */
+
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 2s all ease;
+    display: contents;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
