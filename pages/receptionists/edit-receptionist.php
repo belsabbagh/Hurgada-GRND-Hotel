@@ -27,7 +27,7 @@ function edit_receptionist(): void
 {
     if (!post_data_exists())
         throw new RuntimeException("Form was not submitted correctly", 1);
-
+    if (user_email_exists($_POST['email'])) throw new LogicException("Email Already Exists");
     if (fileUploaded('user_pic')) insert_pic_into_directory($_FILES['user_pic'], $_POST['email'], PFP_DIRECTORY_PATH);
     if (fileUploaded('national_id_photo')) insert_pic_into_directory($_FILES['national_id_photo'], $_POST['email'], ID_PIC_DIRECTORY_PATH);
 
@@ -45,6 +45,7 @@ $content = "Operation Successful.";
 try
 {
     edit_receptionist();
+    header("Location: index.php");
 } catch (Exception $e)
 {
     $content = $e->getMessage();

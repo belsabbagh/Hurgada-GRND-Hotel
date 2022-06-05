@@ -1,3 +1,8 @@
+<?php
+include_once "../../global/php/db-functions.php";
+include_once "view_loader.php";
+redirect_to_login();
+?>
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -19,9 +24,9 @@
     <script src='../../global/template/template.js'></script>
     <script src="../../global/js/jquery-3.6.0.min.js">
         function search() {
-            jQuery.ajax({
+            $.ajax({
                 url: "search.php",
-                data: "key=" + $("#searchKey").val() + "&property=" + $("#property").val(),
+                data: "key=" + $("#searchKey").val() + "&" + "property=" + $("#property").val(),
                 type: "POST",
                 success: function (data) {
                     $("#receptionists-table").html(data)
@@ -40,20 +45,13 @@
         </div>
         <div class='row'>
             <ul class='nav items' id='items'>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Home</a></span></li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Rooms</a></span></li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Dining</a></span></li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Experience</a></span>
-                </li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Location</a></span>
-                </li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>About</a></span></li>
+                <?php
+                try
+                {
+                    echo load_header_bar();
+                } catch (Exception $e)
+                {
+                } ?>
             </ul>
         </div>
         <div class="">
@@ -72,8 +70,8 @@
         <div class="col-sm-6">
             <div>
                 <form>
-                    <input type="text" id="searchKey" name="searchKey" onchange="search()">
-                    <select id="property">
+                    <label for="searchKey">Search for:</label><input type="text" id="searchKey" name="searchKey" onchange="search()">
+                    <label for="property">Search by:</label><select id="property">
                         <option value="user_id">ID</option>
                         <optgroup label="Name">
                             <option value="first_name">First Name</option>
@@ -85,9 +83,6 @@
             </div>
             <div class='feature' id="receptionists-table">
                 <?php
-                include_once "view_loader.php";
-                include_once "../../global/php/db-functions.php";
-
                 if (array_key_exists('id', $_GET))
                 {
                     echo construct_receptionist_view(get_user_by_id($_GET["id"]), array_key_exists('editable', $_GET));
@@ -184,9 +179,8 @@
 </div>
 <!-- End Of Body -->
 
-
 <!-- Footer -->
-<footer class='text-center text-white' class='mt-auto' style='background-color: var(--blue0-color);'>
+<footer class='text-center text-white mt-auto' style='background-color: var(--blue0-color);'>
     <!-- Grid container -->
     <div class='container p-4 pb-0'>
         <!-- Section: Social media -->

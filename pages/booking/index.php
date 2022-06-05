@@ -1,6 +1,7 @@
 <?php
 include_once "../../global/php/db-functions.php";
 include_once "form_loader.php";
+redirect_to_login();
 ?>
 <!DOCTYPE html>
 <html lang='en'>

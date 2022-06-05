@@ -269,10 +269,21 @@ function get_user_by_id(int $id): ?array
     return $result->fetch_assoc();
 }
 
+function user_is_logged_in(): bool
+{
+    return isset($_SESSION['active_user_type']);
+}
+
+function redirect_to_login(): void
+{
+    if (!user_is_logged_in()) header("Location: " . REPOSITORY_PAGES_URL . "login");
+}
+
 /**
  * Constructs header bars respective to the active user type.
  *
  * @author @Belal-Elsabbagh
+ * @throws Exception throws exception if user is not logged in.
  * @var Closure $generate_item A function that creates an item in the header bar.
  * @return string The html structure of the items.
  */
@@ -281,6 +292,8 @@ function load_header_bar(): string
     /**
      * Generates header bar item with a specific title and link.
      *
+     * @author @Belal-Elsabbagh
+     *
      * @param string $title The title of the item.
      * @param string $link  The link that the item takes the user to.
      *
@@ -288,27 +301,30 @@ function load_header_bar(): string
      */
     $generate_item = function (string $title, string $link): string
     {
-        return "<span class='container'><a class='header-link' href='$link'>$title</a></span>";
+        return "<li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
+                                                                                        href='$link'>$title</a></span></li>";
     };
-    $home = $generate_item("Home", REPOSITORY_PAGES_URL . "home");
+    $home = $generate_item("Home", REPOSITORY_PAGES_URL . "Home");
     $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile");
     $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations");
     $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations");
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
+    $about = $generate_item("About", REPOSITORY_PAGES_URL . "about");
+    $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login");
+    $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp");
+    $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs");
 
-    return match ($_SESSION['active_user_type'])
+    $bar = match ($_SESSION['active_user_type'] ?? "")
     {
-        3 => $home . $profile . $my_reservations . '<span class="container"><a class="header-link" href="">About</a></span>',
+        3 => $home . $profile . $my_reservations . $contactus,
         2 => $home . $profile . $reservations . $rooms,
         1 => $home . $profile . $reservations . $rooms . $ratings,
-        default => $home . '
-        <span class="container"><a class="header-link" href="">Rooms</a></span>
-        <span class="container"><a class="header-link" href="">Dining</a></span>
-        <span class="container"><a class="header-link" href="">Experience</a></span>
-        <span class="container"><a class="header-link" href="">Location</a></span>
-        <span class="container"><a class="header-link" href="">About</a></span>'
+        default => /** @lang HTML */
+            $home . $login . $signup . $about
     };
+    if (!user_is_logged_in()) throw new Exception("User is not logged in", 666);
+    return $bar;
 }
 
 /**

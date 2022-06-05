@@ -17,27 +17,28 @@
     <link rel='stylesheet' href='../../global/template/template-bootstrap.css'/>
     <!-- Main JS File -->
     <script src='../../global/template/template.js'></script>
+    <script src="../../global/js/ajax_functions.js"></script>
     <script src="../../global/js/jquery-3.6.0.min.js">
-        import jQuery from "jQuery";
-
-        $(document).ready(function () {
-            $("#email").addEventListener("keyup", validate_email);
-            alert("Hello, world!");
-        });
-
         function validate_email() {
             const err_msg_1 = "Email already exists";
+            const key = $("#email").val();
+            let statBar = $("#status_msg");
+
+            if (key === '') {
+                statBar.html('');
+                return;
+            }
             jQuery.ajax({
-                url: "validate.php",
-                data: "key=" + $("#email").val(),
+                url: 'validate.php',
+                data: "key=" + key,
                 type: "POST",
                 success: function (data) {
                     if (data === 1) {
-                        $("#submit").prop("disabled", true);
-                        $("#status_msg").html(err_msg_1);
+                        statBar.html(err_msg_1);
                         return;
                     }
-                    ("#status_msg").html("All is good");
+                    if (data === 0)
+                        statBar.html("All is good");
                 }
             });
         }
@@ -101,7 +102,8 @@
             </div>
             <div>
                 <label for='email'>Email:</label>
-                <input type='email' class='form-control' name='email' id='email' required/>
+                <p id="status_msg"></p>
+                <input type='email' class='form-control' name='email' id='email' onkeyup="email_isDuplicate(this.value, 'status_msg')" required/>
                 <label for='password'>Password:</label>
                 <input type='password' class='form-control' name='password' id="password" required/>
             </div>
@@ -115,9 +117,6 @@
             </div>
             <button type='submit' id='submit' value='submit'>Add</button>
         </form>
-    </div>
-    <div class='feature'>
-        <p id="status_msg"></p>
     </div>
 </div>
 <!-- End Of Body -->

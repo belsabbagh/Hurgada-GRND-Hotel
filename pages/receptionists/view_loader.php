@@ -29,7 +29,7 @@ function construct_receptionists_table(mysqli_result $receptionists_data): strin
 function construct_receptionist_table_row(array $receptionist): string
 {
     $directory_url = DIRECTORY_PATH;
-    $color = "style='background-color: var(--brown3-color);'";
+    $color = "";
     if ($receptionist["receptionist_enabled"] == 0) $color = "style='background-color: rgb(139, 146, 154);'";
     return /** @lang HTML */ <<<EOF
 <tr $color>

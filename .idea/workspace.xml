@@ -4,28 +4,22 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fitted contact us in template">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64abfdec-99c0-4955-832e-6ffd9aae687e/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added function to check for duplicate email">
+      <change afterPath="$PROJECT_DIR$/global/js/ajax_functions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/global/js/ajax_php/email_is_duplicate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/receptionists/email_is_duplicate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/template/template-bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template-bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/template/template-bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template-bootstrap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/Home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/add-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/add-receptionist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/edit-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/edit-receptionist.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/validate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/validate.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/validate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/receptionists/view_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/view_loader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/register/register.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,38 +83,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected": "true",
-    "last_opened_file_path": "C:/xampp/htdocs/hurgada-grnd-hotel/resources/img/icons",
-    "list.type.of.created.stylesheet": "CSS",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/hurgada-grnd-hotel/pages/receptionists&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\pages\receptionists" />
       <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\resources\img\icons" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\receptionists" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\booking" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\global\js\ajax_php" />
+      <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\global\js" />
       <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\global\j" />
       <recent name="C:\xampp\htdocs\hurgada-grnd-hotel\global\css" />
       <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\resources\img\user_pics" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\resources\img\id_pics" />
-      <recent name="C:\xampp\htdocs\Hurgada-GRND-Hotel\pages\receptionists" />
     </key>
   </component>
   <component name="RunManager">
@@ -163,7 +158,11 @@
       <workItem from="1652860436044" duration="778000" />
       <workItem from="1652861640879" duration="5270000" />
       <workItem from="1653468544576" duration="1705000" />
-      <workItem from="1653760683502" duration="7193000" />
+      <workItem from="1653760683502" duration="13972000" />
+      <workItem from="1654068222135" duration="3397000" />
+      <workItem from="1654153215692" duration="2661000" />
+      <workItem from="1654190698346" duration="2631000" />
+      <workItem from="1654371252254" duration="2023000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -445,7 +444,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Removed form.html." />
     <MESSAGE value="Added date constraints checking in db-functions.php&#10;&#10;- Added code for setting date constraints for inputs in js.&#10;- Removed form.html.&#10;- Fixed README.md.&#10;- Formatted form file." />
     <MESSAGE value="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script." />
     <MESSAGE value="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details." />
@@ -470,7 +468,8 @@
     <MESSAGE value="Removed some redundant html templates.&#10;&#10;- Removed redundant specific booking pages for client and employee separately." />
     <MESSAGE value="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php." />
     <MESSAGE value="Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
+    <MESSAGE value="Added function to check for duplicate email" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added function to check for duplicate email" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
