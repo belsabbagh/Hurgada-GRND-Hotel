@@ -4,15 +4,14 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Email check now works asynchronously">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Changed pages to php to implement a dynamic nav bar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/signUp/SignUp.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/SignUp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/signUp/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contactUs/contactus.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contactUs/contactus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/signUp/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="CRUD-receptionists" />
+        <entry key="$PROJECT_DIR$" value="AJAX_Functions" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -158,7 +157,7 @@
       <workItem from="1654371252254" duration="2023000" />
       <workItem from="1654403058360" duration="7621000" />
       <workItem from="1654425380554" duration="83000" />
-      <workItem from="1654432654438" duration="2277000" />
+      <workItem from="1654432654438" duration="3886000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -426,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654411385249</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Changed pages to php to implement a dynamic nav bar">
+      <created>1654435357551</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1654435357551</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +467,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details." />
     <MESSAGE value="Fixed Activity Log message in book" />
     <MESSAGE value="Fixed undefined array keys" />
     <MESSAGE value="Updated SQL" />
@@ -486,7 +491,8 @@
     <MESSAGE value="Added function to check for duplicate email" />
     <MESSAGE value="Email check now works better" />
     <MESSAGE value="Email check now works asynchronously" />
-    <option name="LAST_COMMIT_MESSAGE" value="Email check now works asynchronously" />
+    <MESSAGE value="Changed pages to php to implement a dynamic nav bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed pages to php to implement a dynamic nav bar" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

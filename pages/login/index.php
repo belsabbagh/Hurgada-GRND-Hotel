@@ -36,24 +36,8 @@
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
             <div class="items" id="items">
-                    <span class="container">
-                        <span>Home</span>
-                    </span>
-                <span class="container">
-                        <span>Rooms</span>
-                    </span>
-                <span class="container">
-                        <span>Dining</span>
-                    </span>
-                <span class="container">
-                        <span>Experience</span>
-                    </span>
-                <span class="container">
-                        <span>Location</span>
-                    </span>
-                <span class="container">
-                        <span>About</span>
-                    </span>
+                <?php include_once "../../global/php/db-functions.php";
+                echo load_header_bar(false); ?>
             </div>
             <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>

@@ -26,10 +26,11 @@
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
             <div class="items" id="items">
-                <?php echo load_header_bar(true); ?>
-                <!--        <span class="container">
-                            <span>Home</span>
-                        </span>
+                <?php include_once "../../global/php/db-functions.php";
+                echo load_header_bar(false); ?>
+                <!-- <span class="container">
+                         <span>Home</span>
+                     </span>
                     <span class="container">
                             <span>Rooms</span>
                         </span>

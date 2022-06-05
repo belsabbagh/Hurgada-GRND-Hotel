@@ -283,10 +283,13 @@ function redirect_to_login(): void
  * Constructs header bars respective to the active user type.
  *
  * @author @Belal-Elsabbagh
+ *
+ * @param bool  $bootstrap
+ *
  * @var Closure $generate_item A function that creates an item in the header bar.
  * @return string The html structure of the items.
  */
-function load_header_bar($isHome = false): string
+function load_header_bar(bool $bootstrap = false): string
 {
     /**
      * Generates header bar item with a specific title and link.
@@ -298,22 +301,21 @@ function load_header_bar($isHome = false): string
      *
      * @return string The html content of the item.
      */
-    $generate_item = function (string $title, string $link, bool $isHome): string
+    $generate_item = function (string $title, string $link, bool $bootstrap): string
     {
-        if ($isHome) return "<span class='container'><a href='$link'>$title</span>";
-        return "<li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='$link'>$title</a></span></li>";
+        if (!$bootstrap) return /** @lang HTML */ "<div class='container'><a style='text-decoration: none' href='$link'>$title</div>\n";
+        return /** @lang HTML */ "<li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='$link'>$title</a></span></li>";
     };
-    $home = $generate_item("Home", REPOSITORY_PAGES_URL . "Home", $isHome);
-    $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile", $isHome);
-    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations", $isHome);
-    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations", $isHome);
-    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $isHome);
-    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $isHome);
-    $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $isHome);
-    $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $isHome);
-    $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $isHome);
-    $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", $isHome);
+    $home = $generate_item("Home", REPOSITORY_PAGES_URL . "Home", $bootstrap);
+    $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile", $bootstrap);
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
+    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
+    $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $bootstrap);
+    $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
+    $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
+    $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", $bootstrap);
 
     return match ($_SESSION['active_user_type'] ?? "")
     {

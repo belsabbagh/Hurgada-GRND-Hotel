@@ -61,7 +61,7 @@
         <div class='row'>
             <ul class='nav items' id='items'>
                 <?php include_once "../../global/php/db-functions.php";
-                echo load_header_bar(); ?>
+                echo load_header_bar(true); ?>
             </ul>
         </div>
         <div class="">
