@@ -4,19 +4,7 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Email check now works asynchronously">
-      <change afterPath="$PROJECT_DIR$/pages/login/check.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/cssprofile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/view-loader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sql/hurgada-grnd-hotel.sql" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sql/hurgada-grnd-hotel.sql" afterDir="false" />
-    </list>
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Profile page works.&#10;&#10;Ajax login works" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -445,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654437249064</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Profile page works.&#10;&#10;Ajax login works">
+      <created>1654614668155</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1654614668155</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,7 +475,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed Activity Log message in book" />
     <MESSAGE value="Fixed undefined array keys" />
     <MESSAGE value="Updated SQL" />
     <MESSAGE value="Updated booking PHPDoc&#10;&#10;Formatted file" />
@@ -505,7 +499,8 @@
     <MESSAGE value="Email check now works better" />
     <MESSAGE value="Email check now works asynchronously" />
     <MESSAGE value="Changed pages to php to implement a dynamic nav bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed pages to php to implement a dynamic nav bar" />
+    <MESSAGE value="Profile page works.&#10;&#10;Ajax login works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile page works.&#10;&#10;Ajax login works" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
