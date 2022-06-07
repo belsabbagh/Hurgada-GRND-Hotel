@@ -1,7 +1,7 @@
 <?php
 include_once "../../global/php/db-functions.php";
 include_once "view_loader.php";
-if (!session_running()) session_start();
+maintain_session();
 redirect_to_login();
 ?>
 <!DOCTYPE html>

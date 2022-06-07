@@ -1,3 +1,7 @@
+<?php
+include_once "../../global/php/db-functions.php";
+maintain_session();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,8 +67,7 @@
         </div>
         <div class='row'>
             <ul class='nav items' id='items'>
-                <?php include_once "../../global/php/db-functions.php";
-                echo load_header_bar(get_active_user_type(), true); ?>
+                <?php echo load_header_bar(get_active_user_type(), true); ?>
             </ul>
         </div>
         <div class="">

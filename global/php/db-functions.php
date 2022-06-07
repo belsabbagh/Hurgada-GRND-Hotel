@@ -580,3 +580,8 @@ function session_running(): bool
 {
     return isset($_SESSION);
 }
+
+function maintain_session(): void
+{
+    if (!session_running()) session_start();
+}

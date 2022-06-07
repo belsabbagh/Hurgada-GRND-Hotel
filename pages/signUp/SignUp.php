@@ -1,5 +1,6 @@
 <?php
 include_once "../../global/php/db-functions.php";
+maintain_session();
 /**
  * Adds the new user data into the db and saves their photos in their folders.
  *

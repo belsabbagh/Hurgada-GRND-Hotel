@@ -1,8 +1,7 @@
 <?php
-session_start();
 include_once "functions.php";
 include_once "../../global/php/db-functions.php";
-
+maintain_session();
 try
 {
     if (!post_data_exists()) throw new Exception("Data wasn't submitted correctly", 1);
