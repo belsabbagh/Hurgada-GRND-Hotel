@@ -20,10 +20,10 @@ redirect_to_login();
     <link rel='stylesheet' href='../../global/css/bootstrap-5.0.2-dist/css/bootstrap.css'>
     <script src='../../global/css/bootstrap-5.0.2-dist/js/bootstrap.js'></script>
     <script src='../../global/js/font-awesome.js'></script>
-    <link rel='stylesheet' href='../../global/css/style.css'/>
-    <link rel='stylesheet' href='style.css'/>
     <!-- Main template CSS File -->
+    <link rel='stylesheet' href='../../global/css/style.css'/>
     <link rel='stylesheet' href='../../global/template/template-bootstrap.css'/>
+    <link rel='stylesheet' href='style.css'/>
     <!-- Main JS File -->
     <script src='../../global/template/template.js'></script>
 </head>

@@ -34,17 +34,16 @@ if (!isset($_SESSION))
                 </span>
             <div class="items" id="items">
                 <?php echo load_header_bar(get_active_user_type()); ?>
-            
             </div>
             <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-            <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
+            <div class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></div>
             <ul id="bar">
-                <li><a href="Profile"><i class='bx bxs-user'></i>Profile</a></li>
-                <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
-                <li><a href="RateUs"><i class='bx bxs-star'></i> Rate us</a></li>
-                <li><a href="ContacUs"><i class='bx bxl-gmail'></i> Contact us</a></li>
+                <li><a href="Profile"><em class='bx bxs-user'></em>Profile</a></li>
+                <li><a href="MyReservations"><em class='bx bxs-bed'></em> My Reservations</a></li>
+                <li><a href="RateUs"><em class='bx bxs-star'></em> Rate us</a></li>
+                <li><a href="ContacUs"><em class='bx bxl-gmail'></em> Contact us</a></li>
             </ul>
         </div>
     </div>

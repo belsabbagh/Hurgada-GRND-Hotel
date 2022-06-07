@@ -170,7 +170,7 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
  */
 function active_user_isEmployee(): bool
 {
-    if ($_SESSION['active_user_type'] < 3) return true;
+    if (get_active_user_type() < 3 && get_active_user_type() != NO_USER) return true;
     return false;
 }
 
@@ -332,8 +332,8 @@ function load_header_bar(?int $active_user_type = NO_USER, bool $bootstrap = fal
     };
     $home = $generate_item("Home", REPOSITORY_PAGES_URL . "Home", $bootstrap);
     $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile", $bootstrap);
-    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations", $bootstrap);
-    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", $bootstrap);
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
@@ -602,7 +602,7 @@ function warningmsg ($msg ,$header,$link){
         <form action= '' method = 'post'>
         <a href= '$link'  class = 'close-btn'> ok </a>
 
-      
+
   </form>
  </div>
 </div>
@@ -624,7 +624,7 @@ function confirmmsg ($msg ,$header){
         <div class='line'></div>
         <form action= '' method = 'post'>
 
-        <input type ='submit'  class = 'close-btn' name= 'no_btn' value = 'no'> 
+        <input type ='submit'  class = 'close-btn' name= 'no_btn' value = 'no'>
         <input type ='submit'   class = 'confirm-btn' name= 'yes_btn' value = 'yes'>
   </form>
  </div>
@@ -632,7 +632,7 @@ function confirmmsg ($msg ,$header){
     ";
 }
 
-//confirm using link 
+//confirm using link
 function confirmmsg2 ($msg ,$header,$link_no, $link_yes){
 
     echo"
@@ -648,9 +648,14 @@ function confirmmsg2 ($msg ,$header,$link_no, $link_yes){
         <a href= '$link_yes'  class = 'confirm-btn'> yes </a>
         <a href= '$link_no'  class = 'close-btn'> no </a>
 
-      
+
   </form>
  </div>
 </div>
     ";
+}
+
+function restrict_to_staff(): void
+{
+    if (!active_user_isEmployee()) die("CANNOT ACCESS PAGE.");
 }
