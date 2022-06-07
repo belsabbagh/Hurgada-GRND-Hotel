@@ -13,5 +13,6 @@
             "database": "hurgada-grnd-hotel",
             "username": "root"
         }
-    ]
+    ],
+    "editor.tabCompletion": "on"
 }
