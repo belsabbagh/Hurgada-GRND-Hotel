@@ -18,7 +18,6 @@
     <!-- Main JS File -->
     <script src='../../global/template/template.js'></script>
     <script src="../../global/js/ajax_functions.js"></script>
-    <script src="../../global/js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class='d-flex flex-column min-vh-100'>

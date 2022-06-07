@@ -1,6 +1,11 @@
 <?php
 include_once "../../global/php/db-functions.php";
 include_once "form_loader.php";
+if (!isset($_SESSION))
+{
+    session_start();
+}
+redirect_to_login();
 ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -33,13 +38,13 @@ include_once "form_loader.php";
         <div class='row'>
             <ul class='nav items' id='items'>
                 <?php include_once "../../global/php/db-functions.php";
-                echo load_header_bar(true); ?>
+                echo load_header_bar(get_active_user_type(), true); ?>
             </ul>
         </div>
         <div>
             <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
         </div>
-        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a class='nav-link nlink' href='#'>Book now</a></span>
+        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a class='nav-link nlink' href='<?php echo REPOSITORY_PAGES_URL . "booking" ?>'>Book now</a></span>
     </div>
 </nav>
 <!-- End Of Header -->
@@ -49,7 +54,7 @@ include_once "form_loader.php";
 
 <div class='container root'>
     <div class='feature'>
-        <?php echo construct_new_booking_form(true); ?>
+        <?php echo construct_new_booking_form(active_user_isEmployee()); ?>
     </div>
 </div>
 <!-- End Of Body -->

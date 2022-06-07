@@ -92,6 +92,7 @@ class ReservationRequest
             run_query($book_query);
         } catch (Exception $e)
         {
+            echo $e->getMessage();
             throw new Exception('Failed to create reservation', $e->getCode(), $e);
         }
     }
@@ -112,26 +113,25 @@ class ReservationRequest
         $get_rooms = "SELECT room_id, room_base_price FROM rooms 
         where room_id NOT IN 
         (
-            SELECT room_no FROM reservations 
-            WHERE (start_date BETWEEN '$start_date_str' AND '$end_date_str') 
+            SELECT room_no FROM reservations
+            WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
-            OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str')
+            OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str'))
         )
         AND room_type_id = {$this->room_options->getRoomType()} 
         AND room_view = {$this->room_options->getRoomView()}
-        AND room_patio = {$this->room_options->getRoomPatio()}
-        AND occupied = 0;";
-
+        AND room_patio = {$this->room_options->getRoomPatio()};";
 // Check if a room with these options exist
         try
         {
             $result_rooms = run_query($get_rooms);
+            if (empty_mysqli_result($result_rooms)) return null;
+            return $result_rooms->fetch_assoc();
         } catch (Exception $e)
         {
             echo $e->getMessage();
             return null;
         }
-        return $result_rooms->fetch_assoc();
     }
 
     /**
@@ -139,19 +139,19 @@ class ReservationRequest
      *
      * @author @Belal-Elsabbagh
      *
-     * @param int   $c_id
+     * @param int   $client_id
      * @param float $price
-     * @param int   $r_id
+     * @param int   $room_id
      *
      * @return void
      */
-    function log(int $c_id, int $r_id, float $price): void
+    function log(int $client_id, int $room_id, float $price): void
     {
         $action = "Room Reservation Request";
-        $action_description = "Client $c_id 
-        reserved room number $r_id 
+        $action_description = "Client $client_id 
+        reserved room number $room_id 
         from {$this->start->format('Y-m-d')} to {$this->end->format('Y-m-d')} 
         for $this->nAdults adults and $this->nChildren children.";
-        activity_log($action, $action_description, $price);
+        activity_log($client_id, $action, $action_description, $price);
     }
 }
