@@ -1,3 +1,7 @@
+<?php
+include_once "../../global/php/db-functions.php";
+maintain_session();
+?>
 <!DOCTYPE html>
 <html lang='en'>
 

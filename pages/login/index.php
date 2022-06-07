@@ -1,5 +1,5 @@
 <?php include_once "../../global/php/db-functions.php";
-session_start(); ?>
+maintain_session(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
