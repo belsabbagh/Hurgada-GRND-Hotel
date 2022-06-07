@@ -5,13 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Changed pages to php to implement a dynamic nav bar">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/js/ajax_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/js/ajax_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/js/ajax_php/email_is_duplicate.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/js/ajax_php/email_is_duplicate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/js/jquery-3.6.0.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/classes/ReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/classes/ReservationRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/Home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/booking/form_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_loader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contactUs/contactus.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contactUs/contactus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contactUs/contactus.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contactUs/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/login/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/view_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/view_loader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation/ajax_editreservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/ajax_editreservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation/check_in.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/check_in.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/signUp/SignUp.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/SignUp.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/signUp/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/signUp/signUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/signUp.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +174,9 @@
       <workItem from="1654371252254" duration="2023000" />
       <workItem from="1654403058360" duration="7621000" />
       <workItem from="1654425380554" duration="83000" />
-      <workItem from="1654432654438" duration="3886000" />
+      <workItem from="1654432654438" duration="24413000" />
+      <workItem from="1654579356227" duration="1178000" />
+      <workItem from="1654580642607" duration="6477000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -432,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654435357551</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Changed pages to php to implement a dynamic nav bar">
+      <created>1654437249064</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1654437249064</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

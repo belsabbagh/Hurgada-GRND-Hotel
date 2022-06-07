@@ -1,9 +1,45 @@
 <?php
+if (!isset($_SESSION))
+{
+    session_start();
+}
+
 include_once "classes/RoomOptions.php";
 include_once "classes/ReservationRequest.php";
+
+/***** CONSTANTS *****/
+
+/**
+ * Path to profile pictures directory.
+ */
 const PFP_DIRECTORY_PATH = "../../resources/img/user_pics/";
+
+/**
+ * Path to national id pictures directory.
+ */
 const ID_PIC_DIRECTORY_PATH = "../../resources/img/id_pics/";
+
+/**
+ * URL to the root of the webpages directory.
+ */
 const REPOSITORY_PAGES_URL = "http://localhost/Hurgada-GRND-Hotel/pages/";
+
+/**
+ * URL of home page.
+ */
+const HOME_URL = REPOSITORY_PAGES_URL . "Home/index.php";
+
+/**
+ * URL of login page.
+ */
+const LOGIN_URL = REPOSITORY_PAGES_URL . "login/index.php";
+
+const SERVER_NAME = "localhost";
+const USERNAME = "root";
+const PASSWORD = "";
+const DB_NAME = "hurgada-grnd-hotel";
+const NO_USER = -1;
+/**--------------------------------------------**/
 
 /**
  * Creates connection to database
@@ -15,16 +51,9 @@ const REPOSITORY_PAGES_URL = "http://localhost/Hurgada-GRND-Hotel/pages/";
  */
 function db_connect(): mysqli
 {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "hurgada-grnd-hotel";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli(SERVER_NAME, USERNAME, PASSWORD, DB_NAME);
     if ($conn->connect_errno)
-    {
         throw new RuntimeException('mysqli connection error: ' . $conn->connect_error, $conn->connect_errno);
-    }
     return $conn;
 }
 
@@ -74,18 +103,19 @@ function empty_mysqli_result(?mysqli_result $result): bool
  *
  * @author  @Belal-Elsabbagh
  *
- * @param string     $description The description of the action.
- * @param float|null $transaction Amount of money transferred.
- * @param string     $action      The action that the user made.
+ * @param int        $action_owner_id The id of the account that executed the action.
+ * @param string     $action          The action that the user made.
  *
- * @var     string   $sql
+ * @param string     $description     The description of the action.
+ * @param float|null $transaction     Amount of money transferred.
+ *
  * @return  void
  */
-function activity_log(string $action, string $description, ?float $transaction = null): void
+function activity_log(int $action_owner_id, string $action, string $description, ?float $transaction = null): void
 {
     $sql = "INSERT INTO activity_log
     (owner, actiontype, description, transaction) 
-    VALUES({$_SESSION['active_id']}, '$action', '$description', $transaction)";
+    VALUES($action_owner_id, '$action', '$description', $transaction)";
     try
     {
         run_query($sql);
@@ -138,17 +168,7 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
  */
 function active_user_isEmployee(): bool
 {
-    $sql = "SELECT user_type FROM users WHERE user_id = {$_SESSION['active_id']}";
-    try
-    {
-        $result = run_query($sql);
-    } catch (Exception $e)
-    {
-        echo $e->getMessage();
-        return false;
-    }
-    $user = $result->fetch_assoc();
-    if ($user['user_type'] > 1) return true;
+    if ($_SESSION['active_user_type'] < 3) return true;
     return false;
 }
 
@@ -210,16 +230,17 @@ function get_room_max_occupants_by_room_id(int $room_id): ?int
 /**
  * Checks if the requested reservation exceeds maximum room capacity
  *
- * @param int                $room_id             The room number to be checked
- * @param ReservationRequest $reservation_request The given reservation request to check
+ * @param int $room_id   The room number to be checked
+ * @param int $nAdults   The number of adults requested
+ * @param int $nChildren The number of children requested
  *
  * @return bool True if the requested reservation exceeds maximum room capacity. False otherwise
  */
-function room_overflow(int $room_id, ReservationRequest $reservation_request): bool
+function room_overflow(int $room_id, int $nAdults, int $nChildren): bool
 {
     $room_max_cap = get_room_max_occupants_by_room_id($room_id);
-    $numberof_occupants = $reservation_request->getNAdults() + round($reservation_request->getNChildren() / 2);
-    if ($numberof_occupants > $room_max_cap) return true;
+    $numberOf_occupants = $nAdults + round($nChildren / 2);
+    if ($numberOf_occupants > $room_max_cap) return true;
     return false;
 }
 
@@ -239,12 +260,11 @@ function get_receptionists(string $column = "1", string|int $key ="1"): mysqli_r
     $sql = "SELECT user_id, email, first_name, last_name, national_id_photo, user_pic, receptionist_enabled, receptionist_qc_comment FROM users WHERE user_type = 2 AND $column = $key";
     try
     {
-        $result = run_query($sql);
+        return run_query($sql);
     } catch (Exception $e)
     {
         throw new LogicException("Unable to get receptionists", 333, $e);
     }
-    return $result;
 }
 
 /**
@@ -261,12 +281,12 @@ function get_user_by_id(int $id): ?array
     try
     {
         $result = run_query("SELECT * FROM users WHERE user_id = $id;");
+        if (empty_mysqli_result($result)) return null;
+        return $result->fetch_assoc();
     } catch (Exception)
     {
         return null;
     }
-    if (empty_mysqli_result($result)) return null;
-    return $result->fetch_assoc();
 }
 
 function user_is_logged_in(): bool
@@ -282,34 +302,37 @@ function redirect_to_login(): void
 /**
  * Constructs header bars respective to the active user type.
  *
- * @author @Belal-Elsabbagh
+ * @author Belal-Elsabbagh
  *
- * @param bool  $bootstrap
+ * @param bool     $bootstrap
+ * @param int|null $active_user_type The header's user type.
  *
- * @var Closure $generate_item A function that creates an item in the header bar.
+ * @var Closure    $generate_item    A function that creates an item in the header bar.
  * @return string The html structure of the items.
  */
-function load_header_bar(bool $bootstrap = false): string
+function load_header_bar(?int $active_user_type = NO_USER, bool $bootstrap = false): string
 {
     /**
      * Generates header bar item with a specific title and link.
      *
-     * @author @Belal-Elsabbagh
+     * @author Belal-Elsabbagh
      *
-     * @param string $title The title of the item.
-     * @param string $link  The link that the item takes the user to.
+     * @param string $title     The title of the item.
+     * @param string $link      The link that the item takes the user to.
+     * @param bool   $bootstrap Whether the nav item should be bootstrap or not
      *
      * @return string The html content of the item.
      */
     $generate_item = function (string $title, string $link, bool $bootstrap): string
     {
-        if (!$bootstrap) return /** @lang HTML */ "<div class='container'><a style='text-decoration: none' href='$link'>$title</div>\n";
+        if (!$bootstrap) return /** @lang HTML */ "<div class='container'><a style='text-decoration: none;' href='$link'>$title</div>\n";
         return /** @lang HTML */ "<li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='$link'>$title</a></span></li>";
     };
     $home = $generate_item("Home", REPOSITORY_PAGES_URL . "Home", $bootstrap);
     $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile", $bootstrap);
     $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
     $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
+    $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
     $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $bootstrap);
@@ -317,11 +340,11 @@ function load_header_bar(bool $bootstrap = false): string
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", $bootstrap);
 
-    return match ($_SESSION['active_user_type'] ?? "")
+    return match ($active_user_type)
     {
         3 => $home . $profile . $my_reservations . $contactus,
         2 => $home . $profile . $reservations . $rooms,
-        1 => $home . $profile . $reservations . $rooms . $ratings,
+        1 => $home . $profile . $reservations . $receptionists . $ratings,
         default => /** @lang HTML */
             $home . $login . $signup . $about
     };
@@ -330,7 +353,7 @@ function load_header_bar(bool $bootstrap = false): string
 /**
  * Takes a submitted picture, renames it to the user's email, and moves it to the given directory to be stored.
  *
- * @author @Belal-Elsabbagh
+ * @author Belal-Elsabbagh
  *
  * @param array  $picture_file  The submitted picture
  * @param string $new_filename  The desired file name.
@@ -344,7 +367,7 @@ function insert_pic_into_directory(array $picture_file, string $new_filename, st
 {
     $pic_info = pathinfo($picture_file['name']);
     $pic_extension = $pic_info['extension'];
-    $pic_filename = $new_filename . '.' . $pic_extension;
+    $pic_filename = "$new_filename.$pic_extension";
     move_uploaded_file($picture_file['tmp_name'], $directory . $pic_filename);
     return $pic_filename;
 }
@@ -352,7 +375,7 @@ function insert_pic_into_directory(array $picture_file, string $new_filename, st
 /**
  * Constructs the page template with the custom html content given to it.
  *
- * @author @Belal-Elsabbagh
+ * @author Belal-Elsabbagh
  *
  * @param string $page_title   The page title
  * @param string $html_content The html data to be presented within the template
@@ -361,7 +384,7 @@ function insert_pic_into_directory(array $picture_file, string $new_filename, st
  */
 function construct_template(string $page_title, string $html_content): string
 {
-    return /** @lang HTML */ <<<EOF
+    return /** @lang HTML */ <<<TEMPLATE
 <!DOCTYPE html>
     <html lang='en'>
 
@@ -449,28 +472,13 @@ function construct_template(string $page_title, string $html_content): string
     </body>
 
     </html>
-EOF;
-}
-
-/**
- * Checks if two strings are identical.
- *
- * @author @Belal-Elsabbagh
- *
- * @param string $str1 The first string
- * @param string $str2 The second string
- *
- * @return bool True if the strings are equal. False otherwise
- */
-function equal_strings(string $str1, string $str2): bool
-{
-    return strcmp($str1, $str2) == 0;
+TEMPLATE;
 }
 
 /**
  * Checks if post contains data.
  *
- * @author @Belal-Elsabbagh
+ * @author Belal-Elsabbagh
  * @return bool True if post contains data, false otherwise.
  */
 function post_data_exists(): bool
@@ -481,7 +489,7 @@ function post_data_exists(): bool
 /**
  * Checks if file was uploaded.
  *
- * @author @Belal-Elsabbagh
+ * @author Belal-Elsabbagh
  * @return bool True if file uploaded, false otherwise.
  */
 function fileUploaded(string $file_post_name): bool
@@ -495,4 +503,80 @@ function user_email_exists(string $email): bool
         "SELECT email FROM users WHERE email = '$email'";
     if (!empty_mysqli_result(run_query($sql))) return true;
     return false;
+}
+
+/**
+ * Gets login data from valid email and password.
+ *
+ * @throws Exception Throws an exception if login credentials were incorrect.
+ * @return array an array containing the user's user_id, email, and user_type.
+ */
+function get_login_data(string $email, string $password): array
+{
+    $sql = "SELECT user_id, email, user_type FROM users WHERE email = '$email' AND password = '$password'";
+    $result = run_query($sql);
+    if (empty_mysqli_result($result)) throw new Exception("Incorrect email or password", 3);
+    return mysqli_fetch_assoc($result);
+}
+
+/**
+ * Checks login credentials
+ *
+ * @throws Exception Exception if it failed to get login data.
+ */
+function log_in(string $email, string $password): void
+{
+    try
+    {
+        $user_data = get_login_data($email, $password);
+        set_active_user($user_data['user_id'], $user_data['email'], $user_data['user_type']);
+        activity_log($_SESSION['active_user_id'], "Login", "User {$_SESSION['active_user_id']} logged in.");
+        return;
+    } catch (Exception $e)
+    {
+        throw new Exception($e->getMessage(), $e->getCode(), $e);
+    }
+}
+
+/**
+ * @param int    $user_id
+ * @param string $email
+ * @param int    $user_type
+ *
+ * @return void
+ */
+function set_active_user(int $user_id, string $email, int $user_type): void
+{
+    $_SESSION['active_user_id'] = $user_id;
+    $_SESSION['active_email'] = $email;
+    $_SESSION['active_user_type'] = $user_type;
+}
+
+/**
+ * @author Belal-Elsabbagh
+ * @return int the active user id or NO_USER value if session wasn't set
+ */
+function get_active_user_type(): int
+{
+    return $_SESSION['active_user_type'] ?? NO_USER;
+}
+
+/**
+ * @author Belal-Elsabbagh
+ * @return int the active user id or NO_USER value if session wasn't set
+ */
+function get_active_user_id(): int
+{
+    return $_SESSION['active_user_id'] ?? NO_USER;
+}
+
+/**
+ * Checks if session is running
+ *
+ * @author Belal-Elsabbagh
+ * @return bool true if session is running. False otherwise.
+ */
+function session_running(): bool
+{
+    return isset($_SESSION);
 }

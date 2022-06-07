@@ -21,7 +21,7 @@ function load_room_types(): string
     }
     $html = "";
     while ($row = mysqli_fetch_assoc($result))
-        $html .= "<input class='' type='radio' name='room_type' id='{$row['room_category']}' value='{$row['type_id']}' onchange='change_max_beds()'><label for='{$row['room_category']}'>{$row['room_category']}</label>\n";
+        $html .= "<div class='form-check d-flex justify-content-center'><input class='form-check-input' style='padding: 10px;' type='radio' name='room_type' id='{$row['room_category']}' value='{$row['type_id']}' onchange='change_max_beds()'><label class='form-check-label' for='{$row['room_category']}'>{$row['room_category']}</label></div>\n";
     return $html;
 }
 
@@ -47,7 +47,7 @@ function load_room_views(): string
     }
     $html = "";
     while ($row = mysqli_fetch_assoc($result))
-        $html .= "<input class='options' type='radio' name='room_view' id='{$row['room_view_title']}' value='{$row['room_view_id']}'><label for='{$row['room_view_title']}'>{$row['room_view_title']}</label>\n";
+        $html .= "<div class='form-check d-flex justify-content-center'><input class='form-check-input' type='radio' name='room_view' id='{$row['room_view_title']}' value='{$row['room_view_id']}'><label class='form-check-label' for='{$row['room_view_title']}'>{$row['room_view_title']}</label></div>\n";
     return $html;
 }
 
@@ -106,10 +106,14 @@ function construct_new_booking_form(bool $isEmployee): string
                     </div>
                     <div class='outdoors'>
                         <h4 class='prompt' style='margin-top: 0;'>Choose an outdoors setting</h4>
-                        <input class='options' id='outdoors_balcony' name='outdoors' type='radio' value='0'>
-                        <label for='outdoors_balcony'>Balcony</label>
-                        <input class='options' id='outdoors_patio' name='outdoors' type='radio' value='1'>
-                        <label for='outdoors_patio'>Patio</label>
+                        <div class='form-check d-flex justify-content-center'>
+                            <input class='form-check-input' id='outdoors_balcony' name='outdoors' type='radio' value='0'>
+                            <label class='form-check-label' for='outdoors_balcony'>Balcony</label>
+                        </div>
+                        <div class='form-check d-flex justify-content-center'>
+                            <input class='form-check-input' id='outdoors_patio' name='outdoors' type='radio' value='1'>
+                            <label class='form-check-label' for='outdoors_patio'>Patio</label>
+                        </div>
                     </div>
                 </div>
                 <button type='submit' class='submit' id='submit' name='submit'>Submit</button>

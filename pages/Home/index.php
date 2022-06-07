@@ -1,3 +1,10 @@
+<?php
+include_once "../../global/php/db-functions.php";
+if (!isset($_SESSION))
+{
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +33,7 @@
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
             <div class="items" id="items">
-                <?php include_once "../../global/php/db-functions.php";
-                echo load_header_bar(false); ?>
+                <?php echo load_header_bar(get_active_user_type()); ?>
                 <!-- <span class="container">
                          <span>Home</span>
                      </span>
@@ -50,7 +56,7 @@
             <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-            <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
+            <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
             <ul id="bar">
                 <li><a href="Profile"><i class='bx bxs-user'></i>Profile</a></li>
                 <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>

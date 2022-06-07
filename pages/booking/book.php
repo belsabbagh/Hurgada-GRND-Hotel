@@ -1,21 +1,24 @@
 <?php
+if (!isset($_SESSION)) session_start();
+
 include_once "../../global/php/db-functions.php";
-const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/form.php";
+include_once "form_loader.php";
+const FORM_URL = "http://localhost/Hurgada-GRND-Hotel/pages/booking/index.php";
 const LOGIN_ERRNO = 313;
 /**
  * Runs booking from form.php
  *
- * @author  @Belal-Elsabbagh
+ * @author  Belal-Elsabbagh
  *
  * @throws Exception Emits Exception in case of an error.
  * @var int|null $client_id The client's id in the database.
  *
  * @return  void
  */
-function book(): void
+function run_booking_procedure(): void
 {
     if (!post_data_exists()) throw new RuntimeException("Form was not submitted correctly", 1);
-    $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : ($_SESSION['active_id'] ?? null);
+    $client_id = array_key_exists('email', $_POST) ? get_user_id_from_email($_POST['email']) : get_active_user_id();
     if (is_null($client_id)) throw new Exception("No valid login or client.", LOGIN_ERRNO);
 
     // Gather data from POST and parse into correct data type
@@ -33,18 +36,18 @@ function book(): void
         $end_date,
         intval($_POST['adults']),
         intval($_POST['children']),
-        new RoomOptions(
-            array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
-            array_key_exists('room_view', $_POST) ? intval($_POST['room_view']) : 'room_view',
-            array_key_exists('outdoors', $_POST) ? intval($_POST['outdoors']) : 'room_patio'
-        )
+            new RoomOptions(
+                    array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
+                    array_key_exists('room_view', $_POST) ? intval($_POST['room_view']) : 'room_view',
+                    array_key_exists('outdoors', $_POST) ? intval($_POST['outdoors']) : 'room_patio'
+            )
     );
-
+    //print_r($reservation_request);
     if ($reservation_request->bad_date()) throw new LogicException("Invalid Date Chosen.", 4);
 
     $room = $reservation_request->get_available_room();
-    if (!$room) throw new LogicException("No Room matches these options.");
-    if (room_overflow($room['room_id'], $reservation_request)) throw new LogicException("Too many people in one room.", 5);
+    if (is_null($room)) throw new LogicException("No Room matches these options.");
+    if (room_overflow($room['room_id'], $reservation_request->getNAdults(), $reservation_request->getNChildren())) throw new LogicException("Too many people in one room.", 5);
     $price = $reservation_request->calculate_reservation_price($room['room_base_price']);
     try
     {
@@ -55,10 +58,6 @@ function book(): void
     }
     $reservation_request->log($client_id, $room['room_id'], $price);
 }
-?>
-<?php
-include_once "../../global/php/db-functions.php";
-include_once "form_loader.php";
 ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -82,40 +81,35 @@ include_once "form_loader.php";
 </head>
 
 <body class='d-flex flex-column min-vh-100'>
-    <!-- Header -->
-    <nav class='navbar' id='header'>
-        <div class='container-fluid'>
-            <div class='navbar-header' onclick='showbar()'>
-                <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
-            </div>
-            <div class='row'>
-                <ul class='nav items' id='items'>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Home</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Rooms</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Dining</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Experience</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>Location</a></span></li>
-                    <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='#'>About</a></span></li>
-                </ul>
-            </div>
-            <div>
-                <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
-            </div>
-            <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a class='nav-link nlink' href='#'>Book now</a></span>
+<!-- Header -->
+<nav class='navbar' id='header'>
+    <div class='container-fluid'>
+        <div class='navbar-header' onclick='showbar()'>
+            <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
         </div>
-    </nav>
-    <!-- End Of Header -->
+        <div class='row'>
+            <ul class='nav items' id='items'>
+                <?php echo load_header_bar(get_active_user_type(), true); ?>
+            </ul>
+        </div>
+        <div>
+            <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
+        </div>
+        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a class='nav-link nlink' href='<?php echo REPOSITORY_PAGES_URL . "booking" ?>'>Book now</a></span>
+    </div>
+</nav>
+<!-- End Of Header -->
 
-    <!-- Body -->
+<!-- Body -->
 
 
-    <div class='container root'>
-        <div class='feature'>
+<div class='container root'>
+    <div class='feature'>
         <?php
         $content = "Operation Successful.";
         try
         {
-            book();
+            run_booking_procedure();
         } catch (Exception $e)
         {
             $content = "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
@@ -125,6 +119,7 @@ include_once "form_loader.php";
         {
             $content .= "<a href='" . FORM_URL . "'>Go back to form</a>";
         }
+        echo $content;
         ?>
         </div>
     </div>
