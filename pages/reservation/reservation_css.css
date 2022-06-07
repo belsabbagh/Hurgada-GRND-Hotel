@@ -42,7 +42,20 @@
 #warning {
     color: red;
     font-size: small;
+    
 }
+
+/* search_by_id*/
+.search_by_id{
+
+   position: absolute;
+   width: fit-content;
+   right: 79%;
+   top:20%;
+   color:#7b5c52;
+        
+}
+
 /* buttons*/
 .submit{
 
@@ -55,6 +68,8 @@
     border-radius: 3px;
     text-align: center;
     border:none ;
+    text-decoration: none;
+   
 
 }
 .slidecontainer{
@@ -112,13 +127,13 @@
 /*table*/
 
 table{
-    position: relative;
-    margin-top: 10%;
-    margin-right: 5%;
-    margin-left: 3%;
+
+    position: absolute;
+    top: 40%;
+    right: 10%;
     border: 2px solid #cca28c;
     border-collapse:collapse;
-    width: 170%;
+    width: 80%;
 
 }
  td{

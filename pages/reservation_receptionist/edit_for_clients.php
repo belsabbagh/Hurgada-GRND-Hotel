@@ -1,15 +1,18 @@
 <html>
 
 <head>
-  
+
   <link href="../../global/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="./reservation_css.css" />
+  <link rel="stylesheet" href="../reservation/reservation_css.css" />
   <script src="functions.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title> edit reservations </title>
-  
+
   <style>
+    #manager_pin{
+      width: 62%;
+    }
     .shadow {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       height: 550px;
@@ -37,6 +40,7 @@
     }
 
     #submit {
+      
       padding-left: 25%;
       padding-right: 25%;
 
@@ -59,31 +63,31 @@
   <link href="style.css" rel="stylesheet">
   <script src="functions.js"></script>
   <?php
- include "../../global/php/db-functions.php";
- if (isset($_GET['id']))
- $reservation_id = $_GET['id'];
+  include "../../global/php/db-functions.php";
+  if (isset($_GET['id']))
+    $reservation_id = $_GET['id'];
 
-$server = "localhost";
+  $server = "localhost";
   $username = "root";
   $password = "";
   $dbname = "hurgada-grnd-hotel";
 
   $connect = new mysqli($server, $username, $password, $dbname);
-  
+
 
 
   $roomsql_1 = "SELECT room_no FROM reservations WHERE reservation_id= $reservation_id ";
   $result = run_query($roomsql_1);
   $temp = $result->fetch_assoc();
   $room_id = $temp['room_no'];
-  //$_SESSION['room_no'] = $room_id;
+  
 
 
   $roomsql_2 = "SELECT room_type_id FROM rooms WHERE room_id=$room_id";
   $result = run_query($roomsql_2);
   $temp = $result->fetch_assoc();
   $room_type_id = $temp['room_type_id'];
-?>
+  ?>
 
 
 
@@ -91,20 +95,20 @@ $server = "localhost";
     error_msg1 = " invalid, check out date can not bebefore the check in date"
     error_msg2 = " room is not available"
     msg = "valid"
-    
 
 
-    function check_availability(){
+
+    function check_availability() {
 
       jQuery.ajax({
         url: "ajax_editreservation2.php",
-        data: 'checkout=' + $("#checkout").val() + "&" + 'checkin=' + $("#checkin").val()+"&"+ 'room_id=' + $("#room_id").val()+ "&"+ 'reservation_id=' + $("#reservation_id").val(),
+        data: 'checkout=' + $("#checkout").val() + "&" + 'checkin=' + $("#checkin").val() + "&" + 'room_id=' + $("#room_id").val() + "&" + 'reservation_id=' + $("#reservation_id").val(),
         type: "POST",
 
         success: function(data) {
-       
+
           $("#warning2").html(data);
-          
+
         }
 
       });
@@ -115,13 +119,13 @@ $server = "localhost";
 
       jQuery.ajax({
         url: "ajax_editreservation.php",
-        data: 'checkout=' + $("#checkout").val() + "&" + 'checkin=' + $("#checkin").val()+"&",
+        data: 'checkout=' + $("#checkout").val() + "&" + 'checkin=' + $("#checkin").val() + "&",
         type: "POST",
 
         success: function(data) {
-       
+
           $("#warning").html(data);
-         
+
         }
 
       });
@@ -130,7 +134,7 @@ $server = "localhost";
     }
   </script>
 
-  
+
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -192,29 +196,26 @@ $server = "localhost";
 
 </head>
 
-<body >
+<body>
 
 
 
 
   <!-- Body -->
-  <div class="features" >
+  <div class="features">
     <div class="container2">
       <div class="row col-md-12">
-        <div class="shadow col-md-6 mt-5 "onmouseover="checkdate(); check_availability()" "  >
+        <div class="shadow col-md-6 mt-5 " onmouseover="checkdate(); check_availability()" "  >
 
 
-          <h2 class="titles"> Edit your reservation </h2>
+          <h2 class=" titles"> Edit your reservation </h2>
           <form action="edit_reservation_form.php" method="post">
-            
-            <input type="hidden" name="room_id" id="room_id" value="<?php echo $room_id?>">
-            <input type="hidden" name="reservation_id" id="reservation_id" value="<?php echo $_GET['id'] ?>">
 
             <div class="dates form-group">
               <label for="checkin">Check in date</label>
-              <input type="date" id="checkin" name="checkin" required  />
+              <input type="date" id="checkin" name="checkin" required />
             </div>
-            <div class="dates form-group">
+            <div class="dates form-group">  
               <label for="checkout">Check out date</label>
               <input type="date" id="checkout" name="checkout" required />
               <P id="warning"> </p>
@@ -233,8 +234,17 @@ $server = "localhost";
               <label for="room_beds_number">extra bed</label>
               <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="0" max="1" required>
             </div>
+            <div>
+              <label for="manager_pin">managr pin</label>
+              <input type="text" name="manager_pin" id="manager_pin" required>
+              <input type="submit" class="submit" id="submit" name="submit">
+            </div>
 
-            <input type="submit" class="submit" id="submit" name="submit">
+            <div>
+              <input type="hidden" name="room_id" id="room_id" value="<?php echo $room_id ?>">
+              <input type="hidden" name="reservation_id" id="reservation_id" value="<?php echo $_GET['id'] ?>">
+            </div>
+
 
           </form>
 
@@ -263,5 +273,3 @@ $server = "localhost";
 
 
 </html>
-
-

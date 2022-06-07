@@ -117,6 +117,7 @@ p{
     cursor: pointer;
     background-color: #e9c9b8;
     font-family: "parg";
+    text-decoration: none;
 }
 .confirm-btn{
     position: absolute;
