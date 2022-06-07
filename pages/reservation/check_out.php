@@ -7,7 +7,9 @@
     <link href="style.css" rel="stylesheet">
     <script src="functions.js"></script>
     <title> checking out </title>
-    <?php include "../../global/php/db-functions.php";
+    <?php include_once "../../global/php/db-functions.php";
+    maintain_session();
+    redirect_to_login();
 
     $server = "localhost";
     $username = "root";

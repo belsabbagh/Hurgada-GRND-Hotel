@@ -137,8 +137,9 @@ function activity_log(int $action_owner_id, string $action, string $description,
  * @return bool Returns true if room is available, false if room is unavailable
  *
  */
-function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date): bool
+function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date, int $reservation_id=-1): bool
 {
+    $exclude =($reservation_id== -1)? " ":"AND reservation_id != $reservation_id";
     $date_format = "Y-m-d";
     $start_date_str = $start_date->format($date_format);
     $end_date_str = $end_date->format($date_format);
@@ -146,7 +147,8 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
             WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str'))
-            AND room_no = $room_id";
+            AND room_no = $room_id $exclude";
+           // echo $sql;
     try
     {
         $result = run_query($sql);
@@ -330,8 +332,8 @@ function load_header_bar(?int $active_user_type = NO_USER, bool $bootstrap = fal
     };
     $home = $generate_item("Home", REPOSITORY_PAGES_URL . "Home", $bootstrap);
     $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile", $bootstrap);
-    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
-    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations", $bootstrap);
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", $bootstrap);
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);

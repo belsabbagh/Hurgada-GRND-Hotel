@@ -34,24 +34,7 @@ if (!isset($_SESSION))
                 </span>
             <div class="items" id="items">
                 <?php echo load_header_bar(get_active_user_type()); ?>
-                <!-- <span class="container">
-                         <span>Home</span>
-                     </span>
-                    <span class="container">
-                            <span>Rooms</span>
-                        </span>
-                    <span class="container">
-                            <span>Dining</span>
-                        </span>
-                    <span class="container">
-                            <span>Experience</span>
-                        </span>
-                    <span class="container">
-                            <span>Location</span>
-                        </span>
-                    <span class="container">
-                            <span>About</span>
-                        </span>-->
+            
             </div>
             <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>

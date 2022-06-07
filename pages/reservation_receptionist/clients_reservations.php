@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="../reservation/reservation_css.css" />
     <script src="../../global/Template/template.js"></script>
     <script src="functions.js"></script>
+    <?php
+    include_once "../../global/php/db-functions.php";
+    maintain_session();
+    redirect_to_login();
+
+    ?>
 
 
     <title> clients' reservations</title>
@@ -44,24 +50,7 @@
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
                 <div class="items" id="items">
-                    <span class="container">
-                        <span>Home</span>
-                    </span>
-                    <span class="container">
-                        <span>Rooms</span>
-                    </span>
-                    <span class="container">
-                        <span>Dining</span>
-                    </span>
-                    <span class="container">
-                        <span>Experience</span>
-                    </span>
-                    <span class="container">
-                        <span>Location</span>
-                    </span>
-                    <span class="container">
-                        <span>About</span>
-                    </span>
+                <?php echo load_header_bar(get_active_user_type()); ?>
                 </div>
                 <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>

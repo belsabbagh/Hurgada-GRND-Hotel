@@ -49,29 +49,12 @@
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
                 <div class="items" id="items">
-                    <span class="container">
-                        <span>Home</span>
-                    </span>
-                    <span class="container">
-                        <span>Rooms</span>
-                    </span>
-                    <span class="container">
-                        <span>Dining</span>
-                    </span>
-                    <span class="container">
-                        <span>Experience</span>
-                    </span>
-                    <span class="container">
-                        <span>Location</span>
-                    </span>
-                    <span class="container">
-                        <span>About</span>
-                    </span>
+                <?php echo load_header_bar(get_active_user_type()); ?>
                 </div>
                 <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-                <i class='book' id="book">Book now</i>
+                <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
                 <ul id="bar">
                     <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
                     <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
@@ -114,19 +97,18 @@
                         </tr>
 
                         <?php
-
-                        // get the id of the user
-                        //$client_ID='$_SESSION['active_id']';
-                        $client_ID = '1';
+                         // get the id of the user
+                         $client_ID= get_active_user_id();
+                         
+                       
                         $sql = " SELECT * from reservations where client_id= '$client_ID' ";
                         $result = $connect->query($sql);
 
-                        if ($result->num_rows == 0)
+                        if (empty_mysqli_result($result))
                             echo "<p class ='paragraph' > no reservations</p>";
                         else {
-                                //echo $result->num_rows;
-                            ;
-                            //for($i=0; $i<$result->num_rows; $i++)
+                              
+                            
                             while ($row = mysqli_fetch_assoc($result)) {
 
                                 echo "<tr><td>" . $row["reservation_id"] . "</td><td>" . $row["room_no"] . "</td><td> " . $row["start_date"] . "</td> 

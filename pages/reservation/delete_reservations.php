@@ -8,7 +8,9 @@
   <script src="functions.js"></script>
 
   <title> delete reservations </title>
-  <?php include "../../global/php/db-functions.php";
+  <?php include_once "../../global/php/db-functions.php";
+    maintain_session();
+    redirect_to_login();
   $server = "localhost";
   $username = "root";
   $password = "";

@@ -6,7 +6,9 @@
     <link href="style.css" rel="stylesheet">
     <script src="functions.js"></script>
      <title> check in </title>
-<?php include "../../global/php/db-functions.php"; 
+<?php include_once "../../global/php/db-functions.php";
+    maintain_session();
+    redirect_to_login();
 
 $server= "localhost";
 $username = "root";
@@ -58,8 +60,11 @@ $end_date = new DateTime ($temp['end_date']);
 //check if date is valid
 if($current_date<$start_date || $current_date>$end_date){
 //
- echo " cant check in before start date";
-header ("Location:http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");
+$failled_to_checkin_link= "http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php";
+$failled_to_checkin_header= "can not check in";
+$failled_to_checkin_msg= "you can't check in before the start date";
+warningmsg ($failled_to_checkin_msg,$failled_to_checkin_header,$failled_to_checkin_link);
+
 }
 
 else{

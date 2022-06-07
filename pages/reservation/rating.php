@@ -8,7 +8,10 @@
     <title> rate us </title>
     <?php
 
-    include "../../global/php/db-functions.php";
+    
+    include_once "../../global/php/db-functions.php";
+    maintain_session();
+    redirect_to_login();
 
     ?>
     <style>
@@ -81,29 +84,12 @@
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
                 <div class="items" id="items">
-                    <span class="container">
-                        <span>Home</span>
-                    </span>
-                    <span class="container">
-                        <span>Rooms</span>
-                    </span>
-                    <span class="container">
-                        <span>Dining</span>
-                    </span>
-                    <span class="container">
-                        <span>Experience</span>
-                    </span>
-                    <span class="container">
-                        <span>Location</span>
-                    </span>
-                    <span class="container">
-                        <span>About</span>
-                    </span>
+                <?php echo load_header_bar(get_active_user_type()); ?>
                 </div>
                 <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-                <i class='book' id="book">Book now</i>
+                <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
                 <ul id="bar">
                     <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
                     <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>

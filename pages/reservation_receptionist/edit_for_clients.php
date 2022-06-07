@@ -7,6 +7,13 @@
   <script src="functions.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <?php
+    include_once "../../global/php/db-functions.php";
+    maintain_session();
+    redirect_to_login();
+
+    ?>
+
   <title> edit reservations </title>
 
   <style>
@@ -159,24 +166,7 @@
           <i class='bx bx-menu-alt-left'></i>
         </span>
         <div class="items" id="items">
-          <span class="container">
-            <span>Home</span>
-          </span>
-          <span class="container">
-            <span>Rooms</span>
-          </span>
-          <span class="container">
-            <span>Dining</span>
-          </span>
-          <span class="container">
-            <span>Experience</span>
-          </span>
-          <span class="container">
-            <span>Location</span>
-          </span>
-          <span class="container">
-            <span>About</span>
-          </span>
+        <?php echo load_header_bar(get_active_user_type()); ?>
         </div>
         <span id='icon2' class="icon2" onclick="hidebar()">
           <i class='bx bx-x'></i>

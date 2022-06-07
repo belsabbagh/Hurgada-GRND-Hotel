@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../../global/php/db-functions.php";
+include_once "../../global/php/db-functions.php";
 $checkin  = new DateTime($_POST['checkin']);
 $checkout = new DateTime($_POST['checkout']);
 $room_id= $_POST['room_id'];

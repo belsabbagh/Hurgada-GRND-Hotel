@@ -5,7 +5,7 @@ maintain_session();
 
 
 
-include "../../global/php/db-functions.php";
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die("Form was not submitted correctly");
 //$client_ID=$_SESSION['active_user_id'];
 $client_ID = 1;
@@ -17,6 +17,7 @@ $nAdults = $_POST['adults'];
 $nChildren = $_POST['children'];
 $extra_bed = $_POST['room_beds_number'];
 $room_id = $_POST['room_id'];
+
 
 $roomsql_2 = "SELECT room_type_id FROM rooms WHERE room_id=$room_id";
 $result = run_query($roomsql_2);
@@ -42,7 +43,36 @@ $date_format = "Y-m-d";
 $start_date_str = $checkin_date->format($date_format);
 $end_date_str = $checkout_date->format($date_format);
 
-$submit_sql = "UPDATE reservations SET 
+/*-------------------------------------------------------------------------------------------*/
+ //if the manager is the one editing
+if (array_key_exists('manager_pin', $_POST)) {
+ 
+  $manager_pin = $_POST['manager_pin'];
+
+  $pin_sql = "SELECT pin from security where pin ='$manager_pin' ";
+  $result=run_query($pin_sql);
+  if(!empty_mysqli_result($result)){
+
+  $submit_sql = "UPDATE reservations SET 
+      start_date = '$start_date_str',
+      end_date = '$end_date_str',
+      numberof_adults= $nAdults,
+      numberof_children= $nChildren,
+      extra_bed= $extra_bed
+      where reservation_id = $reservation_id";}
+
+  try {
+    $result = run_query($submit_sql);
+    header("Location: http://localhost/Hurgada-GRND-Hotel/pages/reservation/clients_reservations.php");
+  } catch (Exception $e) {
+    echo $e->getMessage();
+    header("Location: http://localhost/Hurgada-GRND-Hotel/pages/reservation/edit_for_clients.php?id=$reservation_id");
+  }
+
+  //if client is editing
+} else {
+
+  $submit_sql = "UPDATE reservations SET 
       start_date = '$start_date_str',
       end_date = '$end_date_str',
       numberof_adults= $nAdults,
@@ -50,10 +80,11 @@ $submit_sql = "UPDATE reservations SET
       extra_bed= $extra_bed
       where reservation_id = $reservation_id";
 
-try {
-  $result = run_query($submit_sql);
-  header("Location: http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");
-} catch (Exception $e) {
-  echo $e->getMessage();
-  header("Location: http://localhost/Hurgada-GRND-Hotel/pages/reservation/edit_reservation.php?id=$reservation_id");
+  try {
+    $result = run_query($submit_sql);
+    header("Location: http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");
+  } catch (Exception $e) {
+    echo $e->getMessage();
+    header("Location: http://localhost/Hurgada-GRND-Hotel/pages/reservation/edit_reservation.php?id=$reservation_id");
+  }
 }
