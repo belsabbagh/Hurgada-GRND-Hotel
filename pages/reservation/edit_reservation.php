@@ -1,6 +1,9 @@
 <html>
 
 <head>
+  <?php   include_once "../../global/php/db-functions.php";
+    maintain_session();
+    redirect_to_login();?>
   
   <link href="../../global/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="./reservation_css.css" />

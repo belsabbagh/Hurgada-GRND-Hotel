@@ -585,3 +585,70 @@ function maintain_session(): void
 {
     if (!session_running()) session_start();
 }
+//warning
+function warningmsg ($msg ,$header,$link){
+
+    echo"
+
+    <div class='center' id = 'center'>
+        <div class='content'>
+        <div class='header'>
+        <h2>$header</h2>
+     </div>
+        <p> $msg </p>
+        <div class='line'></div>
+        <form action= '' method = 'post'>
+        <a href= '$link'  class = 'close-btn'> ok </a>
+
+      
+  </form>
+ </div>
+</div>
+    ";
+}
+
+
+//confirm
+function confirmmsg ($msg ,$header){
+
+    echo"
+
+    <div class='center' id = 'center'>
+        <div class='content'>
+        <div class='header'>
+        <h2>$header</h2>
+     </div>
+        <p> $msg </p>
+        <div class='line'></div>
+        <form action= '' method = 'post'>
+
+        <input type ='submit'  class = 'close-btn' name= 'no_btn' value = 'no'> 
+        <input type ='submit'   class = 'confirm-btn' name= 'yes_btn' value = 'yes'>
+  </form>
+ </div>
+</div>
+    ";
+}
+
+//confirm using link 
+function confirmmsg2 ($msg ,$header,$link_no, $link_yes){
+
+    echo"
+
+    <div class='center' id = 'center'>
+        <div class='content'>
+        <div class='header'>
+        <h2>$header</h2>
+     </div>
+        <p> $msg </p>
+        <div class='line'></div>
+        <form action= '' method = 'post'>
+        <a href= '$link_yes'  class = 'confirm-btn'> yes </a>
+        <a href= '$link_no'  class = 'close-btn'> no </a>
+
+      
+  </form>
+ </div>
+</div>
+    ";
+}

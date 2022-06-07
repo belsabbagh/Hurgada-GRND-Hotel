@@ -10,7 +10,12 @@
 
     <title> my reservations</title>
 
-    <?php $server = "localhost";
+    <?php
+    include_once "../../global/php/db-functions.php";
+    maintain_session();
+    redirect_to_login();
+    
+    $server = "localhost";
     $username = "root";
     $password = "";
     $dbname = "hurgada-grnd-hotel";
