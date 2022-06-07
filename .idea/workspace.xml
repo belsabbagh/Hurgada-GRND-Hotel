@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Profile page works.&#10;&#10;Ajax login works">
+      <change afterPath="$PROJECT_DIR$/pages/profile/edit-user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile/view-loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/view-loader.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -449,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654623323904</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Profile page works.&#10;&#10;Ajax login works">
+      <created>1654623475892</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1654623475892</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -64,9 +64,6 @@ redirect_to_login();
                 <a href="#">My account</a>
             </li>
             <li>
-                <a href="#">Profile data</a>
-            </li>
-            <li>
                 <a href="#">Dependants</a>
             </li>
         </ul>
