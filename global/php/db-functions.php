@@ -168,7 +168,7 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
  */
 function active_user_isEmployee(): bool
 {
-    if ($_SESSION['active_user_type'] < 3) return true;
+    if (get_active_user_type() < 3 && get_active_user_type() != NO_USER) return true;
     return false;
 }
 
@@ -584,4 +584,9 @@ function session_running(): bool
 function maintain_session(): void
 {
     if (!session_running()) session_start();
+}
+
+function restrict_to_staff(): void
+{
+    if (!active_user_isEmployee()) die("CANNOT ACCESS PAGE.");
 }

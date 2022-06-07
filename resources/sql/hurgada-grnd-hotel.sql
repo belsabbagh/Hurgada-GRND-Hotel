@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2022 at 09:38 PM
+-- Generation Time: Jun 07, 2022 at 10:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -52,7 +52,7 @@ VALUES ('2022-04-14 07:25:30', 1, 'Login', 'Logged in', NULL);
 
 CREATE TABLE `dependants`
 (
-    `dependant_id`   int(11)      NOT NULL,
+    `dependent_id`   int(11)      NOT NULL,
     `dependent_name` varchar(40)  NOT NULL,
     `relationship`   varchar(50)  NOT NULL,
     `identification` varchar(150) NOT NULL,
@@ -88,7 +88,14 @@ CREATE TABLE `reservations`
 INSERT INTO `reservations` (`reservation_id`, `client_id`, `room_no`, `start_date`, `end_date`, `numberof_adults`,
                             `numberof_children`, `price`, `is_checked_in`)
 VALUES (21, 1, 1, '2022-05-04', '2022-05-05', 3, 0, '640', 0),
-       (22, 1, 1, '2022-06-30', '2022-08-03', 2, 0, '3200', 0);
+       (22, 1, 1, '2022-06-30', '2022-08-03', 2, 0, '3200', 0),
+       (23, 1, 1, '2022-05-28', '2022-06-21', 1, 1, '16000', 0),
+       (24, 1, 1, '2022-07-28', '2022-06-21', 1, 1, '5120', 0),
+       (25, 1, 1, '2022-04-15', '2022-03-31', 1, 0, '10240', 0),
+       (26, 1, 1, '2022-04-01', '2022-03-27', 1, 0, '3840', 0),
+       (27, 1, 1, '2022-04-07', '2022-03-28', 1, 0, '7040', 0),
+       (28, 1, 1, '2022-04-08', '2022-03-27', 1, 0, '8320', 0),
+       (34, 3, 2, '2022-07-01', '2022-07-07', 2, 0, '3080', 0);
 
 -- --------------------------------------------------------
 
@@ -112,7 +119,8 @@ CREATE TABLE `rooms`
 --
 
 INSERT INTO `rooms` (`room_id`, `room_type_id`, `occupied`, `room_view`, `room_patio`, `room_base_price`)
-VALUES (1, 2, 0, 1, 1, 640);
+VALUES (1, 2, 0, 1, 1, 640),
+       (2, 1, 0, 2, 0, 440);
 
 -- --------------------------------------------------------
 
@@ -156,7 +164,7 @@ VALUES (1, 'Standard Room', 4),
        (2, 'Chalet', 6),
        (3, 'Beachside Villa', 8),
        (4, 'Duplex', 5),
-(5, 'Apartment-like', 5);
+       (5, 'Apartment-like', 5);
 
 -- --------------------------------------------------------
 
@@ -174,11 +182,30 @@ CREATE TABLE `room_views` (
 -- Dumping data for table `room_views`
 --
 
-INSERT INTO `room_views` (`room_view_id`, `room_view_title`, `room_view_description`) VALUES
-(1, 'Sea View', 'A room that overlooks the sea'),
-(2, 'Mountain View', 'A room by the mountain side'),
-(3, 'Garden View', 'A room overlooking the vast gardens in the center of the hotel'),
-(4, 'Pool View', 'A room just next to the pool');
+INSERT INTO `room_views` (`room_view_id`, `room_view_title`, `room_view_description`)
+VALUES (1, 'Sea View', 'A room that overlooks the sea'),
+       (2, 'Mountain View', 'A room by the mountain side'),
+       (3, 'Garden View', 'A room overlooking the vast gardens in the center of the hotel'),
+       (4, 'Pool View', 'A room just next to the pool');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `security`
+--
+
+CREATE TABLE `security`
+(
+    `pin` varchar(4) NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+--
+-- Dumping data for table `security`
+--
+
+INSERT INTO `security` (`pin`)
+VALUES ('503');
 
 -- --------------------------------------------------------
 
@@ -224,7 +251,7 @@ CREATE TABLE `users`
     `first_name`              varchar(40)  NOT NULL,
     `last_name`               varchar(40)  NOT NULL,
     `password`                varchar(60)  NOT NULL,
-    `national_id`             varchar(150) NOT NULL,
+    `national_id_photo`       varchar(150) NOT NULL,
     `user_pic`                varchar(150) NOT NULL,
     `user_type`               int(11)      NOT NULL DEFAULT 3,
     `receptionist_enabled`    tinyint(1)            DEFAULT NULL,
@@ -236,9 +263,12 @@ CREATE TABLE `users`
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `first_name`, `last_name`, `password`, `national_id`, `user_pic`, `user_type`,
-                     `receptionist_enabled`, `receptionist_qc_comment`)
-VALUES (1, 'belal@gmail.com', 'Belal', 'Elsabbagh', '123', '', '', 3, NULL, NULL);
+INSERT INTO `users` (`user_id`, `email`, `first_name`, `last_name`, `password`, `national_id_photo`, `user_pic`,
+                     `user_type`, `receptionist_enabled`, `receptionist_qc_comment`)
+VALUES (1, 'belal@gmail.com', 'Belal', 'Elsabbagh', '123', '', '', 3, NULL, NULL),
+       (14, 'xingqiu@gmail.com', 'Xingqiu', 'Guhua', '123', 'xingqiu@gmail.com.jpg', 'xingqiu@gmail.com.png', 1, 1,
+        'Too cute to be a receptionist'),
+       (26, 'harry@gmail.com', 'Harry', 'Potter', '123', 'harr@gmail.com.jpg', 'harr@gmail.com.jpg', 2, 1, '');
 
 -- --------------------------------------------------------
 
@@ -277,7 +307,7 @@ ALTER TABLE `activity_log`
 -- Indexes for table `dependants`
 --
 ALTER TABLE `dependants`
-    ADD PRIMARY KEY (dependent_id),
+    ADD PRIMARY KEY (`dependent_id`),
     ADD KEY `parent_id` (`parent_id`);
 
 --
@@ -349,21 +379,21 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `dependants`
 --
 ALTER TABLE `dependants`
-    MODIFY dependent_id int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `dependent_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
     MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 23;
+    AUTO_INCREMENT = 35;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
     MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 2;
+    AUTO_INCREMENT = 3;
 
 --
 -- AUTO_INCREMENT for table `room_types`
@@ -390,7 +420,7 @@ ALTER TABLE `services`
 --
 ALTER TABLE `users`
     MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 2;
+    AUTO_INCREMENT = 27;
 
 --
 -- AUTO_INCREMENT for table `user_type`
@@ -419,7 +449,6 @@ ALTER TABLE `dependants`
 -- Constraints for table `reservations`
 --
 ALTER TABLE `reservations`
-    ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
     ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`room_no`) REFERENCES `rooms` (`room_id`);
 
 --
@@ -447,9 +476,9 @@ ALTER TABLE `service_reviews`
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_type`) REFERENCES `user_type` (`utype_id`);
+    ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_type`) REFERENCES `user_type` (`utype_id`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
