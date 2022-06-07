@@ -1,23 +1,23 @@
-<html>
-<head>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <link rel="stylesheet" href="./msg_.css"/>
+<html> 
+<head> 
+<script src= "https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="./msg_.css" />
     <link href="../../global/css/style.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="functions.js"></script>
-    <title> check in </title>
-    <?php include_once "../../global/php/db-functions.php";
-    session_start();
-    $server = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "hurgada-grnd-hotel";
+     <title> check in </title>
+<?php include "../../global/php/db-functions.php"; 
 
-    $connect = new mysqli($server, $username, $password, $dbname);
+$server= "localhost";
+$username = "root";
+$password = "";
+$dbname= "hurgada-grnd-hotel";
 
-    if (isset($_GET['id']))
-        $reservation_id = $_GET['id'];
-    else echo "error";
+$connect = new mysqli($server, $username,$password,$dbname );
+
+if (isset($_GET['id']))
+$reservation_id= $_GET['id'];
+else echo "error";
 //$client_ID='$_SESSION['active_id']';
 $client_ID=1;
 ?> </head>

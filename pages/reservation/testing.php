@@ -1,5 +1,5 @@
 <?php
-  session_start();
+ session_start();
 
   include "../../global/php/db-functions.php";
   if (isset($_GET['id']))
@@ -55,8 +55,8 @@
 
   // - the date is valid  and check if room is available
   $check = room_isAvailable($room_id, $checkin_date, $checkout_date);
-  /*if (!($checkin_date > $checkout_date || $check == false)) {
-    //echo"sfsfs";*/
+  if (!($checkin_date > $checkout_date || $check == false)){
+     echo"sfsfs";
 
 
   $submit_sql = "UPDATE reservations SET 
@@ -70,8 +70,8 @@
 
   $result = $connect->query($submit_sql); //or die("changes were not made, try again"); 
 
-
-  header("Location:http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");
+  }
+  //header("Location:http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");
   /*} else {
 
     //header("Locatiom:http://localhost/Hurgada-GRND-Hotel/pages/reservation/edit_reservation.php");
