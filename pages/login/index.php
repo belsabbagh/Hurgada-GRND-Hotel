@@ -18,9 +18,21 @@ maintain_session(); ?>
     <link rel="stylesheet" href="./normalize.css"/>
     <!-- Main Template CSS File -->
     <link rel="stylesheet" href="./login+template.css"/>
-
+    <script type="text/javascript">
+        function emailCheck(email) {
+            var r = new XMLHttpRequest();
+            r.open("post", "check.php?email=" + email, true);
+            r.send();
+            r.onreadystatechange = function () {
+                if (r.readyState == 4 && r.status == 200) {
+                    document.getElementById("message").innerHTML = email + " " + r.responseText;
+                }
+            }
+        }
+    </script>
     <!-- For the icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"
@@ -71,7 +83,8 @@ maintain_session(); ?>
                         <span class="details"><h3>Email</h3></span>
                         <div class="input-icons">
                             <i class="fa fa-envelope icon"></i>
-                            <input class="inpt" type="email" name='email' placeholder="Enter your email" required>
+                            <input class="inpt" type="email" name='email' placeholder="Enter your email" required
+                                   onkeyup="emailCheck(this.value)">
                         </div>
                     </div>
                 </div>
@@ -80,7 +93,8 @@ maintain_session(); ?>
                         <span class="details"><h3>Password</h3></span>
                         <div class="input-icons">
                             <i class="fa fa-key icon"></i>
-                            <input class="inpt" type="password" name='password' placeholder="Enter your password" required>
+                            <input class="inpt" type="password" name='password' placeholder="Enter your password"
+                                   required>
                             <!-- <div class="data">
                             </div> -->
                         </div>
@@ -91,7 +105,8 @@ maintain_session(); ?>
                 </div>
                 <p id="form-message"></p>
                 <hr class="line">
-                <p>Don't have an account? <a href="<?php echo REPOSITORY_PAGES_URL . "signUp/index.php" ?>"> Sign up!</a></p>
+                <p>Don't have an account? <a href="<?php echo REPOSITORY_PAGES_URL . "signUp/index.php" ?>"> Sign
+                        up!</a></p>
             </div>
         </div>
         <!-- <hr style="width:50%;text-align:left;margin-left:0"> -->

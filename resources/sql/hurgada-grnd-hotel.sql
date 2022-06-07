@@ -236,7 +236,8 @@ CREATE TABLE `users`
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `first_name`, `last_name`, `password`, `national_id`, `user_pic`, `user_type`,
+INSERT INTO `users` (`user_id`, `email`, `first_name`, `last_name`, `password`, national_id_photo, `user_pic`,
+                     `user_type`,
                      `receptionist_enabled`, `receptionist_qc_comment`)
 VALUES (1, 'belal@gmail.com', 'Belal', 'Elsabbagh', '123', '', '', 3, NULL, NULL);
 

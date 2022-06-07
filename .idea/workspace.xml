@@ -4,31 +4,18 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Changed pages to php to implement a dynamic nav bar">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Email check now works asynchronously">
+      <change afterPath="$PROJECT_DIR$/pages/login/check.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/profile/cssprofile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/profile/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/profile/profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/profile/view-loader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/js/ajax_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/js/ajax_functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/js/ajax_php/email_is_duplicate.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/js/ajax_php/email_is_duplicate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/js/jquery-3.6.0.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/php/classes/ReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/classes/ReservationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/form_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_loader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contactUs/contactus.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contactUs/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/login/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/receptionists/view_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/view_loader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reservation/ajax_editreservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/ajax_editreservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reservation/check_in.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/check_in.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/signUp/SignUp.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/SignUp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/signUp/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/signUp/signUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/signUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sql/hurgada-grnd-hotel.sql" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sql/hurgada-grnd-hotel.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
