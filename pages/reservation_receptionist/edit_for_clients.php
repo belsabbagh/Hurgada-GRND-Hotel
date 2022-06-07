@@ -70,7 +70,7 @@
   <link href="style.css" rel="stylesheet">
   <script src="functions.js"></script>
   <?php
-  include "../../global/php/db-functions.php";
+  
   if (isset($_GET['id']))
     $reservation_id = $_GET['id'];
 
@@ -227,7 +227,7 @@
             <div>
               <label for="manager_pin">managr pin</label>
               <input type="text" name="manager_pin" id="manager_pin" required>
-              <input type="submit" class="submit" id="submit" name="submit">
+              <input type="submit"  id="submit" name="submit">
             </div>
 
             <div>

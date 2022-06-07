@@ -12,7 +12,12 @@
     redirect_to_login();
 
     ?>
+    <style>
+        #submit_search{
+            right:100%;
+        }
 
+        </style>
 
     <title> clients' reservations</title>
 
@@ -81,7 +86,7 @@
         <div class="container">
             <div class="feat">
 
-                <div class=" search_by_id">
+                <div class="search_by_id">
 
                     <!--search for client by id-->
                         <form action='' method='post'>
@@ -89,7 +94,7 @@
                             <P> search by client ID </p>
                             <input type="text" name="client_id" id="search"> <b>
                            <!-- <input type="submit" name="submit" id="submit" class="submit">-->
-                           <input type="submit" class="submit" name="search">  
+                           <input type="submit" id="submit_search" name="search">  
                          
                         </form>
 

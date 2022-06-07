@@ -51,13 +51,13 @@
     position: absolute;
     width: fit-content;
     right: 79%;
-    top: 20%;
+    top: 15%;
     color: #7b5c52;
 
 }
 
 /* buttons*/
-.submit {
+#submit, #submit_search {
 
 
     color: #7b5c52;
@@ -109,7 +109,7 @@
     text-align: center;
  
 }
- a:hover, .submit:hover{
+ .temp:hover, #submit:hover, .temp2:hover{
 
     color:#ffffff;;
     background-color : #057785;

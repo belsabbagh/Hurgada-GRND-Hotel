@@ -5,10 +5,12 @@
     maintain_session();
     redirect_to_login();?>
   
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel='stylesheet' href='../../global/template/template-bootstrap.css'/>
+  <link rel='stylesheet' href='../../global/css/style.css'/>
   <link href="../../global/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="./reservation_css.css" />
   <script src="functions.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title> edit reservations </title>
   
@@ -38,12 +40,14 @@
 
 
     }
-
     #submit {
+      
       padding-left: 25%;
       padding-right: 25%;
 
     }
+
+ 
 
     .row {
 
@@ -150,30 +154,26 @@ $server = "localhost";
 
 
 
-  <!-- Header -->
-  <div class="header" id="header">
-    <div class="container">
-      <div class="links">
-        <span id="icon" class="icon" onclick="showbar()">
-          <i class='bx bx-menu-alt-left'></i>
-        </span>
-        <div class="items" id="items">
-        <?php echo load_header_bar(get_active_user_type()); ?>>
+ <!-- Header -->
+<nav class='navbar' id='header'>
+    <div class='container-fluid'>
+        <div class='navbar-header' onclick='showbar()'>
+            <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
         </div>
-        <span id='icon2' class="icon2" onclick="hidebar()">
-          <i class='bx bx-x'></i>
-        </span>
-        <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
-        <ul id="bar">
-          <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
-          <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
-          <li><a href="RateUs"><i class='bx bxs-star'></i> Rate us</a></li>
-          <li><a href="ContacUs"><i class='bx bxl-gmail'></i> Contact us</a></li>
-        </ul>
-      </div>
+        <div class='row'>
+            <ul class='nav items' id='items'>
+                <?php include_once "../../global/php/db-functions.php";
+                echo load_header_bar(get_active_user_type(), true); ?>
+            </ul>
+        </div>
+        <div>
+            <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
+        </div>
+        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a class='nav-link nlink' href='<?php echo REPOSITORY_PAGES_URL . "booking" ?>'>Book now</a></span>
     </div>
-  </div>
-  <!-- End Of Header -->
+</nav>
+<!-- End Of Header -->
+
 
 
 </head>
@@ -220,7 +220,7 @@ $server = "localhost";
               <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="0" max="1" required>
             </div>
 
-            <input type="submit" class="submit" id="submit" name="submit">
+            <input type="submit"  id="submit" name="submit">
 
           </form>
 
