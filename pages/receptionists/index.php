@@ -3,6 +3,7 @@ include_once "../../global/php/db-functions.php";
 include_once "view_loader.php";
 maintain_session();
 redirect_to_login();
+restrict_to_staff();
 ?>
 <!DOCTYPE html>
 <html lang='en'>
