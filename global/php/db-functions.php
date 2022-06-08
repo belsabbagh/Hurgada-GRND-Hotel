@@ -259,7 +259,7 @@ function room_overflow(int $room_id, int $nAdults, int $nChildren): bool
  *
  * @return mysqli_result
  */
-function get_receptionists(string $column = "1", string|int $key ="1"): mysqli_result
+function get_receptionists(string $column = "1", string|int $key = "1"): mysqli_result
 {
     $key = (is_int($key)) ? $key : "'$key'";
     $sql = "SELECT user_id, email, first_name, last_name, national_id_photo, user_pic, receptionist_enabled, receptionist_qc_comment FROM users WHERE user_type = 2 AND $column = $key";
@@ -309,13 +309,13 @@ function redirect_to_login(): void
  *
  * @author Belal-Elsabbagh
  *
- * @param bool     $bootstrap
- * @param int|null $active_user_type The header's user type.
+ * @param bool  $bootstrap
+ * @param int   $active_user_type The header's user type.
  *
- * @var Closure    $generate_item    A function that creates an item in the header bar.
+ * @var Closure $generate_item    A function that creates an item in the header bar.
  * @return string The html structure of the items.
  */
-function load_header_bar(?int $active_user_type = NO_USER, bool $bootstrap = false): string
+function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = false): string
 {
     /**
      * Generates header bar item with a specific title and link.
