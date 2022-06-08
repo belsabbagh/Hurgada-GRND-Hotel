@@ -4,7 +4,13 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed merge" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Moved log out function to global.">
+      <change afterPath="$PROJECT_DIR$/global/php/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,8 +158,8 @@
       <workItem from="1654432654438" duration="24413000" />
       <workItem from="1654579356227" duration="1178000" />
       <workItem from="1654580642607" duration="14954000" />
-      <workItem from="1654628001372" duration="2964000" />
-      <workItem from="1654636033145" duration="329000" />
+      <workItem from="1654628001372" duration="4441000" />
+      <workItem from="1654707782052" duration="1003000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -449,12 +455,12 @@
       <option name="project" value="LOCAL" />
       <updated>1654593828848</updated>
     </task>
-    <task id="LOCAL-00043" summary="Fixed merge">
-      <created>1654636140960</created>
+    <task id="LOCAL-00043" summary="New db functions. Updated sql">
+      <created>1654635744065</created>
       <option name="number" value="00043" />
       <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />
-      <updated>1654636140960</updated>
+      <updated>1654635744065</updated>
     </task>
     <option name="localTasksCounter" value="44" />
     <servers />
@@ -491,7 +497,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated booking PHPDoc&#10;&#10;Formatted file" />
     <MESSAGE value="Refactored Template Folder&#10;&#10;Added correct template.js paths" />
     <MESSAGE value="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php" />
     <MESSAGE value="Refactored reservation request related db-functions to their own class." />
@@ -515,8 +520,9 @@
     <MESSAGE value="Changed pages to php to implement a dynamic nav bar" />
     <MESSAGE value="Fixed email ajax and handled sessions" />
     <MESSAGE value="Added maintain session" />
-    <MESSAGE value="Fixed merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed merge" />
+    <MESSAGE value="New db functions. Updated sql" />
+    <MESSAGE value="Moved log out function to global." />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved log out function to global." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

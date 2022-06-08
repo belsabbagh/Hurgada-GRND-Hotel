@@ -22,7 +22,12 @@ const ID_PIC_DIRECTORY_PATH = "../../resources/img/id_pics/";
 /**
  * URL to the root of the webpages directory.
  */
-const REPOSITORY_PAGES_URL = "http://localhost/Hurgada-GRND-Hotel/pages/";
+const REPOSITORY_URL = "http://localhost/Hurgada-GRND-Hotel/";
+
+/**
+ * URL to the root of the webpages directory.
+ */
+const REPOSITORY_PAGES_URL = REPOSITORY_URL . "pages/";
 
 /**
  * URL of home page.
@@ -256,7 +261,7 @@ function room_overflow(int $room_id, int $nAdults, int $nChildren): bool
  *
  * @return mysqli_result
  */
-function get_receptionists(string $column = "1", string|int $key ="1"): mysqli_result
+function get_receptionists(string $column = "1", string|int $key = "1"): mysqli_result
 {
     $key = (is_int($key)) ? $key : "'$key'";
     $sql = "SELECT user_id, email, first_name, last_name, national_id_photo, user_pic, receptionist_enabled, receptionist_qc_comment FROM users WHERE user_type = 2 AND $column = $key";
@@ -306,13 +311,13 @@ function redirect_to_login(): void
  *
  * @author Belal-Elsabbagh
  *
- * @param bool     $bootstrap
- * @param int|null $active_user_type The header's user type.
+ * @param bool  $bootstrap
+ * @param int   $active_user_type The header's user type.
  *
- * @var Closure    $generate_item    A function that creates an item in the header bar.
+ * @var Closure $generate_item    A function that creates an item in the header bar.
  * @return string The html structure of the items.
  */
-function load_header_bar(?int $active_user_type = NO_USER, bool $bootstrap = false): string
+function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = false): string
 {
     /**
      * Generates header bar item with a specific title and link.
@@ -330,7 +335,7 @@ function load_header_bar(?int $active_user_type = NO_USER, bool $bootstrap = fal
         if (!$bootstrap) return /** @lang HTML */ "<div class='container'><a style='text-decoration: none;' href='$link'>$title</div>\n";
         return /** @lang HTML */ "<li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='$link'>$title</a></span></li>";
     };
-    $home = $generate_item("Home", REPOSITORY_PAGES_URL . "Home", $bootstrap);
+    $home = $generate_item("Home", HOME_URL, $bootstrap);
     $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile", $bootstrap);
     $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
     $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
@@ -339,14 +344,15 @@ function load_header_bar(?int $active_user_type = NO_USER, bool $bootstrap = fal
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
     $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $bootstrap);
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
+    $logout = $generate_item("Log out", REPOSITORY_URL . "php/logout.php", $bootstrap);
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", $bootstrap);
 
     return match ($active_user_type)
     {
-        3 => $home . $profile . $my_reservations . $contactus,
-        2 => $home . $profile . $reservations . $rooms,
-        1 => $home . $profile . $reservations . $receptionists . $ratings,
+        3 => $home . $profile . $my_reservations . $contactus . $logout,
+        2 => $home . $profile . $reservations . $rooms . $logout,
+        1 => $home . $profile . $reservations . $receptionists . $ratings . $logout,
         default => /** @lang HTML */
             $home . $login . $signup . $about
     };
