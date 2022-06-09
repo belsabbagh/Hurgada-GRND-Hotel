@@ -21,6 +21,7 @@ VALUES ('{$_POST['dependant_name']}', '{$_POST['relationship']}', '$idp_file_nam
 
 try {
     add_new_dependant();
+    go_back_to_previous_page();
 } catch (Exception $e) {
     echo "failed to add dependant";
 }

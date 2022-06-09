@@ -4,9 +4,9 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed comments class">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added add new dependant link">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile/add-dependant.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/add-dependant.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,20 +159,6 @@
       <workItem from="1654580642607" duration="14954000" />
       <workItem from="1654628001372" duration="4441000" />
       <workItem from="1654707782052" duration="2933000" />
-    </task>
-    <task id="LOCAL-00005" summary="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context.">
-      <created>1649592493772</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1649592493772</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Implemented activity logging and added example use in book-client.php">
-      <created>1649923429475</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1649923429475</updated>
     </task>
     <task id="LOCAL-00007" summary="Fixed booking query.&#10;&#10;The booking can now check on room availability and assign a room to the client prior to checkin.">
       <created>1650301328188</created>
@@ -503,7 +489,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654808184762</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Added add new dependant link">
+      <created>1654808753851</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1654808753851</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Added add new dependant link">
+      <created>1654808777459</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1654808777459</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +549,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed error handling in booking to exception handling.&#10;&#10;- Removed queried form url to pass error messages.&#10;- Added guiding prompts in booking form.&#10;-Updated PHPDoc" />
     <MESSAGE value="Added check for valid login in booking." />
     <MESSAGE value="Initial branch commit.&#10;&#10;Added:&#10;- Functions to construct receptionists table.&#10;- Function to get receptionists from db.&#10;- Notes to outline directory features." />
     <MESSAGE value="Renamed main pages on some parts to index.html.&#10;&#10;Added function to load header bar depending on the active user type.&#10;&#10;Added exception handling to db related functions." />
@@ -574,7 +573,8 @@
     <MESSAGE value="Fixed unset session when deleting account." />
     <MESSAGE value="Fixed event listening&#10;&#10;Updated sql" />
     <MESSAGE value="Fixed comments class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed comments class" />
+    <MESSAGE value="Added add new dependant link" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added add new dependant link" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
