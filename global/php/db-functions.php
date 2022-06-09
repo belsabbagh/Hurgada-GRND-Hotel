@@ -671,3 +671,77 @@ function go_back_to_previous_page(): void
 {
     header("Location:" . $_SERVER['HTTP_REFERER']);
 }
+
+class Comment
+{
+    public string $name;
+    public string $comment;
+
+    /**
+     * @param string $name
+     * @param string $comment
+     */
+    public function __construct(string $name, string $comment)
+    {
+        $this->name = $name;
+        $this->comment = $comment;
+    }
+
+}
+
+function get_user_full_name_by_id($user_id): string
+{
+    $result = run_query("SELECT first_name, last_name FROM users WHERE user_id = $user_id");
+    $user = $result->fetch_assoc();
+    return $user['first_name'] . " " . $user['last_name'];
+}
+
+function get_comments_as_JSON(): string
+{
+    $comments = run_query("SELECT client_id, comments FROM room_reviews");
+    $JSON = "[";
+    while ($review = $comments->fetch_assoc())
+    {
+        $name = get_user_full_name_by_id($review['client_id']);
+        $review_object = new Comment($name, $review['comments']);
+        $JSON .= json_encode($review_object) . ",";
+    }
+    return rtrim($JSON, ", ") . "]";
+}
+
+function load_profile_navbar(int $active_user_type): string
+{
+    /**
+     * Generates header bar item with a specific title and link.
+     *
+     * @author Belal-Elsabbagh
+     *
+     * @param string $title The title of the item.
+     * @param string $link  The link that the item takes the user to.
+     *
+     * @return string The html content of the item.
+     */
+    $generate_item = function (string $title, string $link): string
+    {
+        return /** @lang HTML */ "<li><a href='$link'>$title</a></li>\n";
+    };
+    $home = $generate_item("Home", HOME_URL);
+    $profile = $generate_item("My Account", REPOSITORY_PAGES_URL . "profile");
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php");
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php");
+    $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists");
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
+    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
+    $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login");
+    $logout = $generate_item("Log out", REPOSITORY_URL . "/global/php/logout.php");
+    $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp");
+    $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs");
+    $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log");
+    return match ($active_user_type)
+    {
+        3 => $home . $profile . $my_reservations . $logout,
+        2 => $home . $profile . $reservations . $logout,
+        1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
+        default => $home . $login . $signup . $contactus
+    };
+}
