@@ -665,3 +665,8 @@ function restrict_to_staff(): void
 {
     if (!active_user_isEmployee()) die("CANNOT ACCESS PAGE.");
 }
+
+function go_back_to_previous_page(): void
+{
+    header("Location:" . $_SERVER['HTTP_REFERER']);
+}
