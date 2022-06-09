@@ -52,8 +52,14 @@ redirect_to_login();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 <div class="main">
-    <?php include_once "view-loader.php";
-    $user = run_query("SELECT * FROM dependants WHERE parent_id = {$_SESSION['active_user_id']}");
+    <?php
+    if (array_key_exists("id", $_GET)) {
+        $dependant = run_query("SELECT * FROM dependants WHERE parent_id = {$_SESSION['active_user_id']} AND dependant_id = {$_GET['id']}");
+        echo load_dependant_view($dependant->fetch_assoc(), array_key_exists("editable", $_GET));
+    } else {
+        $dependants = run_query("SELECT * FROM dependants WHERE parent_id = {$_SESSION['active_user_id']}");
+        echo construct_dependants_table($dependants);
+    }
     ?>
 </div>
 
@@ -71,4 +77,3 @@ redirect_to_login();
 </body>
 
 </html>
-
