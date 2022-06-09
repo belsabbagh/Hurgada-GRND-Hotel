@@ -59,7 +59,7 @@ redirect_to_login();
     } else {
         $dependants = run_query("SELECT * FROM dependants WHERE parent_id = {$_SESSION['active_user_id']}");
         echo construct_dependants_table($dependants);
-        echo "<a href ='add-dependant.php'>Add new dependant</a>";
+        echo "<a href ='new-dependant.php'>Add new dependant</a>";
     }
     ?>
 </div>
