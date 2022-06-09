@@ -17,10 +17,17 @@
         #submit_search {
             right: 100%;
         }
+        .add_room_btn{
+
+            position: relative;
+            left: 60%;
+            top: 80%;
+            width: 40%;
+        }
 
     </style>
 
-    <title> clients' reservations</title>
+    <title> rooms</title>
 
     <?php $server = "localhost";
     $username = "root";
@@ -87,8 +94,8 @@
                 <!--search for client by id-->
                 <form action='' method='post'>
 
-                    <P> search by client ID </p>
-                    <input type="text" name="client_id" id="search"> <b>
+                    <P> search by room ID </p>
+                    <input type="text" name="room_id" id="search"> <b>
                         <!-- <input type="submit" name="submit" id="submit" class="submit">-->
                         <input type="submit" id="submit_search" name="search">
 
@@ -101,18 +108,15 @@
             <table>
                 <tr>
 
-                    <th> client id</th>
-                    <th> reservation id</th>
-                    <th> Room number</th>
-                    <th> checked in</th>
-                    <th> checked out</th>
-                    <th> numberof adults</th>
-                    <th> numberof children</th>
-                    <th> extra bed</th>
-                    <th> edit</th>
-                    <th> delete</th>
-                    <th> check in/out</th>
-
+                    <th> room ID</th>
+                    <th> room type id </th>
+                    <th> occupied </th>
+                    <th> room view </th>
+                    <th> outdoors </th>
+                    <th> number of beds</th>
+                    <th> base price </th>
+                    <th> edit room</th>
+                    <th> delete room</th>
                 </tr>
 
                 <?php
@@ -122,11 +126,11 @@
                 //$client_ID = '1';
 
                 //search for client by id
-                if (array_key_exists('client_id', $_POST))
+                if (array_key_exists('room_id', $_POST))
                 {
-                    $client_ID = $_POST['client_id'];
-                    $sql = " SELECT * from reservations where client_id= '$client_ID' ";
-                } else $sql = " SELECT * from reservations ";
+                    $room_ID = $_POST['room_id'];
+                    $sql = " SELECT * from rooms where room_id= '$room_ID' ";
+                } else $sql = " SELECT * from rooms ";
                 $result = $connect->query($sql);
 
                 if (empty_mysqli_result($result))
@@ -135,27 +139,30 @@
                 {
                     while ($row = mysqli_fetch_assoc($result))
                     {
-                        echo "<tr><td>" . $row["client_id"] . "</td><td>" . $row["reservation_id"] . "</td><td>" . $row["room_no"] . "</td><td> " . $row["start_date"] . "</td> 
-                            <td>" . $row["end_date"] . "</td>
-                            <td>" . $row["numberof_adults"] . "</td>
-                            <td>" . $row["numberof_children"] . "</td>
-                             <td>" . $row["extra_bed"] . "</td>
-                            ";
-                        $reservation_id = $row['reservation_id'];
+                        echo "<tr><td>" . $row["room_id"] . "</td>
+                            <td>" . get_room_type_by_id($row["room_type_id"] ). "</td>
+                            <td>" . yes_or_no($row["occupied"]) . "</td>
+                            <td>" . get_room_view_by_id($row["room_view"]) . "</td> 
+                            <td>" . get_room_outdoor_by_value($row["room_patio"]) . "</td>
+                            <td>" . $row["room_beds_number"] . "</td>
+                            <td>" . $row["room_base_price"] . "</td>";
+                        $room_number = $row['room_id'];
 
-                        echo "<td><a href ='../reservation_receptionist/edit_for_clients.php?id=$reservation_id' class= 'temp2'> edit </a> </td>";
-                        echo "<td><a href  ='../reservation/delete_reservations.php?id=$reservation_id' class= 'temp2'> delete </a> </td>";
+                        echo "<td><a href ='http://localhost/Hurgada-GRND-Hotel/pages/rooms/edit_room.php?id=$room_number' class= 'temp2'> edit </a> </td>";
+                        
+                        echo "<td><a href  ='http://localhost/Hurgada-GRND-Hotel/pages/rooms/delete_room.php?id=$room_number' class= 'temp2'> delete </a> </td>";
 
-                        $is_checked_in = $row['is_checked_in'];
-                        if ($is_checked_in == 0)
-                            echo "<td><a href='../reservation/check_in.php?id=$reservation_id' class ='temp'> check in </a> </td></tr>";
-
-                        else
-                            echo "<td><a href='../reservation/check_out.php?id=$reservation_id' class ='temp'> check out </a> </td></tr>";
+                    
                     }
                 }
                 ?>
             </table>
+
+            <div class="add_room_btn">
+
+            <a href="http://localhost/Hurgada-GRND-Hotel/pages/rooms/add_room.php" class="temp" > add room </a>
+
+            </div>
 
 
         </div>

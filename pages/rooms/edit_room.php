@@ -73,7 +73,7 @@
   <?php
   
   if (isset($_GET['id']))
-    $reservation_id = $_GET['id'];
+    $room_id = $_GET['id'];
 
   $server = "localhost";
   $username = "root";
@@ -84,63 +84,9 @@
 
 
 
-  $roomsql_1 = "SELECT room_no FROM reservations WHERE reservation_id= $reservation_id ";
-  $result = run_query($roomsql_1);
-  $temp = $result->fetch_assoc();
-  $room_id = $temp['room_no'];
-  
 
-
-  $roomsql_2 = "SELECT room_type_id FROM rooms WHERE room_id=$room_id";
-  $result = run_query($roomsql_2);
-  $temp = $result->fetch_assoc();
-  $room_type_id = $temp['room_type_id'];
   ?>
 
-
-
-  <script>
-    error_msg1 = " invalid, check out date can not bebefore the check in date"
-    error_msg2 = " room is not available"
-    msg = "valid"
-
-
-
-    function check_availability() {
-
-      jQuery.ajax({
-        url: "ajax_editreservation2.php",
-        data: 'checkout=' + $("#checkout").val() + "&" + 'checkin=' + $("#checkin").val() + "&" + 'room_id=' + $("#room_id").val() + "&" + 'reservation_id=' + $("#reservation_id").val(),
-        type: "POST",
-
-        success: function(data) {
-
-          $("#warning2").html(data);
-
-        }
-
-      });
-
-    }
-
-    function checkdate() {
-
-      jQuery.ajax({
-        url: "ajax_editreservation.php",
-        data: 'checkout=' + $("#checkout").val() + "&" + 'checkin=' + $("#checkin").val() + "&",
-        type: "POST",
-
-        success: function(data) {
-
-          $("#warning").html(data);
-
-        }
-
-      });
-
-
-    }
-  </script>
 
 
 
@@ -199,32 +145,22 @@
         <div class="shadow col-md-6 mt-5 " onmouseover="checkdate(); check_availability()" "  >
 
 
-          <h2 class=" titles"> Edit your reservation </h2>
-          <form action="edit_reservation_form.php" method="post">
+          <h2 class=" titles"> Edit room </h2>
+          <form action="edit_room_form.php" method="post">
 
-            <div class="dates form-group">
-              <label for="checkin">Check in date</label>
-              <input type="date" id="checkin" name="checkin" required />
-            </div>
-            <div class="dates form-group">  
-              <label for="checkout">Check out date</label>
-              <input type="date" id="checkout" name="checkout" required />
-              <P id="warning"> </p>
-              <P id="warning2" style=" color: red; font-size: small;"> </p>
-            </div>
+          
 
             <div class="num-of-occupants form-group">
-              <label for="adults">Number of adults</label>
-              <input type="number" id="adults" name="adults" min="1" max="4" value="1" required />
+              <label for="adults">Number of beds</label>
+              <input type="number" id="number_of_beds" name="number_of_beds" min="1" max="4" value="1" required />
             </div>
-            <div class="num-of-occupants form-group">
-              <label for="children">Number of children</label>
-              <input type="number" id="children" name="children" min="0" max="8" value="0" required />
+        
+            <div>
+              <label for="base_price">base_price</label>
+              <input type="text" name="base_price" id="base_price" required>
+              
             </div>
-            <div class="num-of-occupants form-group">
-              <label for="room_beds_number">extra bed</label>
-              <input type="number" id="room_beds_number" name="room_beds_number" value="1" min="0" max="1" required>
-            </div>
+        
             <div>
               <label for="manager_pin">managr pin</label>
               <input type="text" name="manager_pin" id="manager_pin" required>
@@ -233,7 +169,7 @@
 
             <div>
               <input type="hidden" name="room_id" id="room_id" value="<?php echo $room_id ?>">
-              <input type="hidden" name="reservation_id" id="reservation_id" value="<?php echo $_GET['id'] ?>">
+    
             </div>
 
 

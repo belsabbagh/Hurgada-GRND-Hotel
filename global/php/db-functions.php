@@ -342,7 +342,7 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
     $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $bootstrap);
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
-    $logout = $generate_item("Log out", REPOSITORY_URL . "php/logout.php", $bootstrap);
+    $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php", $bootstrap);
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", $bootstrap);
     $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log", $bootstrap);
@@ -756,4 +756,30 @@ function get_email_from_user_id(int $user_id): string
     $result = run_query("SELECT email FROM users WHERE user_id = $user_id");
     $user = $result->fetch_assoc();
     return $user['email'];
+}
+function get_room_type_by_id(int $type_id): string
+{
+    $result = run_query("SELECT room_category FROM room_types WHERE type_id = $type_id");
+    $view = $result->fetch_assoc();
+    return $view['room_category'];
+}
+
+
+function get_room_view_by_id(int $view_id): string
+{
+    $result = run_query("SELECT room_view_title FROM room_views WHERE room_view_id = $view_id");
+    $view = $result->fetch_assoc();
+    return $view['room_view_title'];
+}
+
+function get_room_outdoor_by_value(int $patio): string
+{
+    return ($patio)? "Patio" : "Balcony";
+}
+
+function yes_or_no(bool $val): string
+{
+    
+    return ($val)? "yes" : "no";
+
 }

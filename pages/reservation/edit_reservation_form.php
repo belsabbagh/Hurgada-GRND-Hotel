@@ -7,8 +7,8 @@ maintain_session();
 
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die("Form was not submitted correctly");
-//$client_ID=$_SESSION['active_user_id'];
-$client_ID = 1;
+$client_ID=$_SESSION['active_user_id'];
+
 // Gather data from POST
 $reservation_id = $_POST['reservation_id'];
 $checkin_date  = new DateTime($_POST['checkin']);
