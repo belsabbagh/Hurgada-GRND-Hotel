@@ -1,7 +1,25 @@
 <?php
 include_once "../../global/php/db-functions.php";
+include_once "view-loader.php";
 maintain_session();
 redirect_to_login();
+
+function add_new_dependant(): void
+{
+    if (!post_data_exists()) throw new ErrorException("Form was not submitted correctly", 1);
+
+    $idp_file_name = insert_pic_into_directory($_FILES['national_id_photo'], ID_PIC_DIRECTORY_PATH);
+    $parent_id = get_active_user_id();
+    $sql = "INSERT INTO dependants (dependent_name, relationship,identification, child, parent_id) 
+            VALUES ('{$_POST['dependant_name']}', '{$_POST['relationship']}', '{$_POST['identification']}', '{$_POST['child']}', '$idp_file_name', $parent_id)";
+    try {
+        run_query($sql);
+    } catch (mysqli_sql_exception $e) {
+        echo $e->getMessage();
+        throw new RuntimeException("Failed to add new Receptionist.", 686, $e);
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,13 +30,6 @@ redirect_to_login();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>profile page</title>
-
-    <!-- Load React API -->
-    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <!-- Load React DOM-->
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-    <!-- Load Babel Compiler -->
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -58,9 +69,52 @@ redirect_to_login();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 <div class="main">
-    <?php include_once "view-loader.php";
-    $user = run_query("SELECT * FROM users WHERE user_id = {$_SESSION['active_user_id']}");
-    echo load_user_view($user->fetch_assoc(), array_key_exists('editable', $_GET)); ?>
+    <form action="add-dependant.php" method="post" enctype='multipart/form-data'>
+        <table class='table table-light table-hover'>
+            <thead>
+            <tr>
+                <th scope='col'>
+                    <div>
+                        <label for='Dependant-name'>Dependant name:</label>
+                        <input type='text' name='dependant_name' id='dependant-name' required/>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th scope='col'>
+                    <div>
+                        <label for='relationship'>Relationship:</label>
+                        <input type='text' name='relationship' id='relationship' required/>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th scope='col'>
+                    <div>
+                        <label for='identification'>identification:</label>
+                        <input type='file' name='identification' id='identification'
+                               accept='image/png, image/gif, image/jpeg' required/>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th scope='col'>
+                    <div>
+                        <label for='child'>Is child:</label>
+                        <input type='checkbox' name='isChild' id='isChild' required/>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th scope='col'>
+                    <div>
+                        <input type='submit' name='Add' id='add'/>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+        </table>
+    </form>
 </div>
 
 <div class="wrapper">
@@ -77,3 +131,4 @@ redirect_to_login();
 </body>
 
 </html>
+
