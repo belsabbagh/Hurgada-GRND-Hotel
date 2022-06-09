@@ -9,8 +9,8 @@ function edit(): void
     try {
         $user_id = get_active_user_id();
         $sql = "UPDATE users set
-first_name='{$_POST['first_name']}', last_name='{$_POST['last_name']}', email='{$_POST['email']}', password='{$_POST['password']}'
-WHERE user_id=$user_id";
+        first_name='{$_POST['first_name']}', last_name='{$_POST['last_name']}', email='{$_POST['email']}', password='{$_POST['password']}'
+        WHERE user_id=$user_id";
 
         run_query($sql);
     } catch (Exception $e) {

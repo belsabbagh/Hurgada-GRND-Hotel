@@ -5,5 +5,5 @@ try {
     log_out();
     header("Location: ../../pages/login/index.php");
 } catch (Exception $e) {
-    echo construct_template("Delete Receptionist", "<h3>Delete Failed</h3><p>{$e->getMessage()}</p>");
+    echo construct_template("Delete user", "<h3>Delete Failed</h3><p>{$e->getMessage()}</p>");
 }

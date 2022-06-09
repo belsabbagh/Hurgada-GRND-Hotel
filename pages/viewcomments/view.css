@@ -48,10 +48,7 @@
     transition: .5s background ease-in-out;
 }
 .comment-box .header a i {padding: 0 10px; color: rgb(235, 168, 25)}
-.comment-box .header a:hover {
-    background-color: var(--grey-color);
-    transition: .5s background ease-in-out;
-}
+.comment-box .header a:hover {background-color: var(--grey-color); transition: .5s background ease-in-out}
 
 .comment {
     width: 70%;
@@ -75,13 +72,8 @@
     .comment {width: 100%}
     .comment > h5, .comment > p  {font-size: 12px}
     .comment-box .header a {font-size: 14px}
-
 }
 /* Medium devices (landscape tablets, 768px and down) */
-@media only screen and (max-width: 768px) {
-    .comment-box {width: 100%}
-}
+@media only screen and (max-width: 768px) {.comment-box {width: 100%}}
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .comment-box {width: 100%}
-}
+@media only screen and (min-width: 768px) {.comment-box {width: 100%}}

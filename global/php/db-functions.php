@@ -43,6 +43,7 @@ const SERVER_NAME = "localhost";
 const USERNAME = "root";
 const PASSWORD = "";
 const DB_NAME = "hurgada-grnd-hotel";
+
 const NO_USER = -1;
 /**--------------------------------------------**/
 
@@ -142,8 +143,9 @@ function activity_log(int $action_owner_id, string $action, string $description,
  * @return bool Returns true if room is available, false if room is unavailable
  *
  */
-function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date): bool
+function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date, int $reservation_id=-1): bool
 {
+    $exclude =($reservation_id== -1)? " ":"AND reservation_id != $reservation_id";
     $date_format = "Y-m-d";
     $start_date_str = $start_date->format($date_format);
     $end_date_str = $end_date->format($date_format);
@@ -151,7 +153,7 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
             WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str'))
-            AND room_no = $room_id";
+            AND room_no = $room_id $exclude";
     try
     {
         $result = run_query($sql);
@@ -296,7 +298,7 @@ function get_user_by_id(int $id): ?array
 
 function user_is_logged_in(): bool
 {
-    return isset($_SESSION['active_user_type']);
+    return isset($_SESSION['active_user_id']);
 }
 
 function redirect_to_login(): void
@@ -340,7 +342,6 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
-    $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $bootstrap);
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
     $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php", $bootstrap);
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
@@ -686,6 +687,11 @@ class Comment
         $this->comment = $comment;
     }
 
+    public function toJSON(): string
+    {
+        return "{name: \"$this->name\", comment: \"$this->comment\"}";
+    }
+
 }
 
 function get_user_full_name_by_id($user_id): string
@@ -703,7 +709,7 @@ function get_comments_as_JSON(): string
     {
         $name = get_user_full_name_by_id($review['client_id']);
         $review_object = new Comment($name, $review['comments']);
-        $JSON .= json_encode($review_object) . ",";
+        $JSON .= $review_object->toJSON() . ",";
     }
     return rtrim($JSON, ", ") . "]";
 }
@@ -713,15 +719,16 @@ function load_profile_navbar(int $active_user_type): string
     /**
      * Generates header bar item with a specific title and link.
      *
+     * @author Belal-Elsabbagh
+     *
      * @param string $title The title of the item.
      * @param string $link The link that the item takes the user to.
      *
      * @return string The html content of the item.
-     * @author Belal-Elsabbagh
-     *
      */
-    $generate_item = function (string $title, string $link): string {
-        return /* @lang HTML */ "<li><a href='$link'>$title</a></li>\n";
+    $generate_item = function (string $title, string $link): string
+    {
+        return /** @lang HTML */ "<li><a href='$link'>$title</a></li>\n";
     };
     $home = $generate_item("Home", HOME_URL);
     $profile = $generate_item("My Account", REPOSITORY_PAGES_URL . "profile");
@@ -751,6 +758,7 @@ function log_out(): void
     session_destroy();
     header("Location: " . REPOSITORY_PAGES_URL . "login/index.php");
 }
+
 function get_email_from_user_id(int $user_id): string
 {
     $result = run_query("SELECT email FROM users WHERE user_id = $user_id");
