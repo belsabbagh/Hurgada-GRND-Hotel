@@ -1,5 +1,6 @@
 <?php
 include_once "../../global/php/db-functions.php";
+include_once "view-loader.php";
 maintain_session();
 redirect_to_login();
 ?>
@@ -52,8 +53,8 @@ redirect_to_login();
 
 <div class="main">
     <?php include_once "view-loader.php";
-    $user = run_query("SELECT * FROM users WHERE user_id = {$_SESSION['active_user_id']}");
-    echo load_user_view($user->fetch_assoc(), array_key_exists('editable', $_GET)); ?>
+    $user = run_query("SELECT * FROM dependants WHERE parent_id = {$_SESSION['active_user_id']}");
+    ?>
 </div>
 
 <div class="wrapper">

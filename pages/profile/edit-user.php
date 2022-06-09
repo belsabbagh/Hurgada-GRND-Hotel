@@ -7,11 +7,10 @@ function edit(): void
     if (fileUploaded('national_id_photo')) insert_pic_into_directory($_FILES['national_id_photo'], $_POST['email'], ID_PIC_DIRECTORY_PATH);
 
     try {
-        $user_type = get_active_user_type();
-        $sql = "UPDATE INTO users
-(first_name, last_name, email, password, user_type)
-VALUES
-('{$_POST['first_name']}','{$_POST['last_name']}','{$_POST['email']}','{$_POST['password']}',$user_type);";
+        $user_id = get_active_user_id();
+        $sql = "UPDATE users set
+first_name='{$_POST['first_name']}', last_name='{$_POST['last_name']}', email='{$_POST['email']}', password='{$_POST['password']}'
+WHERE user_id=$user_id";
 
         run_query($sql);
     } catch (Exception $e) {
