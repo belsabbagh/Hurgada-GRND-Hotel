@@ -4,18 +4,13 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Profile page that can be edited">
-      <change afterPath="$PROJECT_DIR$/pages/profile/delete-user.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/dependants.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Functional profile page &#10;Added the dependants page &#10;Added the delete function">
+      <change afterPath="$PROJECT_DIR$/pages/profile/add-dependant.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/profile/new-dependant.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/profile/cssprofile.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/css-profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/profile/edit-user.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/edit-user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/profile/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/videos/fish" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +159,7 @@
       <workItem from="1654432654438" duration="24413000" />
       <workItem from="1654579356227" duration="1178000" />
       <workItem from="1654580642607" duration="6477000" />
-      <workItem from="1654763347707" duration="5208000" />
+      <workItem from="1654763347707" duration="11941000" />
     </task>
     <task id="LOCAL-00001" summary="Initialized node.js package">
       <created>1648617723407</created>
@@ -481,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654641373503</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Functional profile page &#10;Added the dependants page &#10;Added the delete function">
+      <created>1654778684099</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1654778684099</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,7 +518,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated SQL" />
     <MESSAGE value="Updated booking PHPDoc&#10;&#10;Formatted file" />
     <MESSAGE value="Refactored Template Folder&#10;&#10;Added correct template.js paths" />
     <MESSAGE value="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php" />
@@ -541,7 +542,8 @@
     <MESSAGE value="Changed pages to php to implement a dynamic nav bar" />
     <MESSAGE value="Profile page works.&#10;&#10;Ajax login works" />
     <MESSAGE value="Profile page that can be edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile page that can be edited" />
+    <MESSAGE value="Functional profile page &#10;Added the dependants page &#10;Added the delete function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Functional profile page &#10;Added the dependants page &#10;Added the delete function" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

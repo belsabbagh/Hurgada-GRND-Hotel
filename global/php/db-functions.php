@@ -625,3 +625,9 @@ function load_profile_navbar(int $active_user_type): string
     };
 }
 
+function get_email_from_user_id(int $user_id): string
+{
+    $result = run_query("SELECT email FROM users WHERE user_id = $user_id");
+    $user = $result->fetch_assoc();
+    return $user['email'];
+}
