@@ -4,7 +4,7 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed event listening&#10;&#10;Updated sql">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed comments class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
     </list>
@@ -159,13 +159,6 @@
       <workItem from="1654580642607" duration="14954000" />
       <workItem from="1654628001372" duration="4441000" />
       <workItem from="1654707782052" duration="2933000" />
-    </task>
-    <task id="LOCAL-00004" summary="Created a Node.js web server&#10;This server loads a basic index.html file by default.">
-      <created>1648704950039</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1648704950039</updated>
     </task>
     <task id="LOCAL-00005" summary="Changed reservation to save client request instead of add room.&#10;&#10;Removed remnants of Node.js test.&#10;Renamed pages.&#10;Moved database functions to a global context.">
       <created>1649592493772</created>
@@ -503,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654788864079</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Fixed comments class">
+      <created>1654808184762</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1654808184762</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +549,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added error alert and refresh in booking.&#10;&#10;- Formatted template.js&#10;-" />
     <MESSAGE value="Changed error handling in booking to exception handling.&#10;&#10;- Removed queried form url to pass error messages.&#10;- Added guiding prompts in booking form.&#10;-Updated PHPDoc" />
     <MESSAGE value="Added check for valid login in booking." />
     <MESSAGE value="Initial branch commit.&#10;&#10;Added:&#10;- Functions to construct receptionists table.&#10;- Function to get receptionists from db.&#10;- Notes to outline directory features." />
@@ -574,7 +573,8 @@
     <MESSAGE value="Removed rooms from header" />
     <MESSAGE value="Fixed unset session when deleting account." />
     <MESSAGE value="Fixed event listening&#10;&#10;Updated sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed event listening&#10;&#10;Updated sql" />
+    <MESSAGE value="Fixed comments class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed comments class" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

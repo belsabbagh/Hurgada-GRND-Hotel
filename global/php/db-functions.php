@@ -297,7 +297,7 @@ function get_user_by_id(int $id): ?array
 
 function user_is_logged_in(): bool
 {
-    return isset($_SESSION['active_user_type']);
+    return isset($_SESSION['active_user_id']);
 }
 
 function redirect_to_login(): void
@@ -342,7 +342,7 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
-    $logout = $generate_item("Log out", REPOSITORY_URL . "php/logout.php", $bootstrap);
+    $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php", $bootstrap);
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", $bootstrap);
     $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log", $bootstrap);
