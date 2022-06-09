@@ -4,14 +4,10 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Removed rooms from header">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/80b5494f-883e-43a4-b56a-c99808a7ebc4.xml" beforeDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed unset session when deleting account.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/php/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/profile/delete-user.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/delete-user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile/view-loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/view-loader.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,13 +160,6 @@
       <workItem from="1654580642607" duration="14954000" />
       <workItem from="1654628001372" duration="4441000" />
       <workItem from="1654707782052" duration="2933000" />
-    </task>
-    <task id="LOCAL-00002" summary="Updated node.js package and Added mysql dependency">
-      <created>1648618356006</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1648618356006</updated>
     </task>
     <task id="LOCAL-00003" summary="Added scripts to connect to database and start server using Node.js">
       <created>1648621251066</created>
@@ -508,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654780177227</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Fixed unset session when deleting account.">
+      <created>1654781411772</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1654781411772</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added required tags to booking form.&#10;&#10;- Fixed calculating price by using DateInterval.&#10;- Updated PHPDoc" />
     <MESSAGE value="Removed room_beds_number&#10;&#10;- Added a function to check for the room capacity in a reservation request.&#10;- Updated SQL" />
     <MESSAGE value="Added error alert and refresh in booking.&#10;&#10;- Formatted template.js&#10;-" />
     <MESSAGE value="Changed error handling in booking to exception handling.&#10;&#10;- Removed queried form url to pass error messages.&#10;- Added guiding prompts in booking form.&#10;-Updated PHPDoc" />
@@ -579,7 +574,8 @@
     <MESSAGE value="Fixed URLs to reservations&#10;&#10;Added activity log viewer" />
     <MESSAGE value="Added style to activity log" />
     <MESSAGE value="Removed rooms from header" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed rooms from header" />
+    <MESSAGE value="Fixed unset session when deleting account." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed unset session when deleting account." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

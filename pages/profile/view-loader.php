@@ -4,14 +4,12 @@ const PROFILE_PATH = "../../pages/profile";
 function load_user_view(array $current_user, bool $editable = false): string
 {
     $readonly = $editable ? '' : "readonly";
-    $disabled = $editable ? '' : "disabled";
     $password = $editable ? "<div class='pass'>
                                 <label for='password'>Password:</label>
                                 <p id='status_msg'></p>
                                 <input type='password' name='password' id='password' value='{$current_user['password']}'/>
                             </div>" : "";
-
-    //$id_pic_src = ID_PICS_DIR_PATH . $current_user['national_id_photo'];
+    $email_check = $editable ? "onkeyup='email_isDuplicate_msg(this.value, `status_msg`)'" : "";
     $pfp_src = PFP_DIRECTORY_PATH . $current_user['user_pic'];
 
     $save = $editable ? "<button type='submit' value='submit' name='submit' id='submit'>Save</button>" : "";
@@ -72,7 +70,7 @@ function load_user_view(array $current_user, bool $editable = false): string
 <div>
             <label for='email'>Email:</label>
             <p id='status_msg'></p>
-            <input type='email' name='email' onkeyup='email_isDuplicate_msg(this.value, `status_msg`)' value='{$current_user['email']}' $readonly/>
+            <input type='email' name='email' $email_check value='{$current_user['email']}' $readonly/>
         </div>
 </th>
 </tr>
