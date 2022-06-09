@@ -745,3 +745,11 @@ function load_profile_navbar(int $active_user_type): string
         default => $home . $login . $signup . $contactus
     };
 }
+
+function log_out(): void
+{
+    maintain_session();
+    session_unset();
+    session_destroy();
+    header("Location: " . REPOSITORY_PAGES_URL . "login/index.php");
+}
