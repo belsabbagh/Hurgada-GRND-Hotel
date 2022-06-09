@@ -142,9 +142,8 @@ function activity_log(int $action_owner_id, string $action, string $description,
  * @return bool Returns true if room is available, false if room is unavailable
  *
  */
-function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date, int $reservation_id=-1): bool
+function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date): bool
 {
-    $exclude =($reservation_id== -1)? " ":"AND reservation_id != $reservation_id";
     $date_format = "Y-m-d";
     $start_date_str = $start_date->format($date_format);
     $end_date_str = $end_date->format($date_format);
@@ -152,8 +151,7 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
             WHERE ((start_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (end_date BETWEEN '$start_date_str' AND '$end_date_str') 
             OR (start_date >= '$start_date_str' AND end_date <= '$end_date_str'))
-            AND room_no = $room_id $exclude";
-           // echo $sql;
+            AND room_no = $room_id";
     try
     {
         $result = run_query($sql);
@@ -342,6 +340,7 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
+    $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $bootstrap);
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
     $logout = $generate_item("Log out", REPOSITORY_URL . "php/logout.php", $bootstrap);
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
@@ -714,16 +713,15 @@ function load_profile_navbar(int $active_user_type): string
     /**
      * Generates header bar item with a specific title and link.
      *
-     * @author Belal-Elsabbagh
-     *
      * @param string $title The title of the item.
-     * @param string $link  The link that the item takes the user to.
+     * @param string $link The link that the item takes the user to.
      *
      * @return string The html content of the item.
+     * @author Belal-Elsabbagh
+     *
      */
-    $generate_item = function (string $title, string $link): string
-    {
-        return /** @lang HTML */ "<li><a href='$link'>$title</a></li>\n";
+    $generate_item = function (string $title, string $link): string {
+        return /* @lang HTML */ "<li><a href='$link'>$title</a></li>\n";
     };
     $home = $generate_item("Home", HOME_URL);
     $profile = $generate_item("My Account", REPOSITORY_PAGES_URL . "profile");
@@ -733,14 +731,14 @@ function load_profile_navbar(int $active_user_type): string
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login");
-    $logout = $generate_item("Log out", REPOSITORY_URL . "/global/php/logout.php");
+    $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php");
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp");
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs");
     $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log");
-    return match ($active_user_type)
-    {
-        3 => $home . $profile . $my_reservations . $logout,
-        2 => $home . $profile . $reservations . $logout,
+    $dependants = $generate_item("Dependants", REPOSITORY_PAGES_URL . "profile/dependants.php");
+    return match ($active_user_type) {
+        3 => $home . $profile . $my_reservations . $dependants . $logout,
+        2 => $home . $profile . $reservations . $rooms . $logout,
         1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
         default => $home . $login . $signup . $contactus
     };
@@ -752,4 +750,10 @@ function log_out(): void
     session_unset();
     session_destroy();
     header("Location: " . REPOSITORY_PAGES_URL . "login/index.php");
+}
+function get_email_from_user_id(int $user_id): string
+{
+    $result = run_query("SELECT email FROM users WHERE user_id = $user_id");
+    $user = $result->fetch_assoc();
+    return $user['email'];
 }
