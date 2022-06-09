@@ -350,7 +350,7 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     return match ($active_user_type)
     {
         3 => $home . $profile . $my_reservations . $logout,
-        2 => $home . $profile . $reservations . $rooms . $logout,
+        2 => $home . $profile . $reservations . $logout,
         1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
         default => $home . $login . $signup . $contactus
     };
