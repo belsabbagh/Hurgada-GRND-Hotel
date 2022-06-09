@@ -335,24 +335,25 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
         if (!$bootstrap) return /** @lang HTML */ "<div class='container'><a style='text-decoration: none;' href='$link'>$title</div>\n";
         return /** @lang HTML */ "<li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='$link'>$title</a></span></li>";
     };
-    $home = $generate_item("Home", HOME_URL, $bootstrap);
+    $home = $generate_item("Home", REPOSITORY_PAGES_URL . "Home", $bootstrap);
     $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile", $bootstrap);
-    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php", $bootstrap);
-    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", $bootstrap);
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
+    $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $bootstrap);
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
-    $logout = $generate_item("Log out", REPOSITORY_URL . "php/logout.php", $bootstrap);
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", $bootstrap);
-    $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log", $bootstrap);
+
     return match ($active_user_type)
     {
-        3 => $home . $profile . $my_reservations . $logout,
-        2 => $home . $profile . $reservations . $rooms . $logout,
-        1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
-        default => $home . $login . $signup . $contactus
+        3 => $home . $profile . $my_reservations . $contactus,
+        2 => $home . $profile . $reservations . $rooms,
+        1 => $home . $profile . $reservations . $receptionists . $ratings,
+        default => /** @lang HTML */
+            $home . $login . $signup . $about
     };
 }
 
@@ -671,3 +672,41 @@ function go_back_to_previous_page(): void
 {
     header("Location:" . $_SERVER['HTTP_REFERER']);
 }
+
+
+function load_profile_navbar(int $active_user_type): string
+{
+    /**
+     * Generates header bar item with a specific title and link.
+     *
+     * @param string $title The title of the item.
+     * @param string $link The link that the item takes the user to.
+     *
+     * @return string The html content of the item.
+     * @author Belal-Elsabbagh
+     *
+     */
+    $generate_item = function (string $title, string $link): string {
+        return /* @lang HTML */ "<li><a href='$link'>$title</a></li>\n";
+    };
+    $home = $generate_item("Home", HOME_URL);
+    $profile = $generate_item("My Account", REPOSITORY_PAGES_URL . "profile");
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php");
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php");
+    $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists");
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
+    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
+    $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login");
+    $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php");
+    $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp");
+    $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs");
+    $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log");
+    $dependants = $generate_item("Dependants", REPOSITORY_PAGES_URL . "profile/dependants.php");
+    return match ($active_user_type) {
+        3 => $home . $profile . $my_reservations . $dependants . $logout,
+        2 => $home . $profile . $reservations . $rooms . $logout,
+        1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
+        default => $home . $login . $signup . $contactus
+    };
+}
+
