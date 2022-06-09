@@ -342,7 +342,6 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
-    $about = $generate_item("About", REPOSITORY_PAGES_URL . "about", $bootstrap);
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
     $logout = $generate_item("Log out", REPOSITORY_URL . "php/logout.php", $bootstrap);
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
@@ -350,11 +349,11 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
 
     return match ($active_user_type)
     {
-        3 => $home . $profile . $my_reservations . $contactus . $logout,
+        3 => $home . $profile . $my_reservations . $logout,
         2 => $home . $profile . $reservations . $rooms . $logout,
         1 => $home . $profile . $reservations . $receptionists . $ratings . $logout,
         default => /** @lang HTML */
-            $home . $login . $signup . $about
+            $home . $login . $signup . $contactus
     };
 }
 
@@ -594,9 +593,10 @@ function maintain_session(): void
     if (!session_running()) session_start();
 }
 //warning
-function warningmsg ($msg ,$header,$link){
+function warningmsg($msg, $header, $link): void
+{
 
-    echo"
+    echo "
 
     <div class='center' id = 'center'>
         <div class='content'>
@@ -617,9 +617,10 @@ function warningmsg ($msg ,$header,$link){
 
 
 //confirm
-function confirmmsg ($msg ,$header){
+function confirmmsg($msg, $header): void
+{
 
-    echo"
+    echo "
 
     <div class='center' id = 'center'>
         <div class='content'>
@@ -639,9 +640,10 @@ function confirmmsg ($msg ,$header){
 }
 
 //confirm using link
-function confirmmsg2 ($msg ,$header,$link_no, $link_yes){
+function confirmmsg2($msg, $header, $link_no, $link_yes): void
+{
 
-    echo"
+    echo "
 
     <div class='center' id = 'center'>
         <div class='content'>
