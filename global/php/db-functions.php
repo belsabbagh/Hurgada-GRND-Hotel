@@ -337,8 +337,8 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     };
     $home = $generate_item("Home", HOME_URL, $bootstrap);
     $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile", $bootstrap);
-    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
-    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservations", $bootstrap);
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php", $bootstrap);
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", $bootstrap);
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
@@ -346,14 +346,13 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     $logout = $generate_item("Log out", REPOSITORY_URL . "php/logout.php", $bootstrap);
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", $bootstrap);
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", $bootstrap);
-
+    $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log", $bootstrap);
     return match ($active_user_type)
     {
         3 => $home . $profile . $my_reservations . $logout,
         2 => $home . $profile . $reservations . $rooms . $logout,
-        1 => $home . $profile . $reservations . $receptionists . $ratings . $logout,
-        default => /** @lang HTML */
-            $home . $login . $signup . $contactus
+        1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
+        default => $home . $login . $signup . $contactus
     };
 }
 

@@ -4,11 +4,12 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed contact us">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed header bar">
+      <change afterPath="$PROJECT_DIR$/pages/activity_log/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/activity_log/view_loader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/php/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation_receptionist/clients_reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation_receptionist/clients_reservations.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -477,7 +478,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654715632626</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Fixed header bar">
+      <created>1654757085398</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1654757085398</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,7 +531,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php" />
     <MESSAGE value="Refactored reservation request related db-functions to their own class." />
     <MESSAGE value="Fixed RoomOptions.php" />
     <MESSAGE value="Added Receptionist Booking&#10;&#10;- Moved booking logic to root of booking.&#10;- Added reservation form for receptionist.&#10;- Added unified reservation form that loads according to user type&#10;- Changed booking logic to be more general for client and receptionist.&#10;- Updated PHPDocs" />
@@ -548,7 +555,8 @@
     <MESSAGE value="New db functions. Updated sql" />
     <MESSAGE value="Moved log out function to global." />
     <MESSAGE value="Fixed documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed documentation" />
+    <MESSAGE value="Fixed header bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed header bar" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
