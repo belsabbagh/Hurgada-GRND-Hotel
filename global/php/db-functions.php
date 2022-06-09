@@ -686,6 +686,11 @@ class Comment
         $this->comment = $comment;
     }
 
+    public function toJSON(): string
+    {
+        return "{name: \"$this->name\", comment: \"$this->comment\"}";
+    }
+
 }
 
 function get_user_full_name_by_id($user_id): string
@@ -703,7 +708,7 @@ function get_comments_as_JSON(): string
     {
         $name = get_user_full_name_by_id($review['client_id']);
         $review_object = new Comment($name, $review['comments']);
-        $JSON .= json_encode($review_object) . ",";
+        $JSON .= $review_object->toJSON() . ",";
     }
     return rtrim($JSON, ", ") . "]";
 }
