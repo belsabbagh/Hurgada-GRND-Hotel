@@ -43,6 +43,7 @@ const SERVER_NAME = "localhost";
 const USERNAME = "root";
 const PASSWORD = "";
 const DB_NAME = "hurgada-grnd-hotel";
+
 const NO_USER = -1;
 /**--------------------------------------------**/
 

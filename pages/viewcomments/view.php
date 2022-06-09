@@ -1,8 +1,6 @@
 <?php
 include_once "../../global/php/db-functions.php";
-if (!isset($_SESSION)) {
-    session_start();
-}
+maintain_session();
 // DB Config
 $server = "localhost";
 $username = "root";
@@ -12,7 +10,7 @@ $dbname = "hurgada-grnd-hotel";
 $connect = new mysqli($server, $username, $password, $dbname);
 // Check connection
 if ($connect->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $connect->connect_error);
 }
 
 function get_user_full_name_by_id($user_id): string
@@ -20,19 +18,6 @@ function get_user_full_name_by_id($user_id): string
     $result = run_query("SELECT first_name, last_name FROM users WHERE user_id = $user_id");
     $user = $result->fetch_assoc();
     return $user['first_name'] . " " . $user['last_name'];
-}
-class Comment
-{
-    public string $name;
-    public string $comment;
-
-    public function __construct(string $name, string $comment){
-        $this->name = $name;
-        $this->comment = $comment;
-    }
-    public function JSON(): string{
-        return "{name: \"$this->name\", comment: \"$this->comment\"}";
-    }
 }
 
 $comments = run_query("SELECT client_id, comments FROM room_reviews");
