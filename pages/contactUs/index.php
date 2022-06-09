@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <?php
-//cookies
-session_start();
-$cookie_name= "user";
-$cookie_value= "John Doe";
-setcookie($cookie_name, $cookie_value, time()+(86400*30),"/");
-//database connection
-$conn = mysqli_connect("localhost", "root", "", "hurgada-grnd-hotel");
+include_once "../../global/php/db-functions.php";
+maintain_session();
+redirect_to_login();
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 ?>
 
 <html lang="en">
@@ -40,27 +39,29 @@ $conn = mysqli_connect("localhost", "root", "", "hurgada-grnd-hotel");
  
     <!-- Latest compiled JavaScript library -->
     <script src=
-"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity=
-"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous">
+            "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity=
+            "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous">
     </script>
 </head>
- 
+
 <body>
-    <div class="container text-center">
-        <h1 class="text">Contact Us</h1>
-        <p>we're open everyday 24/7 and you're most welcomed to leave your suggestions below </p>
-    </div>
-    
-    <style>
-        h1.text{
-            color: #f6bca1;
-            
-        }
-    </style>
-    
-        <div align="center"><form id="form_contactUs"><div class="mb-3">
+<div class="container text-center">
+    <h1 class="text">Contact Us</h1>
+    <p>we're open every day 24/7, and you're most welcomed to leave your suggestions below </p>
+</div>
+
+<style>
+    h1.text {
+        color: #f6bca1;
+
+    }
+</style>
+
+<div align="center">
+    <form id="form_contactUs">
+        <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="email" placeholder="name@example.com">
         </div>
@@ -71,55 +72,47 @@ $conn = mysqli_connect("localhost", "root", "", "hurgada-grnd-hotel");
         <style>
             #text-fixed{
                 max-width:150px;
-                overflow:hidden;
-                white-space:nowrap;
-                text-overflow:ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
         </style>
         <div class="col-6">
-            <button type="submit" class="btn btn-outline-primary btn-lg">submit</button> 
-        </div></form></div>
-        <style>
-            label{
-                color:b53e07
-            }
-            button.btn-outline-primary{
-                color:#f6bca1;
-            }
-            
-        </style>
-        <style>
-            /*so that the size of page 
-            doesn't change from one device to other*/
-            {
-                vertical-align:baseline;
-                font-weight:inherit;
-                font-family:inherit;
-                font-size:100%;
-                border:0;
-                outline:0;
-                padding:0;
-                margin:0;
-            }
-        </style>
-        <?php
-            if(!$conn){
-            die ("connection failed:".mysqli_connect_error());
-            }
-            else{
-            echo "connection successful";
-            }
-            $sql="INSERT INTO info(id,email, password,review)
-            VALUES (null,'email','password','review')";
+            <button type="submit" class="btn btn-outline-primary btn-lg">submit</button>
+        </div>
+    </form>
+</div>
+<style>
+    label {
+        color: #b53e07
+    }
 
-            if($conn->query($sql)===TRUE){
-             echo "new record created successfully";
-            }
-            else{
-            echo "error:".$sql."<br>".$conn->error;
-            }
-            $conn->close();
-    ?>
-    
+    button.btn-outline-primary {
+        color: #f6bca1;
+    }
+
+</style>
+<style>
+    /*so that the size of page
+    doesn't change from one device to other*/
+    {
+        vertical-align: baseline
+    ;
+        font-weight: inherit
+    ;
+        font-family: inherit
+    ;
+        font-size: 100%
+    ;
+        border: 0
+    ;
+        outline: 0
+    ;
+        padding: 0
+    ;
+        margin: 0
+    ;
+    }
+</style>
 </body>
 </html> 
