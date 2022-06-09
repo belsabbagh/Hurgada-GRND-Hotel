@@ -52,7 +52,7 @@ VALUES ('2022-04-14 07:25:30', 1, 'Login', 'Logged in', NULL);
 
 CREATE TABLE `dependants`
 (
-    `dependent_id`   int(11)      NOT NULL,
+    `dependant_id`   int(11)      NOT NULL,
     `dependent_name` varchar(40)  NOT NULL,
     `relationship`   varchar(50)  NOT NULL,
     `identification` varchar(150) NOT NULL,
@@ -251,7 +251,7 @@ CREATE TABLE `users`
     `first_name`              varchar(40)  NOT NULL,
     `last_name`               varchar(40)  NOT NULL,
     `password`                varchar(60)  NOT NULL,
-    `national_id_photo`       varchar(150) NOT NULL,
+    `national_id`             varchar(150) NOT NULL,
     `user_pic`                varchar(150) NOT NULL,
     `user_type`               int(11)      NOT NULL DEFAULT 3,
     `receptionist_enabled`    tinyint(1)            DEFAULT NULL,
@@ -263,12 +263,9 @@ CREATE TABLE `users`
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `first_name`, `last_name`, `password`, `national_id_photo`, `user_pic`,
-                     `user_type`, `receptionist_enabled`, `receptionist_qc_comment`)
-VALUES (1, 'belal@gmail.com', 'Belal', 'Elsabbagh', '123', '', '', 3, NULL, NULL),
-       (14, 'xingqiu@gmail.com', 'Xingqiu', 'Guhua', '123', 'xingqiu@gmail.com.jpg', 'xingqiu@gmail.com.png', 1, 1,
-        'Too cute to be a receptionist'),
-       (26, 'harry@gmail.com', 'Harry', 'Potter', '123', 'harr@gmail.com.jpg', 'harr@gmail.com.jpg', 2, 1, '');
+INSERT INTO `users` (`user_id`, `email`, `first_name`, `last_name`, `password`, `national_id`, `user_pic`, `user_type`,
+                     `receptionist_enabled`, `receptionist_qc_comment`)
+VALUES (1, 'belal@gmail.com', 'Belal', 'Elsabbagh', '123', '', '', 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -420,7 +417,7 @@ ALTER TABLE `services`
 --
 ALTER TABLE `users`
     MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 27;
+    AUTO_INCREMENT = 2;
 
 --
 -- AUTO_INCREMENT for table `user_type`
@@ -449,6 +446,7 @@ ALTER TABLE `dependants`
 -- Constraints for table `reservations`
 --
 ALTER TABLE `reservations`
+    ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`),
     ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`room_no`) REFERENCES `rooms` (`room_id`);
 
 --
