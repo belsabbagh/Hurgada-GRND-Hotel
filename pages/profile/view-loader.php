@@ -96,11 +96,11 @@ TABLE;
 }
 
 /**
- * @param array $receptionist
- *
- * @return string
  * @author @Belal-Elsabbagh
  *
+ * @param array $dependant
+ *
+ * @return string
  */
 function construct_dependant_table_row(array $dependant): string
 {
