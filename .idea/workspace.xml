@@ -4,7 +4,7 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Changed back to Mariam's original home page">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/Home.css" afterDir="false" />
@@ -164,14 +164,7 @@
       <workItem from="1654580642607" duration="14954000" />
       <workItem from="1654628001372" duration="4441000" />
       <workItem from="1654707782052" duration="2933000" />
-      <workItem from="1654842995422" duration="1785000" />
-    </task>
-    <task id="LOCAL-00010" summary="Added date constraints checking in db-functions.php&#10;&#10;- Added code for setting date constraints for inputs in js.&#10;- Removed form.html.&#10;- Fixed README.md.&#10;- Formatted form file.">
-      <created>1650572686498</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1650572686498</updated>
+      <workItem from="1654842995422" duration="3525000" />
     </task>
     <task id="LOCAL-00011" summary="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script.">
       <created>1650664033450</created>
@@ -509,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654810408484</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page">
+      <created>1654845081874</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1654845081879</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +555,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed some redundant html templates.&#10;&#10;- Replaced by a php function that returns the full html page with given content in it." />
     <MESSAGE value="Removed some redundant html templates.&#10;&#10;- Removed redundant specific booking pages for client and employee separately." />
     <MESSAGE value="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php." />
     <MESSAGE value="Changes" />
@@ -580,7 +579,8 @@
     <MESSAGE value="Updated doc" />
     <MESSAGE value="Merged viewcomments" />
     <MESSAGE value="Changed back to Mariam's original home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed back to Mariam's original home page" />
+    <MESSAGE value="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
