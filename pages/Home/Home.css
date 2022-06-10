@@ -1,3 +1,22 @@
+/* Variables */
+:root {
+    --blue0-color: #152636;
+    --blue1-color: #014b56;
+    --blue2-color: #057785;
+    --blue3-color: #57b8bc;
+    --blue4-color: #b4d2d3;
+    --grey-color: #8b929a;
+    --brown0-color: #7b5c52;
+    --brown1-color: #8a7469;
+    --brown2-color: #d6b09b;
+    --brown3-color: #f6d8cb;
+    --brown4--color: rgba(99, 88, 75, 0.283);
+    --yellow0-color: #fdf7e4;
+    --yellow1-color: rgb(255, 255, 235);
+    --yellow2-color: linear-gradient(90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
+}
+
+
 /* ________________________________________________________________________________________________ */
 
 
@@ -6,6 +25,7 @@
     font-family: "Main";
     src: url(../../resources/fonts/PlayfairDisplayi.ttf);
 }
+
 @font-face {
     font-family: "parg";
     src: url(../../resources/fonts/PlayfairDisplay.ttf);
@@ -92,7 +112,7 @@ body{
 }
 
 /* Navigation Bar */
-.header .links .icon{
+.header .links .icon {
     cursor: pointer;
     width: 30px;
     justify-content: center;
@@ -100,14 +120,43 @@ body{
     position: fixed;
     user-select: none;
     font-size: 60px;
-    left: 56px;
+    left: 55.5px;
 }
-.header .links .icon:hover{
+
+.header .links .icon:hover {
     color: var(--brown2-color);
 }
 
-.header .links .icon2:hover{
+.header .links .icon2 {
+    cursor: pointer;
+    font-size: 59px;
+    top: 23px;
+    left: 56px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--brown1-color);
+    position: fixed;
+    user-select: none;
+    transition: 0.3s;
+    display: none;
+}
+
+.header .links .icon2:hover {
     color: var(--brown2-color);
+}
+
+.header .links ul {
+    cursor: pointer;
+    list-style: none;
+    margin-top: 50px;
+    padding: 0;
+    position: fixed;
+    left: 50px;
+    min-width: 200px;
+    display: none;
+    z-index: 1;
+    user-select: none;
 }
 
 .header .links ul li a {
@@ -120,7 +169,6 @@ body{
     background: var(--yellow2-color);
     backdrop-filter: blur(10px);
     margin-top: 5px;
-    font-size: medium;
 }
 .header .links ul li a:hover{
     padding-left: 25px;
@@ -129,21 +177,22 @@ body{
 }
 
 /* Book now */
-.book{
-    cursor:pointer;
+.book {
+    cursor: pointer;
+    width: 80px;
     display: flex;
     flex-wrap: wrap;
     right: 50px;
     justify-content: center;
     color: var(--brown2-color);
-    position:fixed;
+    position: fixed;
     font-size: 20px;
     user-select: none;
     padding: 10px;
     width: 150px;
     transition: 0.05s;
     border-radius: 50px;
-    background: linear-gradient( 45deg , rgba(255, 250, 232, 0.174), rgba(255, 255, 255, 0));
+    background: linear-gradient(45deg, rgba(255, 250, 232, 0.174), rgba(255, 255, 255, 0));
     backdrop-filter: blur(2px);
 }
 .book:hover{
@@ -192,15 +241,16 @@ body{
 }
 
 .landing .intro-text h1 {
-    font-family: "Main", serif;
+    font-family: "Main";
     margin: 0;
+    font-weight: bold;
     font-size: 75px;
     font-weight: 1000;
     color: var(--yellow1-color);
 }
 
 .landing .intro-text p {
-    font-family: "Common", serif;
+    font-family: "Common";
     font-size: 30px;
     line-height: 1.8;
     color: var(--yellow0-color);
@@ -212,14 +262,14 @@ body{
 
 
 /* body  */
-.side-pic {
+.sidepic {
     background-image: url('../../resources/img/home page/beach.jpg');
     background-size: cover;
     padding: 20px;
     height: 150px;
     position: relative;
     transition: 2s;
-    top: 0;
+    top: 0px;
     left: 650px;
     width: 40%;
     user-select: none;
@@ -234,7 +284,7 @@ body{
 }
 
 .quote2 {
-    font-family: "Special2", serif;
+    font-family: "Special2";
     position: absolute;
     font-size: 20px;
     right: 80px;
@@ -255,7 +305,7 @@ body{
 }
 
 .quote4 {
-    font-family: "Special2", serif;
+    font-family: "Special2";
     position: absolute;
     font-size: 20px;
     left: 100px;
@@ -277,7 +327,7 @@ body{
     font-size: 200px;
     left: 20px;
     color: #8b929a77;
-    font-family: "Parg", serif;
+    font-family: "Parg";
     user-select: none;
 }
 
@@ -290,7 +340,8 @@ body{
     margin-right: auto;
     user-select: none;
 }
-.rooms .slider .slides{
+
+.rooms .slider .slides {
     background-color: #7b5c521c;
     padding: 30px;
     height: 400px;
@@ -298,7 +349,8 @@ body{
     user-select: none;
     border-radius: 5%;
 }
-.rooms .slider .overflow{
+
+.rooms .slider .overflow {
     width: 100%;
     overflow: hidden;
     user-select: none;
@@ -309,17 +361,20 @@ body{
     height: 340px;
     user-select: none;
 }
-.rooms .slider .slide{
+
+.rooms .slider .slide {
     width: 25%;
     float: left;
     display: block;
     height: 100%;
     user-select: none;
 }
-.rooms .slides .content{
+
+.rooms .slides .content {
     padding: 5px;
     user-select: none;
 }
+
 .rooms .slides .content img {
     width: 60%
 }
@@ -328,7 +383,7 @@ body{
     position: relative;
     left: 480px;
     top: -200px;
-    font-family: "parg", serif;
+    font-family: "parg";
     font-size: 10px;
     text-align: left;
     color: #362915;
@@ -351,7 +406,7 @@ body{
     width: 20px;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.15 ease;
     margin: 5px;
     background: #d3c4b457;
     user-select: none;
@@ -402,7 +457,7 @@ body{
     font-size: 100px;
     left: 20px;
     color: var(--brown1-color);
-    font-family: "Parg", serif;
+    font-family: "Parg";
     user-select: none;
 }
 
@@ -410,7 +465,7 @@ body{
     font-size: 20px;
     left: 20px;
     color: var(--brown3-color);
-    font-family: "Parg", serif;
+    font-family: "Parg";
     user-select: none;
 }
 
@@ -418,26 +473,28 @@ body{
     position: absolute;
     width: 20%;
     border-radius: 10%;
-    user-select: none;
 }
-.Dinning .container .eat1{
+
+.Dinning .container .eat1 {
     left: 400px;
     top: 100px;
 }
-.Dinning .container .eat2{
+
+.Dinning .container .eat2 {
     left: 100px;
 }
-.Exp{
+
+.Exp {
     position: relative;
     top: 200px;
     height: 500px;
 }
-.Exp .container{
+
+.Exp .container {
     position: relative;
-    background: linear-gradient(rgba(195, 211, 231, 0.237),rgba(119, 230, 206, 0.21)) ;
+    background: linear-gradient(rgba(195, 211, 231, 0.237), rgba(119, 230, 206, 0.21));
     padding-bottom: 100px;
     border-radius: 50%;
-    user-select: none;
 }
 
 .Exp .container .txt {
@@ -450,7 +507,7 @@ body{
     font-size: 100px;
     left: 20px;
     color: var(--blue2-color);
-    font-family: "Parg", serif;
+    font-family: "Parg";
     user-select: none;
 }
 
@@ -460,7 +517,7 @@ body{
     font-size: 20px;
     left: 100px;
     color: var(--blue0-color);
-    font-family: "Parg", serif;
+    font-family: "Parg";
     user-select: none;
 }
 
@@ -468,9 +525,9 @@ body{
     position: absolute;
     width: 20%;
     border-radius: 10%;
-    user-select: none;
 }
-.Exp .container .exp1{
+
+.Exp .container .exp1 {
     top: -100px;
     left: 600px;
 }
@@ -492,11 +549,11 @@ body{
     height: 800px;
 }
 
-.map-txt {
+.maptxt {
     position: absolute;
     font-size: 100px;
     color: var(--brown1-color);
-    font-family: "Parg", serif;
+    font-family: "Parg";
     user-select: none;
     left: 100px;
 }
@@ -510,6 +567,7 @@ body{
 .features {
     padding-top: 60px;
     padding-bottom: 60px;
+    background-color: var(--BabyPink-color);
 }
 
 .features .container {
@@ -525,10 +583,11 @@ body{
 
 .features .feat h3 {
     font-weight: 800;
+    margin: 30px 0;
     font-size: 100px;
-    font-family: "Main", serif;
+    font-family: "Main";
     color: #014b56;
-    margin: 30px 0 100px;
+    margin-bottom: 100px;
     user-select: none;
 }
 
@@ -537,11 +596,6 @@ body{
     color: #777;
     font-size: 17px;
     user-select: none;
-}
-.header{
-    font-weight: 100 !important;
-    text-transform: capitalize;
-    font-size: 55px;
 }
 
 
@@ -571,17 +625,14 @@ body{
     width: 5px;
     z-index: 1;
 }
-
 ::-webkit-scrollbar-track {
     background: var(--yellow0-color);
     display: none;
 }
-
 ::-webkit-scrollbar-thumb {
     background: var(--grey-color);
     border-radius: 50px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
     background: var(--blue4-color);
 }

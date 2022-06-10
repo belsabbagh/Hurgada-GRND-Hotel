@@ -25,11 +25,9 @@ $arr = "[";
 while ($review = $comments->fetch_assoc()){
     $name = get_user_full_name_by_id($review['client_id']);
     $review_object = new Comment($name, $review['comments']);
-    $arr .= $review_object->JSON() . ",";
+    $arr .= $review_object->toJSON() . ",";
     }
 $view = rtrim($arr, ", ") . "]";
-
-
 
 ?>
 <!DOCTYPE html>

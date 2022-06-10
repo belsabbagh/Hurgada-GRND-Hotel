@@ -1,10 +1,3 @@
-<?php
-include_once "../../global/php/db-functions.php";
-if (!isset($_SESSION))
-{
-    session_start();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,15 +5,13 @@ if (!isset($_SESSION))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HURGADA-GRND-HOTEL</title>
+    <title>HURGHADA-GRND-HOTEL</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
     <script src="Home.js"></script>
-    <script src="../../global/template/template.js"></script>
-    <!-- Render All Elements Normally -->
+    <!-- Render All Alements Normally -->
     <link rel="stylesheet" href="../../global/template/normalize.css"/>
-    <link rel="stylesheet" href="../../global/template/template.css"/>
     <!-- Main Template CSS File -->
     <link rel="stylesheet" href="./Home.css"/>
 </head>
@@ -33,17 +24,34 @@ if (!isset($_SESSION))
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
             <div class="items" id="items">
-                <?php echo load_header_bar(get_active_user_type()); ?>
+                    <span class="container">
+                        <span>Home</span>
+                    </span>
+                <span class="container">
+                        <span>Rooms</span>
+                    </span>
+                <span class="container">
+                        <span>Dining</span>
+                    </span>
+                <span class="container">
+                        <span>Experience</span>
+                    </span>
+                <span class="container">
+                        <span>Location</span>
+                    </span>
+                <span class="container">
+                        <span>About</span>
+                    </span>
             </div>
             <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-            <div class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></div>
+            <i class='book' id="book">Book now</i>
             <ul id="bar">
-                <li><a href="Profile"><em class='bx bxs-user'></em>Profile</a></li>
-                <li><a href="MyReservations"><em class='bx bxs-bed'></em> My Reservations</a></li>
-                <li><a href="RateUs"><em class='bx bxs-star'></em> Rate us</a></li>
-                <li><a href="ContacUs"><em class='bx bxl-gmail'></em> Contact us</a></li>
+                <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
+                <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
+                <li><a href="RateUs"><i class='bx bxs-star'></i> Rate us</a></li>
+                <li><a href="ContacUs"><i class='bx bxl-gmail'></i> Contact us</a></li>
             </ul>
         </div>
     </div>
@@ -64,7 +72,7 @@ if (!isset($_SESSION))
     very receptive and kind, the<br>
     atmosphere is wonderful.
 </div>
-<div class="side-pic"></div>
+<div class="sidepic"></div>
 <div class="quote3 show" id="txt3"><i class='bx bxs-quote-alt-left'></i></div>
 <div class="quote4 show" id="txt4">Almost every thing. A very warm and
     <br>welcoming family , the place is very
@@ -150,6 +158,7 @@ if (!isset($_SESSION))
 </div>
 
 
+
 <div class="Dinning">
     <div class="container">
             <span>
@@ -187,7 +196,7 @@ if (!isset($_SESSION))
 
 
 <div class="map">
-    <h3 class="map-txt">Location</h3>
+    <h3 class="maptxt">Location</h3>
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28414.733333059197!2d33.8191758!3d27
     .0982879!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1452802a6ea246ff%3A0x41b07b3be5267297!2sThe%20Grand%20Hotel
     !5e0!3m2!1sen!2seg!4v1651243819292!5m2!1sen!2seg" width="800" height="600" style="border:0;" allowfullscreen=""
