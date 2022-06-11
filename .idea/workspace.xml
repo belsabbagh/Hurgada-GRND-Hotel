@@ -4,17 +4,17 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added contactus suggestions as json in db functions">
-      <change afterPath="$PROJECT_DIR$/global/template/receptionist_temp.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/global/template/receptionist_temp.html" afterDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed booking to implement employee and client templates.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/template/qualitytemp.html" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/qualitytemp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/template/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/template.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/book.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/form_loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/form_loader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/HomePage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/HomePage/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/booking/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/booking/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/booking/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/new-receptionist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/receptionists/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/receptionists/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/signUp/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/signUp/signUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/signUp/signUp.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,14 +169,7 @@
       <workItem from="1654628001372" duration="4441000" />
       <workItem from="1654707782052" duration="2933000" />
       <workItem from="1654842995422" duration="6795000" />
-      <workItem from="1654962405558" duration="6490000" />
-    </task>
-    <task id="LOCAL-00013" summary="Fixed Activity Log message in book">
-      <created>1650665867569</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1650665867569</updated>
+      <workItem from="1654962405558" duration="11307000" />
     </task>
     <task id="LOCAL-00014" summary="Fixed undefined array keys">
       <created>1650668441580</created>
@@ -514,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654945764213</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Fixed booking to implement employee and client templates.">
+      <created>1654970612179</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1654970612179</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,7 +560,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes" />
     <MESSAGE value="Added function to check for duplicate email" />
     <MESSAGE value="Email check now works better" />
     <MESSAGE value="Email check now works asynchronously" />
@@ -585,7 +584,8 @@
     <MESSAGE value="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page" />
     <MESSAGE value="Fixed login to redirect to profile page" />
     <MESSAGE value="Added contactus suggestions as json in db functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added contactus suggestions as json in db functions" />
+    <MESSAGE value="Fixed booking to implement employee and client templates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed booking to implement employee and client templates." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

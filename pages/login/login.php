@@ -11,7 +11,7 @@ try
         header("Location: http://localhost/hurgada-grnd-hotel/pages/profile/index.php");
         return;
     }
-    header("Location: http://localhost/hurgada-grnd-hotel/pages/Home/index.php");
+    header("Location: http://localhost/hurgada-grnd-hotel/pages/HomePage/index.php");
 } catch (Exception $e)
 {
     echo $e->getMessage();

@@ -51,11 +51,8 @@
                 </span>
                 <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
                 <ul id="bar">
-                    <!--<li><a href="../login/login.php"><i class='bx bxs-user'></i> Login</a></li>
-                    <li><a href="../reservation/my%20reservations.php"><i class='bx bxs-bed'></i> My Reservations</a></li>
-                    <li><a href="../reservation/rating.php"><i class='bx bxs-star'></i> Rate us</a></li>
-                    <li><a href="../contactUs/index.php"><i class='bx bxl-gmail'></i> Contact us</a></li>
--->                 <?php include_once "../../global/php/db-functions.php"; echo load_navbar(get_active_user_type()); ?>
+                    <?php include_once "../../global/php/db-functions.php";
+                    echo load_navbar(get_active_user_type()); ?>
                 </ul>
             </div>
         </div>

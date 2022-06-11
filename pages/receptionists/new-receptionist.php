@@ -22,40 +22,16 @@ maintain_session();
     <!-- Main JS File -->
     <script src='../../global/template/template.js'></script>
     <script src="../../global/js/ajax_functions.js"></script>
+    <link rel='stylesheet' href='../../global/template/qualitytemp.css'/>
 </head>
 
 <body class='d-flex flex-column min-vh-100'>
 <!-- Header -->
-<nav class='navbar' id='header'>
-    <div class='container-fluid'>
-        <div class='navbar-header col-sm-3' onclick='showbar()'>
-            <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
-        </div>
-        <div class='row'>
-            <ul class='nav col-sm-12 items' id='items'>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Home</a></span></li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Rooms</a></span></li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Dining</a></span></li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Experience</a></span>
-                </li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>Location</a></span>
-                </li>
-                <li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink'
-                                                                                        href='#'>About</a></span></li>
-            </ul>
-        </div>
-        <div class="col-sm-2">
-            <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
-        </div>
-        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a
-                    class='nav-link nlink' href='#'>Book now</a></span>
-    </div>
-</nav>
+<div class="sidebar">
+    <ul>
+        <?php echo load_navbar(1) ?>
+    </ul>
+</div>
 <!-- End Of Header -->
 
 <!-- Body -->
