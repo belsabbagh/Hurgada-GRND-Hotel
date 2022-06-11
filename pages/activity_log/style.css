@@ -1,15 +1,23 @@
-.features {
+.feature {
     position: relative;
-    top: 80px;
+    left: -87px;
+}
+
+.features {
     width: 100%;
-    height: 100%;
+}
+
+.container {
+    position: relative;
     margin-top: 150px;
-    margin-bottom: 200px;
+    margin-left: 300px;
+    width: 80%;
+    font-family: "parg", serif;
 }
 
 table {
     background-color: var(--yellow2-color);
-    border: 2px solid var(--brown0-color);
+    border: 2px solid var(--blue0-color);
     border-collapse: collapse;
     width: auto;
     border-radius: 15px;
@@ -18,7 +26,7 @@ table {
 
 th,
 td {
-    border: 2px solid var(--brown0-color);
+    border: 2px solid var(--blue0-color);
     padding: 10px 30px 10px 30px;
 }
 

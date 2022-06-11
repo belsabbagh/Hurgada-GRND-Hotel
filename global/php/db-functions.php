@@ -669,9 +669,9 @@ function restrict_to_staff(): void
     if (!active_user_isEmployee()) die("CANNOT ACCESS PAGE.");
 }
 
-function go_back_to_previous_page(): void
+function go_back_to_previous_page(string $optional_query = ""): void
 {
-    header("Location:" . $_SERVER['HTTP_REFERER']);
+    header("Location:" . $_SERVER['HTTP_REFERER'] . $optional_query);
 }
 
 /**

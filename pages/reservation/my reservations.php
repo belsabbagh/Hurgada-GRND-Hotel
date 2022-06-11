@@ -35,26 +35,43 @@
     <!-- Main JS File -->
     <script src="template.js"></script>
     <!-- Render All Alements Normally -->
-    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="./template.css" />
-
+    <link rel="stylesheet" href="../../global/template/template.css"/>
 
 
     <!-- Header -->
+    <a name="home"></a>
     <div class="header" id="header">
         <div class="container">
             <div class="links">
-                <span id="icon" class="icon" onclick="showbar()">
-                    <i class='bx bx-menu-alt-left'></i>
-                </span>
+                    <span id="icon" class="icon" onclick="showbar()">
+                        <i class='bx bx-menu-alt-left'></i>
+                    </span>
                 <div class="items" id="items">
-                <?php echo load_header_bar(get_active_user_type()); ?>
+                        <span class="container">
+                            <span><a href="../HomePage/index.php#home">Home</a></span>
+                        </span>
+                    <span class="container">
+                            <span><a href="../HomePage/index.php#rooms">Rooms</a></span>
+                        </span>
+                    <span class="container">
+                            <span><a href="../HomePage/index.php#dine">Dining</a></span>
+                        </span>
+                    <span class="container">
+                            <span><a href="../HomePage/index.php#exp">Experience</a></span>
+                        </span>
+                    <span class="container">
+                            <span><a href="../HomePage/index.php#loc">Location</a></span>
+                        </span>
+                    <span class="container">
+                            <span><a href="../HomePage/index.php#about">About</a></span>
+                        </span>
                 </div>
                 <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-                <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
+                <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
                 <ul id="bar">
                 <?php echo load_navbar(get_active_user_type()); ?>
                 </ul>
@@ -62,15 +79,12 @@
         </div>
     </div>
     <!-- End Of Header -->
-
-
 </head>
 
 <body>
 
 
-
-    <!-- Body -->
+<!-- Body -->
 
 
     <div class="features">
