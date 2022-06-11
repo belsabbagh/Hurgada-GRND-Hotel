@@ -109,7 +109,7 @@
     text-align: center;
  
 }
- .temp:hover, #submit:hover, .temp2:hover{
+ .temp:hover, #submit:hover, .temp2:hover , #submit_search:hover{
 
     color:#ffffff;;
     background-color : #057785;

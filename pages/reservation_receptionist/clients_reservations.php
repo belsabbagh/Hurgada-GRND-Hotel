@@ -90,7 +90,7 @@
                     <P> search by client ID </p>
                     <input type="text" name="client_id" id="search"> <b>
                         <!-- <input type="submit" name="submit" id="submit" class="submit">-->
-                        <input type="submit" id="submit_search" name="search">
+                        <input type="submit" id="submit_search" name="search" style=" right: 35%; position: absolute;">
 
                 </form>
 

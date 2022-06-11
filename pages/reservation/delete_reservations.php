@@ -3,7 +3,6 @@
 <head>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="stylesheet" href="./msg_.css" />
-  <link href="../../global/css/style.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
   <script src="functions.js"></script>
 
@@ -28,9 +27,18 @@
 
   confirmmsg($delete_msg, $delete_header);
   //not confirmed, go back to my reservations
+
+  //if the user is a client
+  if (!active_user_isEmployee())
+  $return_link="http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php";
+
+  //if the user is a receptionist
+  else
+  $return_link="http://localhost/Hurgada-GRND-Hotel/pages/reservation_receptionist/clients_reservations.php";
+
   if (isset($_POST["no_btn"])) {
 
-    header("Location:http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");
+    header("Location:$return_link");
   }
 
   //deleting is confirmed 
@@ -44,7 +52,7 @@
     if ($result) {
       $deleted_msg = "reservation deleted";
       $deleted_header = "deleted";
-      $deleted_link = "http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php";
+      $deleted_link = $return_link;
       warningmsg($deleted_msg, $deleted_header, $deleted_link);
     }
 
@@ -54,7 +62,7 @@
 
       $error_msg = "reservation was not deleted";
       $error_header = "error";
-      $error_link = "http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php";
+      $error_link = $return_link;
       warningmsg($error_msg, $error_header, $error_link);
     }
   }

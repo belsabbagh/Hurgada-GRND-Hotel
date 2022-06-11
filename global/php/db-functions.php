@@ -73,7 +73,7 @@ function db_connect(): mysqli
  * @throws RuntimeException Thrown if connection was unsuccessful.
  * @return mysqli_result The result of the query
  */
-function run_query(string $sql): mysqli_result
+function run_query(string $sql): ?mysqli_result
 {
     try
     {
@@ -84,6 +84,7 @@ function run_query(string $sql): mysqli_result
     }
     $result = $conn->query($sql);
     if ($result === false) throw new mysqli_sql_exception("Failed to run query.\n$conn->error", $conn->errno);
+    if ($result === true) return null;
     $conn->close();
     return $result;
 }
@@ -654,7 +655,7 @@ function confirmmsg2($msg, $header, $link_no, $link_yes): void
         <h2>$header</h2>
      </div>
         <p> $msg </p>
-        <div class='line'></div>
+        <div class='line' ></div>
         <form action= '' method = 'post'>
         <a href= '$link_yes'  class = 'confirm-btn'> yes </a>
         <a href= '$link_no'  class = 'close-btn'> no </a>

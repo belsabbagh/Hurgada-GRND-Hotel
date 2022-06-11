@@ -10,7 +10,7 @@
     
     include_once "../../global/php/db-functions.php";
     maintain_session();
-    //redirect_to_login();
+    redirect_to_login();
 
     ?>
     <style>
@@ -53,12 +53,7 @@
     <link href="style.css" rel="stylesheet">
     <script src="functions.js"></script>
 
-    <?php $server = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "hurgada-grnd-hotel";
-
-    $connect = new mysqli($server, $username, $password, $dbname); ?>
+    
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -104,14 +99,7 @@
 
 
 
-    <?php
-    if (isset($_GET['id']))
-        $reservation_id = $_GET['id'];
-    else echo "error";
-    //$client_ID='$_SESSION['active_id']';
-    $client_ID = '1';
-    // make a skip rating option 
-    ?>
+   
 </head>
 
 <body>
@@ -122,37 +110,37 @@
                 <div class="row col-md-12">
                     <div class="shadow col-md-6 mt-5 ">
                         <h2 class="titles"> rate us! </h2>
-                        <form action="" method="post">
+                        <form action="rate_us_form.php" method="post">
                             <label for="over all rating">over all rating </label>
                             <div class="slidecontainer  ">
 
 
-                                <input type="range" min="1" max="100" value="50" class="slider" id="overall" oninput="rangevalue.value=value">
+                                <input type="range" min="1" max="100" value="50" class="slider" name="overall" id="overall" oninput="rangevalue.value=value">
                                 <output id="rangevalue">50</output>
                             </div>
 
                             <label for="view rating"> view rating </label>
                             <div class="slidecontainer">
 
-                                <input type="range" min="1" max="100" value="50" class="slider" id="view" oninput="rangevalue1.value=value">
+                                <input type="range" min="1" max="100" value="50" class="slider" name="view" id="view" oninput="rangevalue1.value=value">
                                 <output id="rangevalue1">50 </output>
                             </div>
                             <label for="comfort rating"> comfort rating </label>
                             <div class="slidecontainer">
 
-                                <input type="range" min="1" max="100" value="50" class="slider" id="comfort" oninput="rangevalue2.value=value">
+                                <input type="range" min="1" max="100" value="50" class="slider" name="comfort" id="comfort" oninput="rangevalue2.value=value">
                                 <output id="rangevalue2">50</output>
                             </div>
                             <label for="facilities rating"> facilities rating </label>
                             <div class="slidecontainer">
 
-                                <input type="range" min="1" max="100" value="50" class="slider" id="facilities" oninput="rangevalue3.value=value">
+                                <input type="range" min="1" max="100" value="50" class="slider" name="facilities" id="facilities" oninput="rangevalue3.value=value">
                                 <output id="rangevalue3">50</output>
                             </div>
                             <label for="room service rating"> room service rating </label>
                             <div class="slidecontainer">
 
-                                <input type="range" min="1" max="100" value="50" class="slider" id="room service" oninput="rangevalue4.value=value">
+                                <input type="range" min="1" max="100" value="50" class="slider" name="room_service" id="room_service" oninput="rangevalue4.value=value">
                                 <output id="rangevalue4">50</output>
                             </div>
 
@@ -160,9 +148,10 @@
                             <div class="num-of-occupants">
 
                                 <input type='text' id='comment' name='comment'>
+                                <input type='hidden' id='reservation_id' name='reservation_id' value = "<?php echo $_GET['id'];?>">
                             </div>
                             <div class="submit_rating">
-                                <input type="submit" class="submit" id="submit" name="submit" ">
+                                <input type="submit" class="submit" id="submit" name="submit" >
                         </div>
                     </form>
                 
@@ -175,43 +164,13 @@
     <!-- End Of Body -->
     <!-- Footer -->
     <div class=" footer">
-                                &copy; 2022
-                                <span>MIU</span>
-                                All Rights Reserved
-                            </div>
-                            <!-- End Of Footer -->
+        &copy; 2022
+        <span>MIU</span>
+        All Rights Reserved
+    </div>
+    <!-- End Of Footer -->
 
-                            <?php
-
-                            if ($_SERVER['REQUEST_METHOD'] != 'POST') die("Form was not submitted correctly");
-
-                            // Gather data from POST
-                            if (isset($_POST['submit'])) {
-                                $overall_rating = $_POST['overall'];
-                                $view_rating = $_POST['view'];
-                                $comfort_rating = $_POST['comfort'];
-                                $facilities_rating = $_POST['facilities'];
-                                $room_service_rating = $_POST['room service'];
-                                $comments = $_POST['comment'];
-                            }
-
-                            //submit data in db
-
-                            $room_id_sql = "SELECT room_no FROM reservations WEHRE reservation_ID =$reservation_id ";
-                            $result = run_query($room_id_sql);
-                            $temp = $result->fetch_assoc();
-                            $room_id = $temp['room_no'];
-
-                            $submit_sql = "INSERT INTO  room_reviews 
-(client_id, room_no, overall_rating, view_rating, comfort_rating, facilities_rating, room_service_rating, comments, reservation_id)
-VALUES ('$client_ID', '$room_id' , '$overall_rating' ,'$view_rating', '$comfort_rating' , '$facilities_rating'
-, '$room_service_rating', '$comments', '$reservation_id')";
-                            run_query($submit_sql) or die(" error");
-
-                            header("Location:http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");
-
-                            ?>
-
+                           
 </body>
 
 </html

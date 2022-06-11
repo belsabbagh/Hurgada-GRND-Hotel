@@ -14,8 +14,9 @@
 
     ?>
     <style>
-        #submit_search {
-            right: 100%;
+        .submit_search {
+            right: 120%;
+            position: absolute;
         }
         .add_room_btn{
 
@@ -91,13 +92,13 @@
 
             <div class="search_by_id">
 
-                <!--search for client by id-->
+                <!--search for room by id-->
                 <form action='' method='post'>
 
                     <P> search by room ID </p>
                     <input type="text" name="room_id" id="search"> <b>
                         <!-- <input type="submit" name="submit" id="submit" class="submit">-->
-                        <input type="submit" id="submit_search" name="search">
+                        <input type="submit" id="submit_search" name="search" style=" right: 35%; position: absolute;">
 
                 </form>
 
@@ -115,8 +116,7 @@
                     <th> outdoors </th>
                     <th> number of beds</th>
                     <th> base price </th>
-                    <th> edit room</th>
-                    <th> delete room</th>
+        
                 </tr>
 
                 <?php
@@ -148,9 +148,7 @@
                             <td>" . $row["room_base_price"] . "</td>";
                         $room_number = $row['room_id'];
 
-                        echo "<td><a href ='http://localhost/Hurgada-GRND-Hotel/pages/rooms/edit_room.php?id=$room_number' class= 'temp2'> edit </a> </td>";
-                        
-                        echo "<td><a href  ='http://localhost/Hurgada-GRND-Hotel/pages/rooms/delete_room.php?id=$room_number' class= 'temp2'> delete </a> </td>";
+                
 
                     
                     }
@@ -158,11 +156,7 @@
                 ?>
             </table>
 
-            <div class="add_room_btn">
-
-            <a href="http://localhost/Hurgada-GRND-Hotel/pages/rooms/add_room.php" class="temp" > add room </a>
-
-            </div>
+            
 
 
         </div>
