@@ -7,11 +7,10 @@
     <script src="functions.js"></script>
     <title> rate us </title>
     <?php
-
     
     include_once "../../global/php/db-functions.php";
     maintain_session();
-    redirect_to_login();
+    //redirect_to_login();
 
     ?>
     <style>

@@ -17,3 +17,4 @@ try
     echo $e->getMessage();
     header("Location: index.php");
 }
+?>

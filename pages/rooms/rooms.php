@@ -9,8 +9,8 @@
     <?php
     include_once "../../global/php/db-functions.php";
     maintain_session();
-    redirect_to_login();
-    restrict_to_staff();
+    //redirect_to_login();
+    //restrict_to_staff();
 
     ?>
     <style>

@@ -26,8 +26,16 @@
     box-sizing: border-box;
     list-style-type: none
 }
-.comment-box {height: 90vh; width: 1080px; margin: auto}
-.comment-box .header {
+
+/* Comment box */
+.container {
+    height: 90vh;
+    width: 1080px;
+    margin: auto
+}
+
+/* Header Component */
+.header {
     background-color: var(--blue0-color);
     display: flex;
     flex-wrap: wrap;
@@ -35,8 +43,11 @@
     border-radius: 0 0 10px 10px;
     width: 70%;
     margin: 10px auto;
+    position: relative;
+    left: 10%;
 }
-.comment-box .header a {
+
+.header a {
     display: block;
     width: 50%;
     height: 50px;
@@ -47,33 +58,87 @@
     color: #FFF;
     transition: .5s background ease-in-out;
 }
-.comment-box .header a i {padding: 0 10px; color: rgb(235, 168, 25)}
-.comment-box .header a:hover {background-color: var(--grey-color); transition: .5s background ease-in-out}
 
-.comment {
+.header a i {
+    padding: 0 10px;
+    color: rgb(235, 168, 25)
+}
+
+.header a:hover {
+    background-color: var(--grey-color);
+    transition: .5s background ease-in-out
+}
+
+/* Contact / Rates Components */
+.comments .comment {
+    position: relative;
+    left: 10%;
     width: 70%;
     margin: 10px auto;
-    padding: 15px 0;
-    /* border-bottom: 1px solid var(--grey-color); */
+    padding: 15px 20px;
     box-shadow: 1px 1px 10px .5px var(--grey-color)
 }
-.comment h5 {text-transform: capitalize; display: inline-block; padding: 0 10px}
-.comment p {display: inline-block; font-size: 14px}
+
+.comment h5 {
+    text-transform: capitalize;
+    display: inline-block;
+}
+
+.comment p {
+    display: inline-block;
+    font-size: 14px;
+    padding-left: 5px;
+}
 
 /* JS Config */
-.active {background: #FFF; border-bottom: 1px solid #222}
-.active span {color: #222; transition: .5s color ease-in-out}
-.active:hover {background-color: #222; transition: .5s background ease-in-out}
-.active:hover > span {color: #FFF; transition: .5s color ease-in-out}
+.active {
+    background: #FFF;
+    border-bottom: 1px solid #222
+}
+
+.active span {
+    color: #222;
+    transition: .5s color ease-in-out
+}
+
+.active:hover {
+    background-color: #222;
+    transition: .5s background ease-in-out
+}
+
+.active:hover > span {
+    color: #FFF;
+    transition: .5s color ease-in-out
+}
+
 /* Media Query */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    .comment-box {width: 100%}
-    .comment {width: 100%}
-    .comment > h5, .comment > p  {font-size: 12px}
-    .comment-box .header a {font-size: 14px}
+    .container {
+        width: 100%
+    }
+
+    .header a {
+        font-size: 14px
+    }
+
+    .comment {
+        width: 100%
+    }
+
+    .comment > h5, .comment > p {
+        font-size: 12px
+    }
 }
 /* Medium devices (landscape tablets, 768px and down) */
-@media only screen and (max-width: 768px) {.comment-box {width: 100%}}
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100%
+    }
+}
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {.comment-box {width: 100%}}
+@media only screen and (min-width: 768px) {
+    .container {
+        width: 100%
+    }
+}

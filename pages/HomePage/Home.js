@@ -46,7 +46,7 @@ function scrollFunction() {
         document.getElementById('items').style.visibility = 'hidden';
         document.getElementById('items').style.opacity = '0';
         document.getElementById('items').style.transition = '0.1s';
-        document.getElementById('book').style.color = "var(--brown2-color)";
+        document.getElementById('book a').style.color = "var(--brown2-color)";
         document.getElementById('book').style.background = "linear-gradient( 45deg , rgba(255, 250, 232, 0.174), rgba(255, 255, 255, 0))";
     }
 }
@@ -64,6 +64,7 @@ function reveal() {
         }
     }
 }
+
 window.addEventListener("scroll", reveal);
 
 
@@ -79,4 +80,5 @@ function show() {
         }
     }
 }
+
 window.addEventListener("scroll", show);

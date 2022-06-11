@@ -1,5 +1,4 @@
 /* Variables */
-
 :root {
     --blue0-color: #152636;
     --blue1-color: #014b56;
@@ -14,17 +13,16 @@
     --brown4--color: rgba(99, 88, 75, 0.283);
     --yellow0-color: #fdf7e4;
     --yellow1-color: rgb(255, 255, 235);
-    --yellow2-color: linear-gradient( 90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
+    --yellow2-color: linear-gradient(90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
 }
 
 
 /* ________________________________________________________________________________________________ */
 
 
-/* fonts */
-
+/* Fonts */
 @font-face {
-    font-family: "Title";
+    font-family: "Main";
     src: url(../../resources/fonts/PlayfairDisplayi.ttf);
 }
 
@@ -38,43 +36,82 @@
     src: url(../../resources/fonts/Updock-Regular.ttf);
 }
 
+@font-face {
+    font-family: "Special2";
+    src: url(../../resources/fonts/RobotoMono-VariableFont_wght.ttf);
+}
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--yellow2-color);
+}
+
+.container {
+    width: 600px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 /* ________________________________________________________________________________________________ */
 
 
 /* To Fit All Screen Size */
-
 @media (min-width: 768px) {
     .container {
         width: 750px;
     }
 }
 
-@media(min-width: 992px) {
+@media (min-width: 992px) {
     .container {
         width: 970px;
     }
 }
 
-@media(min-width: 1200px) {
+@media (min-width: 1200px) {
     .container {
         width: 1170px;
     }
 }
 
-
 /* ________________________________________________________________________________________________ */
 
 
 /* Header */
-
 .header {
     padding: 20px;
     height: 100px;
     transition: 2s;
     z-index: 1;
     position: fixed;
-    width: 100%;
+    width: 100%
+
+}
+
+.background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15)), url('../../resources/img/home page/hotel1.jpg');
+    background-size: cover;
+    padding: 20px;
+    height: 100vh;
+    position: relative;
+    transition: 2s;
+    margin-bottom: 400px;
+    z-index: 0;
+    user-select: none;
+}
+
+.header {
+    background-color: va r(--yellow2-color);
 }
 
 .header .container {
@@ -87,9 +124,7 @@
     position: relative;
 }
 
-
 /* Navigation Bar */
-
 .header .links .icon {
     cursor: pointer;
     width: 30px;
@@ -98,7 +133,7 @@
     position: fixed;
     user-select: none;
     font-size: 60px;
-    left: 56px;
+    left: 55.5px;
 }
 
 .header .links .icon:hover {
@@ -110,6 +145,7 @@
     font-size: 59px;
     top: 23px;
     left: 56px;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     color: var(--brown1-color);
@@ -135,7 +171,6 @@
     z-index: 1;
     user-select: none;
 }
-
 .header .links ul li a {
     display: block;
     padding: 15px;
@@ -154,47 +189,41 @@
     background: var(--brown4--color);
 }
 
-
 /* Book now */
-
-.book {
+.book a {
     cursor: pointer;
+    width: 80px;
     display: flex;
     flex-wrap: wrap;
     right: 50px;
     justify-content: center;
-    color: var(--yellow0-color);
-    background: var(--brown4--color);
     position: fixed;
-    font-size: 20px;
     user-select: none;
     padding: 10px;
     width: 150px;
     transition: 0.05s;
     border-radius: 50px;
+    background: linear-gradient(45deg, rgba(255, 250, 232, 0.174), rgba(255, 255, 255, 0));
     backdrop-filter: blur(2px);
+    color: var(--brown2-color);
+    font-size: 20px;
+    text-decoration: none;
 }
 
-.book:hover {
+.book:hover a {
     border: 1px solid #7b5c52;
     border-bottom: 3px solid #7b5c52;
 }
 
-
-/* Items */
-
+/*items */
 .items {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
     cursor: pointer;
     display: flex;
-    color: var(--brown2-color);
     position: fixed;
-    font-size: 20px;
     user-select: none;
     left: 150px;
     border-bottom: 2px solid #7b5c52;
+    font-size: 20px;
 }
 
 .items .container {
@@ -205,12 +234,49 @@
     border-radius: 50px;
     background: var(--yellow2-color);
     backdrop-filter: blur(2px);
-    transition: 0.05s all ease;
+}
+
+.items .container a {
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--brown2-color);
 }
 
 .items .container:hover {
     color: var(--yellow0-color);
     background: var(--brown4--color);
+}
+
+.items .container:hover a {
+    color: var(--yellow0-color);
+}
+
+/* Main Text */
+.landing .intro-text {
+    position: absolute;
+    left: 50%;
+    top: -70px;
+    text-align: center;
+    transform: translate(-50%, 50%);
+    width: 600px;
+    max-width: 100%;
+    user-select: none;
+}
+
+.landing .intro-text h1 {
+    font-family: "Main";
+    margin: 0;
+    font-weight: bold;
+    font-size: 75px;
+    font-weight: 1000;
+    color: var(--yellow1-color);
+}
+
+.landing .intro-text p {
+    font-family: "Common";
+    font-size: 30px;
+    line-height: 1.8;
+    color: var(--yellow0-color);
 }
 
 
@@ -219,21 +285,6 @@
 
 /* body  */
 
-.features {
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-.features .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-}
-
-.features .feat {
-    padding: 20px;
-    text-align: center;
-}
 
 
 /* ________________________________________________________________________________________________ */
@@ -244,56 +295,65 @@
 .footer {
     background-color: var(--blue0-color);
     color: white;
-    padding: 30px 10px;
+    padding: 10px 5px;
     text-align: center;
     font-size: 18px;
+    user-select: none;
+    position: relative;
 }
 
-.footer span {
+.footer .github {
+    user-select: pointer;
+}
+
+.footer .copyright {
+    margin-top: 10px;
+}
+
+.footer .copyright span {
     font-weight: bold;
     color: bisque;
 }
 
+.footer a {
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 20px 5px 5px 5px;
+}
 
 /* ________________________________________________________________________________________________ */
 
 
 /* Scrollbar */
-
 ::-webkit-scrollbar {
     width: 5px;
-    z-index: 3;
+    z-index: 1;
 }
-
 ::-webkit-scrollbar-track {
     background: var(--yellow0-color);
     display: none;
 }
-
 ::-webkit-scrollbar-thumb {
     background: var(--grey-color);
     border-radius: 50px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
     background: var(--blue4-color);
 }
-
 
 /* ________________________________________________________________________________________________ */
 
 
 /* Animations */
-
-.reveal {
-    position: relative;
+.show {
     transform: translateY(150px);
     opacity: 0;
-    transition: 2s all ease;
-    display: contents;
+    transition: 1.5s all ease;
 }
 
-.reveal.active {
+.show.active {
     transform: translateY(0);
     opacity: 1;
 }

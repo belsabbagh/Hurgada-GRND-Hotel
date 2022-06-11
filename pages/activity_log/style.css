@@ -1,3 +1,12 @@
+.features {
+    position: relative;
+    top: 80px;
+    width: 100%;
+    height: 100%;
+    margin-top: 150px;
+    margin-bottom: 200px;
+}
+
 table {
     background-color: var(--yellow2-color);
     border: 2px solid var(--brown0-color);
