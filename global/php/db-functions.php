@@ -32,7 +32,7 @@ const REPOSITORY_PAGES_URL = REPOSITORY_URL . "pages/";
 /**
  * URL of home page.
  */
-const HOME_URL = REPOSITORY_PAGES_URL . "Home/index.php";
+const HOME_URL = REPOSITORY_PAGES_URL . "HomePage/index.php";
 
 /**
  * URL of login page.
@@ -68,10 +68,7 @@ function db_connect(): mysqli
  *
  * @param string $sql The sql query to run
  *
- * @throws mysqli_sql_exception Thrown if the query wasn't run successfully.
- *
- * @throws RuntimeException Thrown if connection was unsuccessful.
- * @return mysqli_result The result of the query
+ * @return mysqli_result|null The result of the query
  */
 function run_query(string $sql): ?mysqli_result
 {
@@ -827,17 +824,17 @@ function load_navbar(int $active_user_type): string
         return /** @lang HTML */ "<li><a href='$link'><i class='$icon_class'></i>$title</a></li>\n";
     };
     $home = $generate_item("Home", HOME_URL, 'bx bxs-home');
-    $profile = $generate_item("My Account", REPOSITORY_PAGES_URL . "profile");
+    $profile = $generate_item("My Account", REPOSITORY_PAGES_URL . "profile", "bx bxs-user");
     $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php", 'bx bxs-bed');
     $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", 'bx bxs-bed');
-    $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists");
+    $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", 'bx bxs-group');
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
-    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
+    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", "bx bxs-star");
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login/index.php", 'bx bxs-user');
     $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php", 'bx bxs-log-out-circle');
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", 'bx bxs-user-plus');
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", 'bx bxl-gmail');
-    $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log");
+    $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log", 'bx bxs-detail');
     $dependants = $generate_item("Dependants", REPOSITORY_PAGES_URL . "profile/dependants.php");
 
     return match ($active_user_type)

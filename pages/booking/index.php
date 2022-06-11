@@ -2,8 +2,8 @@
 include_once "../../global/php/db-functions.php";
 include_once "form_loader.php";
 maintain_session();
-redirect_to_login();
-$user_type = get_active_user_type();
+//redirect_to_login();
+$user_type = 2;//get_active_user_type();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -31,7 +31,6 @@ function signUp(): void
 
 }
 
-$content = "successful.";
 try
 {
     if (!post_data_exists())
@@ -42,6 +41,5 @@ try
     header("Location: " . LOGIN_URL);
 } catch (Exception $e)
 {
-    $content = $e->getMessage();
+    go_back_to_previous_page();
 }
-echo construct_template('Sign Up', $content);

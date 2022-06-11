@@ -53,30 +53,51 @@ maintain_session();
     <!-- Render All Elements Normally -->
     <link rel="stylesheet" href="../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="../../global/template/template-bootstrap.css"/>
+    <link rel="stylesheet" href="../../global/template/template.css"/>
     <link rel="stylesheet" href="../../global/css/style.css">
 
 </head>
 
 <body>
 <!-- Header -->
-<nav class='navbar' id='header'>
-    <div class='container-fluid'>
-        <div class='navbar-header' onclick='showbar()'>
-            <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
-        </div>
-        <div class='row'>
-            <ul class='nav items' id='items'>
-                <?php echo load_header_bar(get_active_user_type(), true); ?>
+<a name="home"></a>
+<div class="header" id="header">
+    <div class="container">
+        <div class="links">
+                    <span id="icon" class="icon" onclick="showbar()">
+                        <i class='bx bx-menu-alt-left'></i>
+                    </span>
+            <div class="items" id="items">
+                        <span class="container">
+                            <span><a href="../HomePage/index.php#home">Home</a></span>
+                        </span>
+                <span class="container">
+                            <span><a href="../HomePage/index.php#rooms">Rooms</a></span>
+                        </span>
+                <span class="container">
+                            <span><a href="../HomePage/index.php#dine">Dining</a></span>
+                        </span>
+                <span class="container">
+                            <span><a href="../HomePage/index.php#exp">Experience</a></span>
+                        </span>
+                <span class="container">
+                            <span><a href="../HomePage/index.php#loc">Location</a></span>
+                        </span>
+                <span class="container">
+                            <span><a href="../HomePage/index.php#about">About</a></span>
+                        </span>
+            </div>
+            <span id='icon2' class="icon2" onclick="hidebar()">
+                    <i class='bx bx-x'></i>
+                </span>
+            <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
+            <ul id="bar">
+                <li><a href="../HomePage/index.php#home"><i class='bx bxs-home-alt-2'></i> Home</a></span></li>
+                <li><a href="../login/index.php"><i class='bx bxs-home-alt-2'></i> Log In</a></span></li>
             </ul>
         </div>
-        <div class="">
-            <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
-        </div>
-        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a
-                    class='nav-link nlink' href='#'>Book now</a></span>
     </div>
-</nav>
+</div>
 <!-- End Of Header -->
 
 <!-- Body -->
@@ -85,9 +106,8 @@ maintain_session();
 <div class="features">
     <div class="container">
         <div class="feat">
-            <form action="SignUp.php" method="post" enctype='multipart/form-data' style="text-align:center;"> <!--to center the form
-                        "border:1px solid #ccc" for border -->
-                <div class="container">
+            <form action="SignUp.php" method="post" enctype='multipart/form-data' style="text-align:center;">
+                <div>
                     <h1>Sign Up</h1>
                     <p>Please fill in this form to create an account in our hotel's system.</p>
                     <hr>
