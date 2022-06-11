@@ -714,6 +714,19 @@ function get_comments_as_JSON(): string
     return rtrim($JSON, ", ") . "]";
 }
 
+function get_contactus_suggestions_as_JSON(): string
+{
+    $comments = run_query("SELECT email, review FROM contactus_suggestions");
+    $JSON = "[";
+    while ($review = $comments->fetch_assoc())
+    {
+        $name = get_user_full_name_by_id($review['email']);
+        $review_object = new Comment($name, $review['review']);
+        $JSON .= $review_object->toJSON() . ",";
+    }
+    return rtrim($JSON, ", ") . "]";
+}
+
 function load_profile_navbar(int $active_user_type): string
 {
     /**
@@ -722,7 +735,7 @@ function load_profile_navbar(int $active_user_type): string
      * @author Belal-Elsabbagh
      *
      * @param string $title The title of the item.
-     * @param string $link The link that the item takes the user to.
+     * @param string $link  The link that the item takes the user to.
      *
      * @return string The html content of the item.
      */

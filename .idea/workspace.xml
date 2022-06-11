@@ -4,14 +4,9 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed login to redirect to profile page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Home/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/viewcomments/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewcomments/view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,14 +159,7 @@
       <workItem from="1654580642607" duration="14954000" />
       <workItem from="1654628001372" duration="4441000" />
       <workItem from="1654707782052" duration="2933000" />
-      <workItem from="1654842995422" duration="3525000" />
-    </task>
-    <task id="LOCAL-00011" summary="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script.">
-      <created>1650664033450</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1650664033450</updated>
+      <workItem from="1654842995422" duration="6748000" />
     </task>
     <task id="LOCAL-00012" summary="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details.">
       <created>1650665776922</created>
@@ -509,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654845081879</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Fixed login to redirect to profile page">
+      <created>1654846568432</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1654846568432</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed some redundant html templates.&#10;&#10;- Removed redundant specific booking pages for client and employee separately." />
     <MESSAGE value="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php." />
     <MESSAGE value="Changes" />
     <MESSAGE value="Added function to check for duplicate email" />
@@ -580,7 +574,8 @@
     <MESSAGE value="Merged viewcomments" />
     <MESSAGE value="Changed back to Mariam's original home page" />
     <MESSAGE value="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page" />
+    <MESSAGE value="Fixed login to redirect to profile page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed login to redirect to profile page" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
