@@ -12,14 +12,7 @@ redirect_to_login();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>profile page</title>
-
-    <!-- Load React API -->
-    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <!-- Load React DOM-->
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-    <!-- Load Babel Compiler -->
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-
+    
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">

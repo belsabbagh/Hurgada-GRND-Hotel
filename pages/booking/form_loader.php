@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Loads the room types from database and echoes them in html
  *
@@ -12,11 +13,9 @@
 function load_room_types(): string
 {
     $sql = "select * from room_types";
-    try
-    {
+    try {
         $result = run_query($sql);
-    } catch (Exception $e)
-    {
+    } catch (Exception $e) {
         return $e->getMessage();
     }
     $html = "";
@@ -38,11 +37,9 @@ function load_room_types(): string
 function load_room_views(): string
 {
     $sql = "select * from room_views";
-    try
-    {
+    try {
         $result = run_query($sql);
-    } catch (Exception $e)
-    {
+    } catch (Exception $e) {
         return $e->getMessage();
     }
     $html = "";
@@ -80,9 +77,13 @@ function construct_new_booking_form(bool $isEmployee): string
     $room_types = load_room_types();
     $room_views = load_room_views();
     $date_format = "Y-m-d";
-    $today = new DateTime(); $today_str = $today->format($date_format);
+    $today = new DateTime();
+    $today_str = $today->format($date_format);
     return "<form action='book.php' method='post'>
+            <div class='features'>
+            <div class='container'>
                 $email
+                <div class='content'>
                 <div class='dates'>
                     <label for='checkin'>Check in date</label>
                     <input type='date' id='checkin' name='checkin' min='$today_str' required/>
@@ -115,8 +116,13 @@ function construct_new_booking_form(bool $isEmployee): string
                             <label class='form-check-label' for='outdoors_patio'>Patio</label>
                         </div>
                     </div>
+                    </div>
                 </div>
+                <div class='bttn'>
                 <button type='submit' class='submit' id='submit' name='submit'>Submit</button>
                 <button type='reset' class='submit' id='reset_button' name='reset_button'>Reset</button>
+                </div>
+            </div>
+            </div>
             </form>";
 }

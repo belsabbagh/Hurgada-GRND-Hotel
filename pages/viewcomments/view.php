@@ -12,25 +12,6 @@ $connect = new mysqli($server, $username, $password, $dbname);
 if ($connect->connect_error) {
     die("Connection failed: " . $connect->connect_error);
 }
-
-function get_user_full_name_by_id($user_id): string
-{
-    $result = run_query("SELECT first_name, last_name FROM users WHERE user_id = $user_id");
-    $user = $result->fetch_assoc();
-    return $user['first_name'] . " " . $user['last_name'];
-}
-
-$comments = run_query("SELECT client_id, comments FROM room_reviews");
-$arr = "[";
-while ($review = $comments->fetch_assoc()){
-    $name = get_user_full_name_by_id($review['client_id']);
-    $review_object = new Comment($name, $review['comments']);
-    $arr .= $review_object->JSON() . ",";
-    }
-$view = rtrim($arr, ", ") . "]";
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,47 +22,86 @@ $view = rtrim($arr, ", ") . "]";
     <title>Comments</title>
     <link rel="icon" href="../../resources/img/icons/icon2.png">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="./View.css">
+    <link rel="stylesheet" type="text/css" href="./view.css">
+    <link rel='stylesheet' href='../../global/template/qualitytemp.css' />
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
     <div id="App"></div>
-
     <script type="text/babel">
-        
-        class Comments extends React.Component {
-            state = {
-                lists:<?php include_once"../../global/php/db-functions.php"; echo $view;?>
+        class Header extends React.Component {
+            handleRates = e => {
+                ReactDOM.render(<Rates/>, document.getElementById('comments'));
             }
-            handleClick = (e) => {
-                e.target.classList.toggle('active')
+            handleContact = e => {
+                ReactDOM.render(<Contact/>, document.getElementById('comments'));
+            }
+            render() {
+                return (
+                    <div className='header'>
+                        <a href="#" onClick={this.handleContact}>
+                            <i className='bx bxs-phone'></i>
+                            <span>Contact Us Suggestions </span>
+                        </a>
+                        <a href="#" onClick={this.handleRates}>
+                            <i className='bx bxs-star'></i>
+                            <span>Rating Comments</span>
+                        </a>
+                    </div>
+                )
+            }
+        }
+
+        class Sidebar extends React.Component {
+            render() {
+                return (
+                    <div className="sidebar">
+                        <ul>
+                            <li>
+                                <a href="./view.php">
+                                <i class='bx bxs-user-rectangle'></i> Profile</a>
+                            </li>
+                            <li>
+                                <a href="../viewcomments/view.php">
+                                <i class='bx bxs-message-dots'></i> Guests Comments</a>
+                            </li>
+                            <li>
+                                <a href="./view.php">
+                                <i class='bx bxs-report'></i> Rating Reports</a>
+                            </li>
+                            <li>
+                                <a href="../receptionists/index.php">
+                                <i class='bx bxs-edit-alt'></i> Receptionist</a>
+                            </li>
+                            <li>
+                                <a href="./view.php">
+                                <i class='bx bx-log-out'></i> Log out</a>
+                            </li>
+                        </ul>
+                    </div>
+                )
+            }
+        }
+
+        class Rates extends React.Component {
+            state = {
+                lists: <?php echo get_comments_as_JSON();?>
             }
 
             render() {
-                console.log(this.state.lists);
                 const lists = this.state.lists.map(e => {
                     return (
                         <li className='comment'>
-                        <h5>{e.name}:</h5>
-                        <p>{e.comment}</p>
+                            <h5>{e.name}:</h5>
+                            <p>{e.comment}</p>
                         </li>
                     )
                 });
-                
+
                 return (
-                    <div className='comment-box'>
-                        <div className='header toggle'>
-                            <a href="/contact" onClick={this.handleClick}>
-                                <i className='bx bxs-phone'></i>
-                                <span>contact us</span>
-                            </a>
-                            <a href="/rates" onClick={this.handleClick}>
-                                <i className='bx bxs-star'></i>
-                                <span>rates</span>
-                            </a>
-                        </div>
+                    <div className='comments'>
                         <ul>
                             {lists}
                         </ul>
@@ -89,7 +109,46 @@ $view = rtrim($arr, ", ") . "]";
                 )
             }
         }
-        ReactDOM.render(<Comments/>, document.getElementById('App'));
+
+        class Contact extends React.Component {
+            state = {
+                lists: <?php echo get_contactus_suggestions_as_JSON();?>
+            }
+
+            render() {
+                const lists = this.state.lists.map(e => {
+                    return (
+                        <li className='comment'>
+                            <h5>{e.name}:</h5>
+                            <p>{e.comment}</p>
+                        </li>
+                    )
+                });
+
+                return (
+                    <div className='comments'>
+                        <ul>
+                            {lists}
+                        </ul>
+                    </div>
+                )
+            }
+        }
+
+        class App extends React.Component {
+            render() {
+                return (
+                    <div className='container'>
+                        <Header/>
+                        <Sidebar/>
+                        <div id="comments">
+                            <Contact/>
+                        </div>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App/>, document.getElementById('App'));
     </script>
 </body>
 

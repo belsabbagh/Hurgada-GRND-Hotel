@@ -22,12 +22,10 @@ function run_booking_procedure(): void
     if (is_null($client_id)) throw new Exception("No valid login or client.", LOGIN_ERRNO);
 
     // Gather data from POST and parse into correct data type
-    try
-    {
+    try {
         $start_date = new DateTime($_POST['checkin']);
         $end_date = new DateTime($_POST['checkout']);
-    } catch (Exception $e)
-    {
+    } catch (Exception $e) {
         throw new ValueError("Failed to process dates", 3, $e);
     }
 
@@ -36,11 +34,11 @@ function run_booking_procedure(): void
         $end_date,
         intval($_POST['adults']),
         intval($_POST['children']),
-            new RoomOptions(
-                    array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
-                    array_key_exists('room_view', $_POST) ? intval($_POST['room_view']) : 'room_view',
-                    array_key_exists('outdoors', $_POST) ? intval($_POST['outdoors']) : 'room_patio'
-            )
+        new RoomOptions(
+            array_key_exists('room_type', $_POST) ? intval($_POST['room_type']) : 'room_type_id',
+            array_key_exists('room_view', $_POST) ? intval($_POST['room_view']) : 'room_view',
+            array_key_exists('outdoors', $_POST) ? intval($_POST['outdoors']) : 'room_patio'
+        )
     );
     //print_r($reservation_request);
     if ($reservation_request->bad_date()) throw new LogicException("Invalid Date Chosen.", 4);
@@ -49,18 +47,16 @@ function run_booking_procedure(): void
     if (is_null($room)) throw new LogicException("No Room matches these options.");
     if (room_overflow($room['room_id'], $reservation_request->getNAdults(), $reservation_request->getNChildren())) throw new LogicException("Too many people in one room.", 5);
     $price = $reservation_request->calculate_reservation_price($room['room_base_price']);
-    try
-    {
+    try {
         $reservation_request->add_reservation($client_id, $room['room_id'], $price);
-    } catch (Exception $e)
-    {
+    } catch (Exception $e) {
         throw new RuntimeException("Failed to create reservation.", 666, $e);
     }
     $reservation_request->log($client_id, $room['room_id'], $price);
 }
 ?>
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
     <meta charset='UTF-8'>
@@ -72,86 +68,106 @@ function run_booking_procedure(): void
     <link rel='stylesheet' href='../../global/css/bootstrap-5.0.2-dist/css/bootstrap.css'>
     <script src='../../global/css/bootstrap-5.0.2-dist/js/bootstrap.js'></script>
     <script src='../../global/js/font-awesome.js'></script>
-    <link rel='stylesheet' href='../../global/css/style.css'/>
-    <link rel='stylesheet' href='style.css' />
+    <link rel='stylesheet' href='../../global/css/style.css' />
+    <link rel='stylesheet' href='./style.css' />
     <!-- Main template CSS File -->
-    <link rel='stylesheet' href='../../global/template/template-bootstrap.css' />
+    <link rel='stylesheet' href='../../global/template/template.css' />
     <!-- Main JS File -->
     <script src='../../global/template/template.js'></script>
 </head>
 
-<body class='d-flex flex-column min-vh-100'>
-<!-- Header -->
-<nav class='navbar' id='header'>
-    <div class='container-fluid'>
-        <div class='navbar-header' onclick='showbar()'>
-            <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
-        </div>
-        <div class='row'>
-            <ul class='nav items' id='items'>
-                <?php echo load_header_bar(get_active_user_type(), true); ?>
-            </ul>
-        </div>
-        <div>
-            <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
-        </div>
-        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a class='nav-link nlink' href='<?php echo REPOSITORY_PAGES_URL . "booking" ?>'>Book now</a></span>
-    </div>
-</nav>
-<!-- End Of Header -->
-
-<!-- Body -->
-
-
-<div class='container root'>
-    <div class='feature'>
-        <?php
-        $content = "Operation Successful.";
-        try
-        {
-            run_booking_procedure();
-        } catch (Exception $e)
-        {
-            $content = "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
-            if ($e->getCode() == LOGIN_ERRNO) $content .= "<a href='" . FORM_URL . "'>Log in</a>";
-
-        } finally
-        {
-            $content .= "<a href='" . FORM_URL . "'>Go back to form</a>";
-        }
-        echo $content;
-        ?>
+<body>
+    <!--=============== Header ===============-->
+    <div class="header" id="header">
+        <div class="container">
+            <div class="links">
+                <span id="icon" class="icon" onclick="showbar()">
+                    <i class='bx bx-menu-alt-left'></i>
+                </span>
+                <div class="items" id="items">
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#home">Home</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#rooms">Rooms</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#dine">Dining</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#exp">Experience</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#loc">Location</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#about">About</a></span>
+                    </span>
+                </div>
+                <span id='icon2' class="icon2" onclick="hidebar()">
+                    <i class='bx bx-x'></i>
+                </span>
+                <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
+                <ul id="bar">
+                    <li><a href="../login/login.php"><i class='bx bxs-user'></i> Login</a></li>
+                    <li><a href="../reservation/my%20reservations.php"><i class='bx bxs-bed'></i> My Reservations</a></li>
+                    <li><a href="../reservation/rating.php"><i class='bx bxs-star'></i> Rate us</a></li>
+                    <li><a href="../contactUs/index.php"><i class='bx bxl-gmail'></i> Contact us</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-    <!-- End Of Body -->
+    <!--=============== End Of Header ===============-->
 
 
-    <!-- Footer -->
-    <footer class='text-center text-white mt-auto' style='background-color: var(--blue0-color);'>
-        <!-- Grid container -->
+    <!--=============== Body ===============-->
+
+    <form method="post" action="index.php">
+        <div class="features">
+            <div class='container root'>
+                <div class="content">
+                    <div class='feature'>
+                        <?php
+                        $content = "Operation Successful.";
+                        try {
+                            run_booking_procedure();
+                        } catch (Exception $e) {
+                            $content = "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
+                            if ($e->getCode() == LOGIN_ERRNO) $content .= "<a href='" . FORM_URL . "'>Log in</a>";
+                        } finally {
+                            $content .= "<a href='" . FORM_URL . "'>Go back to form</a>";
+                        }
+                        echo $content;
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--=============== End Of Body ===============-->
+
+
+    <!--=============== Footer ===============-->
+    <footer class='footer'>
         <div class='container p-4 pb-0'>
             <!-- Section: Social media -->
-            <section class='mb-4'>
+            <section class='github'>
                 <!-- Github -->
-                <a class='btn btn-outline-light btn-floating m-1' href='https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel' role='button'>
+                <a href='https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel' role='button'>
                     <img src='../../resources/img/icons/GitHub-Mark-Light-64px.png' width='32' alt='Our GitHub'> GitHub Repository
                 </a>
             </section>
-            <!-- Section: Social media -->
         </div>
-        <!-- Grid container -->
-
+        <!-- Section: Social media -->
         <!-- Copyright -->
-        <div class='text-center p-3' style='background-color: var(--blue0-color);'>
+        <div class='copyright'>
             &copy; 2022
             <span>MIU</span> All Rights Reserved
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- End Of Footer -->
-
-    <!-- Scroll Bar -->
-    <span class='c-scroller_thumb'></span>
+    <span class="c-scroller_thumb"></span>
+    <!--=============== End Of Footer ===============-->
 </body>
 
 </html>

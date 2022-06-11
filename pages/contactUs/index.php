@@ -2,7 +2,7 @@
 <?php
 include_once "../../global/php/db-functions.php";
 maintain_session();
-redirect_to_login();
+//redirect_to_login();
 $cookie_name = "user";
 $cookie_value = "John Doe";
 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
@@ -95,7 +95,7 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 <style>
     /*so that the size of page
     doesn't change from one device to other*/
-    {
+    *{
         vertical-align: baseline
     ;
         font-weight: inherit

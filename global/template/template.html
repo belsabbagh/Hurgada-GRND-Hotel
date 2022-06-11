@@ -1,133 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HURGADA-GRND-HOTEL</title>
+    <title>Document</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="./normalize.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <!-- Main template CSS File -->
-    <link rel="stylesheet" href="./template.css" />
     <!-- Main JS File -->
-    <script>
-        function showbar() {
-            document.getElementById('bar').style.display = 'inline-block';
-            document.getElementById('icon').style.display = 'none';
-            document.getElementById('icon2').style.display = 'inline-block';
-        }
-
-        function hidebar() {
-            document.getElementById('icon2').style.display = 'none';
-            document.getElementById('icon').style.display = 'inline-block';
-            document.getElementById('bar').style.display = 'none';
-        }
-
-        function reveal() {
-            let reveals = document.querySelectorAll(".reveal");
-            for (const element of reveals) {
-                let windowHeight = window.innerHeight;
-                let elementTop = element.getBoundingClientRect().top;
-                let elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add("active");
-                } else {
-                    element.classList.remove("active");
-                }
-            }
-        }
-
-        document.addEventListener('mouseup', function(e) {
-            let container = document.getElementById('bar');
-            if (!container.contains(e.target)) {
-                document.getElementById('bar').style.display = 'none';
-                document.getElementById('icon2').style.display = 'none';
-                document.getElementById('icon').style.display = 'inline-block';
-            }
-        });
-        window.addEventListener("scroll", reveal);
-    </script>
+    <script src="../../global/template/template.js"></script>
+    <!-- Render All Alements Normally -->
+    <link rel="stylesheet" href="../../global/template/normalize.css" />
+    <!-- Main Template CSS File -->
+    <link rel="stylesheet" href="./Home.css" />
+    <link rel="stylesheet" href="../../global/template/template.css" />
 </head>
-
 <body>
-    <!-- Header -->
+    <!--=============== Header ===============-->
     <div class="header" id="header">
         <div class="container">
             <div class="links">
-                <span id="icon" class="icon" onclick="showbar()">
-                    <em class='bx bx-menu-alt-left'></em>
-                </span>
+                    <span id="icon" class="icon" onclick="showbar()">
+                        <i class='bx bx-menu-alt-left'></i>
+                    </span>
                 <div class="items" id="items">
+                        <span class="container">
+                            <span><a href="../HomePage/index.php#home">Home</a></span>
+                        </span>
                     <span class="container">
-                        <span>Home</span>
-                    </span>
+                            <span><a href="../HomePage/index.php#rooms">Rooms</a></span>
+                        </span>
                     <span class="container">
-                        <span>Rooms</span>
-                    </span>
+                            <span><a href="../HomePage/index.php#dine">Dining</a></span>
+                        </span>
                     <span class="container">
-                        <span>Dining</span>
-                    </span>
+                            <span><a href="../HomePage/index.php#exp">Experience</a></span>
+                        </span>
                     <span class="container">
-                        <span>Experience</span>
-                    </span>
+                            <span><a href="../HomePage/index.php#loc">Location</a></span>
+                        </span>
                     <span class="container">
-                        <span>Location</span>
-                    </span>
-                    <span class="container">
-                        <span>About</span>
-                    </span>
+                            <span><a href="../HomePage/index.php#about">About</a></span>
+                        </span>
                 </div>
                 <span id='icon2' class="icon2" onclick="hidebar()">
-                    <em class='bx bx-x'></em>
+                    <i class='bx bx-x'></i>
                 </span>
-                <em class='book' id="book">Book now</em>
+                <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
                 <ul id="bar">
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/profile"><em class='bx bxs-user'></em> Profile</a></li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/reservation"><em class='bx bxs-bed'></em> My Reservations</a></li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/rate-us"><em class='bx bxs-star'></em> Rate us</a></li>
-                    <li><a href="http://localhost/Hurgada-GRND-Hotel/pages/contact-us"><em class='bx bxl-gmail'></em>Contact us</a></li>
+                    <li><a href="../login/login.php"><i class='bx bxs-user'></i> Login</a></li>
+                    <li><a href="../reservation/my%20reservations.php"><i class='bx bxs-bed'></i> My Reservations</a></li>
+                    <li><a href="../reservation/rating.php"><i class='bx bxs-star'></i> Rate us</a></li>
+                    <li><a href="../contactUs/index.php"><i class='bx bxl-gmail'></i> Contact us</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <!-- End Of Header -->
-
-    <!-- Body -->
+    <!--=============== End Of Header ===============-->
 
 
-    <div class="features">
-        <div class="container">
-            <div class="feat">
-                <h1>Write Here</h1>
-                <p>placeholder text</p>
-            </div>
+    <!--=============== Body ===============-->
+
+
+    <!--=============== End Of Body ===============-->
+
+
+    <!--=============== Footer ===============-->
+    <footer class='footer'>
+        <div class='container p-4 pb-0'>
+            <!-- Section: Social media -->
+            <section class='github'><!-- Github -->
+                <a href='https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel' role='button'>
+                    <img src='../../resources/img/icons/GitHub-Mark-Light-64px.png' width='32' alt='Our GitHub'> GitHub Repository
+                </a>
+            </section>
         </div>
-    </div>
-    <div class="features">
-        <div class="container">
-            <div class="feat">
-                <h3>Write Here</h3>
-                <p>placeholder text</p>
-            </div>
+         <!-- Section: Social media -->
+        <!-- Copyright -->
+        <div class='copyright'>
+            &copy; 2022
+            <span>MIU</span> All Rights Reserved
         </div>
-    </div>
-
-    <!-- End Of Body -->
-
-
-    <!-- Footer -->
-    <div class="footer">
-        &copy; 2022
-        <span>MIU</span> All Rights Reserved
-    </div>
-    <!-- End Of Footer -->
-
-    <!-- Scroll Bar -->
+        <!-- Copyright -->
+    </footer>
     <span class="c-scroller_thumb"></span>
+    <!--=============== End Of Footer ===============-->
 </body>
-
 </html>

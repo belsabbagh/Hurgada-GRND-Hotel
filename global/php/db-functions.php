@@ -12,12 +12,12 @@ include_once "classes/ReservationRequest.php";
 /**
  * Path to profile pictures directory.
  */
-const PFP_DIRECTORY_PATH = "../../resources/img/user_pics/";
+const PFP_DIRECTORY_PATH = "Hurgada-GRND-Hotel-1/resources/img/user_pics/";
 
 /**
  * Path to national id pictures directory.
  */
-const ID_PIC_DIRECTORY_PATH = "../../resources/img/id_pics/";
+const ID_PIC_DIRECTORY_PATH = "Hurgada-GRND-Hotel-1/resources/img/id_pics";
 
 /**
  * URL to the root of the webpages directory.
@@ -50,7 +50,6 @@ const NO_USER = -1;
 /**
  * Creates connection to database
  *
- * @author  @Belal-Elsabbagh
  *
  * @throws RuntimeException Emits exception in case of connection error.
  * @return  mysqli  Connection object to the database
@@ -66,7 +65,6 @@ function db_connect(): mysqli
 /**
  * Connects database, runs the given query, and returns the result
  *
- * @author  @Belal-Elsabbagh
  *
  * @throws RuntimeException Thrown if connection was unsuccessful.
  * @throws mysqli_sql_exception Thrown if the query wasn't run successfully.
@@ -93,7 +91,6 @@ function run_query(string $sql): mysqli_result|bool
 /**
  * Checks if mysqli_result is empty by checking if its null and the number of rows it returned is zero.
  *
- * @author @Belal-Elsabbagh
  *
  * @param mysqli_result|null $result
  *
@@ -107,7 +104,6 @@ function empty_mysqli_result(?mysqli_result $result): bool
 /**
  * Logs action in activity Log
  *
- * @author  @Belal-Elsabbagh
  *
  * @param int        $action_owner_id The id of the account that executed the action.
  * @param string     $action          The action that the user made.
@@ -134,7 +130,6 @@ function activity_log(int $action_owner_id, string $action, string $description,
 /**
  * Checks availability of room within a certain time period
  *
- * @author @Belal-Elsabbagh
  *
  * @param DateTime $start_date The start date of the booking
  * @param DateTime $end_date   The end date of the booking
@@ -169,7 +164,6 @@ function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date
 /**
  * Gets the current user's type
  *
- * @author @Belal-Elsabbagh
  *
  * @return bool True if the user is an employee, False if the user is a client
  */
@@ -182,7 +176,6 @@ function active_user_isEmployee(): bool
 /**
  * Takes an email and gets its user id
  *
- * @author @Belal-Elsabbagh
  *
  * @param             $email
  *
@@ -210,7 +203,6 @@ function get_user_id_from_email($email): ?int
 /**
  * Gets the maximum number of occupants for a room
  *
- * @author @Belal-Elsabbagh
  *
  * @param int $room_id The room number
  *
@@ -254,7 +246,6 @@ function room_overflow(int $room_id, int $nAdults, int $nChildren): bool
 /**
  * Gets all the receptionists in the database
  *
- * @author @Belal-Elsabbagh
  *
  * @param string     $column
  * @param string|int $key
@@ -277,7 +268,6 @@ function get_receptionists(string $column = "1", string|int $key = "1"): mysqli_
 /**
  * Gets user from database by their id
  *
- * @author @Belal-Elsabbagh
  *
  * @param int $id The user id.
  *
@@ -309,7 +299,6 @@ function redirect_to_login(): void
 /**
  * Constructs header bars respective to the active user type.
  *
- * @author Belal-Elsabbagh
  *
  * @param bool  $bootstrap
  * @param int   $active_user_type The header's user type.
@@ -381,7 +370,6 @@ function insert_pic_into_directory(array $picture_file, string $new_filename, st
 /**
  * Constructs the page template with the custom html content given to it.
  *
- * @author Belal-Elsabbagh
  *
  * @param string $page_title   The page title
  * @param string $html_content The html data to be presented within the template
@@ -484,7 +472,6 @@ TEMPLATE;
 /**
  * Checks if post contains data.
  *
- * @author Belal-Elsabbagh
  * @return bool True if post contains data, false otherwise.
  */
 function post_data_exists(): bool
@@ -495,7 +482,6 @@ function post_data_exists(): bool
 /**
  * Checks if file was uploaded.
  *
- * @author Belal-Elsabbagh
  * @return bool True if file uploaded, false otherwise.
  */
 function fileUploaded(string $file_post_name): bool
@@ -559,7 +545,6 @@ function set_active_user(int $user_id, string $email, int $user_type): void
 }
 
 /**
- * @author Belal-Elsabbagh
  * @return int the active user id or NO_USER value if session wasn't set
  */
 function get_active_user_type(): int
@@ -568,7 +553,6 @@ function get_active_user_type(): int
 }
 
 /**
- * @author Belal-Elsabbagh
  * @return int the active user id or NO_USER value if session wasn't set
  */
 function get_active_user_id(): int
@@ -579,7 +563,6 @@ function get_active_user_id(): int
 /**
  * Checks if session is running
  *
- * @author Belal-Elsabbagh
  * @return bool true if session is running. False otherwise.
  */
 function session_running(): bool
@@ -700,7 +683,6 @@ function get_user_full_name_by_id($user_id): string
     $user = $result->fetch_assoc();
     return $user['first_name'] . " " . $user['last_name'];
 }
-
 function get_comments_as_JSON(): string
 {
     $comments = run_query("SELECT client_id, comments FROM room_reviews");
@@ -714,12 +696,23 @@ function get_comments_as_JSON(): string
     return rtrim($JSON, ", ") . "]";
 }
 
+function get_contactus_suggestions_as_JSON(): string
+{
+    $comments = run_query("SELECT email, review FROM contactus_suggestions");
+    $JSON = "[";
+    while ($review = $comments->fetch_assoc())
+    {
+        $name =  $review['email'];
+        $review_object = new Comment($name, $review['review']);
+        $JSON .= $review_object->toJSON() . ",";
+    }
+    return rtrim($JSON, ", ") . "]";
+}
 function load_profile_navbar(int $active_user_type): string
 {
     /**
      * Generates header bar item with a specific title and link.
      *
-     * @author Belal-Elsabbagh
      *
      * @param string $title The title of the item.
      * @param string $link The link that the item takes the user to.
@@ -790,4 +783,41 @@ function yes_or_no(bool $val): string
     
     return ($val)? "yes" : "no";
 
+}
+
+function load_navbar(int $active_user_type)
+{
+        /**
+     * Generates header bar item with a specific title and link.
+     *
+     *
+     * @param string $title The title of the item.
+     * @param string $link The link that the item takes the user to.
+     *
+     * @return string The html content of the item.
+     */
+    $generate_item = function (string $title, string $link, string $icon_class = ""): string
+    {
+        return /** @lang HTML */ "<li><a href='$link'><i class='$icon_class'></i>$title</a></li>\n";
+    };
+    $home = $generate_item("Home", HOME_URL, 'bx bxs-home');
+    $profile = $generate_item("My Account", REPOSITORY_PAGES_URL . "profile");
+    $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php", 'bx bxs-bed');
+    $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", 'bx bxs-bed');
+    $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists");
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
+    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
+    $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login/index.php", 'bx bxs-user');
+    $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php");
+    $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp");
+    $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", 'bx bxl-gmail');
+    $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log");
+    $dependants = $generate_item("Dependants", REPOSITORY_PAGES_URL . "profile/dependants.php");
+    
+    return match ($active_user_type) {
+        3 => $home . $profile . $my_reservations . $dependants . $logout,
+        2 => $home . $profile . $reservations . $rooms . $logout,
+        1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
+        default => $home . $login . $signup . $contactus
+    };
 }
