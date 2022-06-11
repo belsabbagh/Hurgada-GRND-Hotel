@@ -1,0 +1,56 @@
+.feat {
+    position: relative;
+    left: -87px;
+}
+
+table {
+    border: 2px solid var(--brown0-color);
+    border-collapse: collapse;
+    width: auto;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+th,
+td {
+    border: 2px solid var(--brown0-color);
+    padding: 10px 30px 10px 30px;
+}
+
+td {
+    height: 100%;
+    text-align: center;
+}
+
+.view-button {
+    background-color: var(--yellow0-color);
+    color: var(--brown0-color);
+    border: 2px solid var(--brown0-color);
+    display: table;
+    position: relative;
+    height: 35px;
+    width: 70px;
+    font-size: larger;
+    padding: 20px;
+    margin: auto;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.view-button:hover {
+    background-color: var(--blue3-color);
+}
+
+.td-link {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+form > div {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 25px;
+    background: var(--yellow0-color);
+}
