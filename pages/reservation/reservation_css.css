@@ -309,24 +309,7 @@ p{
 }
 
 /* Book now */
-.book{
-    cursor:pointer;
-    width: 80px;
-    display: flex;
-    flex-wrap: wrap;
-    right: 50px;
-    justify-content: center;
-    color:var(--yellow0-color);
-    background:var(--brown4--color);
-    position:fixed;
-    font-size: 20px;
-    user-select: none;
-    padding: 10px;
-    width: 150px;
-    transition: 0.05s;
-    border-radius: 50px;
-    backdrop-filter: blur(2px);
-}
+
 .book:hover{
     border: 1px solid #7b5c52;
     border-bottom: 3px solid #7b5c52;

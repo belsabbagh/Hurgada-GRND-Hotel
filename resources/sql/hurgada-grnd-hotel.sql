@@ -168,7 +168,7 @@ CREATE TABLE `room_reviews`
 -- Dumping data for table `room_reviews`
 --
 
-INSERT INTO `room_reviews` (`client_id`, `room_id`, `overall-rating`, `view_rating`, `comfort_rating`,
+INSERT INTO `room_reviews` (`client_id`, `room_id`, overall_rating, `view_rating`, `comfort_rating`,
                             `facilities_rating`, `room_service_rating`, `comments`)
 VALUES (1, 1, '7', '6', '8', '3', '5', 'Loved it!');
 
