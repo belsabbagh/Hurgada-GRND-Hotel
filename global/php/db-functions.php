@@ -333,7 +333,7 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
      */
     $generate_item = function (string $title, string $link, bool $bootstrap): string
     {
-        if (!$bootstrap) return /** @lang HTML */ "<div class='container'><a style='text-decoration: none;' href='$link'>$title</div>\n";
+        if (!$bootstrap) return /** @lang HTML */ "<div class='container'><a style='text-decoration: none;' href='$link'>$title</a></div>\n";
         return /** @lang HTML */ "<li class='nav-item'><span class='nav navbar-nav nav-link-container'><a class='nav-link nlink' href='$link'>$title</a></span></li>";
     };
     $home = $generate_item("Home", HOME_URL, $bootstrap);
@@ -341,7 +341,7 @@ function load_header_bar(int $active_user_type = NO_USER, bool $bootstrap = fals
     $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php", $bootstrap);
     $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", $bootstrap);
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", $bootstrap);
-    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms", $bootstrap);
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms/rooms.php", $bootstrap);
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", $bootstrap);
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login", $bootstrap);
     $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php", $bootstrap);
@@ -750,7 +750,7 @@ function load_profile_navbar(int $active_user_type): string
     $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php");
     $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php");
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists");
-    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms/rooms.php");
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login");
     $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php");
@@ -828,7 +828,7 @@ function load_navbar(int $active_user_type): string
     $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php", 'bx bxs-bed');
     $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", 'bx bxs-bed');
     $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", 'bx bxs-group');
-    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms/rooms.php");
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", "bx bxs-star");
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login/index.php", 'bx bxs-user');
     $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php", 'bx bxs-log-out-circle');

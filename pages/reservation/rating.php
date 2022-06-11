@@ -85,10 +85,7 @@
                 </span>
                 <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
                 <ul id="bar">
-                    <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
-                    <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
-                    <li><a href="RateUs"><i class='bx bxs-star'></i> Rate us</a></li>
-                    <li><a href="ContacUs"><i class='bx bxl-gmail'></i> Contact us</a></li>
+                <?php echo load_navbar(get_active_user_type()); ?>
                 </ul>
             </div>
         </div>

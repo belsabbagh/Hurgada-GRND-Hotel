@@ -60,11 +60,7 @@
   </style>
 
 
-  <link href="../../global/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="./reservation_css.css" />
-  <script src="../../global/Template/template.js"></script>
-  <link href="style.css" rel="stylesheet">
-  <script src="functions.js"></script>
+ 
   <?php
 
  if (isset($_GET['id']))
@@ -170,7 +166,8 @@ $server = "localhost";
             <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
         </div>
         <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a class='nav-link nlink' href='<?php echo REPOSITORY_PAGES_URL . "booking" ?>'>Book now</a></span>
-    </div>
+    
+      </div>
 </nav>
 <!-- End Of Header -->
 
