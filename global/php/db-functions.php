@@ -66,14 +66,14 @@ function db_connect(): mysqli
  * Connects database, runs the given query, and returns the result
  *
  *
- * @throws RuntimeException Thrown if connection was unsuccessful.
- * @throws mysqli_sql_exception Thrown if the query wasn't run successfully.
- *
  * @param string $sql The sql query to run
  *
- * @return mysqli_result|bool The result of the query
+ * @throws mysqli_sql_exception Thrown if the query wasn't run successfully.
+ *
+ * @throws RuntimeException Thrown if connection was unsuccessful.
+ * @return mysqli_result The result of the query
  */
-function run_query(string $sql): mysqli_result|bool
+function run_query(string $sql): mysqli_result
 {
     try
     {
@@ -140,7 +140,7 @@ function activity_log(int $action_owner_id, string $action, string $description,
  */
 function room_isAvailable(int $room_id, DateTime $start_date, DateTime $end_date, int $reservation_id=-1): bool
 {
-    $exclude =($reservation_id== -1)? " ":"AND reservation_id != $reservation_id";
+    $exclude = ($reservation_id == -1) ? "" : "AND reservation_id != $reservation_id";
     $date_format = "Y-m-d";
     $start_date_str = $start_date->format($date_format);
     $end_date_str = $end_date->format($date_format);
@@ -172,6 +172,20 @@ function active_user_isEmployee(): bool
     if (get_active_user_type() < 3 && get_active_user_type() != NO_USER) return true;
     return false;
 }
+
+/**
+ * Gets the current user's type
+ *
+ * @param int $user_type
+ *
+ * @return bool True if the user is an employee, False if the user is a client
+ */
+function user_type_isEmployee(int $user_type): bool
+{
+    if ($user_type < 3 && $user_type > 0) return true;
+    return false;
+}
+
 
 /**
  * Takes an email and gets its user id
@@ -531,9 +545,11 @@ function log_in(string $email, string $password): void
 }
 
 /**
- * @param int    $user_id
- * @param string $email
- * @param int    $user_type
+ * Sets session variables to determine the active user's id, email, and type.
+ *
+ * @param int    $user_id   The user's ID
+ * @param string $email     The user's email
+ * @param int    $user_type The user's user type.
  *
  * @return void
  */
@@ -570,6 +586,11 @@ function session_running(): bool
     return isset($_SESSION);
 }
 
+/**
+ * Runs session_start() if session wasn't running already.
+ * @uses session_running() to check whether the session is running or not
+ * @return void
+ */
 function maintain_session(): void
 {
     if (!session_running()) session_start();
@@ -655,6 +676,9 @@ function go_back_to_previous_page(): void
     header("Location:" . $_SERVER['HTTP_REFERER']);
 }
 
+/**
+ *
+ */
 class Comment
 {
     public string $name;
@@ -712,9 +736,7 @@ function get_contactus_suggestions_as_JSON(): string
 function load_profile_navbar(int $active_user_type): string
 {
     /**
-     * Generates header bar item with a specific title and link.
-     *
-     * @author Belal-Elsabbagh
+     * Generates nav bar item with a specific title and link.
      *
      * @param string $title The title of the item.
      * @param string $link  The link that the item takes the user to.
@@ -788,14 +810,14 @@ function yes_or_no(bool $val): string
 
 }
 
-function load_navbar(int $active_user_type)
+function load_navbar(int $active_user_type): string
 {
-        /**
+    /**
      * Generates header bar item with a specific title and link.
      *
      *
      * @param string $title The title of the item.
-     * @param string $link The link that the item takes the user to.
+     * @param string $link  The link that the item takes the user to.
      *
      * @return string The html content of the item.
      */
@@ -811,13 +833,14 @@ function load_navbar(int $active_user_type)
     $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms");
     $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings");
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login/index.php", 'bx bxs-user');
-    $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php");
-    $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp");
+    $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php", 'bx bxs-log-out-circle');
+    $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp", 'bx bxs-user-plus');
     $contactus = $generate_item("Contact Us", REPOSITORY_PAGES_URL . "contactUs", 'bx bxl-gmail');
     $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log");
     $dependants = $generate_item("Dependants", REPOSITORY_PAGES_URL . "profile/dependants.php");
 
-    return match ($active_user_type) {
+    return match ($active_user_type)
+    {
         3 => $home . $profile . $my_reservations . $dependants . $logout,
         2 => $home . $profile . $reservations . $rooms . $logout,
         1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,

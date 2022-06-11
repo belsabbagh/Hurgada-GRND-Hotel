@@ -131,6 +131,7 @@ function run_booking_procedure(): void
                         $content = "Operation Successful.";
                         try {
                             run_booking_procedure();
+                            go_back_to_previous_page();
                         } catch (Exception $e) {
                             $content = "<img src='../../resources/img/icons/warning-sign.png' alt='warning sign' width='150' height='150'><br> {$e->getMessage()}" . "<br>";
                             if ($e->getCode() == LOGIN_ERRNO) $content .= "<a href='" . FORM_URL . "'>Log in</a>";
