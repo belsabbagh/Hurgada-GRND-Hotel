@@ -32,6 +32,8 @@ $result = "Operation successful";
 try
 {
     add_new_receptionist();
+    $user_id = get_active_user_id();
+    activity_log($user_id, "Added new receptionist", "QC with ID:$user_id added a new receptionist");
     header("Location: index.php");
 } catch (Exception $e)
 {
