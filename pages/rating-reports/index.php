@@ -1,4 +1,5 @@
 <?php
+include_once "../../global/php/db-functions.php";
 $conn = new mysqli("localhost", "root", "", "hurgada-grnd-hotel2");
 if ($conn->connect_errno)
     throw new RuntimeException('mysqli connection error: ' . $conn->connect_error, $conn->connect_errno);
@@ -22,7 +23,7 @@ $getData = $conn->query($query);
 
     <title>Chart data</title>
     <!-- the css file -->
-    <link rel="stylesheet" href="chart.css">
+    <link rel="stylesheet" href="./chart.css">
     <!-- the display style -->
     <style>.center-block {
             display: block;
@@ -30,17 +31,38 @@ $getData = $conn->query($query);
             margin-right: auto;
         } </style>
 </head>
-<body>
-<div class="container">
-    <table>
-        <thead>
-        <tr>
-            <th>Statistics</th>
-            <th>Value</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
+
+<body class='d-flex flex-column min-vh-100'>
+<!-- Header -->
+<nav class='navbar' id='header'>
+    <div class='container-fluid'>
+        <div class='navbar-header' onclick='showbar()'>
+            <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
+        </div>
+        <div class='row'>
+            <ul class='nav items' id='items'>
+                <?php echo load_header_bar(get_active_user_type(), true); ?>
+            </ul>
+        </div>
+        <div class="">
+            <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
+        </div>
+        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a
+                    class='nav-link nlink' href='#'>Book now</a></span>
+    </div>
+</nav>
+<!-- End Of Header -->
+<div class="features">
+    <div class="container">
+        <table>
+            <thead>
+            <tr>
+                <th>Statistics</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
         $RoomQuery = "SELECT COUNT(room_id) AS numOfrooms 
                       FROM room_reviews 
                       WHERE  overall_rating = '5'
@@ -106,20 +128,20 @@ $getData = $conn->query($query);
                 </tr>\n";
         }
         ?>
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>
 
-<figure class="highcharts-figure">
+<figure class="my-chart">
     <div id="container"></div>
-    <p class="highcharts-description">
+    <p class="description">
         pie chart for reviews
     </p>
 </figure>
-
+</div>
 <script>
     // Build the chart
     Highcharts.chart('container', {
