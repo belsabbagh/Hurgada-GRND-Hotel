@@ -36,39 +36,39 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 </head>
 
 <body>
-    <!--=============== Header ===============-->
-    <div class="header" id="header">
-        <div class="container">
-            <div class="links">
+<!--=============== Header ===============-->
+<div class="header" id="header">
+    <div class="container">
+        <div class="links">
                 <span id="icon" class="icon" onclick="showbar()">
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
-                <div class="items" id="items">
+            <div class="items" id="items">
                     <span class="container">
-                        <span><a href="../HomePage/index.php#home">Home</a></span>
+                        <span><a href="../Home/index.php#home">Home</a></span>
                     </span>
-                    <span class="container">
-                        <span><a href="../HomePage/index.php#rooms">Rooms</a></span>
+                <span class="container">
+                        <span><a href="../Home/index.php#rooms">Rooms</a></span>
                     </span>
-                    <span class="container">
-                        <span><a href="../HomePage/index.php#dine">Dining</a></span>
+                <span class="container">
+                        <span><a href="../Home/index.php#dine">Dining</a></span>
                     </span>
-                    <span class="container">
-                        <span><a href="../HomePage/index.php#exp">Experience</a></span>
+                <span class="container">
+                        <span><a href="../Home/index.php#exp">Experience</a></span>
                     </span>
-                    <span class="container">
-                        <span><a href="../HomePage/index.php#loc">Location</a></span>
+                <span class="container">
+                        <span><a href="../Home/index.php#loc">Location</a></span>
                     </span>
-                    <span class="container">
-                        <span><a href="../HomePage/index.php#about">About</a></span>
+                <span class="container">
+                        <span><a href="../Home/index.php#about">About</a></span>
                     </span>
-                </div>
-                <span id='icon2' class="icon2" onclick="hidebar()">
+            </div>
+            <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-                <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
-                <ul id="bar">
-                    <?php include_once "../../global/php/db-functions.php";
+            <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
+            <ul id="bar">
+                <?php include_once "../../global/php/db-functions.php";
                     echo load_navbar(get_active_user_type()); ?>
                 </ul>
             </div>
