@@ -4,9 +4,11 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added deactivated receptionist check in login.php">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Rating reports page">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reservation/my reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/my reservations.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/rating-reports/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rating-reports/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +41,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dynamic_header_bar" />
+        <entry key="$PROJECT_DIR$" value="Login" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -543,7 +545,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added maintain session" />
     <MESSAGE value="New db functions. Updated sql" />
     <MESSAGE value="Moved log out function to global." />
     <MESSAGE value="Fixed documentation" />
@@ -568,7 +569,8 @@
     <MESSAGE value="Fixed my reservations' header." />
     <MESSAGE value="Fixed activity log css" />
     <MESSAGE value="Added deactivated receptionist check in login.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added deactivated receptionist check in login.php" />
+    <MESSAGE value="Rating reports page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rating reports page" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

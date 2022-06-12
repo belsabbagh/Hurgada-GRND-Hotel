@@ -3,11 +3,13 @@ include_once "../../global/php/db-functions.php";
 $conn = new mysqli("localhost", "root", "", "hurgada-grnd-hotel2");
 if ($conn->connect_errno)
     throw new RuntimeException('mysqli connection error: ' . $conn->connect_error, $conn->connect_errno);
+$room_id = $_POST['room_id'] ?? 1;
 $query = "SELECT overall_rating,COUNT(DISTINCT client_id) AS numOfusers 
          FROM room_reviews ,users 
-         WHERE  room_id = '1' AND client_id = user_id
+         WHERE  room_id = $room_id AND client_id = user_id
          GROUP BY overall_rating;";
 $getData = $conn->query($query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,26 +34,7 @@ $getData = $conn->query($query);
         } </style>
 </head>
 
-<body class='d-flex flex-column min-vh-100'>
-<!-- Header -->
-<nav class='navbar' id='header'>
-    <div class='container-fluid'>
-        <div class='navbar-header' onclick='showbar()'>
-            <span class='navbar-brand'><em class='bx bx-menu-alt-left icon'></em></span>
-        </div>
-        <div class='row'>
-            <ul class='nav items' id='items'>
-                <?php echo load_header_bar(get_active_user_type(), true); ?>
-            </ul>
-        </div>
-        <div class="">
-            <span id='icon2' class='icon2' onclick='hidebar()'><em class='bx bx-x'></em></span>
-        </div>
-        <span class='book nav navbar-nav navbar-right nav-link-container text-center' id='book'><a
-                    class='nav-link nlink' href='#'>Book now</a></span>
-    </div>
-</nav>
-<!-- End Of Header -->
+<body>
 <div class="features">
     <div class="container">
         <table>
@@ -120,16 +103,28 @@ $getData = $conn->query($query);
                    <td>{$row['numOfCancels']}</td>
                 </tr>\n";
         }
-        while ($row = mysqli_fetch_assoc($numMostOrdered)) {
-            echo
-            "<tr>
+            while ($row = mysqli_fetch_assoc($numMostOrdered)) {
+                echo
+                "<tr>
                    <td>The most ordered room</td>
                    <td>{$row['room_no']}</td>
                 </tr>\n";
-        }
-        ?>
+            }
+            ?>
             </tbody>
         </table>
+        <div>
+            <form action="" method="post"></form>
+            <label for="room">
+                <select name="room_id">
+                    <?php
+                    $rooms = run_query("SELECT room_id FROM rooms;");
+                    while ($room = $rooms->fetch_assoc())
+                        echo "<option value='{$room['room_id']}'>{$room['room_id']}</option>"; ?>
+                </select>
+            </label>
+            <button type="submit">View Room Charts</button>
+        </div>
     </div>
 
 </body>
