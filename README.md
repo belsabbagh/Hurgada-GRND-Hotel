@@ -40,11 +40,11 @@ process so that they can serve more guests in less time. Quality is also a main 
 
 1. View the comments of the guests.
 2. Generate reports related to the ratings.
-    a. Aggregation by rating (how many guests gave a specific product 5 stars, 4 stars, etc.)
-    b. Aggregation by room (how many rooms got 5 stars by how many guests).
-    c. How many guests canceled their reservations.
-    d. How many guests edited their reservations.
-    e. What is the most ordered room.
+   a. Aggregation by rating (how many guests gave a specific room 5 stars, 4 stars, etc.)
+   b. Aggregation by room (how many rooms got 5 stars by how many guests).
+   c. How many guests canceled their reservations.
+   d. How many guests edited their reservations.
+   e. What is the most ordered room.
 3. Assign the role of quality control managers to receptionists (promotion).
 4. Create a new user for new receptionists, and disable/enable the receptionist accounts.
 a. When disabling/enabling a receptionist account a comment has to be entered by the quality control manager.
