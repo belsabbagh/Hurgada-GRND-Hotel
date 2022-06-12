@@ -42,7 +42,7 @@ if ($connect->connect_error) {
                 return (
                     <div className='header'>
                         <a href="#" onClick={this.handleContact}>
-                            <i className='bx bxs-phone'></i>
+                            <i className='bx bxl-gmail'></i>
                             <span>Contact Us Suggestions </span>
                         </a>
                         <a href="#" onClick={this.handleRates}>
