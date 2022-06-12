@@ -49,22 +49,22 @@
                     </span>
             <div class="items" id="items">
                         <span class="container">
-                            <span><a href="../HomePage/index.php#home">Home</a></span>
+                            <span><a href="../Home/index.php#home">Home</a></span>
                         </span>
                 <span class="container">
-                            <span><a href="../HomePage/index.php#rooms">Rooms</a></span>
+                            <span><a href="../Home/index.php#rooms">Rooms</a></span>
                         </span>
                 <span class="container">
-                            <span><a href="../HomePage/index.php#dine">Dining</a></span>
+                            <span><a href="../Home/index.php#dine">Dining</a></span>
                         </span>
                 <span class="container">
-                            <span><a href="../HomePage/index.php#exp">Experience</a></span>
+                            <span><a href="../Home/index.php#exp">Experience</a></span>
                         </span>
                 <span class="container">
-                            <span><a href="../HomePage/index.php#loc">Location</a></span>
+                            <span><a href="../Home/index.php#loc">Location</a></span>
                         </span>
                 <span class="container">
-                            <span><a href="../HomePage/index.php#about">About</a></span>
+                            <span><a href="../Home/index.php#about">About</a></span>
                         </span>
             </div>
             <span id='icon2' class="icon2" onclick="hidebar()">

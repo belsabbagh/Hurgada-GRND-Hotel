@@ -57,29 +57,6 @@ maintain_session();
     </div>
 </div>
 <!--=============== End Of Body ===============-->
-
-
-<!--=============== Footer ===============-->
-<footer class='footer'>
-    <div class='container p-4 pb-0'>
-        <!-- Section: Social media -->
-        <section class='github'>
-            <!-- Github -->
-            <a href='https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel' role='button'>
-                <img src='../../resources/img/icons/GitHub-Mark-Light-64px.png' width='32' alt='Our GitHub'> GitHub Repository
-            </a>
-        </section>
-    </div>
-    <!-- Section: Social media -->
-    <!-- Copyright -->
-    <div class='copyright'>
-        &copy; 2022
-        <span>MIU</span> All Rights Reserved
-    </div>
-    <!-- Copyright -->
-</footer>
-<span class="c-scroller_thumb"></span>
-<!--=============== End Of Footer ===============-->
 </body>
 
 </html>

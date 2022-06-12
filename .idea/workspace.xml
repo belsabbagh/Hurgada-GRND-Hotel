@@ -4,9 +4,16 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added deactivated receptionist check in login.php">
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed URLs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/template/qualitytemp.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/qualitytemp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/activity_log/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/activity_log/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile/css-profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/css-profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/reservation/my reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/my reservations.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation/reservation_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/reservation_css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation_receptionist/clients_reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation_receptionist/clients_reservations.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,14 +170,7 @@
       <workItem from="1654842995422" duration="6795000" />
       <workItem from="1654962405558" duration="16274000" />
       <workItem from="1654980958024" duration="1312000" />
-      <workItem from="1655016396418" duration="3848000" />
-    </task>
-    <task id="LOCAL-00019" summary="Refactored reservation request related db-functions to their own class.">
-      <created>1650713766237</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1650713766237</updated>
+      <workItem from="1655016396418" duration="9046000" />
     </task>
     <task id="LOCAL-00020" summary="Fixed RoomOptions.php">
       <created>1650714038736</created>
@@ -508,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655019071395</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Fixed URLs">
+      <created>1655020470401</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1655020470401</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added maintain session" />
     <MESSAGE value="New db functions. Updated sql" />
     <MESSAGE value="Moved log out function to global." />
     <MESSAGE value="Fixed documentation" />
@@ -568,7 +574,8 @@
     <MESSAGE value="Fixed my reservations' header." />
     <MESSAGE value="Fixed activity log css" />
     <MESSAGE value="Added deactivated receptionist check in login.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added deactivated receptionist check in login.php" />
+    <MESSAGE value="Fixed URLs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed URLs" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

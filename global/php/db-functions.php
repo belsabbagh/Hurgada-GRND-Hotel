@@ -539,7 +539,6 @@ function log_in(string $email, string $password): void
         if ($user_data['user_type'] == 2 && !receptionist_isEnabled($user_data['user_id'])) throw new Exception("Your account is deactivated");
         set_active_user($user_data['user_id'], $user_data['email'], $user_data['user_type']);
         activity_log($_SESSION['active_user_id'], "Login", "User {$_SESSION['active_user_id']} logged in.");
-        return;
     } catch (Exception $e)
     {
         throw new Exception($e->getMessage(), $e->getCode(), $e);
@@ -828,9 +827,9 @@ function load_navbar(int $active_user_type): string
     $profile = $generate_item("Profile", REPOSITORY_PAGES_URL . "profile",'bx bxs-user-circle');
     $reservations = $generate_item("Reservations", REPOSITORY_PAGES_URL . "reservation_receptionist/clients_reservations.php", 'bx bxs-bed');
     $my_reservations = $generate_item("My Reservations", REPOSITORY_PAGES_URL . "reservation/my reservations.php", 'bx bxs-bed');
-    $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists",'bx bxs-edit-alt');
-    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms" , 'bx bxs-door-open');
-    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings",'bx bxs-star');
+    $receptionists = $generate_item("Receptionists", REPOSITORY_PAGES_URL . "receptionists", 'bx bxs-edit-alt');
+    $rooms = $generate_item("Rooms", REPOSITORY_PAGES_URL . "rooms/rooms.php", 'bx bxs-door-open');
+    $ratings = $generate_item("Ratings", REPOSITORY_PAGES_URL . "ratings", 'bx bxs-star');
     $login = $generate_item("Log In", REPOSITORY_PAGES_URL . "login/index.php", 'bx bxs-log-in');
     $logout = $generate_item("Log out", REPOSITORY_URL . "global/php/logout.php",'bx bxs-log-out');
     $signup = $generate_item("Sign Up", REPOSITORY_PAGES_URL . "signUp" ,'bx bxs-log-in-circle' );
@@ -838,10 +837,11 @@ function load_navbar(int $active_user_type): string
     $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log" , 'bx bxs-detail');
     $dependants = $generate_item("Dependants", REPOSITORY_PAGES_URL . "profile/dependants.php",'bx bxs-user-circle');
     
-    return match ($active_user_type) {
+    return match ($active_user_type)
+    {
         3 => $home . $profile . $my_reservations . $dependants . $logout,
-        2 => $home . $profile . $reservations . $rooms . $logout,
-        1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
+        2 => $profile . $reservations . $rooms . $logout,
+        1 => $profile . $receptionists . $ratings . $activity_log . $logout,
         default => $home . $login . $signup . $contactus
     };
 }
