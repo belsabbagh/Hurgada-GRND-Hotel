@@ -52,7 +52,7 @@
             $check_out_sql = "UPDATE reservations SET is_checked_in = 0 where reservation_id =$reservation_id";
             $result = mysqli_query($connect, $check_out_sql);
             if ($result) {
-
+                activity_log(get_active_user_id(),"client checked out", "client with ID :$client_ID checked out reservation number $reservation_id");
                 // rate us pop msg
                 $rating_msg = "rate us?";
                 $rating_header = "rate us ";
