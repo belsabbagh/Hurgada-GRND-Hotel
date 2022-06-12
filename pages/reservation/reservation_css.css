@@ -66,8 +66,8 @@
 
     position: absolute;
     width: fit-content;
-    right: 79%;
-    top: 15%;
+    right: 60%;
+    top: 10%;
     color: #7b5c52;
 
 }
@@ -147,7 +147,7 @@ table {
 
     position: absolute;
     top: 40%;
-    right: 10%;
+    right: 5%;
     border: 2px solid #cca28c;
     border-collapse: collapse;
     width: 80%;

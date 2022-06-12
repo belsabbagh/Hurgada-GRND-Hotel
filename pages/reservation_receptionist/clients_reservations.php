@@ -4,14 +4,13 @@
 
     <link href="../../global/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../reservation/reservation_css.css"/>
-    <script src="../../global/Template/template.js"></script>
+    <script src="../../global/template/template.js"></script>
     <script src="functions.js"></script>
     <?php
     include_once "../../global/php/db-functions.php";
     maintain_session();
     redirect_to_login();
     restrict_to_staff();
-
     ?>
     <style>
         #submit_search {
@@ -37,41 +36,18 @@
     <link rel="icon" href="../../resources/img/pretty stuff/hurghada-beach.jpg">
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Main JS File -->
-    <script src="template.js"></script>
     <!-- Render All Alements Normally -->
     <link rel="stylesheet" href="./normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="./template.css"/>
-
-
-    <!-- Header -->
-    <div class="header" id="header">
-        <div class="container">
-            <div class="links">
-                <span id="icon" class="icon" onclick="showbar()">
-                    <i class='bx bx-menu-alt-left'></i>
-                </span>
-                <div class="items" id="items">
-                    <?php echo load_header_bar(get_active_user_type()); ?>
-                </div>
-                <span id='icon2' class="icon2" onclick="hidebar()">
-                    <i class='bx bx-x'></i>
-                </span>
-                <i class='book' id="book"><a href="../booking/index.php" style=" text-decoration: none;">Book now</a></i>
-                <ul id="bar">
-                <?php echo load_navbar(get_active_user_type()); ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- End Of Header -->
-
-
+    <link rel="stylesheet" href="../../global/template/template.css"/>
+    <link rel='stylesheet' href='../../global/template/receptionist_temp.css'/>
 </head>
 
 <body>
 
+<!-- Header -->
+
+<!-- End Of Header -->
 
 <!-- Body -->
 
@@ -82,7 +58,7 @@
 
             <div class="search_by_id">
 
-                <!--search for client by id-->
+                <!--search for client by id -->
                 <form action='' method='post'>
 
                     <P> search by client ID </p>
@@ -160,17 +136,12 @@
     </div>
 </div>
 
-
-<!-- End Of Body -->
-
-
-<!-- Footer -->
-<div class="footer">
-    &copy; 2022
-    <span>MIU</span>
-    All Rights Reserved
+<div class='sidebar'>
+    <ul>
+        <?php echo load_navbar(get_active_user_type()); ?>
+    </ul>
 </div>
-<!-- End Of Footer -->
+<!-- End Of Body -->
 
 </body>
 

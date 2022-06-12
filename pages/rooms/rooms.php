@@ -50,31 +50,8 @@
     <!-- Render All Alements Normally -->
     <link rel="stylesheet" href="./normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="./template.css"/>
-
-
-    <!-- Header -->
-    <div class="header" id="header">
-        <div class="container">
-            <div class="links">
-                <span id="icon" class="icon" onclick="showbar()">
-                    <i class='bx bx-menu-alt-left'></i>
-                </span>
-                <div class="items" id="items">
-                    <?php echo load_header_bar(get_active_user_type()); ?>
-                </div>
-                <span id='icon2' class="icon2" onclick="hidebar()">
-                    <i class='bx bx-x'></i>
-                </span>
-                <i class='book' id="book"><a href="../booking/index.php" style=" text-decoration: none;">Book now</a></i>
-                <ul id="bar">
-                <?php echo load_navbar(get_active_user_type()); ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- End Of Header -->
-
+    <link rel="stylesheet" href="../../global/template/template.css"/>
+    <link rel='stylesheet' href='../../global/template/receptionist_temp.css'/>
 
 </head>
 
@@ -154,24 +131,17 @@
                 ?>
             </table>
 
-            
-
 
         </div>
     </div>
 </div>
-
+<div class='sidebar'>
+    <ul>
+        <?php echo load_navbar(get_active_user_type()); ?>
+    </ul>
+</div>
 
 <!-- End Of Body -->
-
-
-<!-- Footer -->
-<div class="footer">
-    &copy; 2022
-    <span>MIU</span>
-    All Rights Reserved
-</div>
-<!-- End Of Footer -->
 
 </body>
 
