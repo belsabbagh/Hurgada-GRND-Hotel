@@ -1,29 +1,20 @@
 <html>
 
 <head>
-
-    <link href="../../global/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="./reservation_css.css" />
-    <script src="../../global/Template/template.js"></script>
-    <script src="functions.js"></script>
-
-
     <title> my reservations</title>
 
     <?php
     include_once "../../global/php/db-functions.php";
     maintain_session();
     //redirect_to_login();
-    
+
     $server = "localhost";
     $username = "root";
     $password = "";
     $dbname = "hurgada-grnd-hotel";
 
-    $connect = new mysqli($server, $username, $password, $dbname); ?>
-
-
-
+    $connect = new mysqli($server, $username, $password, $dbname);
+    ?>
 
 
     <meta charset="UTF-8">
@@ -33,15 +24,18 @@
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
-    <script src="template.js"></script>
+    <script src="../../global/Template/template.js"></script>
+    <script src="functions.js"></script>
     <!-- Render All Alements Normally -->
     <link rel="stylesheet" href="./normalize.css" />
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="./template.css" />
+    <link rel="stylesheet" href="../../global/template/template.css" />
+    <link href="../../global/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./reservation_css.css" />
+</head>
 
-
-
-    <!-- Header -->
+<body>
+    <!--=============== Header ===============-->
     <div class="header" id="header">
         <div class="container">
             <div class="links">
@@ -49,37 +43,44 @@
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
                 <div class="items" id="items">
-                <?php echo load_header_bar(get_active_user_type()); ?>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#home">Home</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#rooms">Rooms</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#dine">Dining</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#exp">Experience</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#loc">Location</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#about">About</a></span>
+                    </span>
                 </div>
                 <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-                <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
+                <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
                 <ul id="bar">
-                    <li><a href="Profile"><i class='bx bxs-user'></i> Profile</a></li>
-                    <li><a href="MyReservations"><i class='bx bxs-bed'></i> My Reservations</a></li>
-                    <li><a href="RateUs"><i class='bx bxs-star'></i> Rate us</a></li>
-                    <li><a href="ContacUs"><i class='bx bxl-gmail'></i> Contact us</a></li>
+                    <?php include_once "../../global/php/db-functions.php";
+                    echo load_navbar(get_active_user_type()); ?>
                 </ul>
             </div>
         </div>
     </div>
-    <!-- End Of Header -->
+    <!--=============== End Of Header ===============-->
 
 
-</head>
-
-<body>
-
-
-
-    <!-- Body -->
-
-
+    <!--=============== Body ===============-->
     <div class="features">
         <div class="container">
             <div class="feat">
-                
+                <div class="content">
                     <table>
                         <tr>
 
@@ -95,63 +96,75 @@
                             <th> check in/out </th>
 
                         </tr>
+                </div>
+                <?php
+                // get the id of the user
+                $client_ID = get_active_user_id();
 
-                        <?php
-                         // get the id of the user
-                         $client_ID= get_active_user_id();
-                         
-                       
-                        $sql = " SELECT * from reservations where client_id= '$client_ID' ";
-                        $result = $connect->query($sql);
 
-                        if (empty_mysqli_result($result))
-                            echo "<p class ='paragraph' > no reservations</p>";
-                        else {
-                              
-                            
-                            while ($row = mysqli_fetch_assoc($result)) {
+                $sql = " SELECT * from reservations where client_id= '$client_ID' ";
+                $result = $connect->query($sql);
 
-                                echo "<tr><td>" . $row["reservation_id"] . "</td><td>" . $row["room_no"] . "</td><td> " . $row["start_date"] . "</td> 
+                if (empty_mysqli_result($result))
+                    echo "<p class ='paragraph' > no reservations</p>";
+                else {
+
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+
+                        echo "<tr><td>" . $row["reservation_id"] . "</td><td>" . $row["room_no"] . "</td><td> " . $row["start_date"] . "</td> 
                             <td>" . $row["end_date"] . "</td>
                             <td>" . $row["numberof_adults"] . "</td>
                             <td>" . $row["numberof_children"] . "</td>
                              <td>" . $row["extra_bed"] . "</td>
                             ";
-                                $reservation_id = $row['reservation_id'];
+                        $reservation_id = $row['reservation_id'];
 
-                                echo "<td><a href ='edit_reservation.php?id=$reservation_id' class= 'temp2'> edit </a> </td>";
-                                echo "<td><a href  ='delete_reservations.php?id=$reservation_id' class= 'temp2'> delete </a> </td>";
+                        echo "<td><a href ='edit_reservation.php?id=$reservation_id' class= 'temp2'> edit </a> </td>";
+                        echo "<td><a href  ='delete_reservations.php?id=$reservation_id' class= 'temp2'> delete </a> </td>";
 
-                                $is_checked_in = $row['is_checked_in'];
-                                if ($is_checked_in == 0)
-                                    echo "<td><a href='check_in.php?id=$reservation_id' class ='temp'> check in </a> </td></tr>";
+                        $is_checked_in = $row['is_checked_in'];
+                        if ($is_checked_in == 0)
+                            echo "<td><a href='check_in.php?id=$reservation_id' class ='temp'> check in </a> </td></tr>";
 
-                                else
-                                    echo "<td><a href='check_out.php?id=$reservation_id' class ='temp'> check out </a> </td></tr>";
-                            }
-                        }
-                        ?>
-                    </table>
+                        else
+                            echo "<td><a href='check_out.php?id=$reservation_id' class ='temp'> check out </a> </td></tr>";
+                    }
+                }
+                ?>
+                </table>
 
 
 
-                </div>
             </div>
         </div>
-    
-
-    <!-- End Of Body -->
-
-
-
-    <!-- Footer -->
-    <div class="footer">
-        &copy; 2022
-        <span>MIU</span>
-        All Rights Reserved
     </div>
-    <!-- End Of Footer -->
 
+
+    <!--=============== End Of Body ===============-->
+
+
+    <!--=============== Footer ===============-->
+    <footer class='footer'>
+        <div class='container p-4 pb-0'>
+            <!-- Section: Social media -->
+            <section class='github'>
+                <!-- Github -->
+                <a href='https://github.com/Belal-Elsabbagh/Hurgada-GRND-Hotel' role='button'>
+                    <img src='../../resources/img/icons/GitHub-Mark-Light-64px.png' width='32' alt='Our GitHub'> GitHub Repository
+                </a>
+            </section>
+        </div>
+        <!-- Section: Social media -->
+        <!-- Copyright -->
+        <div class='copyright'>
+            &copy; 2022
+            <span>MIU</span> All Rights Reserved
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <span class="c-scroller_thumb"></span>
+    <!--=============== End Of Footer ===============-->
 </body>
 
 </html>

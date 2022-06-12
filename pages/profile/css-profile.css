@@ -1,5 +1,24 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+/* Variables */
+:root{
+    --blue0-color: #152636;
+    --blue1-color: #014b56;
+    --blue2-color: #057785;
+    --blue3-color: #57b8bc;
+    --blue4-color: #b4d2d3;
+    --grey-color: #8b929a;
+    --brown0-color: #7b5c52;
+    --brown1-color: #8a7469;
+    --brown2-color: #d6b09b;
+    --brown3-color: #f6d8cb;
+    --brown4--color:rgba(99, 88, 75, 0.283);
+    --yellow0-color: #fdf7e4;
+    --yellow1-color: rgb(255, 255, 235);
+    --yellow2-color: linear-gradient( 90deg , rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
+}
 
+
+/* ________________________________________________________________________________________________ */
 .main {
     margin-left: 160px;
     padding: 0px 10px;
@@ -20,14 +39,13 @@
     left: 0;
     height: 100vh;
     z-index: 1;
-    background: #7386D5;
-    color: rgb(125, 163, 219);
+    color:var(--brown1-color);
     transition: all 0.3s;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background: var(--yellow2-color);
 }
 
 a,
@@ -38,15 +56,9 @@ a:focus {
     transition: all 0.3s;
 }
 
-
-/* #sidebar .sidebar-header {
-    padding: 20px;
-    background: #6d7fcc;
-} */
-
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #8b694773;
 }
 
 #sidebar ul li a {
@@ -56,22 +68,11 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: rgb(227, 229, 244);
+    color: var(--brown3-color);
+    background: rgba(244, 239, 227, 0.418);
 }
 
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
 }
-
-
-/* @media screen and (max-width:600px) {
-    .side-nav {
-        display: none;
-    }
-    #ham {
-        display: block;
-    }
-} */

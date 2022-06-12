@@ -737,7 +737,7 @@ function load_profile_navbar(int $active_user_type): string
     $activity_log = $generate_item("Activity Log", REPOSITORY_PAGES_URL . "activity_log");
     $dependants = $generate_item("Dependants", REPOSITORY_PAGES_URL . "profile/dependants.php");
     return match ($active_user_type) {
-        3 => $home . $profile . $my_reservations . $dependants . $logout,
+        3 => $home . $profile . $dependants . $logout,
         2 => $home . $profile . $reservations . $rooms . $logout,
         1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
         default => $home . $login . $signup . $contactus
