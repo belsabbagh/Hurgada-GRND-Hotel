@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added a chart for user reviews">
-      <change afterPath="$PROJECT_DIR$/pages/charts/chart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/charts/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/rating-reports/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/charts/chart.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rating-reports/chart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/charts/index.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,13 +162,6 @@
       <workItem from="1654628001372" duration="4441000" />
       <workItem from="1654707782052" duration="2933000" />
       <workItem from="1654842995422" duration="3525000" />
-    </task>
-    <task id="LOCAL-00011" summary="Moved get_numberof_days_between_dates.&#10;&#10;- Extracted functions from booking script.">
-      <created>1650664033450</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1650664033450</updated>
     </task>
     <task id="LOCAL-00012" summary="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details.">
       <created>1650665776922</created>
@@ -507,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654845081879</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Added a chart for user reviews">
+      <created>1654985545092</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1654985545094</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
