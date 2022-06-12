@@ -4,11 +4,10 @@
     <option name="SPLITTER_PROPORTION" value="0.27000695" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Added a chart for user reviews">
-      <change afterPath="$PROJECT_DIR$/pages/rating-reports/index.php" afterDir="false" />
+    <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Rating reports page done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/charts/chart.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rating-reports/chart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/charts/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/rating-reports/chart.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rating-reports/chart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/rating-reports/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rating-reports/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,13 +161,7 @@
       <workItem from="1654628001372" duration="4441000" />
       <workItem from="1654707782052" duration="2933000" />
       <workItem from="1654842995422" duration="3525000" />
-    </task>
-    <task id="LOCAL-00012" summary="Added RoomOptions and Reservation classes to encapsulate all different room and reservation details.">
-      <created>1650665776922</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1650665776922</updated>
+      <workItem from="1655020055964" duration="2713000" />
     </task>
     <task id="LOCAL-00013" summary="Fixed Activity Log message in book">
       <created>1650665867569</created>
@@ -506,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654985545094</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Rating reports page done">
+      <created>1654994183743</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1654994183743</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,7 +552,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Editing receptionists now works for non file data.&#10;&#10;- Moved picture function from add-receptionist.php to db-functions.php." />
     <MESSAGE value="Changes" />
     <MESSAGE value="Added function to check for duplicate email" />
     <MESSAGE value="Email check now works better" />
@@ -577,7 +576,8 @@
     <MESSAGE value="Changed back to Mariam's original home page" />
     <MESSAGE value="Changed back to Mariam's original home page&#10;&#10;Fixed login to redirect to profile page" />
     <MESSAGE value="Added a chart for user reviews" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a chart for user reviews" />
+    <MESSAGE value="Rating reports page done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rating reports page done" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

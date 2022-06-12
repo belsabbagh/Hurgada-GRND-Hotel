@@ -1,4 +1,4 @@
-.highcharts-figure,
+.my-chart,
 .highcharts-data-table table {
     min-width: 320px;
     max-width: 660px;
@@ -55,4 +55,11 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+.features {
+    position: relative;
+    width: 80%;
+    margin-left: 20%;
+
 }
