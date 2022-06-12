@@ -533,6 +533,7 @@ function log_in(string $email, string $password): void
     try
     {
         $user_data = get_login_data($email, $password);
+        if ($user_data['user_type'] == 2 && !receptionist_isEnabled($user_data['user_id'])) throw new Exception("Your account is deactivated");
         set_active_user($user_data['user_id'], $user_data['email'], $user_data['user_type']);
         activity_log($_SESSION['active_user_id'], "Login", "User {$_SESSION['active_user_id']} logged in.");
         return;
@@ -844,4 +845,17 @@ function load_navbar(int $active_user_type): string
         1 => $home . $profile . $reservations . $receptionists . $ratings . $activity_log . $logout,
         default => $home . $login . $signup . $contactus
     };
+}
+
+function receptionist_isEnabled($user_id): bool
+{
+    $result = run_query("SELECT receptionist_enabled FROM users WHERE user_id = $user_id");
+    $user = $result->fetch_assoc();
+    if ($user['receptionist_enabled'] == 1) return true;
+    return false;
+}
+
+function php_alert(string $msg): string
+{
+    return /** @lang HTML */ "<script>alert('$msg')</script>";
 }

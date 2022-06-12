@@ -15,24 +15,24 @@ maintain_session();
     <!-- Main JS File -->
     <script src="./login.js"></script>
     <!-- Render All Alements Normally -->
-    <link rel="stylesheet" href="../../global/template/normalize.css" />
+    <link rel="stylesheet" href="../../global/template/normalize.css"/>
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="./login.css" />
-    <link rel="stylesheet" href="../../global/template/template.css" />
+    <link rel="stylesheet" href="./login.css"/>
+    <link rel="stylesheet" href="../../global/template/template.css"/>
     <!-- Ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <!-- For the icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <?php if (array_key_exists('err', $_GET)) echo php_alert($_GET['err']) ?>
 </head>
 
 <body>
-    <!--=============== Header ===============-->
-    <a name="home"></a>
-    <div class="header" id="header">
-        <div class="container">
-            <div class="links">
+<!--=============== Header ===============-->
+<a name="home"></a>
+<div class="header" id="header">
+    <div class="container">
+        <div class="links">
                     <span id="icon" class="icon" onclick="showbar()">
                         <i class='bx bx-menu-alt-left'></i>
                     </span>

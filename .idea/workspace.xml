@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="116b53b6-eccf-4fa9-ae79-bc9b48d9a572" name="Changes" comment="Fixed activity log css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/php/db-functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/global/php/db-functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/template/receptionist_temp.css" beforeDir="false" afterPath="$PROJECT_DIR$/global/template/receptionist_temp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservation/rating.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservation/rating.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +167,7 @@
       <workItem from="1654842995422" duration="6795000" />
       <workItem from="1654962405558" duration="16274000" />
       <workItem from="1654980958024" duration="1312000" />
+      <workItem from="1655016396418" duration="1828000" />
     </task>
     <task id="LOCAL-00018" summary="Refactored Fonts Folder&#10;&#10;Removed useless date scripts in form.php">
       <created>1650699981671</created>

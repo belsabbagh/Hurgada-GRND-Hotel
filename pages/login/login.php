@@ -14,7 +14,5 @@ try
     header("Location: http://localhost/hurgada-grnd-hotel/pages/HomePage/index.php");
 } catch (Exception $e)
 {
-    echo $e->getMessage();
-    header("Location: index.php");
+    go_back_to_previous_page("?err={$e->getMessage()}");
 }
-?>
