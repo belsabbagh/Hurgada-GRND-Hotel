@@ -32,7 +32,7 @@ const REPOSITORY_PAGES_URL = REPOSITORY_URL . "pages/";
 /**
  * URL of home page.
  */
-const HOME_URL = REPOSITORY_PAGES_URL . "HomePage/index.php";
+const HOME_URL = REPOSITORY_PAGES_URL . "Home/index.php";
 
 /**
  * URL of login page.
@@ -65,6 +65,9 @@ function db_connect(): mysqli
 /**
  * Connects database, runs the given query, and returns the result
  *
+ *
+ * @throws RuntimeException Thrown if connection was unsuccessful.
+ * @throws mysqli_sql_exception Thrown if the query wasn't run successfully.
  *
  * @param string $sql The sql query to run
  *
@@ -653,7 +656,7 @@ function confirmmsg2($msg, $header, $link_no, $link_yes): void
         <h2>$header</h2>
      </div>
         <p> $msg </p>
-        <div class='line' ></div>
+        <div class='line'></div>
         <form action= '' method = 'post'>
         <a href= '$link_yes'  class = 'confirm-btn'> yes </a>
         <a href= '$link_no'  class = 'close-btn'> no </a>
@@ -675,9 +678,6 @@ function go_back_to_previous_page(string $optional_query = ""): void
     header("Location:" . $_SERVER['HTTP_REFERER'] . $optional_query);
 }
 
-/**
- *
- */
 class Comment
 {
     public string $name;

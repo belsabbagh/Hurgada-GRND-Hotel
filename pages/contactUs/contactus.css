@@ -1,0 +1,33 @@
+
+.features {
+    position: relative;
+    height: 100%;
+    margin-bottom: 50px;
+}
+
+.features > .container {
+    position: relative;
+    padding-top: 150px;
+    width: 100%;
+    margin: auto;
+    font-family: "parg", serif;
+    height: 90%;
+}
+
+h1.text {
+    color: #f6bca1;
+    justify-content: center;
+}
+
+#text-fixed {
+    max-width: 150px;
+    justify-content: center;
+}
+
+label {
+    color: #b53e07
+}
+
+button.btn-outline-primary {
+    color: #f6bca1;
+}

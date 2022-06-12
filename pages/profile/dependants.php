@@ -12,7 +12,8 @@ redirect_to_login();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>profile page</title>
+    <title>HURGADA-GRND-HOTEL</title>
+    <link rel="icon" href="../../resources/img/pretty stuff/hurghada-beach.jpg">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"

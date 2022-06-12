@@ -10,20 +10,36 @@
     --brown1-color: #8a7469;
     --brown2-color: #d6b09b;
     --brown3-color: #f6d8cb;
-    --brown4--color:rgba(99, 88, 75, 0.283);
+    --brown4--color: rgba(99, 88, 75, 0.283);
     --yellow0-color: #fdf7e4;
     --yellow1-color: rgb(255, 255, 235);
-    --yellow2-color: linear-gradient( 90deg , rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
+    --yellow2-color: linear-gradient(90deg, rgba(255, 250, 232, 0.568), rgba(255, 255, 255, 0));
 }
 
 
 /* ________________________________________________________________________________________________ */
+
+.features {
+    position: relative;
+    height: 100%;
+}
+
+.features > .container {
+    position: relative;
+    padding-top: 150px;
+    width: 100%;
+    margin: auto;
+    font-family: "parg", serif;
+    height: 90%;
+}
+
 .feat {
 
     min-height: 600px;
     width: 700px;
 }
-.container2{
+
+.container2 {
     margin-bottom: 45%;
     margin-right: 5%;
     margin-left: 30%;
@@ -99,21 +115,22 @@
 }
 .temp2{
     text-decoration: none;
-    color:#7b5c52;;
-    background-color : #e9c9b8;
-    font-size:110%;
+    color: #7b5c52;;
+    background-color: #e9c9b8;
+    font-size: 110%;
     display: block;
     transition: 0.5s;
     width: 130%;
     border-radius: 3px;
     text-align: center;
- 
-}
- .temp:hover, #submit:hover, .temp2:hover , #submit_search:hover{
 
-    color:#ffffff;;
-    background-color : #057785;
-    
+}
+
+.temp:hover, #submit:hover, .temp2:hover {
+
+    color: #ffffff;;
+    background-color: #057785;
+
 }
 /*paragraph*/
 .paragraph{
@@ -309,8 +326,26 @@ p{
 }
 
 /* Book now */
+.book {
+    cursor: pointer;
+    width: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    right: 50px;
+    justify-content: center;
+    color: var(--yellow0-color);
+    background: var(--brown4--color);
+    position: fixed;
+    font-size: 20px;
+    user-select: none;
+    padding: 10px;
+    width: 150px;
+    transition: 0.05s;
+    border-radius: 50px;
+    backdrop-filter: blur(2px);
+}
 
-.book:hover{
+.book:hover {
     border: 1px solid #7b5c52;
     border-bottom: 3px solid #7b5c52;
 }

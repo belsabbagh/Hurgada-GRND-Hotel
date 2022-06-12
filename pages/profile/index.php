@@ -11,13 +11,14 @@ redirect_to_login();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>profile page</title>
+    <title>HURGADA-GRND-HOTEL</title>
+    <link rel="icon" href="../../resources/img/pretty stuff/hurghada-beach.jpg">
     
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css-profile.css">
+    <link rel="stylesheet" href="./css-profile.css">
     <!-- Custom Javascript -->
     <script src="profile.js"></script>
     <script src="../../global/js/ajax_functions.js"></script>
@@ -58,7 +59,7 @@ redirect_to_login();
 
 <div class="wrapper">
     <!-- Sidebar -->
-    <nav id="sidebar" class="sidebar" class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <nav id="sidebar" class="sidebar" class="navbar navbar-light" style="background-color: var(--brown2-color);">
         <ul class="list-unstyled components">
             <?php
             include_once "../../global/php/db-functions.php";

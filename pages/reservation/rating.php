@@ -2,16 +2,33 @@
 
 <head>
     <link href="../../global/css/style.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="functions.js"></script>
     <title> rate us </title>
     <?php
+    
     include_once "../../global/php/db-functions.php";
     maintain_session();
-    redirect_to_login();
+    //redirect_to_login();
+
     ?>
     <style>
+        .features {
+            position: relative;
+            height: 100%;
+            margin-bottom: 50px;
+            width: 60%;
+            margin: auto;
+        }
+
+        .features .container {
+            position: relative;
+            width: 100%;
+            margin: auto;
+            font-family: "parg", serif;
+            height: 90%;
+        }
+
         .shadow {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             height: 550px;
@@ -19,6 +36,8 @@
             border-radius: 30px;
             width: 210%;
             color: #7b5c52;
+
+
         }
 
         .row {
@@ -26,14 +45,13 @@
             padding-right: 50%;
             font-size: larger;
             margin-right: 70%;
+
         }
 
         .submit_rating {
-            padding-top: 10%;
-            margin-bottom: 45%;
-            margin-right: 50%;
-            margin-left: 30%;
-            padding-left: 15%;
+            position: relative;
+            margin-top: 10px;
+            color: white;
         }
 
         label {
@@ -43,24 +61,31 @@
 
 
     <link href="../../global/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="./reservation_css.css"/>
+    <link rel="stylesheet" href="./reservation_css.css" />
     <script src="../../global/Template/template.js"></script>
     <link href="style.css" rel="stylesheet">
     <script src="functions.js"></script>
 
+    <?php $server = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "hurgada-grnd-hotel";
+
+    $connect = new mysqli($server, $username, $password, $dbname); ?>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HURGADA-GRND-HOTEL</title>
+    <title>HURGHADA-GRND-HOTEL</title>
     <!--=============== BOXICONS ===============-->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Main JS File -->
     <script src="template.js"></script>
     <!-- Render All Alements Normally -->
-    <link rel="stylesheet" href="./normalize.css"/>
+    <link rel="stylesheet" href="./normalize.css" />
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="./template.css"/>
+    <link rel="stylesheet" href="./template.css" />
+
 
 
     <!-- Header -->
@@ -71,14 +96,32 @@
                     <i class='bx bx-menu-alt-left'></i>
                 </span>
                 <div class="items" id="items">
-                    <?php echo load_header_bar(get_active_user_type()); ?>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#home">Home</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#rooms">Rooms</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#dine">Dining</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#exp">Experience</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#loc">Location</a></span>
+                    </span>
+                    <span class="container">
+                        <span><a href="../HomePage/index.php#about">About</a></span>
+                    </span>
                 </div>
                 <span id='icon2' class="icon2" onclick="hidebar()">
                     <i class='bx bx-x'></i>
                 </span>
-                <i class='book' id="book"><a href="<?php echo REPOSITORY_PAGES_URL . "booking" ?>">Book now</a></i>
+                <i class='book' id="book"><a href="../booking/index.php">Book now</a></i>
                 <ul id="bar">
-                    <?php echo load_navbar(get_active_user_type()); ?>
+                    <?php include_once "../../global/php/db-functions.php";
+                    echo load_navbar(get_active_user_type()); ?>
                 </ul>
             </div>
         </div>
