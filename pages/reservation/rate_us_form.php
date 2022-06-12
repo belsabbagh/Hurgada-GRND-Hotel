@@ -46,6 +46,7 @@ $submit_sql = "INSERT INTO  room_reviews
     VALUES ('$client_ID', '$room_id' , '$overall_rating' ,'$view_rating', '$comfort_rating' , '$facilities_rating'
     , '$room_service_rating', '$comments', '$reservation_id')";
 run_query($submit_sql);
+activity_log(get_active_user_id(),"rating submited", "client with ID :$client_ID rated reservation number $reservation_id");
 
 header("Location: $return_link");
 ?>

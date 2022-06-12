@@ -10,6 +10,7 @@
   <?php include_once "../../global/php/db-functions.php";
     maintain_session();
     redirect_to_login();
+    $client_ID= get_active_user_id();
   $server = "localhost";
   $username = "root";
   $password = "";
@@ -54,6 +55,8 @@
       $deleted_header = "deleted";
       $deleted_link = $return_link;
       warningmsg($deleted_msg, $deleted_header, $deleted_link);
+
+      activity_log(get_active_user_id(),"reservation deleted", "client with ID :$client_ID deleted reservation number $id");
     }
 
 

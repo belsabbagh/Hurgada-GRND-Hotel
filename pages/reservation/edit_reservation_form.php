@@ -7,7 +7,7 @@ maintain_session();
 
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') die("Form was not submitted correctly");
-$client_ID=$_SESSION['active_user_id'];
+$client_ID=get_active_user_id();
 
 // Gather data from POST
 $reservation_id = $_POST['reservation_id'];
@@ -63,6 +63,7 @@ if (array_key_exists('manager_pin', $_POST)) {
 
   try {
     $result = run_query($submit_sql);
+    activity_log(get_active_user_id(),"reservation edited", "manager with ID :$client_ID edited reservation number $reservation_id");
     header("Location: http://localhost/Hurgada-GRND-Hotel/pages/reservation/clients_reservations.php");
   } catch (Exception $e) {
     echo $e->getMessage();
@@ -82,6 +83,7 @@ if (array_key_exists('manager_pin', $_POST)) {
 
   try {
     $result = run_query($submit_sql);
+    activity_log(get_active_user_id(),"reservation edited", "client with ID :$client_ID edited reservation number $reservation_id");
     header("Location: http://localhost/Hurgada-GRND-Hotel/pages/reservation/my%20reservations.php");
   } catch (Exception $e) {
     echo $e->getMessage();

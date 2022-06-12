@@ -80,6 +80,7 @@ warningmsg ($failled_to_checkin_msg,$failled_to_checkin_header,$failled_to_check
 else{
     $check_in_sql= "UPDATE reservations SET is_checked_in = 1 where reservation_id =$reservation_id";
 mysqli_query($connect,$check_in_sql) or die ("failled to check in");
+activity_log(get_active_user_id(),"client checked in", "client with ID :$client_ID cheked in reservation number $reservation_id");
 header ("Location: $return_link");
 
 }
